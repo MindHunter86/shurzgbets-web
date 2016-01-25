@@ -1,5 +1,22 @@
 <?php
 
+if (getenv('REDIS_URL')) {
+    $url = parse_url(getenv('REDIS_URL'));
+
+    putenv('REDIS_HOST='.$url['host']);
+    putenv('REDIS_PORT='.$url['port']);
+    putenv('REDIS_PASSWORD='.$url['pass']);
+}
+
+if (getenv('DATABASE_URL')) {
+    $url = parse_url(getenv('DATABASE_URL'));
+
+    putenv('DB_HOST='.$url['host']);
+    putenv('DB_DATABASE='.substr($url['path'], 1));
+    putenv('DB_USERNAME='.$url['user']);
+    putenv('DB_PASSWORD='.$url['pass']);
+}
+
 return [
 
     /*
@@ -89,8 +106,9 @@ return [
         'cluster' => false,
 
         'default' => [
-            'host'     => '127.0.0.1',
-            'port'     => 6379,
+            'host' => env('REDIS_HOST'),
+            'port' => env('REDIS_PORT'),
+            'password' => env('REDIS_PASSWORD'),
             'database' => 0,
         ],
 
