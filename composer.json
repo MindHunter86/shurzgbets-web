@@ -10,7 +10,8 @@
         "barryvdh/laravel-debugbar": "v2.0.5",
         "barryvdh/laravel-ide-helper": "v2.1.0",
         "invisnik/laravel-steam-auth": "2.*",
-        "predis/predis": "v1.0.3"
+        "predis/predis": "v1.0.3",
+        "ext-bcmath": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -58,8 +59,5 @@
             "document-root": "public",
             "index-document": "index.php"
         }
-    },
-    "compile": [
-        "php app/console assetic:dump —env=prod —no-debug —enable-bcmath"
-    ]
+    }
 }
