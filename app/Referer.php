@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Referer extends Model {
 
+	protected $table = 'referer';
+	
 	protected $fillable = ['referer', 'count'];
 
 	public static function referer() {
