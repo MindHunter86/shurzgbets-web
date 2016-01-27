@@ -58,5 +58,8 @@
             "document-root": "public",
             "index-document": "index.php"
         }
-    }
+    },
+    "compile": [
+        "php app/console assetic:dump —env=prod —no-debug —enable-bcmath"
+    ]
 }
