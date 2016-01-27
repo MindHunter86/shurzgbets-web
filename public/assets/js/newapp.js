@@ -152,7 +152,7 @@ function replaceLogin(login) {
 }
 
 if (START) {
-    var socket = io.connect('http://itemup.ru' /*{ secure: true }*/);
+    var socket = io.connect('http://node.itemup.ru' /*{ secure: true }*/);
     socket
         .on('connect', function () {
             $('#loader').hide();
