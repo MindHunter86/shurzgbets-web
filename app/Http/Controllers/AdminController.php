@@ -42,7 +42,7 @@ class AdminController extends Controller {
         $averageGame = DB::select(DB::raw('select count(created_at) as average from games where created_at >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)'));
         $averageGame = round($averageGame[0]->average / 30);
 
-        $referer = DB::select(DB::raw('select * from referers ORDER BY count DESC'));
+        $referer = DB::select(DB::raw('select * from referer ORDER BY count DESC'));
 
        	$plays = json_encode($plays);
        	$sumplays = DB::select(DB::raw('select count(created_at) as sum from `games` where `created_at` >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)'));
