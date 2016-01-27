@@ -15,7 +15,7 @@ class CreateRefererTable extends Migration
         Schema::create('referer', function (Blueprint $table) {
             $table->increments('id');
             $table->string('referer');
-            $table->increments('count');
+            $table->integer('count');
             $table->timestamps();
         });
     }
