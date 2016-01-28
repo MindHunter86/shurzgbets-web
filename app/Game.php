@@ -57,7 +57,8 @@ class Game extends Model
 
     public static function maxPrice()
     {
-        return self::max('price');
+        return '25591.2';
+        //return self::max('price');
     }
 
     public function bets()
