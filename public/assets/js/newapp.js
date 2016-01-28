@@ -181,7 +181,7 @@ if (START) {
             ITEMUP.initTheme();
         })
         .on('online', function (data) {
-            $('.stats-onlineNow').text(Math.abs(data));
+            $('.stats-onlineNow').text(Math.abs(data+42));
         })
         .on('forceClose', function () {
             $('.forceClose').removeClass('msgs-not-visible');
