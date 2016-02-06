@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrderTable extends Migration
+class CreateOrdersTable extends Migration
 {
     public function up()
     {
