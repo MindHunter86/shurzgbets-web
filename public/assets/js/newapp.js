@@ -531,11 +531,8 @@ function setCookie(name, value, options) {
     $('.hf').css('margin', '0 auto');
     $('.bc').css('margin', '10px auto 0 70px');
 }*/
-
 function getCookie(name) {
-  var matches = document.cooinfo-md5 = 0 180px
-  .stats = 16px auto 18px 70px
-  = 0 auto 25px 70pxkie.match(new RegExp(
+  var matches = document.cookie.match(new RegExp(
     "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
   ));
   return matches ? decodeURIComponent(matches[1]) : undefined;
