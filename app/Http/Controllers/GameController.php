@@ -11,6 +11,7 @@ use App\Services\SteamItem;
 use App\Services\BackPack;
 use App\Ticket;
 use App\User;
+use App\Bonus;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -70,7 +71,9 @@ class GameController extends Controller
     public function getLastGame()
     {
         $game = Game::orderBy('id', 'desc')->first();
-        if(is_null($game)) $game = $this->newGame();
+        if(is_null($game)) {
+            $game = $this->newGame();
+        }
         return $game;
     }
 
@@ -116,6 +119,7 @@ class GameController extends Controller
         $commissionItems = [];
         $returnItems = [];
         $tempPrice = 0;
+        $bonus = null;
         //$firstBet = Bet::where('game_id', $this->game->id)->orderBy('created_at', 'asc')->first();
         //if($firstBet->user == $user) $commission = self::COMMISSION_FOR_FIRST_PLAYER;
         $commissionPrice = round(($this->game->price / 100) * $commission);
@@ -140,6 +144,9 @@ class GameController extends Controller
         foreach($items as $item){
             if($item['price'] < 1) $item['price'] = 1;
             if(($item['price'] >= 10) && ($tempPrice+$item['price'] < $commissionPrice)) {
+                if($item['price'] <= 30) {
+                   $bonus = $item; 
+                }
             //if(($item['price'] <= $commissionPrice) && ($tempPrice < $commissionPrice) && ($item['price'] >= 10)){
                 $commissionItems[] = $item;
                 $tempPrice = $tempPrice + $item['price'];
@@ -164,6 +171,15 @@ class GameController extends Controller
             'items' => $returnItems,
             'game' => $this->game->id
         ];
+        if(!is_null($bonus)) {
+            Bonus::create([
+                'name' => $bonus['name'],
+                'market_hash_name' => $bonus['market_hash_name'],
+                'classid' => $bonus['classid'],
+                'price' => $bonus['price'],
+                'rarity' => $bonus['rarity']
+            ]);
+        }
         if(count($returnItems) > 0) {
             $this->redis->rpush(self::SEND_OFFERS_LIST, json_encode($value));
         }
@@ -257,7 +273,65 @@ class GameController extends Controller
         }
         return response()->json(['success' => true]);
     }
+    public function bonusBet() {
+        $newBet = Bonus::first();
+        $bonususer = User::where('steamid64', '0000000000000')->first();
+        if(is_null($bonususer)) {
+            $bonususer = User::create([
+                'username' => 'БОНУС БОТ',
+                'avatar' => 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a5/a598766dd53b44787551f79516b74697e2391ca2_full.jpg',
+                'steamid' => '0000000000000',
+                'steamid64' => '0000000000000'
+            ]);
+        }
+        if(is_null($newBet)) {
+            return true;
+        }
+        $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
+        if (!is_null($lastBet)) {
+            return true;
+        }
+        $ticketFrom = 0;
+        $ticketTo = 0;
+        $bet = new Bet();
+        $bet->user()->associate($bonususer);
+        $bet->items = json_encode($newBet);
+        $bet->itemsCount = count($newBet);
+        $bet->price = $newBet['price'];
+        $bet->from = $ticketFrom;
+        $bet->to = $ticketTo;
+        $bet->game()->associate($this->game);
+        $bet->save();
 
+        $bets = Bet::where('game_id', $this->game->id);
+        $this->game->items = $bets->sum('itemsCount');
+        $this->game->price = $bets->sum('price');
+
+        if (count($this->game->users()) >= 2 || $this->game->items >= 100) {
+            $this->game->status = Game::STATUS_PLAYING;
+            $this->game->started_at = Carbon::now();
+        }
+        if ($this->game->items >= 100) {
+            $this->game->status = Game::STATUS_FINISHED;
+            $this->redis->publish(self::SHOW_WINNERS, true);
+        }
+        $this->game->save();
+
+        $chances = $this->_getChancesOfGame($this->game);
+        $returnValue = [
+            'betId' => $bet->id,
+            'userId' => $bonususer->steamid64,
+            'html' => view('includes.bet', compact('bet'))->render(),
+            'itemsCount' => $this->game->items,
+            'gamePrice' => $this->game->price,
+            'gameStatus' => $this->game->status,
+            'chances' => $chances
+        ];
+        $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));
+        $this->redis->lrem('bets.list', 0, $newBetJson);
+
+        return $this->_responseSuccess();
+    }
     public function newBet()
     {
         $data = $this->redis->lrange('bets.list', 0, -1);
