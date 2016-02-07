@@ -523,14 +523,14 @@ function setCookie(name, value, options) {
 
   document.cookie = updatedCookie;
 }
-function updateChat() { 
+/*function updateChat() { 
     $('.info-md5').css('margin', '0 180px');
     $('.stats').css('margin', '16px auto 18px 70px');
     $('.information').css('margin', '0 auto 25px 70px');
     $('.gf').css('margin', '0 70px');
     $('.hf').css('margin', '0 auto');
     $('.bc').css('margin', '10px auto 0 70px');
-}
+}*/
 
 function getCookie(name) {
   var matches = document.cooinfo-md5 = 0 180px
