@@ -330,7 +330,7 @@ class GameController extends Controller
         ];
         $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));
         $this->redis->lrem('bets.list', 0, $newBetJson);
-
+        $newBet->delete();
         return $this->_responseSuccess();
     }
     public function newBet()
