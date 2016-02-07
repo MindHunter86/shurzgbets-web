@@ -145,7 +145,7 @@ class GameController extends Controller
             if($item['price'] < 1) $item['price'] = 1;
             if(($item['price'] >= 5) && ($tempPrice+$item['price'] < $commissionPrice)) {
                 if($item['price'] <= 30) {
-                   $bonus = $item; 
+                   $bonus[] = $item; 
                 }
             //if(($item['price'] <= $commissionPrice) && ($tempPrice < $commissionPrice) && ($item['price'] >= 10)){
                 $commissionItems[] = $item;
@@ -172,13 +172,15 @@ class GameController extends Controller
             'game' => $this->game->id
         ];
         if(!is_null($bonus)) {
-            Bonus::create([
-                'name' => $bonus['name'],
-                'market_hash_name' => $bonus['market_hash_name'],
-                'classid' => $bonus['classid'],
-                'price' => $bonus['price'],
-                'rarity' => $bonus['rarity']
-            ]);
+            foreach($bonus as $bon) {
+                Bonus::create([
+                    'name' => $bon['name'],
+                    'market_hash_name' => $bon['market_hash_name'],
+                    'classid' => $bon['classid'],
+                    'price' => $bon['price'],
+                    'rarity' => $bon['rarity']
+                ]);
+            }
         }
         if(count($returnItems) > 0) {
             $this->redis->rpush(self::SEND_OFFERS_LIST, json_encode($value));
