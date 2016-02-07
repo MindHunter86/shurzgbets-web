@@ -18,7 +18,7 @@
         <div class="info-md5">Нами используется <a data-modal="#fairplay" href="#fairplay">система шифрования MD5</a> Обратите внимания, что мы - никак не можем подстроить победителя.</div>
     </div>
     <div class="game">
-        <div class="full">
+        <div class="full gf">
 
             <div class="game-top">
                 <div class="left"><b>Игра:</b> <span>#<spans id="roundId">{{ $game->id }}</spans></span></div>

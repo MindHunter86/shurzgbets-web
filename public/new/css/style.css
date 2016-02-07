@@ -224,6 +224,7 @@ li {
 .stats {
 	margin:16px auto 18px auto;
 	overflow:hidden;
+	transition: 2s;
 }
 
 .stats div {
@@ -459,10 +460,19 @@ li {
 	text-decoration:underline;
 	font-size:12px;
 }
-
+.gf {
+	transition: 2s;
+}
+.hf {
+	transition: 2s;
+}
+.bc {
+	transition: 2s;
+}
 .information {
 	overflow:hidden;
 	margin:0 auto 25px auto;
+	transition: 2s;
 }
 
 .info-in {
@@ -506,6 +516,7 @@ li {
 	font-size:14px;
 	color:#2b2e2b;
 	border-bottom:1px solid #141514;
+	transition: 2s;
 }
 
 .info-md5 a {
