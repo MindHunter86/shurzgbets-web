@@ -328,9 +328,8 @@ class GameController extends Controller
             'gameStatus' => $this->game->status,
             'chances' => $chances
         ];
-        $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));
-        $this->redis->lrem('bets.list', 0, $newBetJson);
         $newBet->delete();
+        $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));
         return $this->_responseSuccess();
     }
     public function newBet()
