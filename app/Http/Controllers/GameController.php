@@ -298,7 +298,7 @@ class GameController extends Controller
         $bet->user()->associate($bonususer);
         $bet->items = json_encode($betInsert);
         $bet->itemsCount = count($newBet);
-        $bet->price = $newBet['price'];
+        $bet->price = 0;
         $bet->from = $ticketFrom;
         $bet->to = $ticketTo;
         $bet->game()->associate($this->game);
