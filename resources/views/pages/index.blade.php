@@ -104,15 +104,15 @@
             </ul>
         </div>
     </div>
-    <div class="notification notification_2 declineMsg msgs-not-visible"></div>
-    <div class="notification notification_3 msgs-not-visible"><b>Игра завершилась!</b> <a data-modal="#fairplay" href="#fairplay" class="gamestart_bg">ЧЕСТНАЯ ИГРА</a> Число раунда: <span style="color:#236235;" id="roundNumber"></span></div>
+    <div class="notification notification_2 declineMsg msgs-not-visible bc"></div>
+    <div class="notification notification_3 msgs-not-visible bc"><b>Игра завершилась!</b> <a data-modal="#fairplay" href="#fairplay" class="gamestart_bg">ЧЕСТНАЯ ИГРА</a> Число раунда: <span style="color:#236235;" id="roundNumber"></span></div>
     <div id="bets" class="items-full full">
         @foreach($bets as $bet)
             @include('includes.bet')
         @endforeach
     </div>
     <div class="clear"></div>
-    <div class="gamestart"><b>ИГРА НАЧАЛАСЬ! ВНОСИТЕ ДЕПОЗИТЫ!</b> <a class="gamestart_bg" data-modal="#fairplay" href="#fairplay">ЧЕСТНАЯ ИГРА</a> Хэш раунда: <span style="color:#236235;">{{ md5($game->rand_number) }}</span></div>
+    <div class="gamestart bc"><b>ИГРА НАЧАЛАСЬ! ВНОСИТЕ ДЕПОЗИТЫ!</b> <a class="gamestart_bg" data-modal="#fairplay" href="#fairplay">ЧЕСТНАЯ ИГРА</a> Хэш раунда: <span style="color:#236235;">{{ md5($game->rand_number) }}</span></div>
 @endsection
 
 

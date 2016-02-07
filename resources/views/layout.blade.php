@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="header">
-            <div class="full">
+            <div class="full hf">
                 <a href="/" class="logo"></a>
                 @if(Auth::guest())
                 <div class="auth"><a href="{{ route('login') }}">Авторизация</a></div>
