@@ -4,6 +4,7 @@ $(document).ready(function() {
 	var lastMsg = '';
 	var lastMsgTime = '';
 	var chat = new Firebase("https://csgo-prod.firebaseio.com" + CHAT_CONNECT);
+	$('#chatScroll').perfectScrollbar();
 	function sendMessage() {
       	var message = messageField.val();
 	    var maxlength = 200;
@@ -43,6 +44,7 @@ $(document).ready(function() {
 		});
 	}
 	messageField.keypress(function (e) {
+		e.preventDefault();
 	    if (e.keyCode == 13) {
 	    	sendMessage();
 	    }
@@ -76,7 +78,6 @@ $(document).ready(function() {
 	    //ADD MESSAGE
 	    messageList.append(messageElement)
 
-	    //SCROLL TO BOTTOM OF MESSAGE LIST
-	    messageList[0].scrollTop = messageList[0].scrollHeight;
+	    $('#chatScroll').perfectScrollbar('update');
   	});
 });
