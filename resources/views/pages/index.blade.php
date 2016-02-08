@@ -43,7 +43,7 @@
                 <div class="new_timer"><div class="ngtimer"><span class="countSeconds"><span class="position"><span class="digit static">0</span></span><span class="position"><span class="digit static">0</span></span></span></div>Новая игра через:</div>
                 <div class="clear"></div>
                 <div class="rul_win"><b>Выигрыш:</b> <span class="winner-cost-value">0</span> (рублей)</div>
-                <div class="rul_button"><a href="#"></a></div>
+                <div class="rul_button"><a href="/deposit"></a></div>
                 <div class="clear"></div>
             </div>
             <div class="details-wrap">
