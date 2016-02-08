@@ -109,6 +109,103 @@ li {
 	float:left;
 	margin:14px 0 0 0;
 }
+/* chat */
+#chatContainer {
+    width: 300px;
+    z-index: 1000;
+    position: fixed;
+    bottom: 10px;
+    right: 35px;
+}
+#chatHeader {
+    background: #1F262E;
+    padding: 8px 8px 7px;
+    color: #eee;
+    border-top: 3px solid #76cfe2;
+    text-align: center;
+    font-weight: 100;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+#chatBody {
+    display: none;
+}
+#chatScroll {
+    height: 422px;
+    background-color: #29323B;
+    *overflow-y: scroll;
+    padding-top: 0px;
+    position: relative;
+    border-left: 1px solid rgba(31, 38, 46, 0.5);
+    border-right: 1px solid rgba(31, 38, 46, 0.5);
+}
+#sendie {
+    outline: none;
+    border: none;
+    border-top: 1px solid #1F262E;
+    width: 288px;
+    padding: 3px 6px;
+    font-size: 13px;
+	height: 42px;
+	line-height: 16px;
+    background: #1F262E;
+    color: #999;
+    overflow: hidden;
+    word-wrap: break-word;
+    resize: none;
+}
+#notLoggedIn {
+    display: block;
+    text-align: center;
+    width: 300px;
+    padding: 10px;
+    font-size: 13px;
+    background: #1F262E;
+    color: #999;
+}
+.chatMessage {
+    padding: 5px 10px 5px 10px;
+}
+.chatMessage img {
+    float: left;
+}
+.chatMessage .login {
+    padding-left: 40px;
+    line-height: 17px;
+    font-size: 14px;
+    display: block;
+    text-decoration: none;
+    color: rgb(173, 173, 173);
+}
+.chatMessage .login:hover {
+    padding-left: 40px;
+    line-height: 17px;
+    font-size: 14px;
+    display: block;
+    text-decoration: none;
+    color: rgb(105, 101, 101);
+}
+.chatMessage .body {
+    display: block;
+    padding-left: 40px;
+    font-size: 12px;
+    line-height: 15px;
+    padding-top: 1px;
+    color: #eee;
+    word-wrap: break-word;
+}
+::-webkit-input-placeholder {
+    color:    #999;
+    font-size: 13px;
+}
+:-moz-placeholder,
+::-moz-placeholder {
+    color:    #999;
+}
+:-ms-input-placeholder {
+    color:    #999;
+}
 
 .auth {
 	background:url(../images/auth.png) no-repeat 0 0;
