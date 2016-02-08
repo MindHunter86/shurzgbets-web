@@ -44,7 +44,6 @@ $(document).ready(function() {
 		});
 	}
 	messageField.keypress(function (e) {
-		e.preventDefault();
 	    if (e.keyCode == 13) {
 	    	sendMessage();
 	    }
