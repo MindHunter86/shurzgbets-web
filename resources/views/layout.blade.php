@@ -91,7 +91,7 @@
     <div id="chatContainer">
         <div id="chatHeader"><span class="chat-text">Чат</span></div>
         <div id="chatBody" style="display: block;">
-            <div id="chatScroll" class="ps-container ps-active-y" data-ps-id="00dca2db-dc56-5dc1-4b8c-d7f35132cae5">
+            <div id="chatScroll">
                 <div id="chat_messages">
                 
                 </div>
