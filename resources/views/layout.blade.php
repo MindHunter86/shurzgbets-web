@@ -40,6 +40,9 @@
 <audio id="newGame" src="{{ asset('new/sound/game-start.mp3') }}" preload="auto"></audio>
 <audio id="scrollSlider" src="http://itemup.ru/assets/sounds/scroll.mp3" preload="auto"></audio>
 <body>
+    <div class="shares">
+        <a href="https://vk.com/itemup" class="share"><img src="{{ asset('new/images/Bez-imeni-1.png') }}" /></a>
+    </div>
     <div class="wrapper">
         <div id="loader" class="corner">
             <div class="loader-inner ball-clip-rotate-multiple blue-loader">
