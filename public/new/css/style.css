@@ -190,20 +190,26 @@ li {
     float: left;
 }
 .chatMessage .login {
-    padding-left: 40px;
+	padding-left: 8px;
     line-height: 17px;
     font-size: 14px;
     display: block;
     text-decoration: none;
     color: rgb(173, 173, 173);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .chatMessage .login:hover {
-    padding-left: 40px;
+    padding-left: 8px;
     line-height: 17px;
     font-size: 14px;
     display: block;
     text-decoration: none;
     color: rgb(105, 101, 101);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .chatMessage .body {
     display: block;
