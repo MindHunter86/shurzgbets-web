@@ -152,7 +152,8 @@ li {
 }
 #chatScroll {
     background-color: #0E0F0E;
-    *overflow-y: scroll;
+    overflow: hidden;
+    overflow-y: scroll;
     padding-top: 0px;
     position: relative;
     border-left: 1px solid rgba(31, 38, 46, 0.5);
