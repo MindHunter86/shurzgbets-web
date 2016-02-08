@@ -71,7 +71,7 @@ $(document).ready(function() {
 	    }
 	    msg.text(message);
 	    nameElement.text(username);
-	    messageElement.html(avatarElement).prepend(nameElement).prepend(msg);
+	    messageElement.html(msg).prepend(nameElement).prepend(avatarElement);
 
 	    //ADD MESSAGE
 	    messageList.append(messageElement)
