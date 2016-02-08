@@ -47,11 +47,6 @@ $(document).ready(function() {
 	    	sendMessage();
 	    }
 	});
-	<div class="chatMessage clearfix" data-uuid="" data-user="">
-		<img style="height: 32px; width: 32px;" src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/de/de5eb91738aa6099e32c513f24a9dd5e5d25a51b_full.jpg">
-			<a class="login" data-profile="76561198251782354" href="#">AlexA2S</a>
-		<div class="body">не боись</div>
-	</div>
 	chat.limitToLast(50).on('child_added', function (snapshot) {
 	    //GET DATA
 	    var data = snapshot.val();

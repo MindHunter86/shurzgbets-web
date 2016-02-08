@@ -18,7 +18,7 @@
     <script src="{{ asset('assets/js/main.js') }}" ></script>
     <script type="text/javascript" src="http://assets.freshdesk.com/widget/freshwidget.js"></script>
     <script>
-        FreshWidget.init("", {"queryString": "&widgetType=popup&screenshot=no", "widgetType": "popup", "buttonText": "Support", "buttonColor": "white", "buttonBg": "#006063", "backgroundImage": "", "alignment": "4", "offset": "-1500px", "formHeight": "500px", "url": "https://dotalucky.freshdesk.com"} ); 
+        var CHAT_CONNECT = '/chat/dev';
     </script>
 
     @if(!Auth::guest())
