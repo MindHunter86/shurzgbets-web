@@ -38,10 +38,10 @@ class AjaxController extends Controller
             }
             $message = str_replace($censure, '*мат*', $message);
             $push = array(
-                'username' => Auth::user()->username,
-                'avatar' => Auth::user()->avatar,
-                'steamid' => Auth::user()->steamid64,
-                'is_admin' => Auth::user()->is_admin,
+                'username' => $this->user->username,
+                'avatar' => $this->user->avatar,
+                'steamid' => $this->user->steamid64,
+                'is_admin' => $this->user->is_admin,
                 'message' => $message
             );
             $pusher = $fb->push('/chat/1', $push);
