@@ -58,7 +58,7 @@ $(document).ready(function() {
 	    var steamid = data.steamid;
 	    if(data.is_admin) {
 	    	username = 'Администратор';
-	    	avatar = '/images/admin.jpg'
+	    	avatar = '/new/images/admin.jpg'
 	    }
 
 	    //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
