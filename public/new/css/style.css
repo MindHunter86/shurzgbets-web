@@ -88,6 +88,8 @@ li {
 
 .wrapper {
 	min-width:1200px;
+	margin-right: 500px;
+	position: relative;
 }
 
 .full {
@@ -111,20 +113,19 @@ li {
 }
 /* chat */
 #chatContainer {
-    width: 300px;
-    z-index: 1000;
     position: fixed;
-    bottom: 10px;
-    right: 35px;
+    top: 0;
+    right: 0;
 }
 #chatHeader {
-    background: #1F262E;
+    background: #FFF;
     padding: 8px 8px 7px;
-    color: #eee;
-    border-top: 3px solid #76cfe2;
+    color: #414146;
+    border-top: 3px solid #00B45E;
     text-align: center;
     font-weight: 100;
     font-size: 14px;
+    height: 46px;
     text-transform: uppercase;
     cursor: pointer;
 }

@@ -85,16 +85,16 @@
         </div>
         @yield('content')
     </div>
-    <div id="chatContainer" style="display: none;">
-    <div id="chatHeader">Чат</div>
+    <div id="chatContainer">
+        <div id="chatHeader">Чат</div>
 
-    <div id="chatBody" style="display: block;">
-        <div id="chatScroll" class="ps-container ps-active-y" data-ps-id="00dca2db-dc56-5dc1-4b8c-d7f35132cae5" style="height: 638px;">
+        <div id="chatBody" style="display: block;">
+            <div id="chatScroll" class="ps-container ps-active-y" data-ps-id="00dca2db-dc56-5dc1-4b8c-d7f35132cae5" style="height: 638px;">
+                
+            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: -1582.45px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 1585.45px; right: 3px; height: 422px;"><div class="ps-scrollbar-y" style="top: 334px; height: 88px;"></div></div></div>
+            <textarea id="sendie" placeholder="Введите сообщение"></textarea>
             
-        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: -1582.45px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 1585.45px; right: 3px; height: 422px;"><div class="ps-scrollbar-y" style="top: 334px; height: 88px;"></div></div></div>
-        <textarea id="sendie" placeholder="Введите сообщение"></textarea>
-        
-    </div>
+        </div>
     </div>
     <div class="footer"><a href="https://vk.com/itemup">МЫ ВКонтакте</a></div>
     <div class="none">
