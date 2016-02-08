@@ -5,6 +5,7 @@ $(document).ready(function() {
 	var lastMsgTime = '';
 	var chat = new Firebase("https://csgo-prod.firebaseio.com" + CHAT_CONNECT);
 	$('#chatScroll').perfectScrollbar();
+	$('#chatScroll').css('height', $(window).height() - 100);
 	function sendMessage() {
       	var message = messageField.val();
 	    var maxlength = 200;
