@@ -57,7 +57,7 @@ $(document).ready(function() {
 	    var avatar = data.avatar;
 	    var steamid = data.steamid;
 	    if(data.is_admin) {
-	    	username = 'Администратор';
+	    	username = 'Администратор ('+username+')';
 	    	avatar = '/new/images/admin.jpg'
 	    }
 
