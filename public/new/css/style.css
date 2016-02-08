@@ -87,8 +87,9 @@ li {
 }
 
 .wrapper {
-	min-width:1200px;
-	margin-right: 500px;
+    min-width: 1200px;
+    margin-left: 15%;
+    position: relative;
 }
 
 .full {
@@ -114,6 +115,10 @@ li {
 #chatContainer {
     position: fixed;
     top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 20%;
+    left: 0;
     right: 0;
 }
 #chatHeader {
@@ -135,7 +140,6 @@ li {
 	margin-top: 50%;
 }
 #chatScroll {
-    height: 422px;
     background-color: #0E0F0E;
     *overflow-y: scroll;
     padding-top: 0px;
