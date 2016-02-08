@@ -25,7 +25,7 @@ class AjaxController extends Controller
         }
         $fb = Firebase::initialize(self::$FIREBASE_URL, self::$FIREBASE_SECRET);
         if($type == 'push') {
-            $censure = array('залупа');
+            $censure = array('залупа', '.ru', '.com', '. ru', 'ru', '.in', '. com', 'заходи', 'классный сайт', 'го на');
             $message = $request->get('message');
             if(is_null($message)) {
                 return response()->json(['success' => false, 'text' => 'Вы не ввели сообщение']);
