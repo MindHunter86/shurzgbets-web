@@ -22,10 +22,6 @@ $(document).ready(function() {
 	        return;
 	    }
 	    lastMsgTime = new Date;
-		if ( lastMsg && message.split(lastMsg).length > 1) {
-			$.notify('Ваше сообщение совпадает с предыдущим вашим сообщением');
-	        return;
-	    }
 	    lastMsg = message;
       	$.ajax({
 		  url: '/ajax/chat',
