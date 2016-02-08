@@ -46,8 +46,8 @@ $(document).ready(function() {
 	messageField.keypress(function (e) {
 	    if (e.keyCode == 13) {
 	    	sendMessage();
+	    	return false;
 	    }
-	    return false;
 	});
 	chat.limitToLast(50).on('child_added', function (snapshot) {
 	    //GET DATA
