@@ -100,6 +100,7 @@ li {
 	background:url(../images/header.png) repeat-x 0 0;
 	height:64px;
 	overflow:hidden;
+    padding-right: 100px;
 }
 
 .logo {
@@ -127,10 +128,9 @@ li {
     border-bottom: 3px solid #00B45E;
     text-align: center;
     font-weight: 100;
-    font-size: 14px;
+    font-size: 40px;
     height: 46px;
     text-transform: uppercase;
-    cursor: pointer;
 }
 #chatBody {
     display: none;
