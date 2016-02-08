@@ -95,7 +95,7 @@
                 <div id="chat_messages">
                 
                 </div>
-            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: -1582.45px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 1585.45px; right: 3px; height: 422px;"><div class="ps-scrollbar-y" style="top: 334px; height: 88px;"></div></div></div>
+            </div>
             <textarea id="sendie" placeholder="Введите сообщение"></textarea>
             
         </div>
