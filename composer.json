@@ -11,6 +11,7 @@
         "barryvdh/laravel-ide-helper": "v2.1.0",
         "invisnik/laravel-steam-auth": "2.*",
         "predis/predis": "v1.0.3",
+        "eelkevdbos/firebase-php": "dev-master",
         "ext-bcmath": "*"
     },
     "require-dev": {

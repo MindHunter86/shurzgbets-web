@@ -6,6 +6,7 @@ use App\Game;
 use App\Shop;
 use App\User;
 use App\Item;
+use Firebase\Firebase;
 use App\Services\BackPack;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,41 @@ use PhpParser\Node\Expr\Cast\Object_;
 
 class AjaxController extends Controller
 {
+    static $FIREBASE_URL = 'https://csgo-prod.firebaseio.com/';
+    static $FIREBASE_SECRET = 'cUfAEGeYcVJqwl6IrudJNyq6gGeStT1s1bJQ6PTe';
+    public function chat(Request $request) {
+        $type = $request->get('type');
+        if(!$request->has('type')) {
+            return response()->json(['success' => false, 'text' => 'Тип запроса не указан']);
+        }
+        $fb = Firebase::initialize(self::$FIREBASE_URL, self::$FIREBASE_SECRET);
+        if($type == 'push') {
+            $censure = array('залупа');
+            $message = $request->get('message');
+            if(is_null($message)) {
+                return response()->json(['success' => false, 'text' => 'Вы не ввели сообщение']);
+            }
+            if(strlen($message) == 0) {
+                return response()->json(['success' => false, 'text' => 'Вы не ввели сообщение']);
+            }
+            if(strlen($message) > 200) {
+                return response()->json(['success' => false, 'text' => 'Максимум 200 символов']);
+            }
+            $message = str_replace($censure, '*мат*', $message);
+            $push = array(
+                'username' => Auth::user()->username,
+                'avatar' => Auth::user()->avatar,
+                'steamid' => Auth::user()->steamid64,
+                'is_admin' => Auth::user()->is_admin,
+                'message' => $message
+            );
+            $pusher = $fb->push('/chat/1', $push);
+            if(is_null($pusher)) {
+                return response()->json(['success' => false, 'text' => 'Ошибка сервера (mp01)']);
+            }
+            return response()->json(['success' => true, 'text' => 'Сообщение добавлено']);
+        }
+    }
     public function parseAction(Request $request)
     {
         switch($request->get('action')){
