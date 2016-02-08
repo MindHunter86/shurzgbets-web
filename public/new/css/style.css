@@ -121,7 +121,7 @@ li {
     background: #FFF;
     padding: 8px 8px 7px;
     color: #414146;
-    border-top: 3px solid #00B45E;
+    border-bottom: 3px solid #00B45E;
     text-align: center;
     font-weight: 100;
     font-size: 14px;
@@ -132,9 +132,12 @@ li {
 #chatBody {
     display: none;
 }
+.chat-text {
+	margin-top: 50%;
+}
 #chatScroll {
     height: 422px;
-    background-color: #29323B;
+    background-color: #0E0F0E;
     *overflow-y: scroll;
     padding-top: 0px;
     position: relative;
