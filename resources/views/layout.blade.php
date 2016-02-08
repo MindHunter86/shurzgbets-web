@@ -41,7 +41,7 @@
 <audio id="scrollSlider" src="http://itemup.ru/assets/sounds/scroll.mp3" preload="auto"></audio>
 <body>
     <div class="shares">
-        <a href="https://vk.com/itemup" class="share"><img src="{{ asset('new/images/Bez-imeni-1.png') }}" /></a>
+        <a href="https://vk.com/itemup" class="share"><img style="width: 40px; height: 160px;" src="{{ asset('new/images/Bez-imeni-1.png') }}" /></a>
     </div>
     <div class="wrapper">
         <div id="loader" class="corner">
