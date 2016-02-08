@@ -18,7 +18,7 @@
     <script src="{{ asset('assets/js/main.js') }}" ></script>
     <script type="text/javascript" src="http://assets.freshdesk.com/widget/freshwidget.js"></script>
     <script>
-        var CHAT_CONNECT = '/chat/dev';
+        var CHAT_CONNECT = '/chat/1';
     </script>
 
     @if(!Auth::guest())
