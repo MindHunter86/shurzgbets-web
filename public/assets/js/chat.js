@@ -72,9 +72,9 @@ $(document).ready(function() {
 	    messageElement.html(msg).prepend(nameElement).prepend(avatarElement);
 
 	    //ADD MESSAGE
-	    messageList.append(messageElement)
-
+	    messageList.append(messageElement);
+	    
 	    $('#chatScroll').perfectScrollbar('update');
-	    $('#chatScroll').css('height', $(window).innerHeight());
+	    $('#chatScroll').css('height', $(window).innerHeight() - 100);
   	});
 });
