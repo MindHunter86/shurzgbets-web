@@ -74,6 +74,7 @@ $(document).ready(function() {
 
 	    //ADD MESSAGE
 	    messageList.append(messageElement);
-	    $('#chatScroll').perfectScrollbar('update');
+	    $('#chatScroll').scrollTop(9999);
+	    $("#chatScroll").perfectScrollbar('update');
   	});
 });
