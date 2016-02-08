@@ -63,7 +63,7 @@ $(document).ready(function() {
 	    var messageElement = $("<div class='chatMessage clearfix'>");
 	    var msg = $('<div class="body"></div>');
 	    var nameElement = $("<a href='#' class='login'></a>");
-	    var avatarElement = $('<img style='height: 32px; width: 32px;' />');
+	    var avatarElement = $("<img style='height: 32px; width: 32px;' />");
 	    avatarElement.attr('src', avatar);
 	    nameElement.attr('data-profile', steamid);
 	    if(data.is_admin) {
