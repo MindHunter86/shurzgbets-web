@@ -73,8 +73,8 @@ $(document).ready(function() {
 
 	    //ADD MESSAGE
 	    messageList.append(messageElement);
-	    
 	    $('#chatScroll').perfectScrollbar('update');
+	    messageList[0].scrollTop = messageList[0].scrollHeight;
 	    $('#chatScroll').css('height', $(window).innerHeight() - 100);
   	});
 });
