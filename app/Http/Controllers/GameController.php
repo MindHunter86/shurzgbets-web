@@ -173,6 +173,12 @@ class GameController extends Controller
         ];
         if(!is_null($bonus)) {
             foreach($bonus as $bon) {
+                if(!isset($bon['market_hash_name']))
+                    $bon['market_hash_name'] = 'Undefined';
+                if(!isset($bon['name']))
+                    $bon['name'] = 'Undefined';
+                if(!isset($bon['rarity']))
+                    $bon['rarity'] = 'Undefined';
                 Bonus::create([
                     'name' => $bon['name'],
                     'market_hash_name' => $bon['market_hash_name'],
