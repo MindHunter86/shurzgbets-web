@@ -70,11 +70,20 @@ $(document).ready(function() {
         return false;
     });
     $('.chatHide').click(function() {
+        $('#chatHeader').hide();
         $('#chatContainer').css('width', '0%');
         $('.wrapper').css('margin-left', '0%');
         setTimeout(function() { $('#chatContainer').hide(); }, 1800);
         chatHide = 0;
         setCookie('chat', 0);
+    });
+    $('.chatShow').click(function() {
+        $('#chatContainer').show();
+        $('#chatContainer').css('width', '18%');
+        $('.wrapper').css('margin-left', '12%');
+        setTimeout(function() { $('#chatHeader').show(); }, 1800);
+        chatHide = 1;
+        setCookie('chat', 1);
     });
     $('.rulesBtn').click(function () {
         var rules = getCookie('rules');
