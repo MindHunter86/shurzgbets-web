@@ -1,6 +1,11 @@
 var BANNED_DOMAINS = '(csgofast|csgolucky|csgocasino|game-luck|g2a|csgostar|hellstore|cs-drop|csgo|csgoshuffle|csgotop|csbets|csgobest|csgolike|fast-jackpot|skins-up|hardluck-shop|csgogamble|csgohot|csgofairplay|csgoluxe|csgo1|csgo-chance|csgofb|ezyskins|ezpzskins|csgokill|csgoway|csgolotter|csgomany|csrandom|csgo-winner|csgoninja|csgopick|csgodraw|csgoeasy|csgojackpot|game-raffle|csgonice|kinguin|realskins|csgofart|csgetto|csgo-rand|csgo-jackpot|timeluck|forgames|csgobig|csgo-lottery|csgovictory|csgotrophy|csgo-farming|ezskinz)\.(ru|com|net|gl|one|c|pro)';
 $(document).ready(function() {
     $('audio').prop("volume", 0.3);
+    var chatHide = getCookie('chat');
+    if(typeof chatHide === 'undefined') {
+        setCookie('chat', 1);
+        chatHide = 1;
+    }
     var checkbox = false;
     $('.CheckBoxLabelClass').click(function() {
         if(checkbox) {
@@ -63,6 +68,13 @@ $(document).ready(function() {
     $('.no-link').click(function () {
         $('.linkMsg').removeClass('msgs-not-visible');
         return false;
+    });
+    $('.chatHide').click(function() {
+        $('#chatContainer').css('width', '0%');
+        $('.wrapper').css('margin-left', '0%');
+        setTimeout(function() { $('#chatContainer').hide(); }, 1800);
+        chatHide = 0;
+        setCookie('chat', 0);
     });
     $('.rulesBtn').click(function () {
         var rules = getCookie('rules');

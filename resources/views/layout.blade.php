@@ -89,7 +89,12 @@
         @yield('content')
     </div>
     <div id="chatContainer">
-        <div id="chatHeader"><span class="chat-text">Чат</span></div>
+        <div id="chatHeader">
+            <span class="chat-text">Чат</span>
+            <div class="closeChat">
+                <a href="#" class="chatHide"><img class="closeImg" src="{{ asset('new/images/chathide.png') }}" /></a>
+            </div>
+        </div>
         <div id="chatBody" style="display: block;">
             <div id="chatScroll">
                 <div id="chat_messages">

@@ -89,6 +89,13 @@ li {
 .wrapper {
     min-width: 1200px;
     margin-left: 12%;
+    transition: 2s;
+}
+.closeImg {
+	height: 20px;
+}
+.closeChat {
+	position: absolute;
 }
 .shares {
     margin: 0px;
@@ -130,6 +137,7 @@ li {
     left: 0;
     right: 0;
     z-index: 1000;
+    transition: 2s;
 }
 #chatHeader {
     background: #FFF;
