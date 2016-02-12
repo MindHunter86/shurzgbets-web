@@ -305,7 +305,7 @@
                         @endif
                         <button class="mysettings_button save-referal" type="submit"></button>
                         </div>
-                        <div class="mysettings_trade"><a href="">Мои начисления</a></div>
+                        <div class="mysettings_trade"><a href="">Мои партнерские начисления</a></div>
                         <div class="clear"></div>
                     </form>
                 </div>
