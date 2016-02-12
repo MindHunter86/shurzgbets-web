@@ -29,7 +29,9 @@ $(document).ready(function() {
         $($(this).data('modal')).arcticmodal();
         return false;
     });
-
+    $('.depositModal').click(function(e) {
+        return e.showPopup("http://itemup.ru/deposit");
+    })
     $('.no-link').click(function () {
         $('.linkMsg').removeClass('msgs-not-visible');
         return false;

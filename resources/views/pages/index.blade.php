@@ -43,7 +43,7 @@
                 <div class="new_timer"><div class="ngtimer"><span class="countSeconds"><span class="position"><span class="digit static">0</span></span><span class="position"><span class="digit static">0</span></span></span></div>Новая игра через:</div>
                 <div class="clear"></div>
                 <div class="rul_win"><b>Выигрыш:</b> <span class="winner-cost-value">0</span> (рублей)</div>
-                <div class="rul_button"><a href="/deposit"></a></div>
+                <div class="rul_button depositModal"><a href="/deposit"></a></div>
                 <div class="clear"></div>
             </div>
             <div class="details-wrap">
@@ -190,7 +190,7 @@
                             </div>
                         </div>
                         <div style="float: right; margin-top: 10px;">
-                            <a class="depositTwoBtn" style="width: 215px; padding: 5px 10px 4px;" href="/deposit" target="_blank">Внести предметы первым</a>
+                            <a class="depositTwoBtn depositModal" style="width: 215px; padding: 5px 10px 4px;" href="/deposit" target="_blank">Внести предметы первым</a>
                         </div>
                     </div>
                     <span class="arrow-wh-top"></span>
