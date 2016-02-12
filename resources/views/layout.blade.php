@@ -290,7 +290,7 @@
                     </form>
                 </div>
                 <div class="tabs_info">
-                    <form class="referal">
+                    <form class="mysettings">
                         <b>Активация реферального кода</b>
                         <div>
                         @if(!Auth::guest())
