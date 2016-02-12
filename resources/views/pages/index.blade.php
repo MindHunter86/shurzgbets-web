@@ -49,7 +49,7 @@
             <div class="details-wrap">
                 @if(!Auth::guest())
                 <div class="game-button-2">
-                    <a href="{{ route('deposit') }}" target="_blank" class="browser @if(empty($u->accessToken)) no-link @endif rulesBtn"></a>
+                    <a href="{{ route('deposit') }}" target="_blank" class="browser depositModal @if(empty($u->accessToken)) no-link @endif rulesBtn"></a>
                     <a href="steam://url/SteamIDPage/76561198165750863" class="client @if(empty($u->accessToken)) no-link @endif rulesBtn"></a>
                 </div>
                 @else
