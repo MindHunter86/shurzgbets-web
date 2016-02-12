@@ -6,6 +6,7 @@
     <meta name="keywords" content="рулетка cs:go, cs go ставки, рулетка вещей cs go, рулетка оружий cs go, рулетка cs go играть, рулетка скинов cs go" />
     <meta name="description" content="ITEMUP.RU - Умножь свои скины CS:GO" />
     <meta name="csrf-token" content="{!!  csrf_token()   !!}">
+    <link rel="shortcut icon" href="{{ asset('assets/favicon.png') }}" type="image/png">
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="{{ asset('new/css/style.css') }}" />
     <script type="text/javascript" src="{{ asset('new/js/jquery.min.js') }}"></script>
@@ -78,7 +79,6 @@
                 <div class="info-md5" style="padding-top: 15px;     color: #3FAA5D;">Для вас доступная админ-панель <a target="_blank" href="/admin">(клик)</a></div>
             @endif
         @endif
-        <div class="info-md5" style="padding-top: 15px;     color: #3FAA5D;">Новый дизайн работает в режиме бета-тестирования. По проблемам пишите в тему паблика <a target="_blank" href="https://vk.com/topic-105558903_33193136">(клик)</a></div>
         <div class="stats full">
             <div><b class="stats-onlineNow">0</b>Сейчас онлайн</div>
             <div><b class="stats-gamesToday">{{ \App\Game::gamesToday() }}</b>Игр сегодня</div>
