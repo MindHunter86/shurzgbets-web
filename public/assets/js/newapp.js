@@ -29,9 +29,37 @@ $(document).ready(function() {
         $($(this).data('modal')).arcticmodal();
         return false;
     });
+    var helpers = {
+        showPopup: function(t, e, o) {
+            var n = this,
+                a = this.e(t, o && o.width || 950, o && o.height || 670),
+                i = setInterval(function() {
+                    try {
+                        this.e = a.closed || void 0 === a.closed
+                    } catch (t) {
+                        return
+                    }
+                    this.e && (clearInterval(i), n.o())
+                }, 100)
+        }, e: function(t, e, o) {
+            var n = "undefined" != typeof window.screenX ? window.screenX : window.screenLeft,
+                a = "undefined" != typeof window.screenY ? window.screenY : window.screenTop,
+                i = "undefined" != typeof window.outerWidth ? window.outerWidth : document.body.clientWidth,
+                s = "undefined" != typeof window.outerHeight ? window.outerHeight : document.body.clientHeight - 22,
+                r = n + (i - e) / 2,
+                l = a + (s - o) / 2,
+                c = "width=" + e + ",height=" + o + ",left=" + r + ",top=" + l + ",scrollbars=yes",
+                d = window.open(t, "SteamCommunity", c);
+            if ("undefined" == typeof d) {
+                var p = new Error("The deposit popup was blocked by the browser");
+                throw p.attemptedUrl = t, p
+            }
+            return d.focus && d.focus(), d
+        }
+    }
     $('.depositModal').click(function(e) {
-        return e.showPopup("http://itemup.ru/deposit");
-    })
+        return helpers.showPopup("http://itemup.ru/deposit"), !1
+    });
     $('.no-link').click(function () {
         $('.linkMsg').removeClass('msgs-not-visible');
         return false;
