@@ -13,7 +13,8 @@ class UpdateUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->float('money')->after('accessToken');
+            $table->string('promo')->after('money');
+            $table->string('promo_owner')->after('money');
         });
     }
 
