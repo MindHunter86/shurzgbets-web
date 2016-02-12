@@ -69,7 +69,8 @@ $(document).ready(function() {
         $('.linkMsg').removeClass('msgs-not-visible');
         return false;
     });
-    $('.chatHide').click(function() {
+    $('.chatHide').click(function(e) {
+        e.preventDefault();
         $('.chat-text').hide();
         $('.closeChat').hide();
         $('#chatContainer').css('width', '0%');
@@ -78,7 +79,8 @@ $(document).ready(function() {
         chatHide = 0;
         setCookie('chat', 0);
     });
-    $('.chatShow').click(function() {
+    $('.chatShow').click(function(e) {
+        e.preventDefault();
         $('#chatContainer').show();
         $('#chatContainer').css('width', '18%');
         $('.wrapper').css('margin-left', '12%');
