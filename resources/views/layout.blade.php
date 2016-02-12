@@ -249,6 +249,7 @@
                 <ul class="tabs_button">
                     <li class="active">Профиль</li>
                     <li class="settingskey">Настройки</li>
+                    <li class="settingskey">Партнерка</li>
                 </ul>
                 <ul class="tabs_link">
                     <li><a href="/profile/history">Мои игры</a></li>
@@ -285,6 +286,26 @@
                         <button class="mysettings_button save-link" type="submit"></button>
                         </div>
                         <div class="mysettings_trade"><a href="http://steamcommunity.com/id/me/tradeoffers/privacy#trade_offer_access_url" target="_blank">Где взять ссылку на обмен?</a></div>
+                        <div class="clear"></div>
+                    </form>
+                </div>
+                <div class="tabs_info">
+                    <form class="referal">
+                        <b>Активация реферального кода</b>
+                        <div>
+                        @if(!Auth::guest())
+                        <input type="text" placeholder="Введите реферальный код" value=""/>
+                        @endif
+                        <button class="mysettings_button save-referal-code" type="submit"></button>
+                        </div>
+                        <b>Создайте свой реферальный код</b>
+                        <div>
+                        @if(!Auth::guest())
+                        <input type="text" placeholder="Введите реферальный код" value=""/>
+                        @endif
+                        <button class="mysettings_button save-referal" type="submit"></button>
+                        </div>
+                        <div class="mysettings_trade"><a href="">Мои начисления</a></div>
                         <div class="clear"></div>
                     </form>
                 </div>
