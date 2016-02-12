@@ -70,7 +70,8 @@ $(document).ready(function() {
         return false;
     });
     $('.chatHide').click(function() {
-        $('#chatHeader').hide();
+        $('.chat-text').hide();
+        $('.closeChat').hide();
         $('#chatContainer').css('width', '0%');
         $('.wrapper').css('margin-left', '0%');
         setTimeout(function() { $('#chatContainer').hide(); }, 1800);
@@ -81,7 +82,10 @@ $(document).ready(function() {
         $('#chatContainer').show();
         $('#chatContainer').css('width', '18%');
         $('.wrapper').css('margin-left', '12%');
-        setTimeout(function() { $('#chatHeader').show(); }, 1800);
+        setTimeout(function() { 
+            $('.chat-text').show();
+            $('.closeChat').show();
+        }, 1800);
         chatHide = 1;
         setCookie('chat', 1);
     });
