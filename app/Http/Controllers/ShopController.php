@@ -25,7 +25,7 @@ class ShopController extends Controller
 
     public function index()
     {
-        return view('shop_layout');
+        return view('pages.new_shop');
     }
 
     public function history()

@@ -6,6 +6,14 @@ $(document).ready(function() {
         setCookie('chat', 1);
         chatHide = 1;
     }
+    /*if(!chatHide) {
+        $('#chatContainer').hide();
+        $('#chatContainer').css('width', '0%');
+        $('.wrapper').css('margin-left', '0%');
+        $('.chat-text').hide();
+        $('.closeChat').hide();
+        $('.chats').show();
+    }*/
     var checkbox = false;
     $('.CheckBoxLabelClass').click(function() {
         if(checkbox) {
