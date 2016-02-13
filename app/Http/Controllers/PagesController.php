@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bet;
 use App\Game;
+use App\Promo;
 use App\Item;
 use App\Lottery;
 use App\Services\SteamItem;
@@ -25,7 +26,14 @@ class PagesController extends Controller
     {
         return view('pages.support');
     }
-
+    public function promo() {
+        $promo = User::where('promo_owner', Auth::user()->steamid64)->get();
+        $referal = [];
+        foreach($promo as $ref) {
+            $referal[] = Bet::where('user_id', $ref->id)->orderBy('created_at', 'desc')->get();
+        }
+        return view('pages.promo', compact('referal'));
+    }
     public function top()
     {
         $users = \DB::table('users')

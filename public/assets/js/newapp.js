@@ -136,14 +136,14 @@ $(document).ready(function() {
             data: {code: $('.promo-create-text').val() },
             success: function (data) {
                 if (data.success) {
-                    that.notify(data.text, {autoHideDelay: 1000,position: 'left middle', className :"success"});
+                    that.notify(data.text, {autoHideDelay: 1000,position: 'bottom middle', className :"success"});
                 }
                 else {
-                    if(data.text) that.notify(data.text, {position: 'left middle', className :"error"});
+                    if(data.text) that.notify(data.text, {position: 'bottom middle', className :"error"});
                 }
             },
             error: function () {
-                that.notify("Произошла ошибка. Попробуйте еще раз", {position: 'left middle', className :"error"});
+                that.notify("Произошла ошибка. Попробуйте еще раз", {position: 'bottom middle', className :"error"});
             }
         });
         return false;
@@ -157,14 +157,14 @@ $(document).ready(function() {
             data: {code: $('.promo-accept-text').val()},
             success: function (data) {
                 if (data.success) {
-                    that.notify(data.text, {autoHideDelay: 1000,position: 'left middle', className :"success"});
+                    that.notify(data.text, {autoHideDelay: 1000,position: 'top middle', className :"success"});
                 }
                 else {
-                    if(data.text) that.notify(data.text, {position: 'left middle', className :"error"});
+                    if(data.text) that.notify(data.text, {position: 'top middle', className :"error"});
                 }
             },
             error: function () {
-                that.notify("Произошла ошибка. Попробуйте еще раз", {position: 'left middle', className :"error"});
+                that.notify("Произошла ошибка. Попробуйте еще раз", {position: 'top middle', className :"error"});
             }
         });
         return false;

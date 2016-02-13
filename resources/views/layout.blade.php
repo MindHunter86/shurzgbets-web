@@ -305,7 +305,8 @@
                         @endif
                         <button class="mysettings_button create-promo" type="submit"></button>
                         </div>
-                        <div class="mysettings_trade"><a href="">Мои партнерские начисления (кликабельно)</a>
+                        <div class="mysettings_trade">
+                            <a href="/promo">Мои партнерские начисления</a>
                             <br><br>
                             <center><p>ИНФОРМАЦИЯ</p></center>
                             <p>1. После активации кода вы получаете 15 руб. на свой счет, Вы можете потратить их в магазине или использовать как карточку.</p>

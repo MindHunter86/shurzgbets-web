@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     //рефералка
     post('/promo/create', 'ReferalController@create');
     post('/promo/accept', 'ReferalController@accept');
+    get('/promo', ['as' => 'promo', 'uses' => 'PagesController@promo']);
 
 });
 Route::group(['prefix' => 'admin','middleware' => 'access' ], function () {
