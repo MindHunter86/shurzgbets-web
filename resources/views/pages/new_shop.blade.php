@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content_bg">
-    <div class="full">
+    <div class="full store-page">
         <div class="content_title"><div>МАГАЗИН ПРЕДМЕТОВ <b>CS:GO</b></div></div>
         <div class="clear"></div>
         <div class="filters">
