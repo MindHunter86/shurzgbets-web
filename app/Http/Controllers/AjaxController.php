@@ -154,7 +154,7 @@ class AjaxController extends Controller
                     ->orderBy('price', $options['sort'])
                     ->where('status', Shop::ITEM_STATUS_FOR_SALE)
                     ->get();
-                return response()->json($items);
+                return response()->json($items->toArray());
                 break;
         }
     }

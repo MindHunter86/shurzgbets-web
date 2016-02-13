@@ -2899,6 +2899,8 @@ a._hist_link {
     margin-bottom: 6px;
     font: 16px/22px 'robotomedium', Arial, sans-serif;
     color: #a3bd18;
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
 }
 .list-products .item li {
     display: block;

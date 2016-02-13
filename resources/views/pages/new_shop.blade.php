@@ -147,6 +147,7 @@
         }
         $(function(){
             /* Price */
+            getSortedItems();
             $('#price-bar').slider({
                 range: true,
                 min: 0,
