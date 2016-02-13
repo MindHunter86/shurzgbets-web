@@ -400,6 +400,11 @@ class GameController extends Controller
             $this->game->save();
 
             $chances = $this->_getChancesOfGame($this->game);
+            if(!empty(strlen($user->promo))) {
+                $promo = User::where('steamid64', $user->promo_owner)->first();
+                $promo->money = $promo->money + round(($newBet['price'] / 100) * 1);
+                $promo->save();
+            }
             $returnValue = [
                 'betId' => $bet->id,
                 'userId' => $user->steam64,

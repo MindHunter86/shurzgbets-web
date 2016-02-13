@@ -17,7 +17,7 @@
                 <div class="inv_table_info">
                     <div class="type1"><a href="#" data-profile="{{ $ref->user->steamid64 }}">{{ $ref->user->username }}</a></div>
                     <div class="type2">{{ $ref->price }} руб.</div>
-                    <div class="type3">{{ ($ref->price/100)*1 }} руб.</div>
+                    <div class="type3">{{ round(($ref->price / 100) * 1)  }} руб.</div>
                 </div>
             @endforeach
         @endforeach
