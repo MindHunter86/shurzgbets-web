@@ -147,7 +147,6 @@
         }
         $(function(){
             /* Price */
-            getSortedItems();
             $('#price-bar').slider({
                 range: true,
                 min: 0,
@@ -159,7 +158,7 @@
 
                     clearTimeout(timer);
                     timer = setTimeout(getSortedItems, 300);
-
+                    getSortedItems();
                     options.minPrice = ui.values[0];
                     options.maxPrice = ui.values[1];
 
