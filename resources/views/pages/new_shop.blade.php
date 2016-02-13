@@ -235,7 +235,7 @@
                 });
                 return false;
             });
-            getSortedItems();
+            setTimeout(getSortedItems, 1500);
         });
 
 </script>
