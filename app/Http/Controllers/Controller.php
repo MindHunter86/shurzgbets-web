@@ -22,15 +22,15 @@ abstract class Controller extends BaseController
         $this->setTitle('Title not stated');
         if(Auth::check())
         {
-            /*$code = Promo::where('steamid64', Auth::user()->steamid64)->first();
+            $code = Promo::where('steamid64', Auth::user()->steamid64)->first();
             if(is_null($code)) {
                 $code = '';
             } else {
                 $code = $code->code;
-            }*/
+            }
             $this->user = Auth::user();
             view()->share('u', $this->user);
-            //view()->share('code', $code);
+            view()->share('code', $code);
         }
         $this->redis = LRedis::connection();
         view()->share('steam_status', $this->getSteamStatus());

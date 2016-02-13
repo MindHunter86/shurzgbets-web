@@ -51,6 +51,7 @@ class AjaxController extends Controller
             return response()->json(['success' => true, 'text' => 'Сообщение добавлено']);
         }
     }
+    //
     public function parseAction(Request $request)
     {
         switch($request->get('action')){
