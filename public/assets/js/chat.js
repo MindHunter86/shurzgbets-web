@@ -40,7 +40,7 @@ $(document).ready(function() {
 		  }
 		});
 	}
-	$('.removeMSG').click(function(e) {
+	$('.chatMessage').on("click", 'img', function() {
 		self = this;
 		$.ajax({
 		  url: '/ajax/chat',

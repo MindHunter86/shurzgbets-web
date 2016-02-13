@@ -55,8 +55,7 @@ class AjaxController extends Controller
                 return false;
             }
             $id = $request->get('id');
-            $pusher = $fb->get('/chat/1/'.$id);
-            $pusher = $pusher->delete();
+            $pusher = $fb->delete('/chat/1/'.$id);
             if(is_null($pusher)) {
                 return response()->json(['success' => false, 'text' => 'Ошибка сервера (mp02)']);
             }
