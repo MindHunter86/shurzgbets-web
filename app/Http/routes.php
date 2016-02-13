@@ -28,7 +28,10 @@ Route::group(['middleware' => 'auth'], function () {
     get('/logout', ['as' => 'logout', 'uses' => 'SteamController@logout']);
     post('/addTicket', ['as' => 'add.ticket', 'uses' => 'GameController@addTicket']);
     post('/getBalance', ['as' => 'get.balance', 'uses' => 'GameController@getBalance']);
-    //get('/testbalance', ['as' => 'get.testbalance', 'uses' => 'GameController@getBalance']);
+
+    //рефералка
+    post('/referal/create', 'ReferalController@create');
+    post('/referal/accept', 'ReferalController@accept');
 
 });
 Route::group(['prefix' => 'admin','middleware' => 'access' ], function () {

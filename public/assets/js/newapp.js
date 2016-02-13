@@ -127,6 +127,48 @@ $(document).ready(function() {
             }
         });
     });
+    $('.create-promo').click(function() {
+        var that = $(this).prev();
+        $.ajax({
+            url: '/promo/create',
+            type: 'POST',
+            dataType: 'json',
+            data: {code: $('.promo-create-text').val() },
+            success: function (data) {
+                if (data.success) {
+                    that.notify(data.text, {autoHideDelay: 1000,position: 'left middle', className :"success"});
+                }
+                else {
+                    if(data.text) that.notify(data.text, {position: 'left middle', className :"error"});
+                }
+            },
+            error: function () {
+                that.notify("Произошла ошибка. Попробуйте еще раз", {position: 'left middle', className :"error"});
+            }
+        });
+        return false;
+    });
+    $('.accept-promo').click(function() {
+        var that = $(this).prev();
+        $.ajax({
+            url: '/promo/accept',
+            type: 'POST',
+            dataType: 'json',
+            data: {code: $('.promo-accept-text').val()},
+            success: function (data) {
+                if (data.success) {
+                    that.notify(data.text, {autoHideDelay: 1000,position: 'left middle', className :"success"});
+                }
+                else {
+                    if(data.text) that.notify(data.text, {position: 'left middle', className :"error"});
+                }
+            },
+            error: function () {
+                that.notify("Произошла ошибка. Попробуйте еще раз", {position: 'left middle', className :"error"});
+            }
+        });
+        return false;
+    });
     $('.save-link, .save-link2').click(function () {
         var that = $(this).prev();
         $.ajax({
