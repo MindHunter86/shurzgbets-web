@@ -75,12 +75,16 @@ $(document).ready(function() {
         $('.closeChat').hide();
         $('#chatContainer').css('width', '0%');
         $('.wrapper').css('margin-left', '0%');
-        setTimeout(function() { $('#chatContainer').hide(); }, 1800);
+        setTimeout(function() { 
+            $('#chatContainer').hide(); 
+            $('.chats').show();
+        }, 1800);
         chatHide = 0;
         setCookie('chat', 0);
     });
     $('.chatShow').click(function(e) {
         e.preventDefault();
+        $('.chats').hide();
         $('#chatContainer').show();
         $('#chatContainer').css('width', '18%');
         $('.wrapper').css('margin-left', '12%');

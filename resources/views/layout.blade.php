@@ -44,6 +44,9 @@
     <div class="shares">
         <a href="https://vk.com/itemup" target="_blank" class="share"><img style="width: 40px; height: 160px;" src="{{ asset('new/images/Bez-imeni-1.png') }}" /></a>
     </div>
+    <div class="chats" style="display:none;">
+        <a href="#" class="share chatShow"><img style="width: 40px; height: 160px;" src="{{ asset('new/images/chatOpen.png') }}" /></a>
+    </div>
     <div class="wrapper">
         <div id="loader" class="corner">
             <div class="loader-inner ball-clip-rotate-multiple blue-loader">
