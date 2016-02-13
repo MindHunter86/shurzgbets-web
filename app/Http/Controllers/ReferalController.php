@@ -17,7 +17,7 @@ class ReferalController extends Controller {
         if(!$request->has('code')) {
             return response()->json(['success' => false, 'text' => 'Невозможно активировать данный промо код!']);
         }
-        if(!is_null(Auth::user()->promo)) {
+        if(!empty(strlen(Auth::user()->promo))) {
             return response()->json(['success' => false, 'text' => 'Вы уже активировали промо код']);
         }
         $codes = Promo::where('code', $code)->first();
