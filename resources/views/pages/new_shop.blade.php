@@ -1,6 +1,8 @@
 @extends('layout')
 
 @section('content')
+<script type="text/javascript" src="{{ asset('new/js/jquery.multiple.select.js') }}"></script>
+<script type="text/javascript" src="{{ asset('new/js/jquery-ui.min.js') }}"></script>
 <div class="content_bg">
     <div class="full store-page">
         <div class="content_title"><div>МАГАЗИН ПРЕДМЕТОВ <b>CS:GO</b></div></div>
