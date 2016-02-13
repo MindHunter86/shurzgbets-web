@@ -301,7 +301,7 @@
                         <b>Создайте свой реферальный код</b>
                         <div>
                         @if(!Auth::guest())
-                        <input type="text" class='promo-create-text' placeholder="Введите реферальный код" value="{{ $code }}"/>
+                        <input type="text" class='promo-create-text' placeholder="Введите реферальный код" value=""/>
                         @endif
                         <button class="mysettings_button promo-create" type="submit"></button>
                         </div>
