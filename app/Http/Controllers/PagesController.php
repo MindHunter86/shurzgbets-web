@@ -27,7 +27,7 @@ class PagesController extends Controller
         return view('pages.support');
     }
     public function promo() {
-        $promo = User::where('promo_owner', Auth::user()->steamid64)->get();
+        $promo = User::where('promo_owner', $this->user->steamid64)->get();
         $referal = [];
         foreach($promo as $ref) {
             $referal[] = Bet::where('user_id', $ref->id)->orderBy('created_at', 'desc')->get();
