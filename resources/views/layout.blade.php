@@ -296,14 +296,14 @@
                         @if(!Auth::guest())
                         <input type="text" class='promo-accept-text' placeholder="Введите реферальный код" value="{{ $u->promo }}"/>
                         @endif
-                        <button class="mysettings_button promo-accept" type="submit"></button>
+                        <button class="mysettings_button accept-promo" type="submit"></button>
                         </div>
                         <b>Создайте свой реферальный код</b>
                         <div>
                         @if(!Auth::guest())
                         <input type="text" class='promo-create-text' placeholder="Введите реферальный код" value="{{ $code }}"/>
                         @endif
-                        <button class="mysettings_button promo-create" type="submit"></button>
+                        <button class="mysettings_button create-promo" type="submit"></button>
                         </div>
                         <div class="mysettings_trade"><a href="">Мои партнерские начисления</a></div>
                         <div class="clear"></div>
