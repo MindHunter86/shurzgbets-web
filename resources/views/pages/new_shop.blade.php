@@ -77,7 +77,7 @@
 </div>
 <script>
     var options = {
-        maxPrice : 1,
+        maxPrice : 100000,
         minPrice : 0,
         searchName : $('#searchName').val(),
         searchType : null,
