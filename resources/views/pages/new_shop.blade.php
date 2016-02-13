@@ -151,8 +151,8 @@
             $('#price-bar').slider({
                 range: true,
                 min: 0,
-                max: 1,
-                values: [0, 1],
+                max: 100000,
+                values: [0, 100000],
                 slide: function( event, ui ){
                     $('#price-min').html(ui.values[0]);
                     $('#price-max').html(ui.values[1]);
