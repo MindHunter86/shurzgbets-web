@@ -158,14 +158,12 @@
 
                     clearTimeout(timer);
                     timer = setTimeout(getSortedItems, 300);
-                    getSortedItems();
                     options.minPrice = ui.values[0];
                     options.maxPrice = ui.values[1];
 
                     moveValueLabels();
                 }
             });
-
             $('#price-min').html($('#price-bar').slider('values', 0));
             $('#price-max').html($('#price-bar').slider('values', 1));
 
@@ -237,6 +235,7 @@
                 });
                 return false;
             });
+            getSortedItems();
         });
 
 </script>
