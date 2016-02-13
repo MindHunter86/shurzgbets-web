@@ -30,8 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
     post('/getBalance', ['as' => 'get.balance', 'uses' => 'GameController@getBalance']);
 
     //рефералка
-    post('/referal/create', 'ReferalController@create');
-    post('/referal/accept', 'ReferalController@accept');
+    post('/promo/create', 'ReferalController@create');
+    post('/promo/accept', 'ReferalController@accept');
 
 });
 Route::group(['prefix' => 'admin','middleware' => 'access' ], function () {

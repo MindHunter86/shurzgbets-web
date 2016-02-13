@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Game;
-use App\Shop;
 use App\User;
-use App\Item;
 use App\Promo;
 use Auth;
 use Illuminate\Http\Request;
