@@ -50,6 +50,18 @@ class AjaxController extends Controller
             }
             return response()->json(['success' => true, 'text' => 'Сообщение добавлено']);
         }
+        if($type == 'remove') {
+            if(!$this->user->is_moderator || !$this->user->is_admin) {
+                return false;
+            }
+            $id = $request->get('id');
+            $pusher = $fb->get('/chat/1/'.$id);
+            $pusher = $pusher->delete();
+            if(is_null($pusher)) {
+                return response()->json(['success' => false, 'text' => 'Ошибка сервера (mp02)']);
+            }
+            return response()->json(['success' => true, 'text' => 'Сообщение удалено']);
+        }
     }
     //
     public function parseAction(Request $request)
