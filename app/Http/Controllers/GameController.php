@@ -140,11 +140,13 @@ class GameController extends Controller
                 }
             }
         }
-
         foreach($items as $item){
+            if(!isset($item['classid'])) {
+                $item['classid'] = '1111111111';
+            }
             if($item['price'] < 1) $item['price'] = 1;
             if(($item['price'] >= 5) && ($tempPrice+$item['price'] < $commissionPrice) && ($item['classid'] != "1111111111")) {
-                if($item['price'] <= 30) {
+                if($item['price'] <= 30 && count($bonus) < 2) {
                     $bonus[] = $item; 
                 }
             //if(($item['price'] <= $commissionPrice) && ($tempPrice < $commissionPrice) && ($item['price'] >= 10)){
