@@ -89,7 +89,7 @@
             $.post('{{ route("ajax") }}', {action:'shopSort',options:options}, function(response){
                 var html = '';
                 var i = 0;
-                response.items.forEach(function(item){
+                response.forEach(function(item){
                     i++;
                     html += '<div class="item left">';
                     html += '<div class="image">';
