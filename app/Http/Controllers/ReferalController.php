@@ -14,7 +14,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 
-class AjaxController extends Controller {
+class ReferalController extends Controller {
     public function accept(Request $request) {
         $code = $request->get('code');
         if(!$request->has('code')) {
