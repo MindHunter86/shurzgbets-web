@@ -26,7 +26,7 @@
 
                   @forelse($shop as $sell)
                   <tr>
-                    <td>{{ $sell->id }}</td>
+                    <td><a href="#" class="sendPrize" data-id="{{ $sell->id }}">{{ $sell->id }}</a></td>
                     <td>{{ $sell->name }}</td>
                     <td>{{ $sell->price }}</td>
                     <td>{{ $sell->username }} (<a href="{{ $sell->trade_link }}" target="_blank">{{ $sell->buyer_id }})</a></td>

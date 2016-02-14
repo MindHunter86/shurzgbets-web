@@ -45,6 +45,26 @@ $(document).ready(function() {
             }
         });
     });
+    $('.sendPrize').click(function() {
+        self = this;
+        $.ajax({
+            url: '/admin/send/ajaxShop',
+            type: 'POST',
+            dataType: 'json',
+            data: {buy: $(self).attr('data-id') },
+            success: function (data) {
+                if (data.type == 'success') {            
+                    alert('Запрошена повторная отправка товара');
+                }
+                else {
+                    if(data.text) alert(data.text);
+                }
+            },
+            error: function () {
+                alert("Произошла ошибка. Попробуйте еще раз");
+            }
+        });   
+    });
     $('#profile-btn').click(function() {
         $('#profile-modal').modal();
     });
