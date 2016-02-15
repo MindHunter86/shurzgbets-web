@@ -590,12 +590,6 @@ class GameController extends Controller
         $this->lottery->save();
         return $this->lottery;
     }
-    public function setGameStatus(Request $request)
-    {
-        $this->lottery->status = $request->get('status');
-        $this->lottery->save();
-        return $this->lottery;
-    }
 
     public static function getPreviousWinner(){
         $game = Game::with('winner')->where('status', Game::STATUS_FINISHED)->orderBy('created_at', 'desc')->first();
