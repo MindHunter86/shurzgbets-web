@@ -289,7 +289,7 @@ class GameController extends Controller
         if(stripos($this->user->username, 'itemup.ru') === false) {
             return response()->json(['success' => false, 'msg' => 'Для участия в розыгрыше, вы должны добавить в свой ник домен нашего сайта - itemup.ru']);
         }
-        if$this->lottery->players >= $this->lottery->max) {
+        if($this->lottery->players >= $this->lottery->max) {
             return response()->json(['success' => false, 'msg' => 'Максимальное количество участников!']);
         }
         $lastBet = Players::where('lottery_id', $this->lottery->id)->orderBy('to', 'desc')->first();
