@@ -27,6 +27,7 @@ class ShopController extends Controller
     public function __construct(SteamAuth $auth)
     {
         parent::__construct();
+        $this->steamAuth = $auth;
     }
 
     public function index()
@@ -90,7 +91,7 @@ class ShopController extends Controller
                     $this->steamAuth->steamId = $this->user->steamid64;
                     $steamInfo = $this->steamAuth->parseInfo();
                     $steamInfo = $this->getUserInfo();
-                    
+
                     $this->user->username = $steamInfo->getNick();
                     $this->user->save();
 
