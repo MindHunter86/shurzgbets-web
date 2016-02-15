@@ -282,19 +282,19 @@ class GameController extends Controller
         $create = new Lottery();
         $create->rand_number = $rand_number;
         $create->items = json_encode($newBet);
-        $create->price = $newBet->price;
-        $create->max = round($newBet->price * 3);
+        //$create->price = $newBet->price;
+        //$create->max = round($newBet->price * 3);
         $create->save();
 
-        $lottery = [
+        /*$lottery = [
             'items' -> $create->items,
             'hash' => md5($rand_number),
             'id' => $create->id
-        ];
+        ];*/
         //$newBet->delete();
 
-        $this->redis->set('current.lottery', $lottery['id']);
-        return response()->json($lottery);
+        //$this->redis->set('current.lottery', $lottery['id']);
+        //return response()->json($lottery);
     }
 
     public function checkOffer()
