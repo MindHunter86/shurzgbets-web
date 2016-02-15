@@ -282,7 +282,7 @@ class GameController extends Controller
         //$bets[] = $newBet;
         $create = Lottery::create([
             'rand_number' => $rand_number,
-            'items' => json_encode($newBet),
+            'items' => json_encode((array) $newBet),
             'price' => $newBet['price'],
             'max' => round($newBet['price'] * 3)
         ]);
@@ -292,8 +292,8 @@ class GameController extends Controller
         ];
         $newBet->delete();
 
-        //$this->redis->set('current.lottery', $lottery['id']);
-        //return response()->json($lottery);
+        $this->redis->set('current.lottery', $lottery['id']);
+        return response()->json($lottery);
     }
 
     public function checkOffer()
