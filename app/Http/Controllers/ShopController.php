@@ -8,7 +8,7 @@ use App\Services\BackPack;
 use App\Shop;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Invisnik\LaravelSteamAuth\SteamAuth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -22,6 +22,13 @@ class ShopController extends Controller
     const PRICE_PERCENT_TO_SALE = 70;   // Процент от цены steam
     const LINK_TO_BOT_INVENTORY = 'https://steamcommunity.com/profiles/76561198038766700/inventory/#730';
     const LINK_TO_REVIEWS = '';
+
+    private $steamAuth;
+    public function __construct(SteamAuth $auth)
+    {
+        parent::__construct();
+        $this->steamAuth = $auth;
+    }
 
     public function index()
     {
@@ -80,6 +87,16 @@ class ShopController extends Controller
         if(!is_null($item)){
             if($item->status == Shop::ITEM_STATUS_SOLD) return response()->json(['success' => false, 'msg' => 'Предмет уже куплен!']);
             if($this->user->money >= $item->price){
+                if($item->price <= 15) {
+                    
+                    $steamInfo = $this->_getSteamInfo($this->user->steamid64);
+                    $this->user->username = $steamInfo->getNick();
+                    $this->user->save();
+
+                    if(stripos($this->user->username, 'itemup.ru') === false) {
+                        return response()->json(['success' => false, 'msg' => 'Чтобы покупать предметы дешевле 15 рублей, добавьте в свой ник домен нашего сайта - itemup.ru']);
+                    }
+                }
                 $item->status = Shop::ITEM_STATUS_SOLD;
                 $item->buyer_id = $this->user->id;
                 $item->buy_at = Carbon::now();
