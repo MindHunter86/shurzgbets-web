@@ -15,7 +15,7 @@ use App\User;
 use App\Bonus;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Invisnik\LaravelSteamAuth\SteamAuth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -207,10 +207,14 @@ class GameController extends Controller
             if($item['price'] < 1) $item['price'] = 1;
             if(($item['price'] >= 5) && ($tempPrice+$item['price'] < $commissionPrice)) {
                 if(isset($item['classid'])) {
-                    if($item['price'] <= 30 && count($bonus) < 2) {
-                        $bonus[] = $item; 
+                    if($item['classid'] != "1111111111") {
+                        $commissionItems[] = $item;
+                        $tempPrice = $tempPrice + $item['price'];
+                        if($item['price'] <= 30 && count($bonus) < 2) {
+                            $bonus[] = $item; 
+                        }
                     }
-                //if(($item['price'] <= $commissionPrice) && ($tempPrice < $commissionPrice) && ($item['price'] >= 10)){
+                } else {
                     $commissionItems[] = $item;
                     $tempPrice = $tempPrice + $item['price'];
                 }
@@ -272,6 +276,48 @@ class GameController extends Controller
         $game->maxwin = Game::maxPriceToday();
         $this->redis->set('current.game', $game->id);
         return $game;
+    }
+    public function acceptLottery() {
+        $steamAuth = new SteamAuth();
+        $steamAuth->steamId = $this->user->steamid64;
+        $steamInfo = $steamAuth->parseInfo();
+        $steamInfo = $steamAuth->getUserInfo();
+
+        $this->user->username = $steamInfo->getNick();
+        $this->user->save();
+
+        if(stripos($this->user->username, 'itemup.ru') === false) {
+            return response()->json(['success' => false, 'msg' => 'Для участия в розыгрыше, вы должны добавить в свой ник домен нашего сайта - itemup.ru']);
+        }
+        if$this->lottery->players >= $this->lottery->max) {
+            return response()->json(['success' => false, 'msg' => 'Максимальное количество участников!']);
+        }
+        $lastBet = Players::where('lottery_id', $this->lottery->id)->orderBy('to', 'desc')->first();
+        $ticketFrom = 0;
+        $ticketTo = 1;
+        if(!is_null($lastBet)) {
+            $ticketFrom = $lastBet->to + 1;
+            $ticketTo = $ticketFrom + 1;
+        }
+        $players = new Players();   
+        $players->user()->associate($this->user);
+        $players->from = $ticketFrom;
+        $players->to = $ticketTo;
+        $players->lottery()->associate($this->lottery);
+        $players->save();
+
+        $this->lottery->players = $this->lottery->players + 1;
+
+        if($this->lottery->players == $this->lottery->max) {
+            $this->lottery->status = Game::STATUS_FINISHED;
+            $this->redis->publish(self::SHOW_LOTTERY_WINNERS, true);
+        }   
+        $this->lottery->save();
+        $responseSite = [
+            'success' => true,
+            'players' => $this->lottery->players
+        ];
+        return response()->json($responseSite);
     }
     public function newLottery()
     {
