@@ -279,7 +279,7 @@ class GameController extends Controller
         if(is_null($newBet)) {
             return false;
         }
-        $bets[] - $newBet;
+        $bets[] = $newBet;
         $create = Lottery::create([
             'rand_number' => $rand_number,
             'items' => json_encode($bets),
