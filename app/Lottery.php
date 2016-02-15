@@ -18,7 +18,7 @@ class Lottery extends Model
     const STATUS_PRIZE_SEND_ERROR = 2;
 
     protected $table = 'lottery';
-    protected $fillable = ['rand_number'];
+    protected $fillable = ['rand_number', 'items', 'price', 'max'];
 
     public function winner()
     {
