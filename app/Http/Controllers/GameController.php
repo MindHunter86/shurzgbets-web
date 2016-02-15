@@ -277,14 +277,14 @@ class GameController extends Controller
         $rand_number = "0.".mt_rand(0,9).mt_rand(10000000,99999999).mt_rand(100000000,999999999);
         $newBet = Bonus::first();
         if(is_null($newBet)) {
-            return true;
+            return response()->json(['success' => false]);
         }
-        $create = new Lottery();
-        $create->rand_number = $rand_number;
+        //$create = new Lottery();
+        //$create->rand_number = $rand_number;
         //$create->items = json_encode($newBet);
         //$create->price = $newBet->price;
         //$create->max = round($newBet->price * 3);
-        $create->save();
+        //$create->save();
 
         /*$lottery = [
             'items' -> $create->items,
