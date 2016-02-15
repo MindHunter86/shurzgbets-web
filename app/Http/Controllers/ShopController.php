@@ -90,7 +90,7 @@ class ShopController extends Controller
                 if($item->price <= 15) {
                     $this->steamAuth->steamId = $this->user->steamid64;
                     $steamInfo = $this->steamAuth->parseInfo();
-                    $steamInfo = $this->getUserInfo();
+                    $steamInfo = $this->steamAuth->getUserInfo();
 
                     $this->user->username = $steamInfo->getNick();
                     $this->user->save();
