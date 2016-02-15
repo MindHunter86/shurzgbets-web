@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin','middleware' => 'access' ], function () {
     get('/send', ['uses' => 'AdminController@send']);
     post('/send/ajax', 'AdminController@sendAjax');
     post('/send/ajaxShop', 'AdminController@sendshopAjax');
+    get('/newLottery', 'GameController@newLottery');
 });
 
 Route::group(['prefix' => 'api', 'middleware' => 'secretKey'], function () {
