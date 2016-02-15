@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Bet;
 use App\Game;
 use App\Item;
+use App\Players;
 use App\Lottery;
 use App\Referer;
 use App\Services\SteamItem;
@@ -34,10 +35,13 @@ class GameController extends Controller
     const BET_DECLINE_CHANNEL = 'depositDecline';
     const INFO_CHANNEL = 'msgChannel';
     const SHOW_WINNERS = 'show.winners';
+
+    const SHOW_LOTTERY_WINNERS = 'show.lottery.winners';
     const ADD_LOTTERY_ITEMS = 'lottery.additems';
 
     public $redis;
     public $game;
+    public $lottery;
     public $comission;
 
     private static $chances_cache = [];
@@ -46,7 +50,9 @@ class GameController extends Controller
     {
         parent::__construct();
         $this->game = $this->getLastGame();
+        $this->lottery = $this->getLastLottery();
         $this->redis->set('current.game', $this->game->id);
+        $this->redis->set('current.lottery', $this->lottery->id);
     }
 
     public function deposit()
@@ -59,13 +65,15 @@ class GameController extends Controller
         Referer::referer();
         //$lottery = Lottery::orderBy('id', 'desc')->first();
         //$lottery->items = json_decode($lottery->items);
+        $lottery = Lottery::orderBy('id', 'desc')->first();
+        $players = $lottery->players()->with(['user','lottery'])->get()->sortByDesc('created_at');
 
         $game = Game::orderBy('id', 'desc')->first();
         $bets = $game->bets()->with(['user','game'])->get()->sortByDesc('created_at');
         $user_chance = $this->_getUserChanceOfGame($this->user, $game);
         if(!is_null($this->user))
             $user_items = $this->user->itemsCountByGame($game);
-        return view('pages.index', compact('game', 'bets', 'user_chance', 'user_items', 'lottery'));
+        return view('pages.index', compact('game', 'bets', 'user_chance', 'user_items', 'lottery', 'players'));
     }
 
     public function getLastGame()
@@ -76,11 +84,25 @@ class GameController extends Controller
         }
         return $game;
     }
+    public function getLastLottery()
+    {
+        $lottery = Lottery::orderBy('id', 'desc')->first();
+        if(is_null($lottery)) {
+            $lottery = $this->newLottery();
+        }
+        return $lottery;
+    }
+
 
     public function getCurrentGame()
     {
         $this->game->winner;
         return $this->game;
+    }
+    public function getCurrentLottery()
+    {
+        $this->lottery->winner;
+        return $this->lottery;
     }
 
     public function getWinners()
@@ -111,7 +133,47 @@ class GameController extends Controller
 
         return response()->json($returnValue);
     }
+    public function getWinnersLottery()
+    {
+        $us = $this->lottery->users();
 
+        $lastBet = Players::where('game_id', $this->lottery->id)->orderBy('to', 'desc')->first();
+        $winTicket = round($this->lottery->rand_number * $lastBet->to);
+
+        $winningBet = Players::where('game_id', $this->lottery->id)->where('from', '<=', $winTicket)->where('to', '>=', $winTicket)->first();
+
+        $this->lottery->winner_id      = $winningBet->user_id;
+        $this->lottery->status         = Game::STATUS_FINISHED;
+        $this->lottery->finished_at    = Carbon::now();
+        $this->lottery->won_items      = json_encode($this->sendItemsLottery($this->lottery->items, $this->game->winner));
+        $this->lottery->save();
+
+        $returnValue = [
+            'game'   => $this->lottery,
+            'winner' => $this->lottery->winner,
+            'round_number' => $this->lottery->rand_number,
+            'ticket' => $winTicket,
+            'tickets' => ($this->lottery->price * 100),
+            'users' => $us
+        ];
+
+        return response()->json($returnValue);
+    }
+
+    public function sendItemsLottery($bets, $user) {
+
+        $value = [
+            'appId' => self::APPID,
+            'steamid' => $user->steamid64,
+            'accessToken' => $user->accessToken,
+            'items' => $bets,
+            'game' => $this->lottery->id
+        ];
+        if(count($returnItems) > 0) {
+            $this->redis->rpush(self::SEND_OFFERS_LIST, json_encode($value));
+        }
+        return $bets;
+    }
     public function sendItems($bets, $user) {
         $itemsInfo = [];
         $items = [];
@@ -141,17 +203,16 @@ class GameController extends Controller
             }
         }
         foreach($items as $item){
-            if(!isset($item['classid'])) {
-                $item['classid'] = '1111111111';
-            }
             if($item['price'] < 1) $item['price'] = 1;
-            if(($item['price'] >= 5) && ($tempPrice+$item['price'] < $commissionPrice) && ($item['classid'] != "1111111111")) {
-                if($item['price'] <= 30 && count($bonus) < 2) {
-                    $bonus[] = $item; 
+            if(($item['price'] >= 5) && ($tempPrice+$item['price'] < $commissionPrice)) {
+                if(isset($item['classid'])) {
+                    if($item['price'] <= 30 && count($bonus) < 2) {
+                        $bonus[] = $item; 
+                    }
+                //if(($item['price'] <= $commissionPrice) && ($tempPrice < $commissionPrice) && ($item['price'] >= 10)){
+                    $commissionItems[] = $item;
+                    $tempPrice = $tempPrice + $item['price'];
                 }
-            //if(($item['price'] <= $commissionPrice) && ($tempPrice < $commissionPrice) && ($item['price'] >= 10)){
-                $commissionItems[] = $item;
-                $tempPrice = $tempPrice + $item['price'];
             } else{
                 $itemsInfo[] = $item;
                 if(isset($item['classid'])) {
@@ -210,6 +271,24 @@ class GameController extends Controller
         $game->maxwin = Game::maxPriceToday();
         $this->redis->set('current.game', $game->id);
         return $game;
+    }
+    public function newLottery()
+    {
+        $rand_number = "0.".mt_rand(0,9).mt_rand(10000000,99999999).mt_rand(100000000,999999999);
+        $newBet = Bonus::first();
+        if(is_null($newBet)) {
+            return false;
+        }
+        $lottery = Lottery::create([
+            'rand_number' => $rand_number,
+            'items' => json_encode($newBet),
+            'price' => $newBet['price'],
+            'max' => round($newBet['price'] * 3)
+        ]);
+        $newBet->delete();
+        $lottery->hash = md5($rand_number);
+        $this->redis->set('current.lottery', $lottery->id);
+        return $lottery;
     }
 
     public function checkOffer()
@@ -492,24 +571,30 @@ class GameController extends Controller
         $game->save();
         return $game;
     }
-
+    public function setLotteryPrizeStatus(Request $request)
+    {
+        $lottery = Lottery::find($request->get('game'));
+        $lottery->status_prize = $request->get('status');
+        $lottery->save();
+        return $lottery;
+    }
     public function setGameStatus(Request $request)
     {
         $this->game->status = $request->get('status');
         $this->game->save();
         return $this->game;
     }
-
-    public function userqueue(Request $request)
+    public function setLotteryStatus(Request $request)
     {
-        $user = User::where('steamid64', $request->get('id'))->first();
-        if(!is_null($user)) {
-            return response()->json([
-                'username' => $user->username,
-                'avatar' => $user->avatar
-            ]);   
-        }
-        return response('Error. User not found.', 404);
+        $this->lottery->status = $request->get('status');
+        $this->lottery->save();
+        return $this->lottery;
+    }
+    public function setGameStatus(Request $request)
+    {
+        $this->lottery->status = $request->get('status');
+        $this->lottery->save();
+        return $this->lottery;
     }
 
     public static function getPreviousWinner(){
@@ -520,6 +605,17 @@ class GameController extends Controller
                 'user' => $game->winner,
                 'price' => $game->price,
                 'chance' => self::_getUserChanceOfGame($game->winner, $game)
+            ];
+        }
+        return $winner;
+    }
+    public static function getPreviousWinnerLottery(){
+        $lottery = Lottery::with('winner')->where('status', Game::STATUS_FINISHED)->orderBy('created_at', 'desc')->first();
+        $winner = null;
+        if(!is_null($lottery)) {
+            $winner = [
+                'user' => $lottery->winner,
+                'price' => $lottery->price
             ];
         }
         return $winner;
