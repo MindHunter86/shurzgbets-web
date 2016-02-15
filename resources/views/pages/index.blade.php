@@ -1,6 +1,44 @@
 @extends('layout')
 
 @section('content')
+    <div class="none">
+        <div class="box-modal" id="modal-6" style="width:450px;">
+            <div class="box-modal-top"><div class="box-modal_close arcticmodal-close"></div>Список участников раздачи</div>
+            <div class="list_participant">
+                @foreach($players as $player)
+                    <p><img src="{{ $player->user->avatar }}" alt="" /><a data-profile="{{ $bet->user->steamid64 }}" class="ellipsis">{{ $player->user->username }}</a></p>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <div class="hoax full">
+        <div id="slider" class="slider">
+            <ul>
+                @foreach($players as $player)
+                    @include('includes.lottery')
+                @endforeach
+            </ul>
+        </div>
+        <div class="controls">
+            <button class="prev-slide" type="submit"></button>
+            <button class="next-slide" type="submit"></button>
+        </div>
+        <div class="slider-panel">
+            <div class="left">Всего: <span>{{ $lottery->players }} / {{ $lottery->max }}</span></div>
+            <div class="right"><a href="#" onclick="$('#modal-6').arcticmodal(); $('.list_participant').jScrollPane(); return false;">Список участников</a></div>
+        </div>
+        <div class="hoax-item">
+            <div class="hoax-item-images"><div class="hoax-item-img"><b class="ellipsis">{{ $lottery->items->market_hash_name }}</b> Стоимость: <b>{{ $lottery->price }}</b> руб.</div><img src="https://steamcommunity-a.akamaihd.net/economy/image/class/{{ \App\Http\Controllers\GameController::APPID }}/{{ $lottery->items->classid }}/200fx200f" alt="" /></div>
+            <div class="hoax-item-time">00:00:00</div>
+        </div>
+        <div class="hoax-right">
+            <div class="hoax-button"></div>
+            <div class="hoax-link">
+                <a href="#">История розыгрышей</a>
+                <a href="#" onclick="$('#modal-1').arcticmodal(); return false;">Как это работает?</a>
+            </div>
+        </div>
+    </div>
     <div class="information full">
         <div class="info-in">
             <div class="info-images"><img src="{{ asset('new/images/info1.png') }}" alt="" /></div>

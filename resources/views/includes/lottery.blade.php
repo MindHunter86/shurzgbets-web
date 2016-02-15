@@ -1,1 +1,1 @@
-<li><img src="{{ $player->img }}"/></li>
+<li><img data-profile="{{ $bet->user->steamid64 }}" src="{{ $player->user->avatar }}"/></li>
