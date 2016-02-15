@@ -27,7 +27,6 @@ class ShopController extends Controller
     public function __construct(SteamAuth $auth)
     {
         parent::__construct();
-        $this->steamAuth = $auth;
     }
 
     public function index()
@@ -88,8 +87,10 @@ class ShopController extends Controller
             if($item->status == Shop::ITEM_STATUS_SOLD) return response()->json(['success' => false, 'msg' => 'Предмет уже куплен!']);
             if($this->user->money >= $item->price){
                 if($item->price <= 15) {
+                    $this->steamAuth->steamId = $this->user->steamid64;
+                    $steamInfo = $this->steamAuth->parseInfo();
+                    $steamInfo = $this->getUserInfo();
                     
-                    $steamInfo = $this->_getSteamInfo($this->user->steamid64);
                     $this->user->username = $steamInfo->getNick();
                     $this->user->save();
 
