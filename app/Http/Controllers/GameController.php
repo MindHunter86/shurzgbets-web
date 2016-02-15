@@ -50,9 +50,9 @@ class GameController extends Controller
     {
         parent::__construct();
         $this->game = $this->getLastGame();
-        //$this->lottery = $this->getLastLottery();
+        $this->lottery = $this->getLastLottery();
         $this->redis->set('current.game', $this->game->id);
-        //$this->redis->set('current.lottery', $this->lottery->id);
+        $this->redis->set('current.lottery', $this->lottery->id);
     }
 
     public function deposit()
