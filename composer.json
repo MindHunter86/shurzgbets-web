@@ -12,7 +12,8 @@
         "invisnik/laravel-steam-auth": "2.*",
         "predis/predis": "v1.0.3",
         "eelkevdbos/firebase-php": "dev-master",
-        "ext-bcmath": "*"
+        "ext-bcmath": "*",
+        "doctrine/dbal": "~2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
