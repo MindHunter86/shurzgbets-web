@@ -5,7 +5,7 @@ use App\Bonus;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGamesTable extends Migration
+class CreateLotteryTable extends Migration
 {
     /**
      * Run the migrations.
