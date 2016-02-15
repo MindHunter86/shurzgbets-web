@@ -279,12 +279,12 @@ class GameController extends Controller
         if(is_null($newBet)) {
             return false;
         }
-        $lottery = Lottery::create([
-            'rand_number' => $rand_number,
-            'items' => json_encode($newBet),
-            'price' => $newBet['price'],
-            'max' => round($newBet['price'] * 3)
-        ]);
+        $lottery = new Lottery();
+        $lootery->rand_number = $rand_number;
+        $lottery->items = json_encode($newBet);
+        $lottery->price = $newBet['price'];
+        $lottery->max = round($newBet['price'] * 3);
+        $lottery->save();
         $newBet->delete();
         $lottery->hash = md5($rand_number);
         $this->redis->set('current.lottery', $lottery->id);
