@@ -277,22 +277,23 @@ class GameController extends Controller
         $rand_number = "0.".mt_rand(0,9).mt_rand(10000000,99999999).mt_rand(100000000,999999999);
         $newBet = Bonus::first();
         if(is_null($newBet)) {
-            return false;
+            return true;
         }
-        $create = Lottery::create([
-            'rand_number' => $rand_number,
-            //'items' => json_encode((array)$newBet),
-            'price' => $newBet['price'],
-            'max' => round($newBet['price'] * 3)
-        ]);
-        $lottery = [
+        $create = new Lottery();
+        $create->rand_number = $rand_number;
+        $create->items = json_encode($newBet);
+        $create->price = $newBet['price'];
+        $create->max = round($newBet['price'] * 3);
+        $create->save();
+
+        /*$lottery = [
             'hash' => md5($rand_number),
             'id' => $create->id
-        ];
+        ];*/
         //$newBet->delete();
 
-        $this->redis->set('current.lottery', $lottery['id']);
-        return response()->json($lottery);
+        //$this->redis->set('current.lottery', $lottery['id']);
+        //return response()->json($lottery);
     }
 
     public function checkOffer()
