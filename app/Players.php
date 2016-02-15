@@ -11,7 +11,7 @@ class Players extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function game()
+    public function lottery()
     {
         return $this->belongsTo('App\Lottery');
     }

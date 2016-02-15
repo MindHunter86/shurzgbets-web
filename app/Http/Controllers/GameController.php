@@ -66,7 +66,7 @@ class GameController extends Controller
         //$lottery = Lottery::orderBy('id', 'desc')->first();
         //$lottery->items = json_decode($lottery->items);
         $lottery = Lottery::orderBy('id', 'desc')->first();
-        $players = $lottery->players()->with(['user','game'])->get()->sortByDesc('created_at');
+        $players = $lottery->players()->with(['user','lottery'])->get()->sortByDesc('created_at');
 
         $game = Game::orderBy('id', 'desc')->first();
         $bets = $game->bets()->with(['user','game'])->get()->sortByDesc('created_at');
@@ -137,10 +137,10 @@ class GameController extends Controller
     {
         $us = $this->lottery->users();
 
-        $lastBet = Players::where('game_id', $this->lottery->id)->orderBy('to', 'desc')->first();
+        $lastBet = Players::where('lottery_id', $this->lottery->id)->orderBy('to', 'desc')->first();
         $winTicket = round($this->lottery->rand_number * $lastBet->to);
 
-        $winningBet = Players::where('game_id', $this->lottery->id)->where('from', '<=', $winTicket)->where('to', '>=', $winTicket)->first();
+        $winningBet = Players::where('lottery_id', $this->lottery->id)->where('from', '<=', $winTicket)->where('to', '>=', $winTicket)->first();
 
         $this->lottery->winner_id      = $winningBet->user_id;
         $this->lottery->status         = Game::STATUS_FINISHED;

@@ -28,7 +28,7 @@ class Lottery extends Model
     public function users()
     {
         return \DB::table('lottery')
-            ->join('players', 'lottery.id', '=', 'players.game_id')
+            ->join('players', 'lottery.id', '=', 'players.lottery_id')
             ->join('users', 'players.user_id', '=', 'users.id')
             ->where('lottery.id', $this->id)
             ->groupBy('users.username')
