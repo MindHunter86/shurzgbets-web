@@ -293,7 +293,7 @@ class GameController extends Controller
         $newBet->delete();
 
         $this->redis->set('current.lottery', $lottery->id);
-        return $lottery;
+        return response()->json($lottery);
     }
 
     public function checkOffer()
