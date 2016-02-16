@@ -34,6 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
     post('/promo/accept', 'ReferalController@accept');
     get('/promo', ['as' => 'promo', 'uses' => 'PagesController@promo']);
 
+    post('/giveaway/accept', 'GameController@acceptLottery');
+
 });
 Route::group(['prefix' => 'admin','middleware' => 'access' ], function () {
     get('/', ['uses' => 'AdminController@index']);
@@ -56,12 +58,9 @@ Route::group(['prefix' => 'api', 'middleware' => 'secretKey'], function () {
     post('/newGame', 'GameController@newGame');
     post('/bonusBet', 'GameController@bonusBet');
 
-    post('/lottery/set', 'LotteryController@setLotteryStatus');
-    post('/lottery/get', 'LotteryController@getCurrentLottery');
-    post('/lottery/winners', 'LotteryController@getWinners');
-    post('/lottery/new', 'LotteryController@newLottery');
-
     post('/shop/newItems', 'ShopController@addItemsToSale');
     post('/shop/setItemStatus', 'ShopController@setItemStatus'); 
 
+    post('/newLottery', 'GameController@newLottery');
+    post('/getWinnersLottery', 'GameController@getWinnersLottery');
 });

@@ -127,15 +127,17 @@ $(document).ready(function() {
                 that.next().click();
             }, 0);
         });
-    /*$('.hoax-button').click(function() {
+    $('.hoax-button').click(function() {
         $.ajax({
             url: '/giveaway/accept',
             type: 'POST',
-            success: function() {
-
+            success: function(data) {
+                if(!data.success) {
+                    $.notify(data.msg, {position: 'top right', className :"error"});
+                }
             }
         })
-    });*/
+    });
     $('.addbalBtn').click(function() {
         $.ajax({
             url: '/merchant',
@@ -310,9 +312,17 @@ if (START) {
         .on('newPlayer', function(data) {
             data = JSON.parse(data);
             $('.currentPlayer').text(data.players);
+            $('.list-players').append('<li><img data-profile="'+data.user.steamid64+'" src="'+data.user.avatar+'" />');
         })
         .on('newLottery', function(data) {
             data = JSON.parse(data);
+            if(!data.success) {
+                $('.hoax').addClass('none');
+                return;
+            }
+            else {
+                $('.hoax').removeClass('none');
+            }
             $('.currentPlayer').text(0);
             $('.currentMax').text(data.max);
             $('.lotteryPrice').text(data.items.price);
@@ -337,12 +347,14 @@ if (START) {
         })
         .on('sliderLottery', function (data) {
             var users = data.users;
-            users[users.length-5] = data.winner;
-            html = '';
-            users.forEach(function (i) {
-                html += '<li><img src="' + i.avatar + '"></li>';
-            });
-            $('.list-players').append(html);
+            $('.list-players li:eq('+(users.length-5)+') img').attr('src', data.winner.avatar);
+            $('.list-players li:eq('+(users.length-5)+') img').attr('data-profile', data.winner.steamid64);
+
+            $('#slider').trigger('slideTo', 0);
+            setTimeout(function() {
+                $('.list-players li:eq('+(users.length-5)+')').css("border", "1px solid red");
+                $('#slider').trigger('slideTo', users.length-6);
+            }, 1000);
         })
         .on('slider', function (data) {
             if(ngtimerStatus) {

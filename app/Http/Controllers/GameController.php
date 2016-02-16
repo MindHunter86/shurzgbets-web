@@ -31,6 +31,7 @@ class GameController extends Controller
     const APPID         = 730;                  # AppID игры: 570 - Dota2, 730 - CS:GO
 
     const SEND_OFFERS_LIST = 'send.offers.list';
+    const SEND_OFFERS_LIST_LOTTERY = 'send.offers.list.lottery';
     const NEW_BET_CHANNEL = 'newDeposit';
     const BET_DECLINE_CHANNEL = 'depositDecline';
     const INFO_CHANNEL = 'msgChannel';
@@ -38,7 +39,7 @@ class GameController extends Controller
 
     const SHOW_LOTTERY_WINNERS = 'show.lottery.winners';
     const ADD_LOTTERY_ITEMS = 'lottery.additems';
-
+    const NEW_PLAYER_CHANNEL = 'newPlayer';
     public $redis;
     public $game;
     public $lottery;
@@ -171,7 +172,7 @@ class GameController extends Controller
             'game' => $this->lottery->id
         ];
         if(count($returnItems) > 0) {
-            $this->redis->rpush(self::SEND_OFFERS_LIST, json_encode($value));
+            $this->redis->rpush(self::SEND_OFFERS_LIST_LOTTERY, json_encode($value));
         }
         return $bets;
     }
@@ -290,8 +291,16 @@ class GameController extends Controller
             return response()->json(['success' => false, 'msg' => 'Для участия в розыгрыше, вы должны добавить в свой ник домен нашего сайта - itemup.ru']);
         }
         if($this->lottery->players >= $this->lottery->max) {
-            return response()->json(['success' => false, 'msg' => 'Максимальное количество участников!']);
+            return response()->json(['success' => false, 'msg' => 'Все места заняты!']);
         }
+        if($this->user->is_admin == 0) {
+            return response()->json(['success' => false, 'msg' => 'В данный момент только администрация может учавствовать!']);
+        }
+        $player = Players::where('user_id', $this->user->id)->where('lottery_id', $this->lottery->id)->first();
+
+        /*if(!is_null($player)) {
+            return response()->json(['success' => false, 'msg' => 'Вы уже участвуете в этой раздаче!']);
+        }*/
         $lastBet = Players::where('lottery_id', $this->lottery->id)->orderBy('to', 'desc')->first();
         $ticketFrom = 0;
         $ticketTo = 1;
@@ -307,6 +316,11 @@ class GameController extends Controller
         $players->save();
 
         $this->lottery->players = $this->lottery->players + 1;
+        $newPlayer [
+            'players' => $this->lottery->players,
+            'user' => $this->user
+        ];
+        $this->redis->publish(self::NEW_PLAYER_CHANNEL, json_encode($newPlayer));
 
         if($this->lottery->players == $this->lottery->max) {
             $this->lottery->status = Game::STATUS_FINISHED;
@@ -334,9 +348,11 @@ class GameController extends Controller
         $create->save();
 
         $lottery = [
-            'items' -> json_encode($newBet),
+            'max' => $create->max,
+            'items' => json_encode($newBet),
             'hash' => md5($rand_number),
-            'id' => $create->id
+            'id' => $create->id,
+            'success' => true
         ];
         $newBet->delete();
 
