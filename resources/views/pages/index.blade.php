@@ -17,22 +17,6 @@
                 @foreach($players as $player)
                     @include('includes.lottery')
                 @endforeach
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
-                <li><img src="/new/images/bonusbot.jpg" /></li>
             </ul>
         </div>
         <div class="controls">
