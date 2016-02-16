@@ -3,8 +3,8 @@
 <head>
     <title>ITEMUP</title>
     <meta charset="utf-8">
-    <meta name="keywords" content="рулетка cs:go, cs go ставки, рулетка вещей cs go, рулетка оружий cs go, рулетка cs go играть, рулетка скинов cs go" />
-    <meta name="description" content="ITEMUP.RU - Умножь свои скины CS:GO" />
+    <meta name="keywords" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. ITEMUP.RU - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
+    <meta name="description" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. ITEMUP.RU - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="csrf-token" content="{!!  csrf_token()   !!}">
     <link rel="shortcut icon" href="{{ asset('assets/favicon.png') }}" type="image/png">
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
