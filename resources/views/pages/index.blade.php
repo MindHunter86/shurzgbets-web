@@ -17,6 +17,22 @@
                 @foreach($players as $player)
                     @include('includes.lottery')
                 @endforeach
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
+                <li><img src="/new/images/bonusbot.jpg" /></li>
             </ul>
         </div>
         <div class="controls">
@@ -29,7 +45,7 @@
         </div>
         <div class="hoax-item">
             <div class="hoax-item-images"><div class="hoax-item-img"><b class="ellipsis lotteryName">{{ $lottery->items->market_hash_name }}</b> Стоимость: <b class="lotteryPrice">{{ $lottery->price }}</b> руб.</div><img class="lotteryImg" src="https://steamcommunity-a.akamaihd.net/economy/image/class/{{ \App\Http\Controllers\GameController::APPID }}/{{ $lottery->items->classid }}/200fx200f" alt="" /></div>
-            <div class="hoax-item-time"><span class="lotteryPrice">{{ $lottery->price }}</span> руб.-</div>
+            <div class="hoax-item-time"><span class="lotteryPrice">{{ $lottery->price }}</span> руб.</div>
         </div>
         <div class="hoax-right">
             <div class="hoax-button"></div>

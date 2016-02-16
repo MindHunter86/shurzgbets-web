@@ -6,6 +6,13 @@ $(document).ready(function() {
         setCookie('chat', 1);
         chatHide = 1;
     }
+    $('#slider').lemmonSlider({slideToLast: false});
+
+    
+    $('.wrapper').tooltip({
+        trigger: "hover",
+        selector: "div[data-toggle=tooltip]"
+    })
     /*if(!chatHide) {
         $('#chatContainer').hide();
         $('#chatContainer').css('width', '0%');
@@ -120,6 +127,15 @@ $(document).ready(function() {
                 that.next().click();
             }, 0);
         });
+    /*$('.hoax-button').click(function() {
+        $.ajax({
+            url: '/giveaway/accept',
+            type: 'POST',
+            success: function() {
+
+            }
+        })
+    });*/
     $('.addbalBtn').click(function() {
         $.ajax({
             url: '/merchant',
@@ -291,18 +307,25 @@ if (START) {
             $('#newBet-'+rand)[0].play();
             ITEMUP.initTheme();
         })
+        .on('newPlayer', function(data) {
+            data = JSON.parse(data);
+            $('.currentPlayer').text(data.players);
+        })
+        .on('newLottery', function(data) {
+            data = JSON.parse(data);
+            $('.currentPlayer').text(0);
+            $('.currentMax').text(data.max);
+            $('.lotteryPrice').text(data.items.price);
+            $('.lotteryName').text(data.items.market_hash_name);
+            $('.lotteryImg').attr('src', 'https://steamcommunity-a.akamaihd.net/economy/image/class/730/'+data.items.classid+'/200fx200f');
+            $('.list_participant').html('');
+            $('.list-players').html('');
+        })
         .on('online', function (data) {
             $('.stats-onlineNow').text(Math.abs(data+42));
         })
         .on('forceClose', function () {
             $('.forceClose').removeClass('msgs-not-visible');
-        })
-        .on('lotteryTimer', function(time) {
-            if(lotteryTimerStatus) {
-                lotteryTimerStatus = false;
-                $('.lotteryTimer').empty().countdown({seconds: time});
-                $('.lotteryTimer .countMinutes').append(':');
-            }
         })
         .on('timer', function (time) {
             if(timerStatus) {
@@ -311,6 +334,15 @@ if (START) {
 
                 $('.gameEndTimer').empty().removeClass('not-active').countdown({seconds: time});
             }
+        })
+        .on('slider', function (data) {
+            var users = data.users;
+            users[users.length-5] = data.winner;
+            html = '';
+            users.forEach(function (i) {
+                html += '<li><img src="' + i.avatar + '"></li>';
+            });
+            $('.list-players').append(html);
         })
         .on('slider', function (data) {
             if(ngtimerStatus) {
