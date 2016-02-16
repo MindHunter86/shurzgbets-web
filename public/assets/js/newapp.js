@@ -335,7 +335,7 @@ if (START) {
                 $('.gameEndTimer').empty().removeClass('not-active').countdown({seconds: time});
             }
         })
-        .on('slider', function (data) {
+        .on('sliderLottery', function (data) {
             var users = data.users;
             users[users.length-5] = data.winner;
             html = '';
