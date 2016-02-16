@@ -6,7 +6,7 @@
             <div class="box-modal-top"><div class="box-modal_close arcticmodal-close"></div>Список участников раздачи</div>
             <div class="list_participant">
                 @foreach($players as $player)
-                    <p><img src="{{ $player->user->avatar }}" alt="" /><a data-profile="{{ $bet->user->steamid64 }}" class="ellipsis">{{ $player->user->username }}</a></p>
+                    <p><img src="{{ $player->user->avatar }}" alt="" /><a data-profile="{{ $player->user->steamid64 }}" class="ellipsis">{{ $player->user->username }}</a></p>
                 @endforeach
             </div>
         </div>
