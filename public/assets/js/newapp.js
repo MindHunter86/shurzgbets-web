@@ -348,6 +348,7 @@ if (START) {
         })
         .on('sliderLottery', function (data) {
             var users = data.users;
+            console.log(data);
             $('.list-players li:eq('+(users.length-5)+') img').attr('src', data.winner.avatar);
             $('.list-players li:eq('+(users.length-5)+') img').attr('data-profile', data.winner.steamid64);
 
