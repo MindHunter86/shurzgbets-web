@@ -154,8 +154,7 @@ class GameController extends Controller
             'winner' => $this->lottery->winner,
             'round_number' => $this->lottery->rand_number,
             'ticket' => $winTicket,
-            'tickets' => ($this->lottery->price * 100),
-            'users' => $us
+            'tickets' => ($this->lottery->price * 100)
         ];
 
         return response()->json($returnValue);
