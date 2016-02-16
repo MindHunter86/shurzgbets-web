@@ -317,6 +317,7 @@ if (START) {
         })
         .on('newLottery', function(data) {
             data = JSON.parse(data);
+            console.log(data);
             if(!data.success) {
                 $('.hoax').addClass('none');
                 return;
@@ -347,15 +348,15 @@ if (START) {
             }
         })
         .on('sliderLottery', function (data) {
-            var users = data.users;
+            var users = data.players;
             console.log(data);
-            $('.list-players li:eq('+(users.length-5)+') img').attr('src', data.winner.avatar);
-            $('.list-players li:eq('+(users.length-5)+') img').attr('data-profile', data.winner.steamid64);
+            $('.list-players li:eq('+(users-5)+') img').attr('src', data.winner.avatar);
+            $('.list-players li:eq('+(users-5)+') img').attr('data-profile', data.winner.steamid64);
 
             $('#slider').trigger('slideTo', 0);
             setTimeout(function() {
-                $('.list-players li:eq('+(users.length-5)+')').css("border", "1px solid red");
-                $('#slider').trigger('slideTo', users.length-6);
+                $('#slider').trigger('slideTo', users-6);
+                $('.list-players li:eq('+(users-5)+')').css("border", "1px solid red");
             }, 1000);
         })
         .on('slider', function (data) {

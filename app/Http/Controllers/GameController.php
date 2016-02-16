@@ -153,6 +153,7 @@ class GameController extends Controller
             'game'   => $this->lottery,
             'winner' => $this->lottery->winner,
             'round_number' => $this->lottery->rand_number,
+            'players'   => $this->lottery->players,
             'ticket' => $winTicket,
             'tickets' => ($this->lottery->price * 100)
         ];
