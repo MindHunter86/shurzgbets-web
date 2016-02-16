@@ -1,7 +1,6 @@
 @extends('layout')
 
 @section('content')
-    <!--
     <div class="none">
         <div class="box-modal" id="modal-6" style="width:450px;">
             <div class="box-modal-top"><div class="box-modal_close arcticmodal-close"></div>Список участников раздачи</div>
@@ -14,7 +13,7 @@
     </div>
     <div class="hoax full">
         <div id="slider" class="slider">
-            <ul>
+            <ul class="list-players">
                 @foreach($players as $player)
                     @include('includes.lottery')
                 @endforeach
@@ -25,12 +24,12 @@
             <button class="next-slide" type="submit"></button>
         </div>
         <div class="slider-panel">
-            <div class="left">Всего: <span>{{ $lottery->players }} / {{ $lottery->max }}</span></div>
+            <div class="left">Всего: <span><span class='currentPlayer'>{{ $lottery->players }}</span> / <span class='currentMax'>{{ $lottery->max }}</span></span></div>
             <div class="right"><a href="#" onclick="$('#modal-6').arcticmodal(); $('.list_participant').jScrollPane(); return false;">Список участников</a></div>
         </div>
         <div class="hoax-item">
-            <div class="hoax-item-images"><div class="hoax-item-img"><b class="ellipsis">{{ $lottery->items->market_hash_name }}</b> Стоимость: <b>{{ $lottery->price }}</b> руб.</div><img src="https://steamcommunity-a.akamaihd.net/economy/image/class/{{ \App\Http\Controllers\GameController::APPID }}/{{ $lottery->items->classid }}/200fx200f" alt="" /></div>
-            <div class="hoax-item-time">{{ $lottery->price }} руб.-</div>
+            <div class="hoax-item-images"><div class="hoax-item-img"><b class="ellipsis lotteryName">{{ $lottery->items->market_hash_name }}</b> Стоимость: <b class="lotteryPrice">{{ $lottery->price }}</b> руб.</div><img class="lotteryImg" src="https://steamcommunity-a.akamaihd.net/economy/image/class/{{ \App\Http\Controllers\GameController::APPID }}/{{ $lottery->items->classid }}/200fx200f" alt="" /></div>
+            <div class="hoax-item-time"><span class="lotteryPrice">{{ $lottery->price }}</span> руб.-</div>
         </div>
         <div class="hoax-right">
             <div class="hoax-button"></div>
@@ -39,7 +38,7 @@
                 <a href="#" onclick="$('#modal-1').arcticmodal(); return false;">Как это работает?</a>
             </div>
         </div>
-    </div>-->
+    </div>
 
     <div class="information full">
         <div class="info-in">
