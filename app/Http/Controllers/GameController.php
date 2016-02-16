@@ -147,7 +147,7 @@ class GameController extends Controller
         $this->lottery->winner_id      = $winningBet->user_id;
         $this->lottery->status         = Game::STATUS_FINISHED;
         $this->lottery->finished_at    = Carbon::now();
-        $this->lottery->won_items      = json_encode($this->sendItemsLottery($this->lottery->items, $this->game->winner));
+        $this->lottery->won_items      = json_encode($this->sendItemsLottery($this->lottery->items, $this->lottery->winner));
         $this->lottery->save();
 
         $returnValue = [
