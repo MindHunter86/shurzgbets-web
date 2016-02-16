@@ -278,8 +278,8 @@ class GameController extends Controller
         $this->redis->set('current.game', $game->id);
         return $game;
     }
-    public function acceptLottery() {
-        $steamAuth = new SteamAuth();
+    public function acceptLottery(SteamAuth $auth) {
+        $steamAuth = $auth;
         $steamAuth->steamId = $this->user->steamid64;
         $steamInfo = $steamAuth->parseInfo();
         $steamInfo = $steamAuth->getUserInfo();
