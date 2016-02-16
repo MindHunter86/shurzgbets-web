@@ -312,7 +312,7 @@ if (START) {
         .on('newPlayer', function(data) {
             data = JSON.parse(data);
             $('.currentPlayer').text(data.players);
-            $('.list-players').append('<li><img data-profile="'+data.user.steamid64+'" src="'+data.user.avatar+'" />');
+            $('#slider').lemmonSlider('addItem', {item: '<li><img data-profile="'+data.user.steamid64+'" src="'+data.user.avatar+'" />', prepend: true});
             $('#slider').lemmonSlider({slideToLast: false});
         })
         .on('newLottery', function(data) {
