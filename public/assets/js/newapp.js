@@ -313,6 +313,7 @@ if (START) {
             data = JSON.parse(data);
             $('.currentPlayer').text(data.players);
             $('.list-players').append('<li><img data-profile="'+data.user.steamid64+'" src="'+data.user.avatar+'" />');
+            $('#slider').lemmonSlider({slideToLast: false});
         })
         .on('newLottery', function(data) {
             data = JSON.parse(data);
