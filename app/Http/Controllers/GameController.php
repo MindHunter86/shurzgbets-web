@@ -31,7 +31,6 @@ class GameController extends Controller
     const APPID         = 730;                  # AppID игры: 570 - Dota2, 730 - CS:GO
 
     const SEND_OFFERS_LIST = 'send.offers.list';
-    const SEND_OFFERS_LIST_LOTTERY = 'send.offers.list.lottery';
     const NEW_BET_CHANNEL = 'newDeposit';
     const BET_DECLINE_CHANNEL = 'depositDecline';
     const INFO_CHANNEL = 'msgChannel';
@@ -40,6 +39,7 @@ class GameController extends Controller
     const SHOW_LOTTERY_WINNERS = 'show.lottery.winners';
     const ADD_LOTTERY_ITEMS = 'lottery.additems';
     const NEW_PLAYER_CHANNEL = 'newPlayer';
+    const SEND_OFFERS_LIST_LOTTERY = 'send.offers.list.lottery';
     public $redis;
     public $game;
     public $lottery;
