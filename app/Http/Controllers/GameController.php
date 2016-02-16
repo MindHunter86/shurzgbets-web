@@ -643,7 +643,17 @@ class GameController extends Controller
         $this->lottery->save();
         return $this->lottery;
     }
-
+    public function userqueue(Request $request)
+    {
+        $user = User::where('steamid64', $request->get('id'))->first();
+        if(!is_null($user)) {
+            return response()->json([
+                'username' => $user->username,
+                'avatar' => $user->avatar
+            ]);   
+        }
+        return response('Error. User not found.', 404);
+    }
     public static function getPreviousWinner(){
         $game = Game::with('winner')->where('status', Game::STATUS_FINISHED)->orderBy('created_at', 'desc')->first();
         $winner = null;
