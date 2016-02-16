@@ -318,7 +318,7 @@ if (START) {
         .on('newLottery', function(data) {
             data = JSON.parse(data);
             console.log(data);
-            if(!data.success) {
+            /*if(!data.success) {
                 $('.hoax').addClass('none');
                 return;
             }
@@ -331,7 +331,7 @@ if (START) {
             $('.lotteryName').text(data.items.market_hash_name);
             $('.lotteryImg').attr('src', 'https://steamcommunity-a.akamaihd.net/economy/image/class/730/'+data.items.classid+'/200fx200f');
             $('.list_participant').html('');
-            $('.list-players').html('');
+            $('.list-players').html('');*/
         })
         .on('online', function (data) {
             $('.stats-onlineNow').text(Math.abs(data+42));
