@@ -313,12 +313,23 @@ if (START) {
             data = JSON.parse(data);
             $('.currentPlayer').text(data.players);
             $('#slider').lemmonSlider('addItem', {item: '<li><img data-profile="'+data.user.steamid64+'" src="'+data.user.avatar+'" />', prepend: true});
-            $('#slider').lemmonSlider({slideToLast: false});
+        })
+        .on('sliderLottery', function (data) {
+            var users = data.players;
+            console.log(data);
+            $('.list-players li:eq('+(users-5)+') img').attr('src', data.winner.avatar);
+            $('.list-players li:eq('+(users-5)+') img').attr('data-profile', data.winner.steamid64);
+
+            $('#slider').trigger('slideTo', 0);
+            setTimeout(function() {
+                $('#slider').trigger('slideTo', users-6);
+                $('.list-players li:eq('+(users-5)+')').css("border", "1px solid red");
+            }, 1000);
         })
         .on('newLottery', function(data) {
-            data = JSON.parse(data);
+            //data = JSON.parse(data);
             console.log(data);
-            /*if(!data.success) {
+            if(!data.success) {
                 $('.hoax').addClass('none');
                 return;
             }
@@ -331,7 +342,7 @@ if (START) {
             $('.lotteryName').text(data.items.market_hash_name);
             $('.lotteryImg').attr('src', 'https://steamcommunity-a.akamaihd.net/economy/image/class/730/'+data.items.classid+'/200fx200f');
             $('.list_participant').html('');
-            $('.list-players').html('');*/
+            $('.list-players').html('');
         })
         .on('online', function (data) {
             $('.stats-onlineNow').text(Math.abs(data+42));
@@ -347,22 +358,9 @@ if (START) {
                 $('.gameEndTimer').empty().removeClass('not-active').countdown({seconds: time});
             }
         })
-        .on('sliderLottery', function (data) {
-            var users = data.players;
-            console.log(data);
-            $('.list-players li:eq('+(users-5)+') img').attr('src', data.winner.avatar);
-            $('.list-players li:eq('+(users-5)+') img').attr('data-profile', data.winner.steamid64);
-
-            $('#slider').trigger('slideTo', 0);
-            setTimeout(function() {
-                $('#slider').trigger('slideTo', users-6);
-                $('.list-players li:eq('+(users-5)+')').css("border", "1px solid red");
-            }, 1000);
-        })
         .on('slider', function (data) {
             if(ngtimerStatus) {
                 ngtimerStatus = false;
-                console.log(data);
                 var users = data.users;
                 users = mulAndShuffle(users, Math.ceil(100 / users.length));
                 //users[6] = data.winner;
@@ -427,7 +425,6 @@ if (START) {
             ngtimerStatus = true;
         })
         .on('queue', function (data) {
-            console.log(data);
             if (data) {
                 var n = false;
                 var html = '';
