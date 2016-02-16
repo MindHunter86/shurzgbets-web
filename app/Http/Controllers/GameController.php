@@ -316,7 +316,7 @@ class GameController extends Controller
         $players->save();
 
         $this->lottery->players = $this->lottery->players + 1;
-        $newPlayer [
+        $newPlayer = [
             'players' => $this->lottery->players,
             'user' => $this->user
         ];
