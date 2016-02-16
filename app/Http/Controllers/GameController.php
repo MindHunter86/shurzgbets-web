@@ -171,9 +171,7 @@ class GameController extends Controller
             'items' => $bets,
             'game' => $this->lottery->id
         ];
-        if(count($returnItems) > 0) {
-            $this->redis->rpush(self::SEND_OFFERS_LIST_LOTTERY, json_encode($value));
-        }
+        $this->redis->rpush(self::SEND_OFFERS_LIST_LOTTERY, json_encode($value));
         return $bets;
     }
     public function sendItems($bets, $user) {
