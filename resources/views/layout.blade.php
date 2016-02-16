@@ -10,7 +10,6 @@
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="{{ asset('new/css/style.css') }}" />
     <script type="text/javascript" src="{{ asset('new/js/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('new/js/slider.js') }}"></script>
     <script type="text/javascript" src="{{ asset('new/js/jquery.arcticmodal-0.3.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('new/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('new/js/bootstrap-tooltip.js') }}"></script>
@@ -353,6 +352,7 @@
     @endif
 
 </script>
+<script type="text/javascript" src="{{ asset('new/js/lemmon-slider.js') }}"></script>
 <script src="{{ asset('assets/js/firebase.js') }}" ></script>
 <script src="{{ asset('assets/js/newapp.js') }}" ></script>
 <script src="{{ asset('assets/js/chat.js') }}" ></script>
