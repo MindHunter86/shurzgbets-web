@@ -44,7 +44,7 @@ class AjaxController extends Controller
                 'is_admin' => $this->user->is_admin,
                 'message' => $message
             );
-            $pusher = $fb->push('/chat/1', $push);
+            $pusher = $fb->push('/chat/2', $push);
             if(is_null($pusher)) {
                 return response()->json(['success' => false, 'text' => 'Ошибка сервера (mp01)']);
             }
@@ -55,7 +55,7 @@ class AjaxController extends Controller
                 return false;
             }
             $id = $request->get('id');
-            $pusher = $fb->delete('/chat/1/'.$id);
+            $pusher = $fb->delete('/chat/2/'.$id);
             if(is_null($pusher)) {
                 return response()->json(['success' => false, 'text' => 'Ошибка сервера (mp02)']);
             }
