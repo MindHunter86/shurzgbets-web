@@ -42,7 +42,8 @@ class PagesController extends Controller
         foreach($lottery as $key => $lot) {
             $lottery[$key]->items = json_decode($lot->items);
         }
-        return view('pages.giveaway', compact('lottery'));
+        print_r($lottery);
+        //return view('pages.giveaway', compact('lottery'));
     }
     public function top()
     {
