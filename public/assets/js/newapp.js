@@ -140,7 +140,7 @@ $(document).ready(function() {
             type: 'POST',
             success: function(data) {
                 if(!data.success) {
-                    $('.hoax-button')..notify(data.msg, {position: 'left center', className :"error"});
+                    $('.hoax-button').notify(data.msg, {position: 'left center', className :"error"});
                 }
             }
         })
