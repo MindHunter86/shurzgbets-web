@@ -67,10 +67,10 @@ class GameController extends Controller
         //$lottery = Lottery::orderBy('id', 'desc')->first();
         //$lottery->items = json_decode($lottery->items);
         $lottery = Lottery::where('status', 1)->orderBy('id', 'desc')->first();
-        if(!is_null($lottery))
+        if(!is_null($lottery)) {
             $lottery->items = json_decode($lottery->items);
-        $players = $lottery->players()->with(['user','lottery'])->get()->sortByDesc('created_at');
-
+            $players = $lottery->players()->with(['user','lottery'])->get()->sortByDesc('created_at');
+        }
         $game = Game::orderBy('id', 'desc')->first();
         $bets = $game->bets()->with(['user','game'])->get()->sortByDesc('created_at');
         $user_chance = $this->_getUserChanceOfGame($this->user, $game);
