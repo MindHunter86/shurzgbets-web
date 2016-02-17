@@ -40,9 +40,9 @@ class PagesController extends Controller
             ->orderBy('created_at', 'desc')
             ->limit(50)
             ->get();
-        foreach($lottery as $key => $lot) {
+        /*foreach($lottery as $key => $lot) {
             $lottery[$key]->items = json_decode($lot->items);
-        }
+        }*/
         return view('pages.giveaway', compact('lottery'));
     }
     public function top()
