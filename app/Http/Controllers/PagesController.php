@@ -39,6 +39,7 @@ class PagesController extends Controller
             ->orderBy('created_at', 'desc')
             ->limit(50)
             ->get();
+        $lottery->items = json_decode($lottery->items);
         return view('pages.giveaway', compact('lottery'));
     }
     public function top()
