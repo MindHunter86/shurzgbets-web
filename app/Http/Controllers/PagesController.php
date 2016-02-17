@@ -35,13 +35,16 @@ class PagesController extends Controller
         return view('pages.promo', compact('referal'));
     }
     public function giveaway() {
-        $lottery = Lottery::where('status', Game::STATUS_FINISHED)
+        $lots = Lottery::where('status', Game::STATUS_FINISHED)
             ->orderBy('created_at', 'desc')
             ->limit(50)
             ->get();
-        foreach($lottery as $key => $lot) {
-            $lottery->{$key}->items = json_decode($lot->items);
+        $lottery = [];
+        foreach($lots as $key => $lot) {
+            $lottery[$key] = (array) $lot;
+            $lottery[$key]['items'] = json_decode($lot->items);
         }
+        $lottery = (object) $lottery;
         return view('pages.giveaway', compact('lottery'));
     }
     public function top()
