@@ -292,14 +292,14 @@ class GameController extends Controller
         if($this->lottery->players >= $this->lottery->max) {
             return response()->json(['success' => false, 'msg' => 'Все места заняты!']);
         }
-        if($this->user->is_admin == 0) {
+        /*if($this->user->is_admin == 0) {
             return response()->json(['success' => false, 'msg' => 'В данный момент только администрация может учавствовать!']);
-        }
+        }*/
         $player = Players::where('user_id', $this->user->id)->where('lottery_id', $this->lottery->id)->first();
 
-        /*if(!is_null($player)) {
+        if(!is_null($player)) {
             return response()->json(['success' => false, 'msg' => 'Вы уже участвуете в этой раздаче!']);
-        }*/
+        }
         $lastBet = Players::where('lottery_id', $this->lottery->id)->orderBy('to', 'desc')->first();
         $ticketFrom = 0;
         $ticketTo = 1;
