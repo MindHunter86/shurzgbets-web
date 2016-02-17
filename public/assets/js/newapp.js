@@ -336,7 +336,7 @@ if (START) {
         .on('newLottery', function(data) {
             console.log(data)
             items = data.items;
-            console.log(items);
+            items = JSON.parse(items);
             if(!data.success) {
                 $('.hoax').addClass('none');
                 return;
