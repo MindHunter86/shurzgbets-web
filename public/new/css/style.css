@@ -2719,7 +2719,7 @@ a._hist_link {
 	display:block;
 }
 
-.list_participant span {
+.list_participant a {
 	line-height:48px;
 	width:60px;
 	float:left;

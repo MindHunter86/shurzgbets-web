@@ -34,6 +34,13 @@ class PagesController extends Controller
         }
         return view('pages.promo', compact('referal'));
     }
+    public function giveaway() {
+        $lottery = Lottery::where('status', Game::STATUS_FINISHED)
+            ->orderBy('created_at', 'desc')
+            ->limit(50)
+            ->get();
+        return view('pages.giveaway', compact('lottery'));
+    }
     public function top()
     {
         $users = \DB::table('users')

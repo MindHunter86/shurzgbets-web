@@ -77,6 +77,12 @@ $(document).ready(function() {
             return d.focus && d.focus(), d
         }
     }
+    $('.listPlayers').click(function(e) {
+        e.preventDefault();
+        $('#modal-6').arcticmodal(); 
+        $('.list_participant').jScrollPane(); 
+        return false;
+    })
     $('.depositModal').click(function(e) {
         return helpers.showPopup("http://itemup.ru/deposit"), !1
     });
@@ -327,8 +333,7 @@ if (START) {
             }, 1000);
         })
         .on('newLottery', function(data) {
-            //data = JSON.parse(data);
-            console.log(data);
+            items = JSON.parse(data.items);
             if(!data.success) {
                 $('.hoax').addClass('none');
                 return;
@@ -338,9 +343,9 @@ if (START) {
             }
             $('.currentPlayer').text(0);
             $('.currentMax').text(data.max);
-            $('.lotteryPrice').text(data.items.price);
-            $('.lotteryName').text(data.items.market_hash_name);
-            $('.lotteryImg').attr('src', 'https://steamcommunity-a.akamaihd.net/economy/image/class/730/'+data.items.classid+'/200fx200f');
+            $('.lotteryPrice').text(items.price);
+            $('.lotteryName').text(items.market_hash_name);
+            $('.lotteryImg').attr('src', 'https://steamcommunity-a.akamaihd.net/economy/image/class/730/'+items.classid+'/200fx200f');
             $('.list_participant').html('');
             $('.list-players').html('');
         })
