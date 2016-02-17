@@ -170,7 +170,7 @@ class GameController extends Controller
             'appId' => self::APPID,
             'steamid' => $user->steamid64,
             'accessToken' => $user->accessToken,
-            'items' => $bets,
+            'items' => json_encode($bets),
             'game' => $this->lottery->id
         ];
         $this->redis->rpush(self::SEND_OFFERS_LIST_LOTTERY, json_encode($value));
