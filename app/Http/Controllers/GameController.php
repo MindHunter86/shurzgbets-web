@@ -149,7 +149,9 @@ class GameController extends Controller
         $this->lottery->status         = Game::STATUS_FINISHED;
         $this->lottery->finished_at    = Carbon::now();
         $this->lottery->save();
-        $this->sendItemsLottery($this->lottery->items, $this->lottery->winner);
+
+        $items[] = $this->lottery->items;
+        $this->sendItemsLottery($items, $this->lottery->winner);
         $returnValue = [
             'game'   => $this->lottery,
             'winner' => $this->lottery->winner,
