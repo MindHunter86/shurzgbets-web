@@ -319,7 +319,8 @@ if (START) {
         .on('newPlayer', function(data) {
             data = JSON.parse(data);
             $('.currentPlayer').text(data.players);
-            $('#slider').lemmonSlider('addItem', {item: '<li><img data-profile="'+data.user.steamid64+'" src="'+data.user.avatar+'" />', prepend: true});
+            $('#slider').lemmonSlider('addItem', {item: '<li><img data-profile="'+data.user.steamid64+'" src="'+data.user.avatar+'" /></li>', prepend: true});
+            $('.list_participant').prepend('<p><img src="'+data.user.avatar+'" /><a data-profile="'+data.user.steamid64+'" href="#" class="ellipsis"></a></p>');
         })
         .on('sliderLottery', function (data) {
             var users = data.players;
