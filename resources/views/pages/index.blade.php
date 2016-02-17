@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    {{ @if(!is_null($lottery)) }}
+    @if(!is_null($lottery))
     <div class="none">
         <div class="box-modal" id="modal-6" style="width:450px;">
             <div class="box-modal-top"><div class="box-modal_close arcticmodal-close"></div>Список участников раздачи</div>
@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-    {{ @endif }}
+    @endif
     <div class="information full">
         <div class="info-in">
             <div class="info-images"><img src="{{ asset('new/images/info1.png') }}" alt="" /></div>
