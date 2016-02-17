@@ -134,12 +134,13 @@ $(document).ready(function() {
             }, 0);
         });
     $('.hoax-button').click(function() {
+        var that = $(this).prev();
         $.ajax({
             url: '/giveaway/accept',
             type: 'POST',
             success: function(data) {
                 if(!data.success) {
-                    $.notify(data.msg, {position: 'top right', className :"error"});
+                    that.notify(data.msg, {position: 'bottom middle', className :"error"});
                 }
             }
         })
