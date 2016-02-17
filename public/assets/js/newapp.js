@@ -324,7 +324,6 @@ if (START) {
         })
         .on('sliderLottery', function (data) {
             var users = data.players;
-            console.log(data);
             $('.list-players li:eq('+(users-5)+') img').attr('src', data.winner.avatar);
             $('.list-players li:eq('+(users-5)+') img').attr('data-profile', data.winner.steamid64);
 
@@ -335,7 +334,9 @@ if (START) {
             }, 1000);
         })
         .on('newLottery', function(data) {
-            items = JSON.parse(data.items);
+            console.log(data)
+            items = data.items;
+            console.log(items);
             if(!data.success) {
                 $('.hoax').addClass('none');
                 return;
