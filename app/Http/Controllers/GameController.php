@@ -66,7 +66,7 @@ class GameController extends Controller
         Referer::referer();
         //$lottery = Lottery::orderBy('id', 'desc')->first();
         //$lottery->items = json_decode($lottery->items);
-        $lottery = Lottery::where('status', 1)->orderBy('id', 'desc')->first();
+        $lottery = Lottery::where('status', 0)->orderBy('id', 'desc')->first();
         if(!is_null($lottery)) {
             $lottery->items = json_decode($lottery->items);
             $players = $lottery->players()->with(['user','lottery'])->get()->sortByDesc('created_at');
