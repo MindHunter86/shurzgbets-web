@@ -150,8 +150,7 @@ class GameController extends Controller
         $this->lottery->finished_at    = Carbon::now();
         $this->lottery->save();
 
-        $items[] = $this->lottery->items;
-        $this->sendItemsLottery($items, $this->lottery->winner);
+        $this->sendItemsLottery($this->lottery->items, $this->lottery->winner);
         $returnValue = [
             'game'   => $this->lottery,
             'winner' => $this->lottery->winner,
@@ -170,7 +169,7 @@ class GameController extends Controller
             'appId' => self::APPID,
             'steamid' => $user->steamid64,
             'accessToken' => $user->accessToken,
-            'items' => json_encode($bets),
+            'items' => $bets,
             'game' => $this->lottery->id
         ];
         $this->redis->rpush(self::SEND_OFFERS_LIST_LOTTERY, json_encode($value));
