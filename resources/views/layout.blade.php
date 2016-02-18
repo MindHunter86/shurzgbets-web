@@ -3,6 +3,8 @@
 <head>
     <title>ITEMUP</title>
     <meta charset="utf-8">
+    <meta property="og:title" content="ITEMUP.RU" />
+    <meta property="og:image" content="{{ asset('new/images/itemup.jpg') }}" />
     <meta name="keywords" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. ITEMUP.RU - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="description" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. ITEMUP.RU - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="csrf-token" content="{!!  csrf_token()   !!}">
