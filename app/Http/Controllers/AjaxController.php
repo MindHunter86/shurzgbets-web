@@ -57,9 +57,6 @@ class AjaxController extends Controller
             }
             $id = $request->get('id');
             $pusher = $fb->delete('/chat/2/'.$id);
-            if(is_null($pusher)) {
-                return response()->json(['success' => false, 'text' => 'Ошибка сервера (mp02)']);
-            }
             return response()->json(['success' => true, 'text' => 'Сообщение удалено']);
         }
     }
