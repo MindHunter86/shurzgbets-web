@@ -39,8 +39,8 @@ $(document).ready(function() {
 		  }
 		});
 	}
-	function removeMSG() {
-		self = this;
+	$('.removeMSG').live('click',function() {
+       	self = this;
 		$.ajax({
 		  url: '/ajax/chat',
 		  type: "POST",
@@ -55,7 +55,8 @@ $(document).ready(function() {
 		  	} 
 		  }
 		});
-	}
+        return false;
+    });
 	messageField.keypress(function (e) {
 	    if (e.keyCode == 13) {
 	    	sendMessage();
@@ -99,7 +100,7 @@ $(document).ready(function() {
 	    }
 	    msg.text(message);
 	    nameElement.text(username);
-	    messageElement.html(msg).prepend(nameElement).prepend(avatarElement).on('click', '.removeMSG', removeMSG());
+	    messageElement.html(msg).prepend(nameElement).prepend(avatarElement);
 
 	    //ADD MESSAGE
 	    messageList.append(messageElement);
