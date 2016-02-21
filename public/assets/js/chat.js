@@ -39,7 +39,7 @@ $(document).ready(function() {
 		  }
 		});
 	}
-	$('.removeMSG').live('click',function() {
+	$('#chatScroll').on('click', '.removeMSG',function() {
        	self = this;
 		$.ajax({
 		  url: '/ajax/chat',
