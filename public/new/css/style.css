@@ -192,7 +192,7 @@ li {
     word-wrap: break-word;
     resize: none;
     position: absolute;
-    bottom:30px;
+    bottom:5px;
 }
 #notLoggedIn {
     display: block;
