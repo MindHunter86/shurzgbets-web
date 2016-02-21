@@ -104,7 +104,7 @@ $(document).ready(function() {
 	    //ADD MESSAGE
 	    messageList.append(messageElement);
 	    $('#chatScroll').scrollTop(9999);
-	    $('#chatScroll').css('height', $(window).innerHeight() - 100);
+	    $('#chatScroll').css('height', $(window).innerHeight() - 120);
 	    $("#chatScroll").perfectScrollbar('update');
   	});
 });
