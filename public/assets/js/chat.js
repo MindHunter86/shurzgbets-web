@@ -39,14 +39,14 @@ $(document).ready(function() {
 		  }
 		});
 	}
-	$('.chatMessage').on("click", 'img', function() {
+	$('.removeMSG').click(function(data) {
 		self = this;
 		$.ajax({
 		  url: '/ajax/chat',
 		  type: "POST",
 		  data: { 
 		  	'type': 'remove',
-		  	'id': $(tihs).attr('data-ids')
+		  	'id': $(self).attr('data-ids')
 		  },
 		  success: function(data) {
 		  	if(!data.success) {
@@ -80,7 +80,7 @@ $(document).ready(function() {
 	    	username = 'Модератор ('+username+')';
 	    }
 	    if(data.is_admin) {
-	    	username = 'Администратор ('+username+')';
+	    	username = 'Администратор';
 	    	avatar = '/new/images/admin.jpg'
 	    }
 
