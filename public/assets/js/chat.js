@@ -39,7 +39,7 @@ $(document).ready(function() {
 		  }
 		});
 	}
-	$('.removeMSG').click(function(data) {
+	function removeMSG() {
 		self = this;
 		$.ajax({
 		  url: '/ajax/chat',
@@ -55,7 +55,7 @@ $(document).ready(function() {
 		  	} 
 		  }
 		});
-	});
+	}
 	messageField.keypress(function (e) {
 	    if (e.keyCode == 13) {
 	    	sendMessage();
@@ -99,7 +99,7 @@ $(document).ready(function() {
 	    }
 	    msg.text(message);
 	    nameElement.text(username);
-	    messageElement.html(msg).prepend(nameElement).prepend(avatarElement);
+	    messageElement.html(msg).prepend(nameElement).prepend(avatarElement).on('click', '.removeMSG', removeMSG());
 
 	    //ADD MESSAGE
 	    messageList.append(messageElement);
