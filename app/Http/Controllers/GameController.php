@@ -292,6 +292,10 @@ class GameController extends Controller
         if($this->lottery->players >= $this->lottery->max) {
             return response()->json(['success' => false, 'msg' => 'Все места заняты!']);
         }
+        $gamesCount = Bet::where('user_id', $this->user->id)->count();
+        if($gamesCount < 1) {
+            return response()->json(['success' => false, 'msg' => 'Вы должны сделать хотябы 1 депозит на сайте!']);
+        }
         /*if($this->user->is_admin == 0) {
             return response()->json(['success' => false, 'msg' => 'В данный момент только администрация может учавствовать!']);
         }*/
