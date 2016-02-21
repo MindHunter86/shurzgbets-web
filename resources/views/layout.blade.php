@@ -100,7 +100,7 @@
             </div>
         </div>
         <div id="chatBody" style="display: block;">
-            <div id="chatScroll">
+            <div id="chatScroll" class="ps-container ps-active-y">
                 <div id="chat_messages">
                 
                 </div>

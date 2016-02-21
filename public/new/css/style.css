@@ -161,6 +161,7 @@ li {
 }
 #chatBody {
     display: none;
+    height: 100%;
 }
 .chat-text {
     position: fixed;
@@ -190,6 +191,8 @@ li {
     overflow: hidden;
     word-wrap: break-word;
     resize: none;
+    position: absolute;
+    bottom:30px;
 }
 #notLoggedIn {
     display: block;

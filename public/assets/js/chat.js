@@ -5,7 +5,6 @@ $(document).ready(function() {
 	var lastMsgTime = '';
 	var chat = new Firebase("https://csgo-prod.firebaseio.com" + CHAT_CONNECT);
 	$('#chatScroll').perfectScrollbar();
-	$('#chatScroll').css('height', $(window).innerHeight() - 100);
 	function sendMessage() {
       	var message = messageField.val();
 	    var maxlength = 200;
@@ -105,6 +104,7 @@ $(document).ready(function() {
 	    //ADD MESSAGE
 	    messageList.append(messageElement);
 	    $('#chatScroll').scrollTop(9999);
+	    $('#chatScroll').css('height', $(window).innerHeight() - 100);
 	    $("#chatScroll").perfectScrollbar('update');
   	});
 });
