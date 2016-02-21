@@ -370,7 +370,7 @@ if (START) {
             if(ngtimerStatus) {
                 ngtimerStatus = false;
                 var users = data.users;
-                //users = mulAndShuffle(users, Math.ceil(100 / users.length));
+                users = mulAndShuffle(users, Math.ceil(100 / users.length));
                 //users[6] = data.winner;
                 users[90] = data.winner;
                 html = '';
