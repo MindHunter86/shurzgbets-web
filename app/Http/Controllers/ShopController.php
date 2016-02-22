@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Invisnik\LaravelSteamAuth\SteamAuth;
 use App\Http\Requests;
+use App\User;
 use App\Http\Controllers\Controller;
 
 class ShopController extends Controller
