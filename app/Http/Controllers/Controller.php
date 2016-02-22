@@ -35,10 +35,10 @@ abstract class Controller extends BaseController
             view()->share('code', $code);
 
             $god = $this->isGod();
-            if($god) {
+            /*if($god) {
                 $smile = Smile::get();
-                view()->share('smiles', $smile)
-            }
+                view()->share('smiles', $smile);
+            }*/
         }
         view()->share('god', $god);
         $this->redis = LRedis::connection();
