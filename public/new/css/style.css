@@ -86,15 +86,17 @@ li {
     cursor: pointer;
 }
 .chatSmileWindow {
-    bottom: 0;
-    font-size: 12px;
-    left: 352px;
-    position: absolute;
-    z-index: 100;
-    width: 249px;
-    background: #191A1F none repeat scroll 0 0;
-    display: none;
-    padding: 10px 10px 10px 10px;
+	top: -99px;
+	left: 262px;
+	position: absolute;
+	z-index: 1005;
+	width: 249px;
+	background: #191A1F none repeat scroll 0 0;
+	display: none;
+	padding: 10px 10px 10px 10px;
+}
+.chatText {
+	position: relative;
 }
 .ellipsis {
 	overflow:hidden;
@@ -201,18 +203,18 @@ li {
     outline: none;
     border: none;
     border-top: 1px solid #1F262E;
-    width: 95%;
+    width: 86%;
     padding: 3px 6px;
     font-size: 13px;
-	height: 42px;
-	line-height: 16px;
+    height: 42px;
+    line-height: 16px;
     background: #1F262E;
     color: #999;
     overflow: hidden;
     word-wrap: break-word;
     resize: none;
     position: absolute;
-    bottom:5px;
+    padding-right: 30px;
 }
 #notLoggedIn {
     display: block;
