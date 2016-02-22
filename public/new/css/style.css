@@ -76,14 +76,14 @@ li {
 	display:block;
 }
 .chatSmileOpen {
-    bottom: 0;
     font-size: 12px;
-    left: 313px;
+    right: 5px;
     position: absolute;
-    z-index: 100;
     height: 28px;
     display: block;
     cursor: pointer;
+    z-index: 1005;
+    top: 5px;
 }
 .chatSmileWindow {
 	top: -99px;
@@ -97,6 +97,7 @@ li {
 }
 .chatText {
 	position: relative;
+	margin-bottom: 30px;
 }
 .ellipsis {
 	overflow:hidden;
