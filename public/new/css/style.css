@@ -191,9 +191,12 @@ li {
     top: 20px;
     left: 2%;
 }
+.smile {
+    width: 27px;
+}
 #chatScroll {
     background-color: #0E0F0E;
-    height: 90%;
+    height: 84%;
     *overflow-y: scroll;
     padding-top: 0px;
     position: relative;
