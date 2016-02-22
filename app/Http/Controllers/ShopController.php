@@ -40,18 +40,19 @@ class ShopController extends Controller
         $items = Shop::where('buyer_id', $this->user->id)->orderBy('buy_at', 'desc')->get();
         return view('pages.historyShop', compact('items'));
     }
-
-    public function admin()
-    {
-        $items = Shop::whereNotNull('buyer_id')->orderBy('buy_at', 'desc')->get();
-        return view('pages.adminShop', compact('items'));
-    }
-
     public function setItemStatus(Request $request)
     {
         $item = Shop::find($request->get('id'));
         if(!is_null($item)){
-            $item->status = $request->get('status');
+            $status = $request->get('status');
+            $item->status = $status;
+            if($status == Shop::ITEM_STATUS_NOT_FOUND || $status == Shop::ITEM_STATUS_ERROR_TO_SEND) {
+                $buyer = User::where('id', $item->buyer_id)->first();
+                $buyer->money = $buyer->money + $item->price;
+                $buyer->save();
+                $item->status = 0;
+                $item->buyer_id = NULL;
+            }
             $item->save();
             return $item;
         }
@@ -64,17 +65,10 @@ class ShopController extends Controller
         foreach($jsonItems as $jsonItem){
             $items = json_decode($jsonItem, true);
             foreach($items as $item) {
-                //$dbItemInfo = Item::where('market_hash_name', $item['market_hash_name'])->first();
-                //if (is_null($dbItemInfo)) {
-                    $itemInfo = new BackPack($item);
-                    $item['steam_price'] = $itemInfo->price;
-                    $item['price'] = round($item['steam_price']/100 * self::PRICE_PERCENT_TO_SALE);
-                    Shop::create($item);
-                /*}else{
-                    $item['steam_price'] = $dbItemInfo->price;
-                    $item['price'] = round($item['steam_price']/100 * self::PRICE_PERCENT_TO_SALE);
-                    Shop::create($item);
-                }*/
+                $itemInfo = new BackPack($item);
+                $item['steam_price'] = $itemInfo->price;
+                $item['price'] = round($item['steam_price']/100 * self::PRICE_PERCENT_TO_SALE);
+                Shop::create($item);
             }
             $this->redis->lrem(self::NEW_ITEMS_CHANNEL, 1, $jsonItem);
         }
@@ -85,6 +79,9 @@ class ShopController extends Controller
     {
         $item = Shop::find($request->get('id'));
         if(!is_null($item)){
+            if(empty($this->user->accessToken)) {
+                return response()->json(['success' => false, 'msg' => 'Вы не ввели ссыклу на обмен!']);
+            }
             if($item->status == Shop::ITEM_STATUS_SOLD) return response()->json(['success' => false, 'msg' => 'Предмет уже куплен!']);
             if($this->user->money >= $item->price){
                 if($item->price <= 15) {
