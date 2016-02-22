@@ -92,6 +92,9 @@ $(document).ready(function() {
 	    var avatarElement = $("<img class='removeMSG' data-ids='"+data.uuid+"' style='height: 32px; width: 32px;' />");
 	    avatarElement.attr('src', avatar);
 	    nameElement.attr('data-profile', steamid);
+	   	if(data.is_vip) {
+	    	nameElement.attr('style', 'color:orange;');
+	    }
 	   	if(data.is_moderator) {
 	    	nameElement.attr('style', 'color:green;');
 	    }

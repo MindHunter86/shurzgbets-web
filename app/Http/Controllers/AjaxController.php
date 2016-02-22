@@ -43,6 +43,7 @@ class AjaxController extends Controller
                 'steamid' => $this->user->steamid64,
                 'is_admin' => $this->user->is_admin,
                 'is_moderator' => $this->user->is_moderator,
+                'is_vip'    => $this->user->is_vip,
                 'message' => $message
             );
             $pusher = $fb->push('/chat/2', $push);
