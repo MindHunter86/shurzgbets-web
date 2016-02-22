@@ -52,7 +52,7 @@ class ShopController extends Controller
                 $buyer->money = $buyer->money + $item->price;
                 $buyer->save();
                 $item->status = Shop::ITEM_STATUS_FOR_SALE;
-                $item->buyer_id = 0;
+                $item->buyer_id = null;
             }
             $item->save();
             return $item;
