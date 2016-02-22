@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Promo;
+use App\Smile;
 use LRedis;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -20,6 +21,7 @@ abstract class Controller extends BaseController
     public function __construct()
     {
         $this->setTitle('Title not stated');
+        $god = false;
         if(Auth::check())
         {
             $code = Promo::where('steamid64', Auth::user()->steamid64)->first();
@@ -31,9 +33,14 @@ abstract class Controller extends BaseController
             $this->user = Auth::user();
             view()->share('u', $this->user);
             view()->share('code', $code);
+
             $god = $this->isGod();
-            view()->share('god', $god);
+            if($god) {
+                $smile = Smile::get();
+                view()->share('smiles', $smile)
+            }
         }
+        view()->share('god', $god);
         $this->redis = LRedis::connection();
         view()->share('steam_status', $this->getSteamStatus());
     }
