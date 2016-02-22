@@ -4,6 +4,7 @@ $(document).ready(function() {
 	var lastMsg = '';
 	var lastMsgTime = '';
 	var chat = new Firebase("https://csgo-prod.firebaseio.com" + CHAT_CONNECT);
+	$('#chatScroll').css('height', $(window).innerHeight() - 120);
 	$('#chatScroll').perfectScrollbar();
 	function sendMessage() {
       	var message = messageField.val();
@@ -63,13 +64,16 @@ $(document).ready(function() {
 	    	return false;
 	    }
 	});
-	chat.on('child_removed', function (snapshot) {
+	var msgs = chat.limitToLast(50);
+	msgs.on('child_removed', function (snapshot) {
 	    var data = snapshot.val();
 
 	    $('.chatMessage[data-uuid='+snapshot.key()+']').remove();
 	    $("#chatScroll").perfectScrollbar('update');
 	});
-	chat.limitToLast(50).on('child_added', function (snapshot) {
+	msgs.on('child_added', function (snapshot) {
+		var a = $("#chatScroll")[0];
+		var isScrollDown = Math.abs((a.offsetHeight + a.scrollTop) - a.scrollHeight) < 5;
 	    //GET DATA
 	    var data = snapshot.val();
 	    data.uuid = snapshot.key();
@@ -107,8 +111,7 @@ $(document).ready(function() {
 
 	    //ADD MESSAGE
 	    messageList.append(messageElement);
-	    $('#chatScroll').scrollTop(9999);
-	    $('#chatScroll').css('height', $(window).innerHeight() - 120);
+	    if (isScrollDown) a.scrollTop = a.scrollHeight;
 	    $("#chatScroll").perfectScrollbar('update');
   	});
 });
