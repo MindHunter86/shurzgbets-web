@@ -106,7 +106,38 @@
                 </div>
             </div>
             <textarea id="sendie" placeholder="Введите сообщение"></textarea>
-            
+            @if($god)
+            <a class="chatSmileOpen">
+                <img class="rotsmile" src="{{ asset('new/images/smile.png') }}" style="width: 20px;">
+            </a>
+            <div class="chatSmileWindow" style="display: none;">
+                <img src="https://dotalucky.ru/dotalucky/smile/1.png" class="smileClick" incert="*1*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/10.png" class="smileClick" incert="*10*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/11.png" class="smileClick" incert="*11*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/12.png" class="smileClick" incert="*12*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/13.png" class="smileClick" incert="*13*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/14.png" class="smileClick" incert="*14*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/15.png" class="smileClick" incert="*15*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/16.png" class="smileClick" incert="*16*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/17.png" class="smileClick" incert="*17*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/18.png" class="smileClick" incert="*18*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/19.png" class="smileClick" incert="*19*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/2.png" class="smileClick" incert="*2*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/20.png" class="smileClick" incert="*20*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/21.png" class="smileClick" incert="*21*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/22.png" class="smileClick" incert="*22*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/23.png" class="smileClick" incert="*23*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/24.png" class="smileClick" incert="*24*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/25.png" class="smileClick" incert="*25*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/26.png" class="smileClick" incert="*26*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/3.png" class="smileClick" incert="*3*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/4.png" class="smileClick" incert="*4*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/5.png" class="smileClick" incert="*5*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/6.png" class="smileClick" incert="*6*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/7.png" class="smileClick" incert="*7*"> 
+                <img src="https://dotalucky.ru/dotalucky/smile/8.png" class="smileClick" incert="*8*">   
+            </div>
+            @endif;
         </div>
     </div>
     <div class="footer"><a href="https://vk.com/itemup">МЫ ВКонтакте</a></div>

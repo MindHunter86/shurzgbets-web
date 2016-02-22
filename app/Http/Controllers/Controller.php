@@ -31,6 +31,8 @@ abstract class Controller extends BaseController
             $this->user = Auth::user();
             view()->share('u', $this->user);
             view()->share('code', $code);
+            $god = $this->isGod();
+            view()->share('god', $god);
         }
         $this->redis = LRedis::connection();
         view()->share('steam_status', $this->getSteamStatus());
@@ -46,7 +48,14 @@ abstract class Controller extends BaseController
         $this->title = $title;
         view()->share('title', $this->title);
     }
-
+    public function isGod() {
+        if($this->user->is_admin || $this->user->is_moderator || $this->user->is_vip) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     public function getSteamStatus()
     {
         $inventoryStatus = $this->redis->get('steam.inventory.status');
