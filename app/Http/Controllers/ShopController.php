@@ -51,7 +51,8 @@ class ShopController extends Controller
                 $buyer = User::where('id', $item->buyer_id)->first();
                 $buyer->money = $buyer->money + $item->price;
                 $buyer->save();
-                $item->status = 0;
+                $item->status = Shop::ITEM_STATUS_FOR_SALE;
+                $item->buyer_id = 0;
             }
             $item->save();
             return $item;
