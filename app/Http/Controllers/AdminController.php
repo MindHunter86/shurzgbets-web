@@ -32,8 +32,12 @@ class AdminController extends Controller {
 
     public function index() {
         $bot = User::where('steamid64', '0000000000000')->first();
-        $botSumBet = Bet::where('user_id', $bot->id)->sum('price');
-
+        $botBet = Bet::where('user_id', $bot->id)->get();
+        $botSumBet = 0;
+        foreach($botBet as $bets) {
+            $items = json_decode($bets->items);
+            $botSumBet = $botSumBet + $items->price;
+        }
         $hourgames = DB::select(DB::raw('select created_at as y, SUM(`comission`) as a from `games` where DAY(created_at) = DAY(NOW()) group by hour(created_at) order by created_at asc;'));
         $hourgames = json_encode((array)$hourgames);
     	$games = DB::select(DB::raw('select DATE(created_at) as y, SUM(`comission`) as item1 from `games` where `created_at` >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) group by DATE(created_at)'));
