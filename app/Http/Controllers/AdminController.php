@@ -35,8 +35,9 @@ class AdminController extends Controller {
         $botBet = Bet::where('user_id', $bot->id)->get();
         $botSumBet = 0;
         foreach($botBet as $bets) {
-            $items = json_decode($bets->items);
-            $botSumBet = $botSumBet + $items->price;
+            foreach(json_decode($bets->items) as $item) {
+                $botSumBet = $botSumBet + $item->price;
+            }
         }
         $hourgames = DB::select(DB::raw('select created_at as y, SUM(`comission`) as a from `games` where DAY(created_at) = DAY(NOW()) group by hour(created_at) order by created_at asc;'));
         $hourgames = json_encode((array)$hourgames);
