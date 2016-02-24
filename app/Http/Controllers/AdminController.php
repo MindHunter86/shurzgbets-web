@@ -83,7 +83,7 @@ class AdminController extends Controller {
     }
 
     public function sendAjax(Request $request) {
-    	$game = Game::find($request->get('game'));
+    	$game = Game::where('id', $request->get('game'))->first();
     	if($game->status_prize == Game::STATUS_PRIZE_WAIT_TO_SENT) {
     		return response()->json(['text' => 'Приз уже отправляется.', 'type' => 'error']);
     	}
