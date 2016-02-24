@@ -31,6 +31,9 @@ class AdminController extends Controller {
     public $redis;
 
     public function index() {
+        $bot = User::where('steamid64', '0000000000000')->first();
+        $botSumBet = Bet::where('user_id', $bot->id)->sum('price');
+
         $hourgames = DB::select(DB::raw('select created_at as y, SUM(`comission`) as a from `games` where DAY(created_at) = DAY(NOW()) group by hour(created_at) order by created_at asc;'));
         $hourgames = json_encode((array)$hourgames);
     	$games = DB::select(DB::raw('select DATE(created_at) as y, SUM(`comission`) as item1 from `games` where `created_at` >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) group by DATE(created_at)'));
@@ -55,7 +58,7 @@ class AdminController extends Controller {
 			array_push($items, $game);
         }
         $items = json_encode($items);
-        return view('admin.index', compact('items', 'sum', 'plays', 'sumplays', 'average', 'averageGame', 'referer', 'hourgames'));
+        return view('admin.index', compact('botSumBet','items', 'sum', 'plays', 'sumplays', 'average', 'averageGame', 'referer', 'hourgames'));
     }
     public function send() {
     	return view('admin.send');

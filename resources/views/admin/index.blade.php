@@ -15,7 +15,7 @@
               <!-- AREA CHART -->
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Статистика комиссии. Заработано {{ $sum }} руб. Средняя комиссия за день {{ $average }} руб.</h3>
+                  <h3 class="box-title">Статистика комиссии. Заработано {{ $sum }} руб. Средняя комиссия за день {{ $average }} руб. За все время бот раздал {{ $botSumBet }} руб.</h3>
                 </div>
                 <div class="box-body chart-responsive">
                   <div class="chart" id="line-chart" style="height: 300px;"></div>
