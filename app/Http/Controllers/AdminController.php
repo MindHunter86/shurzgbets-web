@@ -36,15 +36,9 @@ class AdminController extends Controller {
         $botSumBet = 0;
         $botGet = [];
         foreach($botBet as $bets) {
-            $price = 0;
             foreach(json_decode($bets->items) as $item) {
                 $botSumBet = $botSumBet + $item->price;
-                $price = $item->price;
             }
-            $botGet[] = [
-                'y' => $bets->created_at,
-                'item1' => $price
-            ];
         }
 
 
@@ -72,7 +66,7 @@ class AdminController extends Controller {
 			array_push($items, $game);
         }
         $items = json_encode($items);
-        return view('admin.index', compact('botGet', 'botSumBet','items', 'sum', 'plays', 'sumplays', 'average', 'averageGame', 'referer', 'hourgames'));
+        return view('admin.index', compact('botSumBet','items', 'sum', 'plays', 'sumplays', 'average', 'averageGame', 'referer', 'hourgames'));
     }
     public function send() {
     	return view('admin.send');
