@@ -87,9 +87,6 @@ class AdminController extends Controller {
     	if($game->status_prize == Game::STATUS_PRIZE_WAIT_TO_SENT) {
     		return response()->json(['text' => 'Приз уже отправляется.', 'type' => 'error']);
     	}
-    	else if($game->status_prize == Game::STATUS_PRIZE_SEND) {
-    		return response()->json(['text' => 'Приз уже отправлен.', 'type' => 'error']);
-    	}
     	$this->sendItems($game, $game->bets, $game->winner);
     	return response()->json(['type' => 'success']);
     }
@@ -127,7 +124,8 @@ class AdminController extends Controller {
                 if($bet->user == $user) {
                     $itemsInfo[] = $item;
                     if(isset($item['classid'])) {
-                        $returnItems[] = $item['classid'];
+                        if($item['classid'] != "1111111111")
+                            $returnItems[] = $item['classid'];
                     }
                 }else {
                     $items[] = $item;
@@ -135,19 +133,26 @@ class AdminController extends Controller {
             }
         }
 
+
         foreach($items as $item){
             if($item['price'] < 1) $item['price'] = 1;
-            if(($item['price'] >= 10) && ($tempPrice+$item['price'] < $commissionPrice)) {
-                $commissionItems[] = $item;
-                $tempPrice = $tempPrice + $item['price'];
-            } else{
-                $itemsInfo[] = $item;
+            if(($item['price'] >= 5) && ($tempPrice+$item['price'] < $commissionPrice)) {
                 if(isset($item['classid'])) {
-                    $returnItems[] = $item['classid'];
+                    if($item['classid'] != "1111111111") {
+                        $commissionItems[] = $item;
+                        $tempPrice = $tempPrice + $item['price'];
+                    }
+                } else {
+                    $commissionItems[] = $item;
+                    $tempPrice = $tempPrice + $item['price'];
+                }
+            } else{
+                if(isset($item['classid'])) {
+                    if($item['classid'] != "1111111111")
+                        $returnItems[] = $item['classid'];
                 }
             }
         }
-
         $value = [
             'appId' => self::APPID,
             'steamid' => $user->steamid64,
