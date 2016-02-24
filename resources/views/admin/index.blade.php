@@ -89,16 +89,6 @@
           lineColors: ['#3c8dbc'],
           hideHover: 'auto'
         });
-      var bot = new Morris.Line({
-          element: 'line-chart',
-          resize: true,
-          data: {!! $botGet !!},
-          xkey: 'y',
-          ykeys: ['item1'],
-          labels: ['Отдано ботом'],
-          lineColors: ['#BC3C3C'],
-          hideHover: 'auto'
-        });
        	var game = new Morris.Line({
           element: 'game-chart',
           resize: true,
