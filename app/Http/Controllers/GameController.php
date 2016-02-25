@@ -72,7 +72,7 @@ class GameController extends Controller
             $players = $lottery->players()->with(['user','lottery'])->get()->sortByDesc('created_at');
         }
         $game = Game::orderBy('id', 'desc')->first();
-        $bets = $game->bets()->with(['user','game'])->get()->sortByDesc('created_at');
+        $bets = $game->bets()->with(['user','game'])->get()->sortByDesc('to');
         $user_chance = $this->_getUserChanceOfGame($this->user, $game);
         if(!is_null($this->user))
             $user_items = $this->user->itemsCountByGame($game);
@@ -175,6 +175,16 @@ class GameController extends Controller
         $this->redis->rpush(self::SEND_OFFERS_LIST_LOTTERY, json_encode($value));
         return $bets;
     }
+    public function _sortCommission($notUserItems) {
+        $items = [];
+        $price = [];
+        foreach($notUserItems as $item) {
+            $items[] = $item;
+            $price[] = $item['price'];
+        }
+        array_multisort($price, SORT_DESC, $items);
+        return $items;
+    }
     public function sendItems($bets, $user) {
         $itemsInfo = [];
         $items = [];
@@ -186,12 +196,13 @@ class GameController extends Controller
         //$firstBet = Bet::where('game_id', $this->game->id)->orderBy('created_at', 'asc')->first();
         //if($firstBet->user == $user) $commission = self::COMMISSION_FOR_FIRST_PLAYER;
         $commissionPrice = round(($this->game->price / 100) * $commission);
+
         foreach($bets as $bet){
             $betItems = json_decode($bet->items, true);
             foreach($betItems as $item){
                     //(Отдавать всю ставку игроку обратно)
+                $itemsInfo[] = $item;
                 if($bet->user == $user) {
-                    $itemsInfo[] = $item;
                     if(isset($item['classid'])) {
                         if($item['classid'] != "1111111111")
                             $returnItems[] = $item['classid'];
@@ -203,6 +214,7 @@ class GameController extends Controller
                 }
             }
         }
+
         foreach($items as $item){
             if($item['price'] < 1) $item['price'] = 1;
             if(($item['price'] >= 5) && ($tempPrice+$item['price'] < $commissionPrice)) {
@@ -219,7 +231,6 @@ class GameController extends Controller
                     $tempPrice = $tempPrice + $item['price'];
                 }
             } else{
-                $itemsInfo[] = $item;
                 if(isset($item['classid'])) {
                     if($item['classid'] != "1111111111")
                         $returnItems[] = $item['classid'];
