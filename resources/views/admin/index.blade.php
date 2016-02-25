@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="fa frown-o"></i></span>
+            <span class="info-box-icon bg-aqua"><i class="fa fa-frown-o"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Бот отдал</span>
@@ -26,7 +26,7 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa frown-o"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-credit-card"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Сумма пополнений</span>
