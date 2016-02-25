@@ -70,7 +70,7 @@ class AdminController extends Controller {
 			array_push($items, $game);
         }
         $items = json_encode($items);
-        return view('admin.index', compact('sales', 'users', 'botSumBet','items', 'sum', 'plays', 'sumplays', 'average', 'averageGame', 'referer', 'hourgames'));
+        return view('admin.index', compact('sumPay', 'sales', 'users', 'botSumBet','items', 'sum', 'plays', 'sumplays', 'average', 'averageGame', 'referer', 'hourgames'));
     }
     public function send() {
     	return view('admin.send');
