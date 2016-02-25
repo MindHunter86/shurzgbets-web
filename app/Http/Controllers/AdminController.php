@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bet;
 use App\Game;
+use App\Order;
 use App\Shop;
 use App\Item;
 use App\Services\SteamItem;
@@ -31,6 +32,9 @@ class AdminController extends Controller {
     public $redis;
 
     public function index() {
+        $users = User::count();
+        $sales = Shop::where('buyer_id', '>', 0)->count();
+        $sumPay = Order::where('status', 1)->sum('amount');
         $bot = User::where('steamid64', '0000000000000')->first();
         $botBet = Bet::where('user_id', $bot->id)->get();
         $botSumBet = 0;
@@ -66,7 +70,7 @@ class AdminController extends Controller {
 			array_push($items, $game);
         }
         $items = json_encode($items);
-        return view('admin.index', compact('botSumBet','items', 'sum', 'plays', 'sumplays', 'average', 'averageGame', 'referer', 'hourgames'));
+        return view('admin.index', compact('sales', 'users', 'botSumBet','items', 'sum', 'plays', 'sumplays', 'average', 'averageGame', 'referer', 'hourgames'));
     }
     public function send() {
     	return view('admin.send');
