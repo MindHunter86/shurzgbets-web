@@ -152,7 +152,7 @@
         @endforeach
     </div>
     <div class="clear"></div>
-    <div class="gamestart bc"><b>ИГРА НАЧАЛАСЬ! ВНОСИТЕ ДЕПОЗИТЫ!</b> <a class="gamestart_bg" data-modal="#fairplay" href="#fairplay">ЧЕСТНАЯ ИГРА</a> Хэш раунда: <span style="color:#236235;">{{ md5($game->rand_number) }}</span></div>
+    <div class="gamestart bc"><b>ИГРА НАЧАЛАСЬ! ВНОСИТЕ ДЕПОЗИТЫ!</b> <a class="gamestart_bg" data-modal="#fairplay" href="#fairplay">ЧЕСТНАЯ ИГРА</a> Хэш раунда: <span style="color:#236235;" id="roundHash">{{ md5($game->rand_number) }}</span></div>
 @endsection
 
 
