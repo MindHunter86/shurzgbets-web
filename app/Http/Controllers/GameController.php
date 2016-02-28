@@ -24,7 +24,7 @@ class GameController extends Controller
     const SECRET_KEY    = 'oDWx4GYTr4Acbdms';
     const BOT_TRADE_LINK    = 'https://steamcommunity.com/tradeoffer/new/?partner=205485135&token=0hWdC0LX';
 
-    const MIN_PRICE     = 5;                    # Минимальная ставка
+    const MIN_PRICE     = 20;                    # Минимальная ставка
     const MAX_ITEMS     = 20;                   # Максимальное кол-во предметов в ставке
     const COMMISSION    = 10;                   # Комиссия
     const COMMISSION_FOR_FIRST_PLAYER    = 7;   # Комиссия для первого игрока сделавшего ставку.
