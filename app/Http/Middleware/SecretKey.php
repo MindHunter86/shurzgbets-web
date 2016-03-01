@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-//
 class SecretKey
 {
     const SECRET_KEY = 'WJeqewqeihqwWNewIoqweqw';
