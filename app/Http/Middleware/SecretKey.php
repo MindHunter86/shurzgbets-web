@@ -6,7 +6,7 @@ use Closure;
 
 class SecretKey
 {
-    const SECRET_KEY = 'oDWx4GYTr4Acbdms';
+    const SECRET_KEY = 'WJeqewqeihqwWNewIoqweqw';
     /**
      * Handle an incoming request.
      *
