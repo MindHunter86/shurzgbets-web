@@ -145,6 +145,12 @@ $(document).ready(function() {
             }
         })
     });
+    $('.chatSmileOpen').click(function() {
+        $('.chatSmileWindow').toggle();
+    });
+    $('.smileClick').click(function() {
+        $('#sendie').val($('#sendie').val()+' '+$(this).attr("incert"));  
+    });
     $('.addbalBtn').click(function() {
         $.ajax({
             url: '/merchant',
@@ -288,7 +294,7 @@ function replaceLogin(login) {
 }
 
 if (START) {
-    var socket = io.connect('http://node.itemup.ru' /*{ secure: true }*/);
+    var socket = io.connect('https://itemup.ru' { secure: true });
     socket
         .on('connect', function () {
             $('#loader').hide();
