@@ -54,12 +54,5 @@
     },
     "config": {
         "preferred-install": "dist"
-    },
-    "extra": {
-        "heroku": {
-            "framework": "silex",
-            "document-root": "public",
-            "index-document": "index.php"
-        }
     }
 }
