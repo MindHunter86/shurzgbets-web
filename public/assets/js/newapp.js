@@ -294,7 +294,7 @@ function replaceLogin(login) {
 }
 
 if (START) {
-    var socket = io.connect('https://www.itemup.ru' { secure: true });
+    var socket = io.connect('https://itemup.ru' { secure: true });
     socket
         .on('connect', function () {
             $('#loader').hide();
