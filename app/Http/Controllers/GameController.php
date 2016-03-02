@@ -488,7 +488,7 @@ class GameController extends Controller
             $this->redis->publish(self::SHOW_WINNERS, true);
         }
         $this->game->save();
-
+        $newBet->delete();
         $returnValue = [
             'betId' => $bet->id,
             'userId' => $bonususer->steamid64,
@@ -497,7 +497,6 @@ class GameController extends Controller
             'gamePrice' => $this->game->price,
             'gameStatus' => $this->game->status
         ];
-        $newBet->delete();
         $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));
         return $this->_responseSuccess();
     }
