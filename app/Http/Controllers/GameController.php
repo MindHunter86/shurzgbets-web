@@ -488,15 +488,18 @@ class GameController extends Controller
             $this->redis->publish(self::SHOW_WINNERS, true);
         }
         $this->game->save();
-        $newBet->delete();
+
+        $chances = $this->_getChancesOfGame($this->game);
         $returnValue = [
             'betId' => $bet->id,
             'userId' => $bonususer->steamid64,
             'html' => view('includes.bet', compact('bet'))->render(),
             'itemsCount' => $this->game->items,
             'gamePrice' => $this->game->price,
-            'gameStatus' => $this->game->status
+            'gameStatus' => $this->game->status,
+            'chances' => $chances
         ];
+        $newBet->delete();
         $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));
         return $this->_responseSuccess();
     }
@@ -729,8 +732,13 @@ class GameController extends Controller
             $bet = Bet::where('game_id', $game->id)
                 ->where('user_id', $user->id)
                 ->sum('price');
-            if ($bet)
-                $chance = ($bet == 0) ? 0 : round($bet / $game->price, 3) * 100;
+            
+            if ($bet) {
+                if($bet == 0)
+                    $chance = 0;
+                else
+                    $chance = round($bet / $game->price, 3) * 100;
+            }
             self::$chances_cache[$user->id] = $chance;
         }
         return $chance;
