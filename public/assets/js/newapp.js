@@ -84,7 +84,7 @@ $(document).ready(function() {
         return false;
     })
     $('.depositModal').click(function(e) {
-        return helpers.showPopup("http://itemup.ru/deposit"), !1
+        return helpers.showPopup("https://itemup.ru/deposit"), !1
     });
     $('.no-link').click(function () {
         $('.linkMsg').removeClass('msgs-not-visible');
@@ -591,7 +591,7 @@ $(document).on('click', '.vote', function() {
     });
 });
     $(document).on('click', '.depositCardBtn, ._carts', function () {
-        $.post('http://itemup.ru/getBalance', function (data) {
+        $.post('https://itemup.ru/getBalance', function (data) {
             console.log(data);
             $('#balanced').text(data);
         });
