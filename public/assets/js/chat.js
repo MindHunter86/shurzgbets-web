@@ -81,6 +81,7 @@ $(document).ready(function() {
 	    var message = data.message;
 	    var avatar = data.avatar;
 	    var steamid = data.steamid;
+	    console.log(data);
 	   	if(data.is_moderator) {
 	    	username = 'Модератор ('+username+')';
 	    }
