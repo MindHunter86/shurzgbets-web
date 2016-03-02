@@ -19,7 +19,7 @@
     <script src="{{ asset('assets/js/inc.js') }}" ></script>
     <script src="{{ asset('assets/js/main.js') }}" ></script>
     <script>
-        var CHAT_CONNECT = '/chat/2';
+        var CHAT_CONNECT = '/chat/3';
     </script>
 
     @if(!Auth::guest())

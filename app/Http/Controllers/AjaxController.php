@@ -46,7 +46,7 @@ class AjaxController extends Controller
                 'is_vip'    => $this->user->is_vip,
                 'message' => $message
             );
-            $pusher = $fb->push('/chat/2', $push);
+            $pusher = $fb->push('/chat/3', $push);
             if(is_null($pusher)) {
                 return response()->json(['success' => false, 'text' => 'Ошибка сервера (mp01)']);
             }
@@ -57,7 +57,7 @@ class AjaxController extends Controller
                 return response()->json(['success' => false, 'text' => 'Вам недоступная данная функция!']);
             }
             $id = $request->get('id');
-            $pusher = $fb->delete('/chat/2/'.$id);
+            $pusher = $fb->delete('/chat/3/'.$id);
             return response()->json(['success' => true, 'text' => 'Сообщение удалено']);
         }
     }
