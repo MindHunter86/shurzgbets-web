@@ -8,7 +8,7 @@
     <meta name="keywords" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. ITEMUP.RU - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="description" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. ITEMUP.RU - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="csrf-token" content="{!!  csrf_token()   !!}">
-    <link rel="shortcut icon" href="{{ asset('assets/favicon.png') }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="{{ asset('new/css/style.css') }}" />
     <script type="text/javascript" src="{{ asset('new/js/jquery.min.js') }}"></script>
@@ -18,7 +18,6 @@
     <script type="text/javascript" src="{{ asset('new/js/script.js') }}"></script>
     <script src="{{ asset('assets/js/inc.js') }}" ></script>
     <script src="{{ asset('assets/js/main.js') }}" ></script>
-    <script type="text/javascript" src="http://assets.freshdesk.com/widget/freshwidget.js"></script>
     <script>
         var CHAT_CONNECT = '/chat/2';
     </script>
@@ -35,12 +34,10 @@
         </script>
     @endif
 </head>
-<audio id="newBet" src="http://itemup.ru/assets/sounds/newBet.ogg" preload="auto"></audio>
 <audio id="newBet-1" src="{{ asset('new/sound/deposit-1.mp3') }}" preload="auto"></audio>
 <audio id="newBet-2" src="{{ asset('new/sound/deposit-2.mp3') }}" preload="auto"></audio>
 <audio id="newBet-3" src="{{ asset('new/sound/deposit-3.mp3') }}" preload="auto"></audio>
 <audio id="newGame" src="{{ asset('new/sound/game-start.mp3') }}" preload="auto"></audio>
-<audio id="scrollSlider" src="http://itemup.ru/assets/sounds/scroll.mp3" preload="auto"></audio>
 <body>
     <div class="shares">
         <a href="https://vk.com/itemup" target="_blank" class="share"><img style="width: 40px; height: 160px;" src="{{ asset('new/images/Bez-imeni-1.png') }}" /></a>
