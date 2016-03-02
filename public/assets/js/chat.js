@@ -82,10 +82,10 @@ $(document).ready(function() {
 	    var avatar = data.avatar;
 	    var steamid = data.steamid;
 	    console.log(data);
-	   	if(data.is_moderator) {
+	   	if(data.is_moderator == "1") {
 	    	username = 'Модератор ('+username+')';
 	    }
-	    if(data.is_admin) {
+	    if(data.is_admin == "1") {
 	    	username = 'Администратор';
 	    	avatar = '/new/images/admin.jpg'
 	    }
@@ -97,13 +97,13 @@ $(document).ready(function() {
 	    var avatarElement = $("<img class='removeMSG' data-ids='"+data.uuid+"' style='height: 32px; width: 32px;' />");
 	    avatarElement.attr('src', avatar);
 	    nameElement.attr('data-profile', steamid);
-	   	if(data.is_vip) {
+	   	if(data.is_vip == "1") {
 	    	nameElement.attr('style', 'color:orange;');
 	    }
-	   	if(data.is_moderator) {
+	   	if(data.is_moderator == "1") {
 	    	nameElement.attr('style', 'color:green;');
 	    }
-	    if(data.is_admin) {
+	    if(data.is_admin == "1") {
 	    	nameElement.attr('style', 'color:red;');
 	    }
 	    msg.text(message);
