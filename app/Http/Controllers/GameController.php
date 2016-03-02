@@ -733,7 +733,7 @@ class GameController extends Controller
                 ->where('user_id', $user->id)
                 ->sum('price');
             if ($bet)
-                $chance = round($bet / $game->price, 3) * 100;
+                $chance = ($bet == 0) ? 0 : round($bet / $game->price, 3) * 100;
             self::$chances_cache[$user->id] = $chance;
         }
         return $chance;
