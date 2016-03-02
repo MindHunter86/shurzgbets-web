@@ -28,7 +28,7 @@
         "psr-4": {
             "App\\": "app/"
         }
-    }
+    },
     "scripts": {
         "post-install-cmd": [
             "hhvm artisan clear-compiled",
