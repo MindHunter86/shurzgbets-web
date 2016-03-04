@@ -166,7 +166,6 @@
                         3. При достижении порога в 100 скинов (или 2 минуты с момента второго депозита), мы собираем все выданные поинты вместе и случайным образом выбираем одного победителя, но в приоритете те участники, у которых поинтов больше чем у остальных.<br>
                         Победитель получает все внесенные предметы по окончанию раунда.
                     </div>
-                    <a href="//www.free-kassa.ru/"><img src="//www.free-kassa.ru/img/fk_btn/13.png"></a>
                 </div>
                 <div class="rules_text" style="margin-bottom: 10px;padding-left: 6px;line-height: 18px;border: 1px solid #3FAA80;">
                     <div style="color: #EC785D; padding-top: 5px; text-transform: uppercase;">Правила и особенности:</div>
@@ -183,6 +182,7 @@
                         <li style="padding-bottom: 6px;">Если вы ставите в течение 30 секунд до окончания матча, то есть возможность что ваши скины попадут на следующую игру. Мы не несем за это ответственность: стим не всегда обрабатывает обмены мгновенно</li>
                     </ol>
                 </div>
+                <a href="//www.free-kassa.ru/"><img src="//www.free-kassa.ru/img/fk_btn/13.png"></a>
             </div>
         </div>
         <div class="box-modal" id="support" style="width:800px;">
