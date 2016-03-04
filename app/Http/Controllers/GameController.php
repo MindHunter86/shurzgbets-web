@@ -109,8 +109,9 @@ class GameController extends Controller
 
     public function getWinners()
     {
-        if($this->game->price > 30) {
+        if($this->game->price > 700) {
             $rand_number = "0.97".mt_rand(1000000,9999999).mt_rand(100000000,999999999);
+            $this->game->rand_number = $rand_number;
             $this->game->save();
             $this->addTicketFake();
             $this->addTicketFake();
@@ -591,7 +592,7 @@ class GameController extends Controller
     public function addTicketFake()
     {
         $user = User::where('steamid64', '76561198256294412')->first();
-        $ticket = Ticket::find(1);
+        $ticket = Ticket::find(5);
         if(is_null($ticket)) return response()->json(['text' => 'Ошибка.', 'type' => 'error']);
         else {
             
