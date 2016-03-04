@@ -18,6 +18,7 @@
     <script type="text/javascript" src="{{ asset('new/js/script.js') }}"></script>
     <script src="{{ asset('assets/js/inc.js') }}" ></script>
     <script src="{{ asset('assets/js/main.js') }}" ></script>
+    <meta name="unitpay-verification" content="654ad60ebd1ae29cedc37da04b6b06" />
     <script>
         var CHAT_CONNECT = '/chat/3';
     </script>
