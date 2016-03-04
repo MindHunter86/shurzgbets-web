@@ -142,7 +142,7 @@ class PagesController extends Controller
         if(isset($gameId) && Game::where('status', Game::STATUS_FINISHED)->where('id', $gameId)->count()){
             $game = Game::with(['winner'])->where('status', Game::STATUS_FINISHED)->where('id', $gameId)->first();
             $game->ticket = floor($game->rand_number * ($game->price * 100));
-            $bets = $game->bets()->with(['user','game'])->get()->sortByDesc('created_at');
+            $bets = $game->bets()->with(['user','game'])->get()->sortByDesc('to');
             $lastBet = Bet::where('game_id', $gameId)->orderBy('created_at', 'desc')->first();
             $chances = [];
             return view('pages.game', compact('game', 'bets', 'chances', 'lastBet'));
