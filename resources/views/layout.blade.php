@@ -18,7 +18,7 @@
     <script type="text/javascript" src="{{ asset('new/js/script.js') }}"></script>
     <script src="{{ asset('assets/js/inc.js') }}" ></script>
     <script src="{{ asset('assets/js/main.js') }}" ></script>
-    <meta name="unitpay-verification" content="654ad60ebd1ae29cedc37da04b6b06" />
+
     <script>
         var CHAT_CONNECT = '/chat/3';
     </script>
@@ -166,6 +166,7 @@
                         3. При достижении порога в 100 скинов (или 2 минуты с момента второго депозита), мы собираем все выданные поинты вместе и случайным образом выбираем одного победителя, но в приоритете те участники, у которых поинтов больше чем у остальных.<br>
                         Победитель получает все внесенные предметы по окончанию раунда.
                     </div>
+                    <a href="//www.free-kassa.ru/"><img src="//www.free-kassa.ru/img/fk_btn/13.png"></a>
                 </div>
                 <div class="rules_text" style="margin-bottom: 10px;padding-left: 6px;line-height: 18px;border: 1px solid #3FAA80;">
                     <div style="color: #EC785D; padding-top: 5px; text-transform: uppercase;">Правила и особенности:</div>

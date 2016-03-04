@@ -18,7 +18,7 @@ namespace App;
 class Payment {
     const CULTURE_EN = 'en';
     const CULTURE_RU = 'ru';
-    private $baseUrl      = 'https://merchant.roboxchange.com/Index.aspx?';
+    private $baseUrl      = 'http://www.free-kassa.ru/merchant/cash.php?';
     private $isTestMode   = false;
     private $valid        = false;
     private $data;

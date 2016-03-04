@@ -1,8 +1,8 @@
 <?php
 return [
-    'login'      => 'itemup',
-    'password1'  => 'PBcnB1JHTy8Tp69g4xHI', //HuMqzw6RmQ2AHWG594Nj
-    'password2'  => 'V3UKAkw19xr3VPUOme5N', //urS8vbAi2WkjE97xDe2Y
+    'login'      => '24436',
+    'password1'  => 'zc7kfbt9', //PBcnB1JHTy8Tp69g4xHI
+    'password2'  => 'w4yj5rk9', //V3UKAkw19xr3VPUOme5N
     'testmode'   => false,
     'url'		 => 'http://itemup.ru'
 ];
