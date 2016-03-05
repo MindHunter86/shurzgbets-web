@@ -6,7 +6,7 @@ use Exception;
 
 class BackPack {
 	const GET_ITEMS = 'http://steamcommunity.com/market/priceoverview/?appid=730&currency=5&market_hash_name=';
-	const DOLLAR = 75;
+	const DOLLAR = 71;
 
     public  $classid;
     public  $name;
