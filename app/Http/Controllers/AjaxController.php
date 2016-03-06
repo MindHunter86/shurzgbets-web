@@ -6,6 +6,7 @@ use App\Game;
 use App\Shop;
 use App\User;
 use App\Item;
+use App\Bet;
 use Firebase\Firebase;
 use App\Services\BackPack;
 use Illuminate\Http\Request;
@@ -35,6 +36,10 @@ class AjaxController extends Controller
             }
             if(strlen($message) > 200) {
                 return response()->json(['success' => false, 'text' => 'Максимум 200 символов']);
+            }
+            $gamesCount = Bet::where('user_id', $this->user->id)->count();
+            if($gamesCount < 5) {
+                return response()->json(['success' => false, 'text' => 'Вы должны сделать хотябы 5 депозитов на сайте!']);
             }
             $message = str_replace($censure, '*мат*', $message);
             $push = array(
