@@ -31,6 +31,6 @@ class CreatePlayersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('players');
+        Schema::drop('players');//
     }
 }
