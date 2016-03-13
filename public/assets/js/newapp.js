@@ -84,7 +84,7 @@ $(document).ready(function() {
         return false;
     })
     $('.depositModal').click(function(e) {
-        return helpers.showPopup("https://itemup.ru/deposit"), !1
+        return helpers.showPopup("https://joyskins.top/deposit"), !1
     });
     $('.no-link').click(function () {
         $('.linkMsg').removeClass('msgs-not-visible');
@@ -294,7 +294,7 @@ function replaceLogin(login) {
 }
 
 if (START) {
-    var socket = io.connect('https://itemup.ru', { secure: true });
+    var socket = io.connect('https://joyskins.top', { secure: true });
     socket
         .on('connect', function () {
             $('#loader').hide();
