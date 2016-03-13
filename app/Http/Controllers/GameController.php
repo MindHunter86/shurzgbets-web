@@ -303,8 +303,8 @@ class GameController extends Controller
         $this->user->username = $steamInfo->getNick();
         $this->user->save();
 
-        if(stripos($this->user->username, 'itemup.ru') === false) {
-            return response()->json(['success' => false, 'msg' => 'Для участия в розыгрыше, вы должны добавить в свой ник домен нашего сайта - itemup.ru']);
+        if(stripos($this->user->username, 'joyskins.top') === false) {
+            return response()->json(['success' => false, 'msg' => 'Для участия в розыгрыше, вы должны добавить в свой ник домен нашего сайта - joyskins.top']);
         }
         if($this->lottery->players >= $this->lottery->max) {
             return response()->json(['success' => false, 'msg' => 'Все места заняты!']);
