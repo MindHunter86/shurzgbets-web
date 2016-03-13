@@ -244,27 +244,27 @@
                 </div>
                 <div class="modalcart_full">
                     <div class="modalcart_info">
-                        <div class="modalcart_info_rub">30 руб.</div>
+                        <div class="modalcart_info_rub">25 руб.</div>
                         <div class="modalcart_info_img"><img src="{{ asset('new/images/_carts_1.png') }}" alt="" /></div>
                         <div class="modalcart_info_link _links_1" onclick="addTicket(1, this); return false;">Внести</div>
                     </div>
                     <div class="modalcart_info">
-                        <div class="modalcart_info_rub">60 руб.</div>
+                        <div class="modalcart_info_rub">50 руб.</div>
                         <div class="modalcart_info_img"><img src="{{ asset('new/images/_carts_2.png') }}" alt="" /></div>
                         <div class="modalcart_info_link _links_2" onclick="addTicket(2, this); return false;">Внести</div>
                     </div>
                     <div class="modalcart_info">
-                        <div class="modalcart_info_rub">120 руб.</div>
+                        <div class="modalcart_info_rub">150 руб.</div>
                         <div class="modalcart_info_img"><img src="{{ asset('new/images/_carts_3.png') }}" alt="" /></div>
                         <div class="modalcart_info_link _links_3" onclick="addTicket(3, this); return false;">Внести</div>
                     </div>
                     <div class="modalcart_info">
-                        <div class="modalcart_info_rub">240 руб.</div>
+                        <div class="modalcart_info_rub">300 руб.</div>
                         <div class="modalcart_info_img"><img src="{{ asset('new/images/_carts_4.png') }}" alt="" /></div>
                         <div class="modalcart_info_link _links_4" onclick="addTicket(4, this); return false;">Внести</div>
                     </div>
                     <div class="modalcart_info">
-                        <div class="modalcart_info_rub">480 руб.</div>
+                        <div class="modalcart_info_rub">1000 руб.</div>
                         <div class="modalcart_info_img"><img src="{{ asset('new/images/_carts_5.png') }}" alt="" /></div>
                         <div class="modalcart_info_link _links_5" onclick="addTicket(5, this); return false;">Внести</div>
                     </div>
