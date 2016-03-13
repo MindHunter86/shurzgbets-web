@@ -115,23 +115,23 @@
                 <div class="cart-loop">
                     <div class="_carts _carts-1">
                         <div class="cart-bg"><img src="{{ asset('new/images/carts-1.png') }}" alt="" /></div>
-                        <div class="cart-rub">30p.</div>
+                        <div class="cart-rub">25p.</div>
                     </div>
                     <div class="_carts _carts-2">
                         <div class="cart-bg"><img src="{{ asset('new/images/carts-2.png') }}" alt="" /></div>
-                        <div class="cart-rub">60р.</div>
+                        <div class="cart-rub">50р.</div>
                     </div>
                     <div class="_carts _carts-3">
                         <div class="cart-bg"><img src="{{ asset('new/images/carts-3.png') }}" alt="" /></div>
-                        <div class="cart-rub">120р.</div>
+                        <div class="cart-rub">150р.</div>
                     </div>
                     <div class="_carts _carts-4">
                         <div class="cart-bg"><img src="{{ asset('new/images/carts-4.png') }}" alt="" /></div>
-                        <div class="cart-rub">240р.</div>
+                        <div class="cart-rub">300р.</div>
                     </div>
                     <div class="_carts _carts-5">
                         <div class="cart-bg"><img src="{{ asset('new/images/carts-5.png') }}" alt="" /></div>
-                        <div class="cart-rub">480р.</div>
+                        <div class="cart-rub">1000р.</div>
                     </div>
                 </div>
                 <div class="cart-button"><a class="depositCardBtn" href="#"></a></div>
