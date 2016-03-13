@@ -237,7 +237,7 @@
         <div class="box-modal" id="upCards" style="width:560px;">
             <div class="box-modal-top"><div class="box-modal_close arcticmodal-close"></div>Выберите фишки <b>которые хотите купить и внести в игру</b></div>
             <div class="modalcart">
-                <div class="modalcart_balance">ВАШ БАЛАНС: <b id="balanced">0</b> <span>руб.</span></div>
+                <div class="modalcart_balance">ВАШ БАЛАНС: <b id="balanced">@if(Auth::check()) {{$u->money}} @else 0 @endif</b> <span>руб.</span></div>
                 <div class="modalcart_form">
                     <input id="sumadd" type="text" placeholder="Введите сумму" />
                     <button type="submit" value="" class="addbalBtn"></button>
