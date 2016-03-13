@@ -16,8 +16,8 @@ class CreatePlayersTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('game_id')->unsigned()->nullable();
-            $table->foreign('game_id')->references('id')->on('lottery')->onDelete('cascade');
+            $table->integer('lottery_id')->unsigned()->nullable();
+            $table->foreign('lottery_id')->references('id')->on('lottery')->onDelete('cascade');
             $table->integer('from');
             $table->integer('to');
             $table->timestamps();
