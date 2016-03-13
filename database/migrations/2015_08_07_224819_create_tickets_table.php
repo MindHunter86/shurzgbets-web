@@ -19,29 +19,29 @@ class CreateTicketsTable extends Migration
             $table->float('price');
         });
         \App\Ticket::create([
-            'name' => 'Карточка на 315 руб',
-            'img'  => 'assets/img/tickets/card_1.png',
-            'price' => 315
+            'name' => 'Карточка на 25 руб',
+            'img'  => '/new/images/carts-1.png',
+            'price' => 25
         ]);
         \App\Ticket::create([
-            'name' => 'Карточка на 630 руб',
-            'img'  => 'assets/img/tickets/card_2.png',
-            'price' => 630
+            'name' => 'Карточка на 50 руб',
+            'img'  => '/new/images/carts-2.png',
+            'price' => 50
         ]);
         \App\Ticket::create([
-            'name' => 'Карточка на 1575 руб',
-            'img'  => 'assets/img/tickets/card_3.png',
-            'price' => 1575
+            'name' => 'Карточка на 150 руб',
+            'img'  => '/new/images/carts-3.png',
+            'price' => 150
         ]);
         \App\Ticket::create([
-            'name' => 'Карточка на 3150 руб',
-            'img'  => 'assets/img/tickets/card_4.png',
-            'price' => 3150
+            'name' => 'Карточка на 300 руб',
+            'img'  => '/new/images/carts-4.png',
+            'price' => 300
         ]);
         \App\Ticket::create([
-            'name' => 'Карточка на 6300 руб',
-            'img'  => 'assets/img/tickets/card_5.png',
-            'price' => 6300
+            'name' => 'Карточка на 1000 руб',
+            'img'  => '/new/images/carts-5.png',
+            'price' => 1000
         ]);
     }
 

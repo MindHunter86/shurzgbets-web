@@ -20,6 +20,7 @@ class CreateGamesTable extends Migration
             $table->integer('status');
             $table->integer('items');
             $table->float('price');
+            $table->float('comission');
             $table->timestamp('started_at');
             $table->timestamp('finished_at');
             $table->json('won_items');

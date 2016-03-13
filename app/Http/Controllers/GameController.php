@@ -22,7 +22,7 @@ use App\Http\Controllers\Controller;
 class GameController extends Controller
 {
     const SECRET_KEY    = 'oDWx4GYTr4Acbdms';
-    const BOT_TRADE_LINK    = 'https://steamcommunity.com/tradeoffer/new/?partner=205485135&token=0hWdC0LX';
+    const BOT_TRADE_LINK    = 'https://steamcommunity.com/tradeoffer/new/?partner=321083728&token=ZXvtE1yD';
 
     const MIN_PRICE     = 5;                    # Минимальная ставка
     const MAX_ITEMS     = 20;                   # Максимальное кол-во предметов в ставке

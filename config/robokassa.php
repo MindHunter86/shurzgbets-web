@@ -1,8 +1,8 @@
 <?php
 return [
-    'login'      => 'itemup',
-    'password1'  => 'PBcnB1JHTy8Tp69g4xHI', //PBcnB1JHTy8Tp69g4xHI
-    'password2'  => 'V3UKAkw19xr3VPUOme5N', //V3UKAkw19xr3VPUOme5N
+    'login'      => 'joyskins.top',
+    'password1'  => '6qdM3K8Kank1uVWPz8eHfjA9e5ubmVwV', //PBcnB1JHTy8Tp69g4xHI
+    'password2'  => '2G4O1zwy8K4DhF3GORvRLYVwEoVwuqsf', //V3UKAkw19xr3VPUOme5N
     'testmode'   => false,
-    'url'		 => 'http://itemup.ru'
+    'url'		 => 'https://joyskins.top'
 ];

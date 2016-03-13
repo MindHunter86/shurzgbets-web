@@ -361,7 +361,7 @@ $(document).on('click', '.vote', function() {
     });
 });
     $(document).on('click', '.depositCardBtn, .mainUpCardCont, .items-block-item.card', function () {
-        $.post('http://itemup.ru/getBalance', function (data) {
+        $.post('https://joyskins.top/getBalance', function (data) {
             console.log(data);
             $('#balanced').text(data);
         });

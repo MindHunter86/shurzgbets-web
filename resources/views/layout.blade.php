@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ITEMUP</title>
+    <title>JOYSKINS.TOP</title>
     <meta charset="utf-8">
-    <meta property="og:title" content="ITEMUP.RU" />
-    <meta property="og:image" content="{{ asset('new/images/itemup.jpg') }}" />
-    <meta name="keywords" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. ITEMUP.RU - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
-    <meta name="description" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. ITEMUP.RU - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
+    <meta property="og:title" content="JOYSKINS.TOP" />
+    <meta name="keywords" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. JOYSKINS.TOP - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
+    <meta name="description" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. JOYSKINS.TOP - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="csrf-token" content="{!!  csrf_token()   !!}">
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
@@ -20,7 +19,7 @@
     <script src="{{ asset('assets/js/main.js') }}" ></script>
 
     <script>
-        var CHAT_CONNECT = '/chat/3';
+        var CHAT_CONNECT = '/chat/4';
     </script>
 
     @if(!Auth::guest())
@@ -41,7 +40,7 @@
 <audio id="newGame" src="{{ asset('new/sound/game-start.mp3') }}" preload="auto"></audio>
 <body>
     <div class="shares">
-        <a href="https://vk.com/itemup" target="_blank" class="share"><img style="width: 40px; height: 160px;" src="{{ asset('new/images/Bez-imeni-1.png') }}" /></a>
+        <a href="https://vk.com/joyskinsru" target="_blank" class="share"><img style="width: 40px; height: 160px;" src="{{ asset('new/images/Bez-imeni-1.png') }}" /></a>
     </div>
     <div class="chats" style="display:none;">
         <a href="#" class="share chatShow"><img style="width: 40px; height: 160px;" src="{{ asset('new/images/chatOpen.png') }}" /></a>
@@ -140,13 +139,13 @@
             @endif
         </div>
     </div>
-    <div class="footer"><a href="https://vk.com/itemup">МЫ ВКонтакте</a></div>
+    <div class="footer"><a href="https://vk.com/joyskinsru">МЫ ВКонтакте</a></div>
     <div class="none">
         <div class="box-modal" id="about" style="width:900px;">
             <div class="box-modal-top"><div class="box-modal_close arcticmodal-close"></div>О сайте</div>
             <div class="rules">
                 <div style="margin-bottom: 10px; border-left: 1px solid #FFBD4C; padding-left: 6px;">
-                    <span style="color: #FFBD57;">ITEMUP</span> – Сервис в котором участвующие вносят свои предметы (скины) и когда в сумме набирается 100 предметов или проходит 3 минуты с момента второго депозита, система определяет 1 победителя, которому и достаются все внесенные предметы.<br>
+                    <span style="color: #FFBD57;">JoySkins</span> – Сервис в котором участвующие вносят свои предметы (скины) и когда в сумме набирается 100 предметов или проходит 3 минуты с момента второго депозита, система определяет 1 победителя, которому и достаются все внесенные предметы.<br>
                     Победитель определяется случайным образом, шанс выигрыша зависит от стоимости внесенных скинов.
                 </div>
                 <div style="margin-bottom: 10px; padding: 5px 6px; border: 1px solid #5cb85c;">
@@ -274,7 +273,7 @@
                     <b>ДЛЯ ЧЕГО НУЖНЫ ФИШКИ?</b>
                     Вы можете вносить депозит фишками вместо предметов. Фишки моментально вносятся в раунд без задержек.
                     <br /><br />
-                    Фишки меняются на деньги, на которые вы можете совершать покупки в нашем магазине <a href="/shop" target="_blank">ITEMUP.RU/SHOP</a>
+                    Фишки меняются на деньги, на которые вы можете совершать покупки в нашем магазине <a href="/shop" target="_blank">JOYSKINS.TOP/SHOP</a>
                 </div>
             </div>
         </div>

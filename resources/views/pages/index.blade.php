@@ -418,7 +418,7 @@
         <div class="myUpCardsInfo">
         <div class="myUpCardsInfoTitle">Для чего нужны фишки?</div>
         <p style="margin-bottom: 8px;">Вы сможете вносить депoзит фишками, вместо предметов. <br>Фишки моментально вносится в раунд без задержек.</p>
-        <p>Фишки меняются на деньги и вы можете совершать покупки в нашем магазине <a href="https://itemup.ru/shop" target="_blank">ITEMUP.RU/SHOP</a></p>
+        <p>Фишки меняются на деньги и вы можете совершать покупки в нашем магазине <a href="https://JoySkins.Top/shop" target="_blank">JOYSKINS.TOP/SHOP</a></p>
         </div>
     </div>
 </div>
