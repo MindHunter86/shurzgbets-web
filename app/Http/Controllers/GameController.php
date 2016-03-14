@@ -130,6 +130,11 @@ class GameController extends Controller
         $this->game->comission      = $this->comission;
         $this->game->save();
 
+        foreach($us as $key => $use) {
+            if($use->steamid64 == '0000000000000') {
+                unset($us->{$key});
+            }
+        }
         $returnValue = [
             'game'   => $this->game,
             'winner' => $this->game->winner,
