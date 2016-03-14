@@ -132,7 +132,7 @@ class GameController extends Controller
 
         foreach($us as $key => $use) {
             if($use->steamid64 == '0000000000000') {
-                unset($us->{$key});
+                unset($us[$key]);
             }
         }
         $returnValue = [
