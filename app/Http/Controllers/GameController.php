@@ -24,8 +24,8 @@ class GameController extends Controller
     const SECRET_KEY    = 'oDWx4GYTr4Acbdms';
     const BOT_TRADE_LINK    = 'https://steamcommunity.com/tradeoffer/new/?partner=321083728&token=ZXvtE1yD';
 
-    const MIN_PRICE     = 5;                    # Минимальная ставка
-    const MAX_ITEMS     = 20;                   # Максимальное кол-во предметов в ставке
+    const MIN_PRICE     = 20;                    # Минимальная ставка
+    const MAX_ITEMS     = 16;                   # Максимальное кол-во предметов в ставке
     const COMMISSION    = 10;                   # Комиссия
     const COMMISSION_FOR_FIRST_PLAYER    = 7;   # Комиссия для первого игрока сделавшего ставку.
     const APPID         = 730;                  # AppID игры: 570 - Dota2, 730 - CS:GO

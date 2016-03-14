@@ -36,7 +36,7 @@
             <div class="hoax-button"></div>
             <div class="hoax-link">
                 <a href="{{ route('giveaway') }}">История розыгрышей</a>
-                <a href="#" onclick="$('#modal-1').arcticmodal(); return false;">Как это работает?</a>
+                <!--<a href="#" onclick="$('#modal-1').arcticmodal(); return false;">Как это работает?</a>-->
             </div>
         </div>
     </div>
@@ -90,7 +90,7 @@
                 @if(!Auth::guest())
                 <div class="game-button-2">
                     <a href="{{ route('deposit') }}" target="_blank" class="browser depositModal @if(empty($u->accessToken)) no-link @endif rulesBtn"></a>
-                    <a href="steam://url/SteamIDPage/76561198165750863" class="client @if(empty($u->accessToken)) no-link @endif rulesBtn"></a>
+                    <a href="steam://url/SteamIDPage/76561198281349456" class="client @if(empty($u->accessToken)) no-link @endif rulesBtn"></a>
                 </div>
                 @else
                 <div class="game-button"><a href="{{ route('login') }}" target="_blank"></a></div>

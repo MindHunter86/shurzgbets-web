@@ -40,7 +40,7 @@
 <audio id="newGame" src="{{ asset('new/sound/game-start.mp3') }}" preload="auto"></audio>
 <body>
     <div class="shares">
-        <a href="https://vk.com/joyskinsru" target="_blank" class="share"><img style="width: 40px; height: 160px;" src="{{ asset('new/images/Bez-imeni-1.png') }}" /></a>
+        <a href="https://vk.com/joyskins_top" target="_blank" class="share"><img style="width: 40px; height: 160px;" src="{{ asset('new/images/Bez-imeni-1.png') }}" /></a>
     </div>
     <div class="chats" style="display:none;">
         <a href="#" class="share chatShow"><img style="width: 40px; height: 160px;" src="{{ asset('new/images/chatOpen.png') }}" /></a>
@@ -75,11 +75,6 @@
                 </div>
             </div>
         </div>
-        @if(!Auth::guest())
-            @if($u->is_admin)
-                <div class="info-md5" style="padding-top: 15px;     color: #3FAA5D;">Для вас доступная админ-панель <a target="_blank" href="/admin">(клик)</a></div>
-            @endif
-        @endif
         <div class="stats full">
             <div><b class="stats-onlineNow">0</b>Сейчас онлайн</div>
             <div><b class="stats-gamesToday">{{ \App\Game::gamesToday() }}</b>Игр сегодня</div>
@@ -105,7 +100,7 @@
             <div class="chatText">
                 <textarea id="sendie" placeholder="Введите сообщение"></textarea>
                 @if($god)
-                <a class="chatSmileOpen">
+                <!--<a class="chatSmileOpen">
                     <img class="rotsmile" src="{{ asset('new/images/smile.png') }}" style="width: 20px;">
                 </a>
                 <div class="chatSmileWindow" style="display: none;">
@@ -134,12 +129,12 @@
                     <img src="https://dotalucky.ru/dotalucky/smile/6.png" class="smileClick" incert="*6*"> 
                     <img src="https://dotalucky.ru/dotalucky/smile/7.png" class="smileClick" incert="*7*"> 
                     <img src="https://dotalucky.ru/dotalucky/smile/8.png" class="smileClick" incert="*8*">   
-                </div>
+                </div>-->
+                @endif
             </div>
-            @endif
         </div>
     </div>
-    <div class="footer"><a href="https://vk.com/joyskinsru">МЫ ВКонтакте</a></div>
+    <div class="footer"><a href="https://vk.com/joyskins_top">МЫ ВКонтакте</a></div>
     <div class="none">
         <div class="box-modal" id="about" style="width:900px;">
             <div class="box-modal-top"><div class="box-modal_close arcticmodal-close"></div>О сайте</div>
