@@ -233,7 +233,7 @@ class GameController extends Controller
                     if($item['classid'] != "1111111111") {
                         $commissionItems[] = $item;
                         $tempPrice = $tempPrice + $item['price'];
-                        if($item['price'] <= 30 && count($bonus) < 2) {
+                        if($item['price'] <= 17 && count($bonus) < 2) {
                             $bonus[] = $item; 
                         }
                     }
