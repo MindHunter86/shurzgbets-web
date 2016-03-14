@@ -813,7 +813,7 @@ class GameController extends Controller
                 $missing = true;
                 return;
             }
-            if(strripos($item['market_hash_name'], 'Souvenir')) {
+            if(strpos($item['market_hash_name'], 'Souvenir') === true) {
                 $souvenir = true;
                 return;
             }
