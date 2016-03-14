@@ -36,7 +36,7 @@
             <div class="hoax-button"></div>
             <div class="hoax-link">
                 <a href="{{ route('giveaway') }}">История розыгрышей</a>
-                <!--<a href="#" onclick="$('#modal-1').arcticmodal(); return false;">Как это работает?</a>-->
+                <a style="display:none;" href="#" onclick="$('#modal-1').arcticmodal(); return false;">Как это работает?</a>
             </div>
         </div>
     </div>
