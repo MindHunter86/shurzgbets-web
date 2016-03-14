@@ -117,12 +117,9 @@ class GameController extends Controller
             $this->addTicketFake();
         }*/
         $us = $this->game->users();
-        foreach($us as $key => $use) {
-            if($use->steamid64 == '0000000000000') {
-                unset($us[$key]);
-                break;
-            }
-        }
+        $us = $us->filter(function ($item) {
+            return $item->steamid64 != '0000000000000';
+        });
         $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
         $winTicket = round($this->game->rand_number * $lastBet->to);
 
