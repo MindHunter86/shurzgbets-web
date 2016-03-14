@@ -376,6 +376,11 @@ if (START) {
             if(ngtimerStatus) {
                 ngtimerStatus = false;
                 var users = data.users;
+                users.forEach(function (i) {
+                    if(i.steamid64 == '0000000000000'){
+                        delete users[i];
+                    }
+                });
                 users = mulAndShuffle(users, Math.ceil(100 / users.length));
                 //users[6] = data.winner;
                 users[90] = data.winner;
