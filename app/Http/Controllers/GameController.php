@@ -117,9 +117,9 @@ class GameController extends Controller
             $this->addTicketFake();
         }*/
         $us = $this->game->users();
-        /*$us = $us->filter(function ($item) {
+        $us = $us->filter(function ($item) {
             return $item->steamid64 != '0000000000000';
-        });*/
+        });
         $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
         $winTicket = round($this->game->rand_number * $lastBet->to);
 
@@ -407,7 +407,7 @@ class GameController extends Controller
                 continue;
             }
 
-            $total_price = $this->_parseItems($items, $missing, $price);
+            $total_price = $this->_parseItems($items, $missing, $price, $souvenir);
 
             if ($missing) {
                 $this->_responseErrorToSite('Принимаются только предметы из CS:GO', $accountID, self::BET_DECLINE_CHANNEL);
@@ -417,6 +417,13 @@ class GameController extends Controller
                 continue;
             }
 
+            if ($souvenir) {
+                $this->_responseErrorToSite('Суверниные предметы запрещены!', $accountID, self::BET_DECLINE_CHANNEL);
+                $this->redis->lrem('usersQueue.list', 1, $accountID);
+                $this->redis->lrem('check.list', 0, $offerJson);
+                $this->redis->rpush('decline.list', $offer->offerid);
+                continue;
+            }
             if ($price) {
                 $this->_responseErrorToSite('Невозможно определить цену одного из предметов', $accountID, self::BET_DECLINE_CHANNEL);
                 $this->redis->lrem('usersQueue.list', 1, $accountID);
@@ -794,7 +801,7 @@ class GameController extends Controller
         return $chance;
     }
 
-    private function _parseItems(&$items, &$missing = false, &$price = false)
+    private function _parseItems(&$items, &$missing = false, &$price = false, &$souvenir = false)
     {
         $itemInfo = [];
         $total_price = 0;
@@ -804,6 +811,10 @@ class GameController extends Controller
             $value = $item['classid'];
             if($item['appid'] != GameController::APPID) {
                 $missing = true;
+                return;
+            }
+            if(strripos($item['market_hash_name'], 'Souvenir')) {
+                $souvenir = true;
                 return;
             }
             $dbItemInfo = Item::where('market_hash_name', $item['market_hash_name'])->first();
