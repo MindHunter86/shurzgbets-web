@@ -85,11 +85,6 @@ $(document).ready(function() {
 	   	if(data.is_moderator == "1") {
 	    	username = 'Модератор ('+username+')';
 	    }
-	    if(data.is_admin == "1") {
-	    	username = 'Администратор';
-	    	avatar = '/new/images/admin.jpg'
-	    }
-
 	    //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
 	    var messageElement = $("<div class='chatMessage clearfix' data-uuid='"+data.uuid+"'>");
 	    var msg = $('<div class="body"></div>');
@@ -102,9 +97,6 @@ $(document).ready(function() {
 	    }
 	   	if(data.is_moderator == "1") {
 	    	nameElement.attr('style', 'color:green;');
-	    }
-	    if(data.is_admin == "1") {
-	    	nameElement.attr('style', 'color:red;');
 	    }
 	    msg.text(message);
 	    nameElement.text(username);
