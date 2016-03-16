@@ -376,9 +376,9 @@ if (START) {
             if(ngtimerStatus) {
                 ngtimerStatus = false;
                 var users = data.users;
-                users = mulAndShuffle(users, Math.ceil(100 / users.length));
-                //users[6] = data.winner;
-                users[90] = data.winner;
+                users = mulAndShuffle(users, Math.ceil(110 / users.length));
+                users[6] = data.winner;
+                users[100] = data.winner;
                 html = '';
                 users.forEach(function (i) {
                     html += '<li><img src="' + i.avatar + '"></li>';
