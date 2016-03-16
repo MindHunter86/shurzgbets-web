@@ -398,7 +398,7 @@ if (START) {
                 $('.winner-name u').text('');
                 $('.all-players-list').removeClass('active');
 
-                var randoms = Math.rand(0,7);
+                var randoms = randomInteger(0,7);
                 if(data.showSlider) {
                     setTimeout(function () {
                         console.log(randoms);
