@@ -72,10 +72,11 @@ class GameController extends Controller
         }
         $game = Game::orderBy('id', 'desc')->first();
         $bets = $game->bets()->with(['user','game'])->get()->sortByDesc('to');
+        $percents = $this->_getChancesOfGame($game, true);
         $user_chance = $this->_getUserChanceOfGame($this->user, $game);
         if(!is_null($this->user))
             $user_items = $this->user->itemsCountByGame($game);
-        return view('pages.index', compact('game', 'bets', 'user_chance', 'user_items', 'lottery', 'players'));
+        return view('pages.index', compact('game', 'bets', 'user_chance','percents', 'user_items', 'lottery', 'players'));
     }
 
     public function getLastGame()

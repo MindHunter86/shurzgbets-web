@@ -138,8 +138,8 @@
             </div>
         </div>
     </div>
-    <div class="part @if(count($user_chance) == 0) none @endif" id="game-chances">
-        @foreach($user_chance as $p)
+    <div class="part @if(count($percents) == 0) none @endif" id="game-chances">
+        @foreach($percents as $p)
         <div class="block">
         <ul>
             <li>
