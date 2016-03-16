@@ -138,6 +138,20 @@
             </div>
         </div>
     </div>
+    <div class="part @if(count($user_chance) == 0) none @endif" id="game-chances">
+        @foreach($user_chance as $p)
+        <div class="block">
+        <ul>
+            <li>
+                <span class="queue-ava">
+                    <span class="queue-col">{{ $p->chance }}%</span>
+                    <img src="{{ $p->avatar }}" alt="" />
+                </span>
+            </li>
+        </ul>
+        </div>
+        @endforeach
+    </div>
     <div class="queue queueMsg msgs-not-visible">
         <div class="full">
             <ul class="que">

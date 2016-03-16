@@ -311,13 +311,20 @@ if (START) {
             $('.progressbar-text').html('Внесено '+data.itemsCount+' из 100 предметов');
             $('.progressbar-value').css('width', data.itemsCount + '%');
             console.log( data.chances);
+            html_chances = '';
+            data.chances = sortByChance(data.chances);
             data.chances.forEach(function(info){
                 if(USER_ID == info.steamid64){
                     $('#myItems').text(info.items + n2w(info.items, [' предмет', ' предмета', ' предметов']));
                     $('#myChance').text(info.chance);
+                    $('.myDepositButton').addClass('big').text('Внести еще предметов');
                 }
                 $('.chance_' + info.steamid64).text('('+ info.chance +' %)');
+                html_chances += '<div class="block"><ul><li><span class="queue-ava"><span class="queue-col">' + info.chance + '%</span><img src="' + info.avatar + '" alt="" /></span></li></ul></div>';
             });
+            
+            $('#game-chances').removeClass('none');
+            $('#game-chances').html(html_chances);
             var rand = randomInteger(1,3);
             $('#newBet-'+rand)[0].play();
             ITEMUP.initTheme();
@@ -441,7 +448,7 @@ if (START) {
             ngtimerStatus = true;
         })
         .on('queue', function (data) {
-            if (data) {
+            /*if (data) {
                 var n = false;
                 var html = '';
                 for (var i in data) {
@@ -471,7 +478,7 @@ if (START) {
             }
             else {
                 $('.queueMsg').addClass('msgs-not-visible');
-            }
+            }*/
         })
         .on('depositDecline', function (data) {
             data = JSON.parse(data);
