@@ -1855,7 +1855,81 @@ li {
 	text-align:right;
 	color:#3faa5d;
 }
+.all-players {
+    margin: 0 -23px;
+    padding: 0 0 18px;
+    overflow: hidden;
+}
 
+.all-players-list {
+	width: 13800px;
+    text-align: center;
+    white-space: nowrap;
+    background: none;
+    border: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transform: translate3d(-595px, 0px, 0px);
+    -webkit-transform: translate3d(-595px, 0px, 0px);
+    -moz-transform: translate3d(-595px, 0px, 0px);
+    transition: 13s ease;
+    -webkit-transition: 13s ease;
+    -moz-transition: 13s ease;
+    backface-visibility: hidden;
+}
+
+.all-players-list.active0 {
+    transform: translate3d(-7925px, 0px, 0px);
+    -webkit-transform: translate3d(-7925px, 0px, 0px);
+    -moz-transform: translate3d(-7925px, 0px, 0px);
+}
+.all-players-list.active1 {
+    transform: translate3d(-7935px, 0px, 0px);
+    -webkit-transform: translate3d(-7935px, 0px, 0px);
+    -moz-transform: translate3d(-7935px, 0px, 0px);
+}
+.all-players-list.active2 {
+    transform: translate3d(-7945px, 0px, 0px);
+    -webkit-transform: translate3d(-7945px, 0px, 0px);
+    -moz-transform: translate3d(-7945px, 0px, 0px);
+}
+.all-players-list.active3 {
+    transform: translate3d(-7955px, 0px, 0px);
+    -webkit-transform: translate3d(-7955px, 0px, 0px);
+    -moz-transform: translate3d(-7955px, 0px, 0px);
+}
+.all-players-list.active4 {
+    transform: translate3d(-7965px, 0px, 0px);
+    -webkit-transform: translate3d(-7965px, 0px, 0px);
+    -moz-transform: translate3d(-7965px, 0px, 0px);
+}
+.all-players-list.active5 {
+    transform: translate3d(-7975px, 0px, 0px);
+    -webkit-transform: translate3d(-7975px, 0px, 0px);
+    -moz-transform: translate3d(-7975px, 0px, 0px);
+}
+.all-players-list.active6 {
+    transform: translate3d(-7985px, 0px, 0px);
+    -webkit-transform: translate3d(-7985px, 0px, 0px);
+    -moz-transform: translate3d(-7985px, 0px, 0px);
+}
+.all-players-list.active7 {
+    transform: translate3d(-7995px, 0px, 0px);
+    -webkit-transform: translate3d(-7995px, 0px, 0px);
+    -moz-transform: translate3d(-7995px, 0px, 0px);
+}
+.all-players-list li {
+    width: 80px;
+    height: 80px;
+    margin: 0 2px;
+    display: inline-block;
+}
+
+.all-players-list li img {
+    max-width: 100%;
+    max-height: 100%;
+}
 .hist5 a {
 	color:#3faa5d;
 	text-decoration:none;

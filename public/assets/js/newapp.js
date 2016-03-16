@@ -398,10 +398,12 @@ if (START) {
                 $('.winner-name u').text('');
                 $('.all-players-list').removeClass('active');
 
+                var randoms = Math.rand(0,7);
                 if(data.showSlider) {
                     setTimeout(function () {
-                        $('.all-players-list').addClass('active');
-                    }, 350);
+                        console.log(randoms);
+                        $('.all-players-list').addClass('active'+randoms);
+                    }, 500);
                 }
                 var timeout = data.showSlider ? 10 : 0;
                 setTimeout(function () {
