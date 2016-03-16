@@ -120,7 +120,7 @@ li {
 .closeChat {
     position: fixed;
     margin-top: 13px;
-    left: 15%;
+    right: 1%;
 }
 .shares {
     margin: 0px;
