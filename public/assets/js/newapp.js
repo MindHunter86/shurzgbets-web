@@ -715,6 +715,23 @@ function getCookie(name) {
   ));
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
+function sortByChance(arrayPtr){
+    var temp = [],
+        item = 0;
+    for (var counter = 0; counter < arrayPtr.length; counter++)
+    {
+        temp = arrayPtr[counter];
+        item = counter-1;
+        while(item >= 0 && arrayPtr[item].chance < temp.chance)
+        {
+            arrayPtr[item + 1] = arrayPtr[item];
+            arrayPtr[item] = temp;
+            item--;
+        }
+    }
+    return arrayPtr;
+}
+
 function randomInteger(min, max) {
   var rand = min + Math.random() * (max - min)
   rand = Math.round(rand);
