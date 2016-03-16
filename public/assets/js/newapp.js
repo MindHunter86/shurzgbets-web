@@ -95,7 +95,7 @@ $(document).ready(function() {
         $('.chat-text').hide();
         $('.closeChat').hide();
         $('#chatContainer').css('width', '0%');
-        $('.wrapper').css('margin-left', '0%');
+        $('.wrapper').css('margin-right', '0%');
         setTimeout(function() { 
             $('#chatContainer').hide(); 
             $('.chats').show();
@@ -108,7 +108,7 @@ $(document).ready(function() {
         $('.chats').hide();
         $('#chatContainer').show();
         $('#chatContainer').css('width', '18%');
-        $('.wrapper').css('margin-left', '12%');
+        $('.wrapper').css('margin-right', '12%');
         setTimeout(function() { 
             $('.chat-text').show();
             $('.closeChat').show();

@@ -111,7 +111,7 @@ li {
 
 .wrapper {
     min-width: 1200px;
-    margin-left: 12%;
+    margin-right: 12%;
     transition: 2s;
 }
 .closeImg {
@@ -166,7 +166,6 @@ li {
     bottom: 0;
     height: 100%;
     width: 18%;
-    left: 0;
     right: 0;
     z-index: 1000;
     transition: 2s;
@@ -184,41 +183,43 @@ li {
 }
 #chatBody {
     display: none;
+    border-left: 1px solid rgba(31, 38, 46, 0.5);
+    border-right: 1px solid rgba(31, 38, 46, 0.5);
     height: 100%;
+    background-color: #0E0F0E;
 }
 .chat-text {
     position: fixed;
     top: 20px;
-    left: 2%;
-}
-.smile {
-    width: 27px;
+    right: 14%;
 }
 #chatScroll {
     background-color: #0E0F0E;
-    height: 80%;
+    height: 90%;
     *overflow-y: scroll;
     padding-top: 0px;
     position: relative;
-    border-left: 1px solid rgba(31, 38, 46, 0.5);
-    border-right: 1px solid rgba(31, 38, 46, 0.5);
 }
 #sendie {
     outline: none;
     border: none;
     border-top: 1px solid #1F262E;
-    width: 86%;
+    width: 88%;
     padding: 3px 6px;
     font-size: 13px;
-    height: 42px;
-    line-height: 16px;
-    background: #1F262E;
+	height: 42px;
+	line-height: 16px;
+    background: #292929;
     color: #999;
     overflow: hidden;
     word-wrap: break-word;
     resize: none;
-    position: absolute;
-    padding-right: 30px;
+	border-left: 1px solid rgba(31, 38, 46, 0.5);
+    border-right: 2px solid rgba(31, 38, 46, 0.5);
+	position: absolute;
+    bottom: 30px;
+    left: 10px;
+    right: 10px;
 }
 #notLoggedIn {
     display: block;
@@ -265,6 +266,11 @@ li {
     padding-top: 1px;
     color: #eee;
     word-wrap: break-word;
+}
+
+.chat-rules {
+    margin-top: 13px;
+    margin-left: 95px;
 }
 ::-webkit-input-placeholder {
     color:    #999;
