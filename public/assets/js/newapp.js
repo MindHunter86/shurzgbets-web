@@ -403,7 +403,7 @@ if (START) {
                 $('.winner-ticket u').text('');
                 $('.winner-name span').html('???');
                 $('.winner-name u').text('');
-                $('.all-players-list').removeClass('active');
+                $('.all-players-list').removeClass('active0 active1 active2 active3 active4 active5 active6 active7');
 
                 var randoms = randomInteger(0,7);
                 if(data.showSlider) {
