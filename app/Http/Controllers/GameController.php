@@ -769,20 +769,29 @@ class GameController extends Controller
     public function getBalance(){
         return $this->user->money;
     }
-
-    private function _getChancesOfGame($game)
+    private function _getChancesOfGame($game, $is_object = false)
     {
         $chances = [];
         foreach($game->users() as $user){
-            $chances[] = [
-                'chance' => $this->_getUserChanceOfGame($user, $game),
-                'items' => User::find($user->id)->itemsCountByGame($game),
-                'steamid64'  => $user->steamid64
-            ];
+            if($is_object){
+                $chances[] = (object) [
+                    'chance' => $this->_getUserChanceOfGame($user, $game),
+                    'avatar' => $user->avatar,
+                    'items' => User::find($user->id)->itemsCountByGame($game),
+                    'steamid64'  => $user->steamid64
+                ];
+            }else{
+                $chances[] = [
+                    'chance' => $this->_getUserChanceOfGame($user, $game),
+                    'avatar' => $user->avatar,
+                    'items' => User::find($user->id)->itemsCountByGame($game),
+                    'steamid64'  => $user->steamid64
+                ];
+            }
+
         }
         return $chances;
     }
-
     public static function _getUserChanceOfGame($user, $game)
     {
         $chance = 0;
