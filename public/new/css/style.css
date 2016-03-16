@@ -1934,10 +1934,9 @@ li {
 	color:#3faa5d;
 	text-decoration:none;
 }
-
 .rulet {
 	width:970px;
-	height:107px;
+	height:81px;
 	padding:10px;
 	margin:20px auto 10px auto;
 	background:#080908;
@@ -1946,26 +1945,10 @@ li {
 	position:relative;
 	overflow:hidden;
 }
-.rulet ul {
-	position:relative;
-	height:107px;
-	overflow:hidden;
-}
-.rul-block {
-    transition: 10s ease;
-    -webkit-transition: 10s ease;
-    -moz-transition: 10s ease;
-    backface-visibility: hidden;
-}
-.rul-block.active {
-	width: 13800px;
-	transform: translate3d(-87%, 0px, 0px);
-    -webkit-transform: translate3d(-87%, 0px, 0px);
-    -moz-transform: translate3d(-87%, 0px, 0px);
-}
+
 .rulet:before {
-	width:8px;
-	height:129px;
+	width:4px;
+	height:102px;
 	background:#b72f2f;
 	position:absolute;
 	content:'';
@@ -1976,15 +1959,14 @@ li {
 
 .rulet li {
 	float:left;
-	margin:0 5px 0 6px;
+	/*margin:0 5px 0 6px;*/
 }
 
 .rulet li img {
-	width:127px;
-	height:107px;
-	border-radius:3px;
+	width:80px;
+	height:80px;
+	/*border-radius:3px;*/
 }
-
 .rul_info {
 	float:left;
 	height:15px;
