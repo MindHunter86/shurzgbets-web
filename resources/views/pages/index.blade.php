@@ -158,6 +158,9 @@
             </ul>
         </div>
     </div>
+    <div class="notification notification_1 queueMsg msgs-not-visible">
+        <div class="gametimeCont">Подождите, ваш запрос обрабатывается<br><u style="font-weight: 400; color: #F2F2F2;"></u></div>
+    </div>
     <div class="notification notification_2 declineMsg msgs-not-visible bc"></div>
     <div class="notification notification_3 msgs-not-visible bc"><b>Игра завершилась!</b> <a data-modal="#fairplay" href="#fairplay" class="gamestart_bg">ЧЕСТНАЯ ИГРА</a> Число раунда: <span style="color:#236235;" id="roundNumber"></span></div>
     <div id="bets" class="items-full full">

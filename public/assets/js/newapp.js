@@ -448,6 +448,16 @@ if (START) {
             ngtimerStatus = true;
         })
         .on('queue', function (data) {
+            if (data) {
+                var n = data.indexOf(USER_ID);
+                if (n !== -1) {
+                    $('.queueMsg u').text('Ваш депозит обрабатывается. Вы '+(n + 1)+' в очереди.');
+                    $('.queueMsg').removeClass('msgs-not-visible');
+                }
+                else {
+                    $('.queueMsg').addClass('msgs-not-visible');
+                }
+            }
             /*if (data) {
                 var n = false;
                 var html = '';
