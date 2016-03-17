@@ -152,7 +152,7 @@
         </div>
         @endforeach
     </div>
-    <div class="queue queueMsg msgs-not-visible">
+    <div class="queue1 queueMsg1 msgs-not-visible">
         <div class="full">
             <ul class="que">
             </ul>
