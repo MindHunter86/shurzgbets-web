@@ -34,7 +34,17 @@ class Game extends Model
             ->select('users.*')
             ->get();
     }
-
+    public function usersNoBot()
+    {
+        return \DB::table('games')
+            ->join('bets', 'games.id', '=', 'bets.game_id')
+            ->join('users', 'bets.user_id', '=', 'users.id')
+            ->where('games.id', $this->id)
+            ->where('users.steamid64', '!=', '0000000000000')
+            ->groupBy('users.username')
+            ->select('users.*')
+            ->get();
+    }
     public static function gamesToday()
     {
         return self::where('status', self::STATUS_FINISHED)->where('created_at', '>=', Carbon::today())->count();

@@ -117,7 +117,7 @@ class GameController extends Controller
             $this->addTicketFake();
             $this->addTicketFake();
         }*/
-        $us = $this->game->users();
+        $us = $this->game->usersNoBot();
         /*$us = $us->filter(function ($item) {
             return $item->steamid64 != '0000000000000';
         });*/
