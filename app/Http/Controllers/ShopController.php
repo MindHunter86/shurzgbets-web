@@ -47,7 +47,7 @@ class ShopController extends Controller
         if(!is_null($item)){
             $status = $request->get('status');
             $item->status = $status;
-            if($status == Shop::ITEM_STATUS_NOT_FOUND || $status == Shop::ITEM_STATUS_ERROR_TO_SEND) {
+            if($status == Shop::ITEM_STATUS_ERROR_TO_SEND) {
                 $buyer = User::where('id', $item->buyer_id)->first();
                 $buyer->money = $buyer->money + $item->price;
                 $buyer->save();
@@ -55,6 +55,12 @@ class ShopController extends Controller
                 $item->buyer_id = null;
             }
             $item->save();
+            if($status == Shop::ITEM_STATUS_NOT_FOUND) {
+                $buyer = User::where('id', $item->buyer_id)->first();
+                $buyer->money = $buyer->money + $item->price;
+                $buyer->save();
+                $item->delete();
+            }
             return $item;
         }
         return response()->json(['success' => false]);
