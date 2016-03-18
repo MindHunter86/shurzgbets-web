@@ -420,7 +420,7 @@ class GameController extends Controller
             }
 
             if ($souvenir) {
-                $this->_responseErrorToSite('Суверниные предметы запрещены!', $accountID, self::BET_DECLINE_CHANNEL);
+                $this->_responseErrorToSite('Суверниные предметы дороже 350 рублей, запрещены!', $accountID, self::BET_DECLINE_CHANNEL);
                 $this->redis->lrem('usersQueue.list', 1, $accountID);
                 $this->redis->lrem('check.list', 0, $offerJson);
                 $this->redis->rpush('decline.list', $offer->offerid);
@@ -824,10 +824,6 @@ class GameController extends Controller
                 $missing = true;
                 return;
             }
-            if(strpos($item['name'], 'Souvenir') !== false) {
-                $souvenir = true;
-                return;
-            }
             $dbItemInfo = Item::where('market_hash_name', $item['market_hash_name'])->first();
             if(is_null($dbItemInfo)){
                 if(!isset($itemInfo[$item['classid']]))
@@ -855,6 +851,10 @@ class GameController extends Controller
             if (!$itemInfo[$value]->price) $price = true;
             if($itemInfo[$value]->price < 1) $itemInfo[$value]->price = 1;          //Если цена меньше единицы, ставим единицу
             $total_price = $total_price + $itemInfo[$value]->price;
+            if((strpos($item['name'], 'Souvenir') !== false) && ($itemInfo[$value]->price > 350)) {
+                $souvenir = true;
+                return;
+            }
             $items[$i]['price'] = $itemInfo[$value]->price;
             unset($items[$i]['appid']);
             $i++;
