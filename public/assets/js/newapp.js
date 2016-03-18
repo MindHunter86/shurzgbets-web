@@ -366,7 +366,7 @@ if (START) {
             $('.list-players').html('');
         })
         .on('online', function (data) {
-            $('.stats-onlineNow').text(Math.abs(data+42));
+            $('.stats-onlineNow').text(Math.abs(data+15));
         })
         .on('forceClose', function () {
             $('.forceClose').removeClass('msgs-not-visible');
