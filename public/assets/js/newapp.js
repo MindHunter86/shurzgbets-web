@@ -453,13 +453,13 @@ if (START) {
                 for (var i in data) {
                     if(USER_ID == data[i].steamid)
                         n = true;
-                    
-                    if(n) {
-                        $('.sendMsg').removeClass('msgs-not-visible');
-                    }
-                    else {
-                        $('.sendMsg').addClass('msgs-not-visible');
-                    }
+
+                }
+                if(n) {
+                    $('.sendMsg').removeClass('msgs-not-visible');
+                }
+                else {
+                    $('.sendMsg').addClass('msgs-not-visible');
                 }
                 /*var n = data.indexOf(USER_ID);
                 if (n !== -1) {
