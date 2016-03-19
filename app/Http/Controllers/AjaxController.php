@@ -169,7 +169,7 @@ class AjaxController extends Controller
                     ->whereIn('type', $options['searchType'])
                     ->whereIn('rarity', $options['searchRarity'])
                     ->whereIn('quality', $options['searchQuality'])
-                    ->whereNull('quality')
+                    ->orwhereNull('quality')
                     ->orderBy('price', $options['sort'])
                     ->where('status', Shop::ITEM_STATUS_FOR_SALE)
                     ->get();
