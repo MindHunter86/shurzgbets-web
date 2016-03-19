@@ -422,7 +422,7 @@ if (START) {
                     $('.winner-name span').html('<a data-profile="' + data.winner.steamid64 + '" href="#"></a>');
                     $('.winner-name span a').text(replaceLogin(data.winner.username));
                     $('.winner-name u').text('(' + data.chance + '%)');
-                }, 1350 * timeout);
+                }, 1380 * timeout);
             }
         })
         .on('newGame', function (data) {
