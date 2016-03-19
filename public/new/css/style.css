@@ -1844,9 +1844,9 @@ li {
     transform: translate3d(-595px, 0px, 0px);
     -webkit-transform: translate3d(-595px, 0px, 0px);
     -moz-transform: translate3d(-595px, 0px, 0px);
-    transition: 13s ease-in-out;
-    -webkit-transition: 13s ease-in-out;
-    -moz-transition: 13s ease-in-out;
+    transition: 10s ease-in-out;
+    -webkit-transition: 10s ease-in-out;
+    -moz-transition: 10s ease-in-out;
     backface-visibility: hidden;
 }
 
