@@ -75,6 +75,9 @@ class ShopController extends Controller
                 $itemInfo = new BackPack($item);
                 $item['steam_price'] = $itemInfo->price;
                 $item['price'] = round($item['steam_price']/100 * self::PRICE_PERCENT_TO_SALE);
+                if($item['quality'] == '') {
+                    $item['quality'] = 'Normal';
+                }
                 if($item['price']  < 15) {
                     $item['price'] = 15;
                 }
