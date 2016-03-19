@@ -159,8 +159,8 @@ class AjaxController extends Controller
                 break;
             case 'shopSort':
                 $options = $request->get('options');
-                if(empty($options['searchRarity'])) $options['searchRarity'] = [ "Тайное", "Classified", "Restricted", "Industrial Grade", "Mil-Spec Grade", "Consumer Grade", "High Grade", "Base Grade", "Exotic", "Covert"];
-                if(empty($options['searchQuality'])) $options['searchQuality'] = [ "Factory new", "Minimal Wear", "Field-Tested", "Well-Worn", "Battle-Scarred", "Normal", "StatTrak™", "Souvenir"];
+                if(empty($options['searchRarity'])) $options['searchRarity'] = [ "Тайное", "Classified", "Restricted", "Industrial Grade", "Mil-Spec Grade", "Consumer Grade", "High Grade", "Base Grade", "Exotic", "Covert", ""];
+                if(empty($options['searchQuality'])) $options['searchQuality'] = [ "Factory new", "Minimal Wear", "Field-Tested", "Well-Worn", "Battle-Scarred", "Normal", "StatTrak™", "Souvenir", ""];
                 if(empty($options['searchType'])) $options['searchType'] = [ "Pistol", "SMG", "Rifle", "Shotgun", "Sniper Rifle", "Machinegun", "Container", "Knife", "Sticker", "Music Kit", "Key", "Pass", "Gift", "Tag", "Tool"];
                 //if(empty($options['searchType'])) $options['searchType'] = [ "Knife", "Винтовка", "Дробовик", "Pistol", "Снайперская винтовка", "Пулемёт", "Контейнер", "Пистолет-пулемёт", "Sitcket", "Набор музыки", "Ключ", "Подарок"];
 
