@@ -398,11 +398,10 @@ if (START) {
                 $('.gameCarousel').removeClass('none');
 
                 $('.all-players-list').html(html);
-                $('.winner-cost-value').text(data.game.price);
-                $('.winner-ticket span').html('???');
-                $('.winner-ticket u').text('');
-                $('.winner-name span').html('???');
-                $('.winner-name u').text('');
+                $('.win-price').text(data.game.price);
+                $('.wt-span').html('???');
+                $('.wn-span').html('???');
+                $('.wn-u').text('');
                 $('.all-players-list').removeClass('active0 active1 active2 active3 active4 active5 active6 active7');
 
                 var randoms = randomInteger(0,7);

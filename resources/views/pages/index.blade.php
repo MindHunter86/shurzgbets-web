@@ -77,12 +77,12 @@
                     </ul>
                 </div>
                 <ul class="rul_info">
-                    <li class="winner-ticket"><b>Победный билет:</b> <span>#0</span></li>
-                    <li class="winner-name"><b>Победил игрок:</b> <span></span> <u>(0%)</u></li>
+                    <li class="winner-ticket"><b>Победный билет:</b> <span class="wt-span">#0</span></li>
+                    <li class="winner-name"><b>Победил игрок:</b> <span class="wn-span"></span> <u class="wn-u">(0%)</u></li>
                 </ul>
                 <div class="new_timer"><div class="ngtimer"><span class="countSeconds"><span class="position"><span class="digit static">0</span></span><span class="position"><span class="digit static">0</span></span></span></div>Новая игра через:</div>
                 <div class="clear"></div>
-                <div class="rul_win"><b>Выигрыш:</b> <span class="winner-cost-value">0</span> (рублей)</div>
+                <div class="rul_win"><b>Выигрыш:</b> <span class="winner-cost-value win-price">0</span> (рублей)</div>
                 <div class="rul_button depositModal"><a href="/deposit"></a></div>
                 <div class="clear"></div>
             </div>
