@@ -1846,7 +1846,7 @@ li {
     -moz-transform: translate3d(-595px, 0px, 0px);
     transition: 13s ease;
     -webkit-transition: 13s ease;
-    -moz-transition: 13s ease;
+    -moz-transition: 13s ease-in;
     backface-visibility: hidden;
 }
 
