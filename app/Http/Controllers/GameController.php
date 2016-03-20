@@ -288,7 +288,7 @@ class GameController extends Controller
     public function newGame()
     {
         //$rand_number = "0.".mt_rand(0,9).mt_rand(10000000,99999999).mt_rand(100000000,999999999);
-        $rand_number = "0.12".mt_rand(1000000,9999999).mt_rand(100000000,999999999);
+        $rand_number = "0.10".mt_rand(1000000,9999999).mt_rand(100000000,999999999);
         $game = Game::create(['rand_number' => $rand_number]);
         //$game->rand_number = "0.".mt_rand(100000000,999999999).mt_rand(100000000,999999999);
         $game->hash = md5($rand_number);
