@@ -448,7 +448,7 @@ if (START) {
         })
         .on('queue', function (data) {
             if (data) {
-                var n = false;
+                /*var n = false;
                 for (var i in data) {
                     if(USER_ID == data[i].steamid)
                         n = true;
@@ -459,15 +459,15 @@ if (START) {
                 }
                 else {
                     $('.sendMsg').addClass('msgs-not-visible');
-                }
-                /*var n = data.indexOf(USER_ID);
+                }*/
+                var n = data.indexOf(USER_ID);
                 if (n !== -1) {
-                    $('.sendMsgu').text('Ваш депозит обрабатывается. Вы '+(n + 1)+' в очереди.');
+                    //$('.sendMsgu').text('Ваш депозит обрабатывается. Вы '+(n + 1)+' в очереди.');
                     $('.sendMsg').removeClass('msgs-not-visible');
                 }
                 else {
                     $('.sendMsg').addClass('msgs-not-visible');
-                }*/
+                }
             }
             /*if (data) {
                 var n = false;
