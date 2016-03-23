@@ -122,9 +122,11 @@
                 <li class="ico4"><a href="/about">О сайте</a></li>
                 <li class="ico5"><a href="/">Розыгрыш</a></li>
                 <li class="ico6"><a href="/shop">Магазин</a></li>
+                @if(!Auth::guest())
                 <li class="ico7"><a href="/referals">Реф.система</a></li>
                 <li class="ico8"><a href="/settings">Настройки</a></li>
                 <li class="ico9"><a href="/logout">Выход</a></li>
+                @endif
             </ul>
             <div class="sale">
                 <div class="sale_text">Добавь <b>SHURZG</b><em>BETS</em> к своему Steam никнейму и получи <b>5%</b> бонус к выигрышу!</div>
