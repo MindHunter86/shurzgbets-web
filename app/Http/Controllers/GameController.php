@@ -63,8 +63,7 @@ class GameController extends Controller
     public function currentGame()
     {
         Referer::referer();
-        //$lottery = Lottery::orderBy('id', 'desc')->first();
-        //$lottery->items = json_decode($lottery->items);
+
         $lottery = Lottery::where('status', 0)->orderBy('id', 'desc')->first();
         if(!is_null($lottery)) {
             $lottery->items = json_decode($lottery->items);
@@ -76,7 +75,8 @@ class GameController extends Controller
         $user_chance = $this->_getUserChanceOfGame($this->user, $game);
         if(!is_null($this->user))
             $user_items = $this->user->itemsCountByGame($game);
-        return view('pages.index', compact('game', 'bets', 'user_chance','percents', 'user_items', 'lottery', 'players'));
+
+        return view('pages.index', compact('game', 'bets', 'user_chance', 'percents', 'user_items', 'lottery', 'players'));
     }
 
     public function getLastGame()

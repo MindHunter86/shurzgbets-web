@@ -43,6 +43,12 @@ abstract class Controller extends BaseController
         view()->share('god', $god);
         $this->redis = LRedis::connection();
         view()->share('steam_status', $this->getSteamStatus());
+
+        $game = Game::orderBy('id', 'desc')->first();
+        if(!is_null($game)) {
+            $lastWinner = Game::where('id', $game->id - 1)->first();
+            view()->share('last_winner', $lastWinner);
+        }
     }
 
     public function  __destruct()

@@ -153,15 +153,17 @@
             <div class="sale">
                 <div class="sale_text">Добавь <b>SHURZG</b><em>BETS</em> к своему Steam никнейму и получи <b>5%</b> бонус к выигрышу!</div>
             </div>
+            @if(!is_null($lastWinner)) 
             <div class="last_win">
                 <div class="last_win_title">Последний победитель:</div>
                 <div class="last_win_ava"><img src="images/ava.jpg" alt="" /></div>
-                <div class="last_win_name ell">Alexander Boom™</div>
+                <div class="last_win_name ell">$lastWinner->winner->username</div>
                 <ul>
-                    <li>Выигрыш: <em>48 800<span>руб.</span></em></li>
-                    <li>Шанс на победу: <em>48.4%.</em></li>
+                    <li>Выигрыш: <em>$lastWinner->price<span>руб.</span></em></li>
+                    <li>Шанс на победу: <em>{{ \App\Http\Controllers\GameController::_getUserChanceOfGame($lastWinner->winner, $lastWinner) }}%.</em></li>
                 </ul>
             </div>
+            @endif
             <div class="last_win last_win_day">
                 <div class="last_win_title">Счастливчик дня:</div>
                 <div class="last_win_ava"><img src="images/ava.jpg" alt="" /></div>

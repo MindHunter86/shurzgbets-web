@@ -69,7 +69,6 @@ class Game extends Model
     {
         return self::max('price');
     }
-
     public function bets()
     {
         return $this->hasMany('App\Bet');
