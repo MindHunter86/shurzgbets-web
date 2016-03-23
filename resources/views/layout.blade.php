@@ -96,7 +96,7 @@
         @if(Auth::guest())
         <div class="steam_login" style="display:block;"><a href="/login">Войти через <b>STEAM</b></a></div>
         @else
-        <div class="mini_profile" style="display:none;">
+        <div class="mini_profile">
             <div class="mini_profile_ava"><img src="{{ $u->avatar }}" alt="" /></div>
             <div class="mini_profile_in">
                 <div class="mini_profile_name ell">{{ $u->username }}</div>
