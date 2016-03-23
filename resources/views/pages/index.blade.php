@@ -16,8 +16,8 @@
         <ul class="stats rulet_bg">
             <li><em>Сегодня игр</em> <b class="stats-gamesToday">{{ \App\Game::gamesToday() }}</b></li>
             <li><em>Сегодня игроков</em> <b class="stats-uniqueUsers">{{ \App\Game::usersToday() }}</b></li>
-            <li><em>Максимальный выигрыш сегодня:</em> <b class="stats-wintoday">{{ \App\Game::maxPriceToday() }}</b></li>
-            <li><em>Максимальный выигрыш:</em> <b>{{ \App\Game::maxPrice() }}</b></li>
+            <li><em>Макс. выигрыш сегодня:</em> <b class="stats-wintoday">{{ \App\Game::maxPriceToday() }}</b> руб.</li>
+            <li><em>Максимальный выигрыш:</em> <b>{{ \App\Game::maxPrice() }}</b> руб.</li>
         </ul>
     </div>
 @endsection
