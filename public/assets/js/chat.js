@@ -99,6 +99,6 @@ $(document).ready(function() {
 	    bodyElement.prepend(msgBodyElement).prepend(avatarElement);
 
 	    $('.mCSB_container').append(bodyElement);
-	    //messageList.mCustomScrollbar("update");
+	    messageList.mCustomScrollbar("scrollTo", "bottom");
   	});
 });
