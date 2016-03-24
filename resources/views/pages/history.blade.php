@@ -30,7 +30,7 @@
             @else
             <div class="item"><img src="{{ $i->img }}" alt="" /></div>
             @endif
-        @endforelse
+        @endforeach
     </div>
 </div>
 @empty
