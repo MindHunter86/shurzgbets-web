@@ -1050,7 +1050,7 @@ b {
 	font-family:NeoSansProLight;
 }
 
-.rulet_timer span {
+.rulet_timer div {
 	background:url(../images/rulet_timer.png) no-repeat 0 0;
 	width:79px;
 	height:40px;
@@ -1091,7 +1091,7 @@ b {
 	font-size:14px;
 }
 .all-players-list {
-	width: 13800px;
+	width: 11000px;
     text-align: center;
     white-space: nowrap;
     background: none;
@@ -1109,44 +1109,47 @@ b {
 }
 
 .all-players-list.active0 {
-    transform: translate3d(-7925px, 0px, 0px);
-    -webkit-transform: translate3d(-7925px, 0px, 0px);
-    -moz-transform: translate3d(-7925px, 0px, 0px);
+    transform: translate3d(-10000px, 0px, 0px);
+    -webkit-transform: translate3d(-10000px, 0px, 0px);
+    -moz-transform: translate3d(-10000px, 0px, 0px);
 }
 .all-players-list.active1 {
-    transform: translate3d(-7935px, 0px, 0px);
-    -webkit-transform: translate3d(-7935px, 0px, 0px);
-    -moz-transform: translate3d(-7935px, 0px, 0px);
+    transform: translate3d(-10000px, 0px, 0px);
+    -webkit-transform: translate3d(-10000px, 0px, 0px);
+    -moz-transform: translate3d(-10000px, 0px, 0px);
 }
 .all-players-list.active2 {
-    transform: translate3d(-7945px, 0px, 0px);
-    -webkit-transform: translate3d(-7945px, 0px, 0px);
-    -moz-transform: translate3d(-7945px, 0px, 0px);
+    transform: translate3d(-10000px, 0px, 0px);
+    -webkit-transform: translate3d(-10000px, 0px, 0px);
+    -moz-transform: translate3d(-10000px, 0px, 0px);
 }
 .all-players-list.active3 {
-    transform: translate3d(-7955px, 0px, 0px);
-    -webkit-transform: translate3d(-7955px, 0px, 0px);
-    -moz-transform: translate3d(-7955px, 0px, 0px);
+    transform: translate3d(-10000px, 0px, 0px);
+    -webkit-transform: translate3d(-10000px, 0px, 0px);
+    -moz-transform: translate3d(-10000px, 0px, 0px);
 }
 .all-players-list.active4 {
-    transform: translate3d(-7965px, 0px, 0px);
-    -webkit-transform: translate3d(-7965px, 0px, 0px);
-    -moz-transform: translate3d(-7965px, 0px, 0px);
+    transform: translate3d(-10000px, 0px, 0px);
+    -webkit-transform: translate3d(-10000px, 0px, 0px);
+    -moz-transform: translate3d(-10000px, 0px, 0px);
 }
 .all-players-list.active5 {
-    transform: translate3d(-7975px, 0px, 0px);
-    -webkit-transform: translate3d(-7975px, 0px, 0px);
-    -moz-transform: translate3d(-7975px, 0px, 0px);
+    transform: translate3d(-10000px, 0px, 0px);
+    -webkit-transform: translate3d(-10000px, 0px, 0px);
+    -moz-transform: translate3d(-10000px, 0px, 0px);
 }
 .all-players-list.active6 {
-    transform: translate3d(-7985px, 0px, 0px);
-    -webkit-transform: translate3d(-7985px, 0px, 0px);
-    -moz-transform: translate3d(-7985px, 0px, 0px);
+    transform: translate3d(-10000px, 0px, 0px);
+    -webkit-transform: translate3d(-10000px, 0px, 0px);
+    -moz-transform: translate3d(-10000px, 0px, 0px);
 }
 .all-players-list.active7 {
-    transform: translate3d(-7995px, 0px, 0px);
+    transform: translate3d(-10000px, 0px, 0px);
     -webkit-transform: translate3d(-7995px, 0px, 0px);
-    -moz-transform: translate3d(-7995px, 0px, 0px);
+    -moz-transform: translate3d(-10000px, 0px, 0px);
+}
+.ngtimer .countMinutes {
+	display:none;
 }
 .chat {
 	position:fixed;

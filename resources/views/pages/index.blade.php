@@ -49,8 +49,10 @@
             <div class="rulet_win ell">Победитель: <em class="win_username"></em></div>
         </div>
         <div class="right">
-            <div class="rulet_timer ngtimer">
-                <span class="countSeconds"><span class="position"><span class="digit static">0</span></span><span class="position"><span class="digit static">0</span></span></span>
+            <div class="rulet_timer">
+                <div class="ngtimer">
+                    <span class="countSeconds"><span class="position"><span class="digit static">0</span></span><span class="position"><span class="digit static">0</span></span></span>
+                </div>
                 <em>Новая игра через:</em>
             </div>
             <div class="rulet_button"><a href="/deposit" class="depositModal" target="_blank">ВНЕСТИ ДЕПОЗИТ ПЕРВЫМ</a></div>
