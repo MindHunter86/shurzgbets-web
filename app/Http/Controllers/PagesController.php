@@ -68,6 +68,7 @@ class PagesController extends Controller
                 ->groupBy('bets.game_id')
                 ->select('bets.id')->get());
             $users[$i]->win_rate = round($users[$i]->wins_count / $users[$i]->games_played, 3) * 100;
+            $users[$i]->rang = ($i < 19) ? $i+1 : 18;
             $i++;
         }
         return view('pages.top', compact('users', 'place'));

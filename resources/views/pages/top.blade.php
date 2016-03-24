@@ -14,7 +14,7 @@
         <div class="t1">{{ $key+1 }}</div>
         <div class="t2">
             <em class="tava"><img src="{{ $user->avatar }}" alt="" /></em>
-            <em class="trang"><img src="{{ asset('shurzg/images/rang/$key+1') }}" alt="" /></em>
+            <em class="trang"><img src="/shurzg/images/rang/{{ $user->rang }}" alt="" /></em>
             <em class="tname ell">{{ $user->username }}</em>
         </div>
         <div class="t3">{{ $user->wins_count }}</div>
