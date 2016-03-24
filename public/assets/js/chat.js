@@ -99,8 +99,8 @@ $(document).ready(function() {
 	    }
 	    bodyElement.prepend(msgBodyElement).prepend(avatarElement);
 
-	    messageList.append(bodyElement);
 	    if (isScrollDown) a.scrollTop = a.scrollHeight;
 	    $('.chat_scroll').mCustomScrollbar();
+	    messageList.find('div div').append(bodyElement);
   	});
 });
