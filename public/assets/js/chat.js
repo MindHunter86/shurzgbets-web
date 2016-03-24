@@ -98,6 +98,6 @@ $(document).ready(function() {
 	    bodyElement.prepend(msgBodyElement).prepend(avatarElement);
 
 	    messageList.find('div div').append(bodyElement);
-	    messageList.mCustomScrollbar("update");
+	    //messageList.mCustomScrollbar("update");
   	});
 });
