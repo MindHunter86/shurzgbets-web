@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	var messageList = $('#chat_messages');
 	var messageListAdd = $('.mCSB_container');
-	var messageField = $('#sendie');
+	var messageField = $('.chat_mess');
 	var lastMsg = '';
 	var lastMsgTime = '';
 	var chat = new Firebase("https://csgo-prod.firebaseio.com" + CHAT_CONNECT);
@@ -40,7 +40,7 @@ $(document).ready(function() {
 		  }
 		});
 	}
-	$('#chatScroll').on('click', '.removeMSG',function() {
+	$('#chat_messages').on('click', '.removeMSG',function() {
        	self = this;
 		$.ajax({
 		  url: '/ajax/chat',
@@ -63,6 +63,10 @@ $(document).ready(function() {
 	    	sendMessage();
 	    	return false;
 	    }
+	});
+	$('.chat_ok').click(function() {
+		sendMessage();
+		return false;
 	});
 	var msgs = chat.limitToLast(50);
 	msgs.on('child_removed', function (snapshot) {
@@ -99,6 +103,6 @@ $(document).ready(function() {
 	    bodyElement.prepend(msgBodyElement).prepend(avatarElement);
 
 	    $('.mCSB_container').append(bodyElement);
-	    messageList.mCustomScrollbar("scrollTo", "bottom");
+	    $('.chat_scroll').mCustomScrollbar('scrollTo', 'bottom');
   	});
 });
