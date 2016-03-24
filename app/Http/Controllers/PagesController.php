@@ -109,9 +109,9 @@ class PagesController extends Controller
         $win_price = $games->sum('price');
         return view('pages.profile', compact('wins', 'looses', 'win_price'));
     }
-    public function myinventory(Request $request)
+    public function settings(Request $request)
     {
-        return view('pages.myinventory');
+        return view('pages.settings');
     }
 
     public function myhistory()

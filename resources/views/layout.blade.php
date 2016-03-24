@@ -112,7 +112,9 @@
             </div>
             <a href="#" class="support">Техническая поддержка</a>
         </div>
-        @yield('content')
+        <div class="container_r">
+            @yield('content')
+        </div>
     </div>
 </div>
 <script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b;a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)};a[b].l=1*new Date;c=e.createElement(f);d=e.getElementsByTagName(f)[0];c.async=1;c.src=g;d.parentNode.insertBefore(c,d)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create","UA-64317858-6","auto");ga("send","pageview");</script>
