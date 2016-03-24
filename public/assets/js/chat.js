@@ -97,7 +97,7 @@ $(document).ready(function() {
 	    }
 	    bodyElement.prepend(msgBodyElement).prepend(avatarElement);
 
-	    //messageList.append(bodyElement);
+	    messageList.append(bodyElement);
 	    //messageList.mCustomScrollbar("update");
   	});
 });
