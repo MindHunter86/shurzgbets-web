@@ -11,20 +11,9 @@ var ITEMUP = function(){
         });
     };
 
-    var initTooltips = function() {
-        $(function () {
-            $('.wrapper').tooltip({
-                trigger: "hover",
-                selector: "div[data-toggle=tooltip]"
-            })
-            $('.game-button-2').tooltip({});
-        })
-    };
-
     return {
         init: function() {
             initAjaxToken();
-            ITEMUP.initTheme();
         },
         initTheme: function() {
             initTooltips();
