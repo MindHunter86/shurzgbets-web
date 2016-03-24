@@ -253,6 +253,20 @@ if (START) {
             timerStatus = true;
             ngtimerStatus = true;
         })
+        .on('queue', function (data) {
+            if (data) {
+                var n = data.indexOf(USER_ID);
+                if (n !== -1) {
+                    $.notify('Ваш депозит обрабатывается', {autoHideDelay: 3000, className :"success"});
+                }
+            }
+        })
+        .on('depositDecline', function (data) {
+            data = JSON.parse(data);
+            if (data.user == USER_ID) {
+                $.notify(data.msg, {autoHideDelay: 3000, className :"error"});
+            }
+        });
     var declineTimeout,
         timerStatus = true,
         ngtimerStatus = true,

@@ -85,9 +85,11 @@
     <em class="gamestart_bg">ЧЕСТНАЯ ИГРА</em>
     <em class="gamestart_hash">Число раунда: <span class="round_number"></span></em>
 </div>
+<div class="allitems_loop">
+</div>
 <div class="gamestart game_hash">
     <em class="gamestart_title">ИГРА НАЧАЛАСЬ! ВНОСИТЕ ДЕПОЗИТ!</em>
     <em class="gamestart_bg">ЧЕСТНАЯ ИГРА</em>
-    <em class="gamestart_hash">Хэш раунда: <span class="game_hash_number"></span></em>
+    <em class="gamestart_hash">Хэш раунда: <span class="game_hash_number">{{ md5($game->rand_number) }}</span></em>
 </div>
 @endsection
