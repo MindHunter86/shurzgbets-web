@@ -76,7 +76,7 @@
         <ul class="chances">
         @foreach($percents as $p)
             <li><b>{{ $p->chance }}%</b><img src="{{ $p->avatar }}" alt="" /></li>
-        @endif
+        @endforeach
         </ul>
     </div>
 </div>
