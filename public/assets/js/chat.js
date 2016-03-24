@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var messageList = $('#chat_messages');
-	var messageListAdd = $('#chat_messages #mCSB_1 #mCSB_1_container');
+	var messageListAdd = $('.mCSB_container');
 	var messageField = $('#sendie');
 	var lastMsg = '';
 	var lastMsgTime = '';
