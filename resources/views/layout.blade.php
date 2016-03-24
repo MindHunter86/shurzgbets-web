@@ -8,9 +8,11 @@
     <meta name="description" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. JOYSKINS.TOP - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="csrf-token" content="{!!  csrf_token()   !!}">
     <link type="text/css" rel="stylesheet" href="{{ asset('shurzg/css/style.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ asset('shurzg/css/jquery.mCustomScrollbar.css') }}" />
     <link rel="shortcut icon" href="{{ asset('shurzg/images/favicon.ico') }}" />
     <script type="text/javascript" src="{{ asset('shurzg/js/jquery-1.9.1.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/jquery.cookie.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('shurzg/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/script.js') }}"></script>
 
     <script src="{{ asset('assets/js/inc.js') }}" ></script>
