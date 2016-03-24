@@ -16,7 +16,7 @@
     <script type="text/javascript" src="{{ asset('shurzg/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/script.js') }}"></script>
 
-    <script src="{{ asset('assets/js/inc.js') }}" ></script>
+    <!--<script src="{{ asset('assets/js/inc.js') }}" ></script>-->
     <script src="{{ asset('assets/js/main.js') }}" ></script>
 
     <script>
@@ -143,9 +143,8 @@
     @endif
 
 </script>
-<script type="text/javascript" src="{{ asset('new/js/lemmon-slider.js') }}"></script>
 <script src="{{ asset('assets/js/firebase.js') }}" ></script>
-<script src="{{ asset('assets/js/newapp.js') }}" ></script>
+<!--<script src="{{ asset('assets/js/newapp.js') }}" ></script>-->
 <script src="{{ asset('assets/js/chat.js') }}" ></script>
 </body>
 </html>
