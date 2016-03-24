@@ -209,8 +209,8 @@ if (START) {
 
                 $('.all-players-list').html(html);
                 $('.game_bank').text(data.game.price);
-                $('.win_ticket').text('-');
-                $('.win_username').text('-');
+                $('.win_ticket').text('---');
+                $('.win_username').text('---');
                 $('.all-players-list').removeClass('active0 active1 active2 active3 active4 active5 active6 active7');
 
                 var randoms = randomInteger(0,7);
@@ -225,10 +225,31 @@ if (START) {
                     $('#roundNumber').text(data.round_number);
                     $('.notification_3').removeClass('msgs-not-visible');
 
-                    $('.win_ticket').text(data.ticket);
-                    $('.win_username').text(data.winner.username + '('+data.chance +'%)');
-                }, 1050 * timeout);
+                    $('.win_ticket').text('#'+data.ticket);
+                    $('.win_username').text(data.winner.username + ' ('+data.chance +'%)');
+                }, 1100 * timeout);
             }
+        })
+        .on('newGame', function (data) {
+            $('.notification_3').addClass('msgs-not-visible');
+            $('.game-progress').removeClass('none');
+            $('.details-wrap').removeClass('none');
+            $('.gameCarousel').addClass('none');
+            $('.all-players-list').removeClass('active');
+            $('#bets').html('');
+            $('#myItems').text('0 предметов');
+            $('#myChance').text(0);
+            $('.stats-gamesToday').text(data.today);
+            $('.stats-uniqueUsers').text(data.userstoday);
+            $('.stats-wintoday').text(data.maxwin);
+            $('#roundId').text(data.id);
+            $('#roundBank').text(0);
+            $('#roundHash').text(data.hash);
+            $('.progressbar-text').html('Внесено 0 из 100 предметов');
+            $('.progressbar-value').css('width','0%');
+            $('.gameEndTimer').addClass('not-active');
+            timerStatus = true;
+            ngtimerStatus = true;
         })
     var declineTimeout,
         timerStatus = true,
