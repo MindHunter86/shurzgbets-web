@@ -52,7 +52,7 @@
 </div>
 <div class="wrapper">
     <div class="header">
-        <a href="#" class="logo"></a>
+        <a href="/" class="logo"></a>
         @if(Auth::guest())
         <div class="steam_login" style="display:block;"><a href="/login">Войти через <b>STEAM</b></a></div>
         @else

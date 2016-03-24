@@ -1,29 +1,25 @@
 @extends('layout')
 
 @section('content')
-<div class="content_bg">
-    <div class="full">
-        <div class="content_title"><div>Топ <b>Игроков</b></div></div>
-        <div class="clear"></div>
-        <div class="top_table">
-            <div class="top_table_panel">
-                <div class="types1">Место</div>
-                <div class="types2">Профиль</div>
-                <div class="types3">Игр</div>
-                <div class="types4">Побед</div>
-                <div class="types5">WIN rate</div>
-                <div class="types6">Сумма банков</div>
-            </div>
-            @foreach($users as $user)
-                <div class="top_table_info top_table_num_{{ $place }}">
-                    <div class="types1"><div>{{ $place++ }}</div></div>
-                    <div class="types2"><div><img src="{{ $user->avatar }}" alt="" /></div><a href="#" data-profile="{{ $user->steamid64 }}">{{ $user->username }}</a></div>
-                    <div class="types3">{{ $user->games_played }}</div>
-                    <div class="types4">{{ $user->wins_count }}</div>
-                    <div class="types5">{{ $user->win_rate }}%</div>
-                    <div class="types6">{{ round($user->top_value) }} руб.</div>
-                </div>
-            @endforeach
-        </div>
+<div class="rulet_title"><b>Топ</b> игроков</div>
+<div class="table">
+    <div class="table_panel">
+        <div class="t1">Место</div>
+        <div class="t2">Ник в Steam</div>
+        <div class="t3">Кол-во побед</div>
+        <div class="t4">Выигрыш</div>
     </div>
+    @foreach($users as $key => $user)
+    <div class="table_info">
+        <div class="t1">{{ $key+1 }}</div>
+        <div class="t2">
+            <em class="tava"><img src="{{ $user->avatar }}" alt="" /></em>
+            <em class="trang"><img src="{{ asset('shurzg/images/rang/$key+1') }}" alt="" /></em>
+            <em class="tname ell">{{ $user->username }}</em>
+        </div>
+        <div class="t3">{{ $user->wins_count }}</div>
+        <div class="t4">{{ round($user->top_value) }} руб.</div>
+    </div>
+    @endforeach
+</div>
 @endsection
