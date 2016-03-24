@@ -68,7 +68,7 @@ $(document).ready(function() {
 	    var data = snapshot.val();
 
 	    $('.chatMessage[data-uuid='+snapshot.key()+']').remove();
-	    messageList.mCustomScrollbar();
+	    //messageList.mCustomScrollbar();
 	});
 	msgs.on('child_added', function (snapshot) {
 		var a = $("#chat_messages")[0];
