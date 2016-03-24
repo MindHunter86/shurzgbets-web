@@ -648,7 +648,7 @@ b {
 	right:0;
 }
 
-.game_timer div {
+.game_timer span {
 	position:absolute;
 	width:114px;
 	height:61px;
