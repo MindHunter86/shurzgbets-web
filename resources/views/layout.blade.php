@@ -43,7 +43,7 @@
     <div class="chat_button" onclick="chat()"></div>
     <div class="chat_loop">
         <div class="chat_top"><em>Чат -</em> SHURZGBETS.COM</div>
-        <div class="chat_scroll" id="chat_messages">
+        <div class="chat_scroll mCustomScrollbar" id="chat_messages">
         </div>
         <textarea class="chat_mess" placeholder="Введите сообщение..."></textarea>
         <input class="chat_ok" type="submit" value="ОК" />
