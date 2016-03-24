@@ -72,7 +72,7 @@
             <div class="cart_info"><em>150</em></div>
         </div>
     </div>
-    <div class="chance" @if(count($percents) == 0) style="display: none;" @endif>
+    <div class="chance @if(count($percents) == 0) none @endif">
         <ul class="chances">
         @foreach($percents as $p)
             <li><b>{{ $p->chance }}%</b><img src="{{ $p->avatar }}" alt="" /></li>
