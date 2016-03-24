@@ -117,9 +117,8 @@ $(document).ready(function() {
             success: function (data) {
                 if (data.status == 'success') {
                     that.notify(data.msg, {autoHideDelay: 1000,position: 'left middle', className :"success"});
-                    $('.no-link').attr('href', '/deposit').removeClass('.no-auth').off('click');
                     setTimeout( function() {
-                        $('.linkMsg').addClass('msgs-not-visible');
+                        $('.notrade').hide();
                     }, 1500);
                 }
                 else {
