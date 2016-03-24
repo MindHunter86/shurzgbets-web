@@ -17,7 +17,7 @@
     </div>
     <div class="hist_chance chance">
         <ul>
-            @foreach(\App\Http\Controllers\GameController::_getChancesOfGame($game, true) as $c)
+            @foreach(App\Http\Controllers\GameController::_getChancesOfGame($game, true) as $c)
             <li><b>{{ $c->chance }}%</b><img src="{{ $c->avatar }}" alt="" /></li>
             @endforeach
         </ul>
@@ -33,5 +33,7 @@
         @endforelse
     </div>
 </div>
+@empty
+<center><h1 style="color: #33BDA6;">Игр нет!</h1></center>
 @endforelse
 @endsection
