@@ -648,11 +648,11 @@ b {
 	right:0;
 }
 .game_timer .countMinutes {
-	float:left;
+	left:0;
 }
 
 .game_timer .countSeconds {
-	float:right;
+	right:0;
 }
 .game_timer span {
 	position:absolute;
