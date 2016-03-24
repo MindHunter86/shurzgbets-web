@@ -101,6 +101,6 @@ $(document).ready(function() {
 
 	    messageList.append(bodyElement);
 	    if (isScrollDown) a.scrollTop = a.scrollHeight;
-	    $('.chat_scroll').mCustomScrollbar("update");
+	    $('.chat_scroll').mCustomScrollbar();
   	});
 });
