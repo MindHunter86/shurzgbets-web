@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="{{ asset('shurzg/images/favicon.ico') }}" />
     <script type="text/javascript" src="{{ asset('shurzg/js/jquery-1.9.1.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/jquery.cookie.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('shurzg/js/jquery.smoothscroll.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/script.js') }}"></script>
 

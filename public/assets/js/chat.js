@@ -69,6 +69,7 @@ $(document).ready(function() {
 	    var data = snapshot.val();
 
 	    $('.chatMessage[data-uuid='+snapshot.key()+']').remove();
+	    messageList.mCustomScrollbar();
 	});
 	msgs.on('child_added', function (snapshot) {
 		var a = $("#chat_messages")[0];
@@ -101,6 +102,6 @@ $(document).ready(function() {
 
 	    messageList.append(bodyElement);
 	    if (isScrollDown) a.scrollTop = a.scrollHeight;
-	    //$("#chatScroll").perfectScrollbar('update');
+	    messageList.mCustomScrollbar();
   	});
 });
