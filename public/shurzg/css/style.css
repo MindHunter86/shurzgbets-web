@@ -645,17 +645,16 @@ b {
 }
 
 .game_timer .sec {
-	float: right;
+	right:0;
 }
 .game_timer .countMinutes {
 	float: left;
 }
 
 .game_timer .countSeconds {
-	right:0;
+	float: right;
 }
 .game_timer span {
-	position:absolute;
 	width:114px;
 	height:61px;
 	line-height:62px;
