@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var messageField = $('.chat_mess');
 	var lastMsg = '';
 	var lastMsgTime = '';
-	var chat = new Firebase("https://csgo-prod.firebaseio.com" + CHAT_CONNECT);
+	var chat = new Firebase("https://shurzgbets.firebaseio.com" + CHAT_CONNECT);
 	messageList.mCustomScrollbar();
 	function sendMessage() {
       	var message = messageField.val();
