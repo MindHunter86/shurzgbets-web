@@ -19,7 +19,7 @@
     <li><em>Максимальный выигрыш:</em> <b>{{ \App\Game::maxPrice() }}</b> руб.</li>
 </ul>
 <div class="gamebg">
-    <div class="game" style="display:block;">
+    <div class="game game_stats" style="display:block;">
         <div class="game_panel">
             <div class="game_num left">Игра #{{ $game->id }}</div>
             <div class="game_cash right"><em>Вступай в игру сейчас и выиграй:</em> <b class="game_bank">{{ round($game->price) }}</b> <span>руб.</span></div>
@@ -33,6 +33,28 @@
         <div class="game_info"><em>Мин. ставка {{ $min_price = \App\Http\Controllers\GameController::MIN_PRICE }} руб., максимум предметов {{ $max_items = \App\Http\Controllers\GameController::MAX_ITEMS }}.</em></div>
         <div class="game_info game_info_last"><em>Чем выше ваша ставка, тем выше шанс на победу.</em></div>
         <div class="game_button"><a href="/deposit" class="depositModal" target="_blank">Внести депозит</a></div>
+    </div>
+    <div class="rul game_winner" style="display:none;">
+        <div class="game_panel">
+            <div class="game_num left">Игра #{{ $game->id }}</div>
+            <div class="game_cash right"><em>Банк игры:</em> <b class="game_bank">{{ round($game->price) }}</b> <span>руб.</span></div>
+        </div>
+        <div class="rulet">
+            <ul class="all-players-list">
+
+            </ul>
+        </div>
+        <div class="left">
+            <div class="rulet_num">Победный билет: <em>#<span class="win_ticket"></span></em></div>
+            <div class="rulet_win ell">Победитель: <em class="win_username"></em></div>
+        </div>
+        <div class="right">
+            <div class="rulet_timer ngtimer">
+                <span class="countSeconds"><span class="position"><span class="digit static" style="display:none;">0</span></span><span class="position"><span class="digit static">0</span></span></span>
+                <em>Новая игра через:</em>
+            </div>
+            <div class="rulet_button"><a href="/deposit" class="depositModal" target="_blank">ВНЕСТИ ДЕПОЗИТ ПЕРВЫМ</a></div>
+        </div>
     </div>
 </div>
 @endsection

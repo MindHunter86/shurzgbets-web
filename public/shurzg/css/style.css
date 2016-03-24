@@ -1049,7 +1049,7 @@ b {
 	font-family:NeoSansProLight;
 }
 
-.rulet_timer div {
+.rulet_timer span {
 	background:url(../images/rulet_timer.png) no-repeat 0 0;
 	width:79px;
 	height:40px;
@@ -1089,7 +1089,64 @@ b {
 	color:#fff;
 	font-size:14px;
 }
+.all-players-list {
+	width: 13800px;
+    text-align: center;
+    white-space: nowrap;
+    background: none;
+    border: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transform: translate3d(-595px, 0px, 0px);
+    -webkit-transform: translate3d(-595px, 0px, 0px);
+    -moz-transform: translate3d(-595px, 0px, 0px);
+    transition: 10s ease-in-out;
+    -webkit-transition: 10s ease-in-out;
+    -moz-transition: 10s ease-in-out;
+    backface-visibility: hidden;
+}
 
+.all-players-list.active0 {
+    transform: translate3d(-7925px, 0px, 0px);
+    -webkit-transform: translate3d(-7925px, 0px, 0px);
+    -moz-transform: translate3d(-7925px, 0px, 0px);
+}
+.all-players-list.active1 {
+    transform: translate3d(-7935px, 0px, 0px);
+    -webkit-transform: translate3d(-7935px, 0px, 0px);
+    -moz-transform: translate3d(-7935px, 0px, 0px);
+}
+.all-players-list.active2 {
+    transform: translate3d(-7945px, 0px, 0px);
+    -webkit-transform: translate3d(-7945px, 0px, 0px);
+    -moz-transform: translate3d(-7945px, 0px, 0px);
+}
+.all-players-list.active3 {
+    transform: translate3d(-7955px, 0px, 0px);
+    -webkit-transform: translate3d(-7955px, 0px, 0px);
+    -moz-transform: translate3d(-7955px, 0px, 0px);
+}
+.all-players-list.active4 {
+    transform: translate3d(-7965px, 0px, 0px);
+    -webkit-transform: translate3d(-7965px, 0px, 0px);
+    -moz-transform: translate3d(-7965px, 0px, 0px);
+}
+.all-players-list.active5 {
+    transform: translate3d(-7975px, 0px, 0px);
+    -webkit-transform: translate3d(-7975px, 0px, 0px);
+    -moz-transform: translate3d(-7975px, 0px, 0px);
+}
+.all-players-list.active6 {
+    transform: translate3d(-7985px, 0px, 0px);
+    -webkit-transform: translate3d(-7985px, 0px, 0px);
+    -moz-transform: translate3d(-7985px, 0px, 0px);
+}
+.all-players-list.active7 {
+    transform: translate3d(-7995px, 0px, 0px);
+    -webkit-transform: translate3d(-7995px, 0px, 0px);
+    -moz-transform: translate3d(-7995px, 0px, 0px);
+}
 .chat {
 	position:fixed;
 	width:376px;

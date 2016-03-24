@@ -190,6 +190,46 @@ if (START) {
                 $('.gameEndTimer').empty().countdown({seconds: time});
             }
         })
+        .on('slider', function (data) {
+            if(ngtimerStatus) {
+                ngtimerStatus = false;
+                var users = data.users;
+                users = mulAndShuffle(users, Math.ceil(110 / users.length));
+                users[6] = data.winner;
+                users[100] = data.winner;
+                html = '';
+                users.forEach(function (i) {
+                    html += '<li><img src="' + i.avatar + '"></li>';
+                });
+
+                $('.ngtimer').empty().countdown({seconds: data.time});
+
+                $('.game_stats').hide();
+                $('.game_winner').show();
+
+                $('.all-players-list').html(html);
+                $('.game_bank').text(data.game.price);
+                $('.win_ticket').text('-');
+                $('.win_username').text('-');
+                $('.all-players-list').removeClass('active0 active1 active2 active3 active4 active5 active6 active7');
+
+                var randoms = randomInteger(0,7);
+                if(data.showSlider) {
+                    setTimeout(function () {
+                        console.log(randoms);
+                        $('.all-players-list').addClass('active'+randoms);
+                    }, 500);
+                }
+                var timeout = data.showSlider ? 10 : 0;
+                setTimeout(function () {
+                    $('#roundNumber').text(data.round_number);
+                    $('.notification_3').removeClass('msgs-not-visible');
+
+                    $('.win_ticket').text(data.ticket);
+                    $('.win_username').text(data.winner.username + '('+data.chance +'%)');
+                }, 1050 * timeout);
+            }
+        })
     var declineTimeout,
         timerStatus = true,
         ngtimerStatus = true,
