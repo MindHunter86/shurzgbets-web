@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	var messageList = $('#chat_messages');
+	var messageListAdd = $('#chat_messages #mCSB_1 #mCSB_1_container');
 	var messageField = $('#sendie');
 	var lastMsg = '';
 	var lastMsgTime = '';
@@ -97,7 +98,7 @@ $(document).ready(function() {
 	    }
 	    bodyElement.prepend(msgBodyElement).prepend(avatarElement);
 
-	    messageList.append(bodyElement);
-	    //messageList.mCustomScrollbar("update");
+	    messageListAdd.append(bodyElement);
+	    messageList.mCustomScrollbar("update");
   	});
 });
