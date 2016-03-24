@@ -645,10 +645,10 @@ b {
 }
 
 .game_timer .sec {
-	right:0;
+	float: right;
 }
 .game_timer .countMinutes {
-	left:0;
+	float: left;
 }
 
 .game_timer .countSeconds {
