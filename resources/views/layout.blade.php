@@ -146,6 +146,6 @@
 </script>
 <script src="{{ asset('assets/js/firebase.js') }}" ></script>
 <!--<script src="{{ asset('assets/js/newapp.js') }}" ></script>-->
-<!--<script src="{{ asset('assets/js/chat.js') }}" ></script>-->
+<script src="{{ asset('assets/js/chat.js') }}" ></script>
 </body>
 </html>
