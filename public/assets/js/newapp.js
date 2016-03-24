@@ -229,8 +229,8 @@ if (START) {
                 }
                 var timeout = data.showSlider ? 10 : 0;
                 setTimeout(function () {
-                    $('#roundNumber').text(data.round_number);
-                    $('.notification_3').removeClass('msgs-not-visible');
+                    $('.round_number').text(data.round_number);
+                    $('.game_round_number').show();
 
                     $('.win_ticket').text('#'+data.ticket);
                     $('.win_username').text(data.winner.username + ' ('+data.chance +'%)');
@@ -238,23 +238,18 @@ if (START) {
             }
         })
         .on('newGame', function (data) {
-            $('.notification_3').addClass('msgs-not-visible');
-            $('.game-progress').removeClass('none');
-            $('.details-wrap').removeClass('none');
-            $('.gameCarousel').addClass('none');
-            $('.all-players-list').removeClass('active');
-            $('#bets').html('');
-            $('#myItems').text('0 предметов');
-            $('#myChance').text(0);
+            $('.game_round_number').hide();
+            $('.game_stats').show();
+
+            $('.game_winner').hide();
+
             $('.stats-gamesToday').text(data.today);
             $('.stats-uniqueUsers').text(data.userstoday);
             $('.stats-wintoday').text(data.maxwin);
-            $('#roundId').text(data.id);
-            $('#roundBank').text(0);
-            $('#roundHash').text(data.hash);
-            $('.progressbar-text').html('Внесено 0 из 100 предметов');
-            $('.progressbar-value').css('width','0%');
-            $('.gameEndTimer').addClass('not-active');
+            $('.game_num span').text(data.id);
+            $('.game_bank').text(0);
+            $('.game_hash_number').text(data.hash);
+            $('.game_bar').css('width','0%');
             timerStatus = true;
             ngtimerStatus = true;
         })

@@ -21,7 +21,7 @@
 <div class="gamebg">
     <div class="game game_stats" style="display:block;">
         <div class="game_panel">
-            <div class="game_num left">Игра #{{ $game->id }}</div>
+            <div class="game_num left">Игра #<span>{{ $game->id }}</span></div>
             <div class="game_cash right"><em>Вступай в игру сейчас и выиграй:</em> <b class="game_bank">{{ round($game->price) }}</b> <span>руб.</span></div>
         </div>
         <div class="game_scale left"><div class="progress game_bar" style="width:{{ $game->items }}%;"></div></div>
@@ -79,5 +79,15 @@
         <li><b>{{ $p->chance }}%</b><img src="{{ $p->avatar }}" alt="" /></li>
     @endforeach
     </ul>
+</div>
+<div class="gamestart game_round_number" style="display:none;">
+    <em class="gamestart_title">ИГРА ЗАВЕРШЕНА!</em>
+    <em class="gamestart_bg">ЧЕСТНАЯ ИГРА</em>
+    <em class="gamestart_hash">Число раунда: <span class="round_number"></span></em>
+</div>
+<div class="gamestart game_hash">
+    <em class="gamestart_title">ИГРА НАЧАЛАСЬ! ВНОСИТЕ ДЕПОЗИТ!</em>
+    <em class="gamestart_bg">ЧЕСТНАЯ ИГРА</em>
+    <em class="gamestart_hash">Хэш раунда: <span class="game_hash_number"></span></em>
 </div>
 @endsection
