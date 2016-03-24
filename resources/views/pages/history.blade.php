@@ -24,7 +24,7 @@
     </div>
     <div class="hist_bg2">
         <em>Выигрыш:</em>
-        @forelse(json_decode($game->game_items) as $i)
+        @foreach(json_decode($game->game_items) as $i)
             @if(!isset($i->img))
             <div class="item"><img src="https://steamcommunity-a.akamaihd.net/economy/image/class/{{ \App\Http\Controllers\GameController::APPID }}/{{ $i->classid }}/200fx200f" alt="" /></div>
             @else
