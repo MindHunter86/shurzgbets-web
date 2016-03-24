@@ -134,6 +134,7 @@ class PagesController extends Controller
             }
             array_multisort($price, SORT_DESC, $items);
             $games[$key]->game_items = json_encode($items);
+            $games[$key]->chance = \App\Http\Controllers\GameController::_getChancesOfGame($game, true);
         }
         return view('pages.myhistory', compact('games'));
     }
