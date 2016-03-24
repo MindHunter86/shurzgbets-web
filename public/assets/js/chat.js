@@ -71,8 +71,6 @@ $(document).ready(function() {
 	    //messageList.mCustomScrollbar();
 	});
 	msgs.on('child_added', function (snapshot) {
-		var a = $("#chat_messages")[0];
-		var isScrollDown = Math.abs((a.offsetHeight + a.scrollTop) - a.scrollHeight) < 5;
 	    var data = snapshot.val();
 	    data.uuid = snapshot.key();
 	    var username = data.username || "Error";
@@ -100,7 +98,6 @@ $(document).ready(function() {
 	    bodyElement.prepend(msgBodyElement).prepend(avatarElement);
 
 	    messageList.append(bodyElement);
-	    if (isScrollDown) a.scrollTop = a.scrollHeight;
 	    messageList.mCustomScrollbar("update");
   	});
 });
