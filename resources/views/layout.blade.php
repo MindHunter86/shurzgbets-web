@@ -16,7 +16,7 @@
     <script type="text/javascript" src="{{ asset('shurzg/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/jquery.ikSelect.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/script.js') }}"></script>
-
+    <script type="text/javascript" src="{{ asset('shurzg/js/notify.min.js') }}"></script>
     <!--<script src="{{ asset('assets/js/inc.js') }}" ></script>-->
     <script src="{{ asset('assets/js/main.js') }}" ></script>
 
