@@ -234,6 +234,7 @@ if (START) {
 
                     $('.win_ticket').text('#'+data.ticket);
                     $('.win_username').text(data.winner.username + ' ('+data.chance +'%)');
+                    setLastWinner(data.winner);
                 }, 1100 * timeout);
             }
         })
@@ -272,7 +273,14 @@ if (START) {
         ngtimerStatus = true,
         lotteryTimerStatus = true;
 }
-
+function setLastWinner(data) {
+    $('.l-w-avatar').attr('src', data.avatar);
+    $('.l-w-username').text(data.username);
+    $('.l-w-username').text(data.username);
+    $('.l-w-price').text(data.price);
+    $('.l-w-chance').text(data.chance + "%.");
+    $('.last_winner').show();
+}
 function mergeWithDescriptions(items, descriptions) {
     return Object.keys(items).map(function(id) {
         var item = items[id];

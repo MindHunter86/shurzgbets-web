@@ -92,15 +92,25 @@
                 <div class="sale_text">Добавь <b>SHURZG</b><em>BETS</em> к своему Steam никнейму и получи <b>5%</b> бонус к выигрышу!</div>
             </div>
             @if(!is_null($lastWinner)) 
-            <div class="last_win">
+            <div class="last_win last_winner">
                 <div class="last_win_title">Последний победитель:</div>
-                <div class="last_win_ava"><img src="images/ava.jpg" alt="" /></div>
-                <div class="last_win_name ell">$lastWinner->winner->username</div>
+                <div class="last_win_ava"><img class="l-w-avatar" src="{{ $lastWinner->winner->avatar }}" alt="" /></div>
+                <div class="last_win_name ell l-w-username">{{ $lastWinner->winner->username }}</div>
                 <ul>
-                    <li>Выигрыш: <em>$lastWinner->price<span>руб.</span></em></li>
-                    <li>Шанс на победу: <em>{{ \App\Http\Controllers\GameController::_getUserChanceOfGame($lastWinner->winner, $lastWinner) }}%.</em></li>
+                    <li>Выигрыш: <em class="l-w-price">{{ $lastWinner->price }}<span>руб.</span></em></li>
+                    <li>Шанс на победу: <em class="l-w-chance">{{ \App\Http\Controllers\GameController::_getUserChanceOfGame($lastWinner->winner, $lastWinner) }}%.</em></li>
                 </ul>
             </div>
+            @else 
+            <div class="last_win last_winner" style="display:none;">
+                <div class="last_win_title">Последний победитель:</div>
+                <div class="last_win_ava"><img class="l-w-avatar" src="r" alt="" /></div>
+                <div class="last_win_name ell l-w-username"></div>
+                <ul>
+                    <li>Выигрыш: <em class="l-w-price"><span>руб.</span></em></li>
+                    <li>Шанс на победу: <em class="l-w-chance"></em></li>
+                </ul>
+            </div>        
             @endif
             <div class="last_win last_win_day">
                 <div class="last_win_title">Счастливчик дня:</div>
