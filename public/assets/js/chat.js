@@ -89,7 +89,7 @@ $(document).ready(function() {
 	    avatarElement.find("img").attr('src', avatar);
 	    nameElement.text(username);
 	    msgElement.text(message);
-	    msgBodyElement.prepend(chat_text).prepend(nameElement);
+	    msgBodyElement.prepend(msgElement).prepend(nameElement);
 
 	   	if(data.is_vip == "1") {
 	    	nameElement.attr('style', 'color:orange;');
