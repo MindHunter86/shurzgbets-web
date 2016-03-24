@@ -80,7 +80,7 @@ $(document).ready(function() {
 	    var avatar = data.avatar;
 	    var steamid = data.steamid;
 
-	    var avatarElement = $("<div class='chat_ava'><img class='removeMSG' data-ids='"+data.uuid+"' style='height: 32px; width: 32px;' /></div>");
+	    var avatarElement = $("<div class='chat_ava'><img class='removeMSG' data-ids='"+data.uuid+"' /></div>");
 	    var nameElement = $("<div class='chat_name'></div>");
 	    var msgElement = $("<div class='chat_text'></div>");
 	    var bodyElement = $("<div class='chat_info' data-uuid='"+data.uuid+"'></div>");
