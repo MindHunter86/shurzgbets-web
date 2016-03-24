@@ -3,6 +3,17 @@
 	if (cookie == 'active') {
 		$('.language_ico').addClass('active');
 	}
+	
+	$('#modal_cart, .shop_sort').on('click', 'li:not(.active)', function() {$(this).addClass('active').siblings().removeClass('active');});
+
+	$('.mini_profile_balance .plus').click(function(){
+		$('.chat').hide();
+		$('#modal').arcticmodal({
+			afterClose: function(data, el) {$('.chat').show();}
+		});
+	});
+	
+	$('.intro-select1').ikSelect({customClass: "intro-select1",ddFullWidth: false,filter: false});
 });
 
 function language() {

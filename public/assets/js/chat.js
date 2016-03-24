@@ -69,42 +69,38 @@ $(document).ready(function() {
 	    var data = snapshot.val();
 
 	    $('.chatMessage[data-uuid='+snapshot.key()+']').remove();
-	    $("#chatScroll").perfectScrollbar('update');
 	});
 	msgs.on('child_added', function (snapshot) {
-		var a = $("#chatScroll")[0];
+		var a = $("#chat_messages")[0];
 		var isScrollDown = Math.abs((a.offsetHeight + a.scrollTop) - a.scrollHeight) < 5;
-	    //GET DATA
 	    var data = snapshot.val();
 	    data.uuid = snapshot.key();
 	    var username = data.username || "Error";
 	    var message = data.message;
 	    var avatar = data.avatar;
 	    var steamid = data.steamid;
-	    console.log(data);
-	   	if(data.is_moderator == "1") {
-	    	username = 'Модератор ('+username+')';
-	    }
-	    //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
-	    var messageElement = $("<div class='chatMessage clearfix' data-uuid='"+data.uuid+"'>");
-	    var msg = $('<div class="body"></div>');
-	    var nameElement = $("<a href='#' class='login'></a>");
-	    var avatarElement = $("<img class='removeMSG' data-ids='"+data.uuid+"' style='height: 32px; width: 32px;' />");
-	    avatarElement.attr('src', avatar);
-	    nameElement.attr('data-profile', steamid);
+
+	    var avatarElement = $("<div class='chat_ava'><img class='removeMSG' data-ids='"+data.uuid+"' style='height: 32px; width: 32px;' /></div>");
+	    var nameElement = $("<div class='chat_name'></div>");
+	    var msgElement = $("<div class='chat_text'></div>");
+	    var bodyElement = $("<div class='chat_info' data-uuid='"+data.uuid+"'></div>");
+	    var msgBodyElement = $("<div class='chat_in'></div>");
+
+	    avatarElement.find("img").attr('src', avatar);
+	    nameElement.text(username);
+	    msgElement.text(message);
+	    msgBodyElement.prepend(chat_text).prepend(nameElement);
+
 	   	if(data.is_vip == "1") {
 	    	nameElement.attr('style', 'color:orange;');
 	    }
 	   	if(data.is_moderator == "1") {
 	    	nameElement.attr('style', 'color:green;');
 	    }
-	    msg.text(message);
-	    nameElement.text(username);
-	    messageElement.html(msg).prepend(nameElement).prepend(avatarElement);
+	    bodyElement.prepend(msgBodyElement).prepend(avatarElement);
 
-	    //ADD MESSAGE
-	    messageList.append(messageElement);
+	    messageList.append(bodyElement);
 	    if (isScrollDown) a.scrollTop = a.scrollHeight;
-	    $("#chatScroll").perfectScrollbar('update');
+	    //$("#chatScroll").perfectScrollbar('update');
   	});
 });
