@@ -1,4 +1,4 @@
-﻿$(document).ready(function(){
+﻿$(function(){
 	var cookie = $.cookie('language');
 	if (cookie == 'active') {
 		$('.language_ico').addClass('active');
