@@ -174,8 +174,22 @@ function replaceLogin(login) {
 }
 
 if (START) {
-    var socket = io.connect('https://joyskinss.top', { secure: true });
+    var socket = io.connect('https://joyskins.top', { secure: true });
 
+    socket
+        .on('newDeposit', function(data) {
+            data = JSON.parse(data);
+            $('.game_bank').text(Math.round(data.gamePrice));
+            $('.game_bar').css('width', data.itemsCount + '%');
+        })
+        .on('timer', function (time) {
+            if(timerStatus) {
+                console.log(time);
+                timerStatus = false;
+
+                $('.gameEndTimer').empty().countdown({seconds: time});
+            }
+        })
     var declineTimeout,
         timerStatus = true,
         ngtimerStatus = true,
