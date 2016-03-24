@@ -3,7 +3,7 @@
 @section('content')
 @if(!Auth::guest())
     @if(empty($u->accessToken))    
-    <div class="notrade rulet_bg">
+    <div class="notrade rulet_bg notradehide">
         <div class="notrade_text"><b>Внимание!</b> Необходимо ввести ссылку на обмен. <a href="http://steamcommunity.com/id/me/tradeoffers/privacy#trade_offer_access_url">Где взять ссылку?</a></div>
         <input class="notrade_link trade_link" type="text" placeholder="" />
         <div class="notrade_text2">Обязательно убедитесь что ваш инвентарь публично доступен в Steam для получения приза!</div>

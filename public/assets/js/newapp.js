@@ -118,7 +118,7 @@ $(document).ready(function() {
                 if (data.status == 'success') {
                     that.notify(data.msg, {autoHideDelay: 1000,position: 'left middle', className :"success"});
                     setTimeout( function() {
-                        $('.notrade').hide();
+                        $('.notradehide').hide();
                     }, 1500);
                 }
                 else {
