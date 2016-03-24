@@ -234,7 +234,7 @@ if (START) {
 
                     $('.win_ticket').text('#'+data.ticket);
                     $('.win_username').text(data.winner.username + ' ('+data.chance +'%)');
-                    setLastWinner(data.winner);
+                    setLastWinner(data);
                 }, 1100 * timeout);
             }
         })
@@ -274,9 +274,8 @@ if (START) {
         lotteryTimerStatus = true;
 }
 function setLastWinner(data) {
-    $('.l-w-avatar').attr('src', data.avatar);
-    $('.l-w-username').text(data.username);
-    $('.l-w-username').text(data.username);
+    $('.l-w-avatar').attr('src', data.winner.avatar);
+    $('.l-w-username').text(data.winner.username);
     $('.l-w-price').text(data.price);
     $('.l-w-chance').text(data.chance + "%.");
     $('.last_winner').show();
