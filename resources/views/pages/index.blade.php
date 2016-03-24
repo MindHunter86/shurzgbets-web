@@ -18,4 +18,21 @@
     <li><em>Макс. выигрыш сегодня:</em> <b class="stats-wintoday">{{ \App\Game::maxPriceToday() }}</b> руб.</li>
     <li><em>Максимальный выигрыш:</em> <b>{{ \App\Game::maxPrice() }}</b> руб.</li>
 </ul>
+<div class="gamebg">
+    <div class="game" style="display:block;">
+        <div class="game_panel">
+            <div class="game_num left">Игра #{{ $game->id }}</div>
+            <div class="game_cash right"><em>Вступай в игру сейчас и выиграй:</em> <b>{{ round($game->price) }}</b> <span>руб.</span></div>
+        </div>
+        <div class="game_scale left"><div class="progress" style="width:{{ $game->items }}%;"></div></div>
+        <div class="game_timer right">
+            <div class="min countMinutes">05</div>
+            <div class="sec countSeconds">59</div>
+        </div>
+        <div class="clear"></div>
+        <div class="game_info"><em>Мин. ставка {{ $min_price = \App\Http\Controllers\GameController::MIN_PRICE }} руб., максимум предметов {{ $max_items = \App\Http\Controllers\GameController::MAX_ITEMS }}.</em></div>
+        <div class="game_info game_info_last"><em>Чем выше ваша ставка, тем выше шанс на победу.</em></div>
+        <div class="game_button"><a href="/deposit" class="depositModal" target="_blank">Внести депозит</a></div>
+    </div>
+</div>
 @endsection
