@@ -58,10 +58,26 @@
             <div class="rulet_button"><a href="/deposit" class="depositModal" target="_blank">ВНЕСТИ ДЕПОЗИТ ПЕРВЫМ</a></div>
         </div>
     </div>
-</div>
-    <div class="gamestart">
-        <em class="gamestart_title">ИГРА НАЧАЛАСЬ! ВНОСИТЕ ДЕПОЗИТ!</em>
-        <em class="gamestart_bg">ЧЕСТНАЯ ИГРА</em>
-        <em class="gamestart_hash">Хэш раунда: <span>2193dbd3d54e2659c700465fb860cc57645bfb21495c477f162da75a</span></em>
+    <div class="cart">
+        <div class="cart_text">
+            <em>Вы можете купить карточки и поставить их игру:</em>
+            <span>Пополните баланс и купите нужные карточки</span>
+        </div>
+        <div class="cart_loop">
+            <div class="cart_info"><em>60</em></div>
+            <div class="cart_info"><em>75</em></div>
+            <div class="cart_info"><em>95</em></div>
+            <div class="cart_info"><em>105</em></div>
+            <div class="cart_info"><em>135</em></div>
+            <div class="cart_info"><em>150</em></div>
+        </div>
     </div>
+    <div class="chance" @if(count($percents) == 0) style="display: none;" @endif>
+        <ul class="chances">
+        @foreach($percents as $p)
+            <li><b>{{ $p->chance }}%</b><img src="{{ $p->avatar }}" alt="" /></li>
+        @endif
+        </ul>
+    </div>
+</div>
 @endsection

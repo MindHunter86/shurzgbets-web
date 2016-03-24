@@ -181,6 +181,13 @@ if (START) {
             data = JSON.parse(data);
             $('.game_bank').text(Math.round(data.gamePrice));
             $('.game_bar').css('width', data.itemsCount + '%');
+            html_chances = '';
+            data.chances = sortByChance(data.chances);
+            data.chances.forEach(function(info){
+                html_chances += '<li><b>'+info.chance+'%</b><img src="'+info.avatar+'" alt="" /></li>';
+            });
+            $('.chance').show();
+            $('.chances').html(html_chances);
         })
         .on('timer', function (time) {
             if(timerStatus) {
