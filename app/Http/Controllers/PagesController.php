@@ -133,7 +133,7 @@ class PagesController extends Controller
                 }
             }
             array_multisort($price, SORT_DESC, $items);
-            $games[$key]->game_items = json_encode(array_slice($items, 0, 7));
+            $games[$key]->game_items = json_encode($items);
         }
         return view('pages.myhistory', compact('games'));
     }
