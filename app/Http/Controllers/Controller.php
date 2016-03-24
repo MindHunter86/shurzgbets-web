@@ -48,7 +48,7 @@ abstract class Controller extends BaseController
         $game = Game::orderBy('id', 'desc')->first();
         if(!is_null($game)) {
             $lastWinner = Game::where('id', $game->id - 1)->first();
-            view()->share('last_winner', $lastWinner);
+            view()->share('lastWinner', $lastWinner);
         }
     }
 
