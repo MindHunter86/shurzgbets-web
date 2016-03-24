@@ -18,7 +18,7 @@ use PhpParser\Node\Expr\Cast\Object_;
 class AjaxController extends Controller
 {
     static $FIREBASE_URL = 'https://shurzgbets.firebaseio.com/';
-    static $FIREBASE_SECRET = 'r3DmY9lfb3nRT3lPqY9XkRlSVtnE8XHzujcIBkoe';
+    static $FIREBASE_SECRET = '2xSm8fxIQHpBV20rTOupbwCQGfREJMcAATTtkaw6';
     public function chat(Request $request) {
         $type = $request->get('type');
         if(!$request->has('type')) {
