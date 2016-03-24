@@ -100,7 +100,7 @@ $(document).ready(function() {
 	    bodyElement.prepend(msgBodyElement).prepend(avatarElement);
 
 	    if (isScrollDown) a.scrollTop = a.scrollHeight;
-	    messageList.find('div div').append(bodyElement);
+	    messageList.append(bodyElement);
 	    //$('.chat_scroll').mCustomScrollbar('update');
   	});
 });
