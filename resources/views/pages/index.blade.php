@@ -33,11 +33,11 @@
         <div class="game_info"><em>Мин. ставка {{ $min_price = \App\Http\Controllers\GameController::MIN_PRICE }} руб., максимум предметов {{ $max_items = \App\Http\Controllers\GameController::MAX_ITEMS }}.</em></div>
         <div class="game_info game_info_last"><em>Чем выше ваша ставка, тем выше шанс на победу.</em></div>
         <div class="game_button"><a href="/deposit" class="depositModal" target="_blank">Внести депозит</a></div>
-                            <div class="gamestart">
-                        <em class="gamestart_title">ИГРА НАЧАЛАСЬ! ВНОСИТЕ ДЕПОЗИТ!</em>
-                        <em class="gamestart_bg">ЧЕСТНАЯ ИГРА</em>
-                        <em class="gamestart_hash">Хэш раунда: <span>2193dbd3d54e2659c700465fb860cc57645bfb21495c477f162da75a</span></em>
-                    </div>
+    </div>
+    <div class="gamestart">
+        <em class="gamestart_title">ИГРА НАЧАЛАСЬ! ВНОСИТЕ ДЕПОЗИТ!</em>
+        <em class="gamestart_bg">ЧЕСТНАЯ ИГРА</em>
+        <em class="gamestart_hash">Хэш раунда: <span>2193dbd3d54e2659c700465fb860cc57645bfb21495c477f162da75a</span></em>
     </div>
     <div class="rul game_winner" style="display:none;">
         <div class="game_panel">
