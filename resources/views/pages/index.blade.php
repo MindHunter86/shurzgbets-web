@@ -50,7 +50,7 @@
         </div>
         <div class="right">
             <div class="rulet_timer ngtimer">
-                <span class="countSeconds"><span class="position"><span class="digit static" style="display:none;">0</span></span><span class="position"><span class="digit static">0</span></span></span>
+                <span class="countSeconds"><span class="position"><span class="digit static">0</span></span><span class="position"><span class="digit static">0</span></span></span>
                 <em>Новая игра через:</em>
             </div>
             <div class="rulet_button"><a href="/deposit" class="depositModal" target="_blank">ВНЕСТИ ДЕПОЗИТ ПЕРВЫМ</a></div>
