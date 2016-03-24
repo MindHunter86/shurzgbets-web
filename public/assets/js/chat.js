@@ -101,6 +101,6 @@ $(document).ready(function() {
 
 	    messageList.append(bodyElement);
 	    if (isScrollDown) a.scrollTop = a.scrollHeight;
-	    //messageList.mCustomScrollbar();
+	    messageList.mCustomScrollbar();
   	});
 });
