@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Game;
 use App\Promo;
 use App\Smile;
 use LRedis;
