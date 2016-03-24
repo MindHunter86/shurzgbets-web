@@ -17,7 +17,7 @@
     <script type="text/javascript" src="{{ asset('shurzg/js/jquery.ikSelect.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/script.js') }}"></script>
 
-    <!--<script src="{{ asset('assets/js/inc.js') }}" ></script>-->
+    <script src="{{ asset('assets/js/inc.js') }}" ></script>
     <script src="{{ asset('assets/js/main.js') }}" ></script>
 
     <script>
@@ -145,7 +145,7 @@
 
 </script>
 <script src="{{ asset('assets/js/firebase.js') }}" ></script>
-<!--<script src="{{ asset('assets/js/newapp.js') }}" ></script>-->
+<script src="{{ asset('assets/js/newapp.js') }}" ></script>
 <script src="{{ asset('assets/js/chat.js') }}" ></script>
 </body>
 </html>
