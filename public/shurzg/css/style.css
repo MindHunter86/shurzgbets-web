@@ -772,7 +772,7 @@ b {
 	background:url(../images/cart.png) no-repeat -350px 0;
 }
 .cart_info_1 {
-	background:url(../images/cart.png) no-repeat 0 0;
+	background:url(../images/cart.png) no-repeat -70px 0;
 }
 .cart_info:after {
 	width:57px;
