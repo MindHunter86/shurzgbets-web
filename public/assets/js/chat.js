@@ -102,7 +102,7 @@ $(document).ready(function() {
 	    }
 	    bodyElement.prepend(msgBodyElement).prepend(avatarElement);
 
-	    $('.mCSB_container').append(bodyElement);
+	    $('.chat_scroll .mCSB_container').append(bodyElement);
 	    $('.chat_scroll').mCustomScrollbar('scrollTo', 'bottom');
   	});
 });
