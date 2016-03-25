@@ -1131,7 +1131,16 @@ b {
     -moz-transition: 10s ease-in-out;
     backface-visibility: hidden;
 }
-
+.all-players-list li {
+    width: 80px;
+    height: 80px;
+    margin: 0 2px;
+    display: inline-block;
+}
+.all-players-list li img {
+    max-width: 100%;
+    max-height: 100%;
+}
 .all-players-list.active0 {
     transform: translate3d(-7925px, 0px, 0px);
     -webkit-transform: translate3d(-7925px, 0px, 0px);
