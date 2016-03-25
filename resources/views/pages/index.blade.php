@@ -86,6 +86,15 @@
     <em class="gamestart_hash">Число раунда: <span class="round_number"></span></em>
 </div>
 <div class="allitems_loop">
+    <div class="allitems allitems_c1">
+        <div class="allitems_ava"><img src="images/ava.jpg" alt="" /></div>
+        <div class="allitems_in">
+            <div class="allitems_name ell">Alexander</div>
+            <div class="allitems_cash ell">вложил <b>Dual Berettas | Причал (Немного поношенное)</b> (~88 руб.)</div>
+            <div class="allitems_num">Билеты: от #386 до #505</div>
+        </div>
+        <div class="allitems_w"><div class="cart_info_1"></div></div>
+    </div>
 </div>
 <div class="gamestart game_hash">
     <em class="gamestart_title">ИГРА НАЧАЛАСЬ! ВНОСИТЕ ДЕПОЗИТ!</em>

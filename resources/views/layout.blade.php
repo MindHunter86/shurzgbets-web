@@ -50,6 +50,41 @@
         <input class="chat_ok" type="submit" value="ОК" />
     </div>
 </div>
+@if(!Auth::guest())
+<div style="display:none;">
+    <div class="modal" id="modal">
+        <div class="modal_close arcticmodal-close"></div>
+        <div class="modal_top"><b>ПОПОЛНЕНИЕ</b> БАЛАНСА</div>
+        <div class="modal_balance">Ваш баланс: <em class="balanced">{{ $u->money }}</em><span>руб.</span></div>
+        <div class="modal_balance_buy">
+            <input type="text" placeholder="Введите сумму" />
+            <input type="submit" value="Пополнить" />
+        </div>
+        <div class="modal_cart">
+            <div class="modal_cart_text">Выберите нужную карточку:</div>
+            <ul class="cart_loop" id="modal_cart">
+                <li class="cart_info"><em>60</em></li>
+                <li class="cart_info"><em>75</em></li>
+                <li class="cart_info"><em>95</em></li>
+                <li class="cart_info"><em>105</em></li>
+                <li class="cart_info"><em>135</em></li>
+                <li class="cart_info"><em>150</em></li>
+            </ul>
+            <div class="clear"></div>
+            <div class="modal_cart_loop">
+                <div class="modal_cart_rub">Цена карточки: <em>150</em><span>руб.</span></div>
+                <div class="modal_cart_button">ВНЕСТИ</div>
+            </div>
+            <div class="modal_cart_info">
+                <p><b>ДЛЯ ЧЕГО НУЖНЫ ФИШКИ?</b></p>
+                <p>Вы можете вносить депозит фишками вместо предметов. Фишки моментально вносятся в раунд без задержек.</p>
+                <br />
+                <p>Фишки меняются на деньги, на которые вы можете совершать покупки в нашем магазине JOYSKINS.TOP/SHOP</p>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 <div class="wrapper">
     <div class="header">
         <a href="/" class="logo"></a>
@@ -61,7 +96,7 @@
             <div class="mini_profile_in">
                 <div class="mini_profile_name ell">{{ $u->username }}</div>
                 <div class="mini_profile_balance">
-                    Баланс: <em>{{ $u->money }} руб.</em>
+                    Баланс: <em class="balanced">{{ $u->money }} руб.</em>
                     <a href="#" class="plus"></a>
                 </div>
             </div>
@@ -136,7 +171,7 @@
     function updateBalance() {
         $.post('{{route('get.balance')}}', function (data) {
             console.log(data);
-            $('#balanced').text(data);
+            $('.balanced').text(data);
         });
     }
     function addTicket(id, btn) {

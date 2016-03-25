@@ -771,7 +771,9 @@ b {
 .cart_loop .cart_info:nth-child(6):after {
 	background:url(../images/cart.png) no-repeat -350px 0;
 }
-
+.cart_info_1 {
+	background:url(../images/cart.png) no-repeat 0 0;
+}
 .cart_info:after {
 	width:57px;
 	height:54px;
@@ -914,12 +916,36 @@ b {
 	overflow:hidden;
 }
 
-.allitems_c1 {
+.covert {
 	background:url(../images/allitems.png) no-repeat 0 0 !important;
 }
 
-.allitems_c2 {
+.milspec {
 	background:url(../images/allitems.png) no-repeat 0 -260px !important;
+}
+
+.common {
+	background:url(../images/allitems_c3.png) no-repeat 0 0 !important;
+}
+
+.restricted {
+	background:url(../images/allitems_c4.png) no-repeat 0 0 !important;
+}
+
+.classified {
+	background:url(../images/allitems_c5.png) no-repeat 0 0 !important;
+}
+
+.allitems_c6 {
+	background:url(../images/allitems_c6.png) no-repeat 0 0 !important;
+}
+
+.rare {
+	background:url(../images/allitems_c7.png) no-repeat 0 0 !important;
+}
+
+.common {
+	background:url(../images/allitems_c8.png) no-repeat 0 0 !important;
 }
 
 .allitems {
