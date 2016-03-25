@@ -147,7 +147,6 @@ class PagesController extends Controller
         }
         return view('pages.myhistory', compact('games'));
     }
-        }
     private function _getChancesOfGame($game, $is_object = false)
     {
         $chances = [];
@@ -163,7 +162,6 @@ class PagesController extends Controller
                 $chances[] = [
                     'chance' => $this->_getUserChanceOfGame($user, $game),
                     'avatar' => $user->avatar,
-                    'items' => User::find($user->id)->itemsCountByGame($game),
                     'steamid64'  => $user->steamid64
                 ];
             }
