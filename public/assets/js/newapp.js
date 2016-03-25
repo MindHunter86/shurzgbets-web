@@ -188,6 +188,13 @@ if (START) {
             });
             $('.chance').show();
             $('.chances').html(html_chances);
+            $('.chances').mCustomScrollbar("destroy");
+            $('.chances').mCustomScrollbar({
+                axis:'x',
+                theme:'dark-thin',
+                autoExpandScrollbar:true,
+                advanced:{autoExpandHorizontalScroll:true}
+            }); 
         })
         .on('timer', function (time) {
             if(timerStatus) {
@@ -276,7 +283,7 @@ if (START) {
 function setLastWinner(data) {
     $('.l-w-avatar').attr('src', data.winner.avatar);
     $('.l-w-username').text(data.winner.username);
-    $('.l-w-price').text(data.game.price);
+    $('.l-w-price').text(data.game.price + " руб.");
     $('.l-w-chance').text(data.chance + "%.");
     $('.last_winner').show();
 }

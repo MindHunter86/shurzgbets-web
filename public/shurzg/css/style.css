@@ -865,6 +865,12 @@ b {
 	overflow:hidden;
 }
 
+.chance .mCSB_scrollTools,
+.chance .mCSB_dragger,
+.chance .mCSB_draggerRail {
+	opacity:0;
+}
+
 .chance ul {
 	width:754px;
 	height:97px;
