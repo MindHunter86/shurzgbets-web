@@ -123,30 +123,6 @@ class PagesController extends Controller
     {
         return view('pages.settings');
     }
-
-    public function myhistory()
-    {
-        $games = Game::with(['bets', 'winner'])
-            ->where('games.winner_id', $this->user->id)
-            ->where('status', Game::STATUS_FINISHED)
-            ->orderBy('created_at', 'desc')
-            ->limit(50)
-            ->get();
-
-        foreach($games as $key => $game) {
-            $items = array();
-            $price = array();
-            foreach($game->bets as $bet) {
-                foreach(json_decode($bet->items) as $item) {
-                    $items[] = (array)$item;
-                    $price[] = (array)$item->price;
-                }
-            }
-            array_multisort($price, SORT_DESC, $items);
-            $games[$key]->game_items = json_encode($items);
-        }
-        return view('pages.myhistory', compact('games'));
-    }
     private function _getChancesOfGame($game, $is_object = false)
     {
         $chances = [];
@@ -155,7 +131,6 @@ class PagesController extends Controller
                 $chances[] = (object) [
                     'chance' => $this->_getUserChanceOfGame($user, $game),
                     'avatar' => $user->avatar,
-                    'items' => User::find($user->id)->itemsCountByGame($game),
                     'steamid64'  => $user->steamid64
                 ];
             }else{
