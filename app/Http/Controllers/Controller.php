@@ -50,7 +50,7 @@ abstract class Controller extends BaseController
             $lastWinner = Game::where('id', $game->id - 1)->first();
             view()->share('lastWinner', $lastWinner);
         }
-        $dayLucky = Game::where('status', 3)->orderBy('chance', 'asc')->get()->sortBy('price')->first();
+        $dayLucky = Game::where('status', 3)->orderBy('price', 'asc')->get()->sortBy('chance')->first();
         view()->share('dayLucky', $dayLucky);
     }
 
