@@ -62,25 +62,12 @@
             <input type="submit" value="Пополнить" class="addbalBtn"/>
         </div>
         <div class="modal_cart">
-            <div class="modal_cart_text">Выберите нужную карточку:</div>
-            <ul class="cart_loop" id="modal_cart">
-                <li class="cart_info"><em>60</em></li>
-                <li class="cart_info"><em>75</em></li>
-                <li class="cart_info"><em>95</em></li>
-                <li class="cart_info"><em>105</em></li>
-                <li class="cart_info"><em>135</em></li>
-                <li class="cart_info"><em>150</em></li>
-            </ul>
             <div class="clear"></div>
-            <div class="modal_cart_loop">
-                <div class="modal_cart_rub">Цена карточки: <em>150</em><span>руб.</span></div>
-                <div class="modal_cart_button">ВНЕСТИ</div>
-            </div>
             <div class="modal_cart_info">
                 <p><b>ДЛЯ ЧЕГО НУЖНЫ ФИШКИ?</b></p>
                 <p>Вы можете вносить депозит фишками вместо предметов. Фишки моментально вносятся в раунд без задержек.</p>
                 <br />
-                <p>Фишки меняются на деньги, на которые вы можете совершать покупки в нашем магазине JOYSKINS.TOP/SHOP</p>
+                <p>Фишки меняются на деньги, на которые вы можете совершать покупки в нашем магазине SHURZGBETS.COM/SHOP</p>
             </div>
         </div>
     </div>
