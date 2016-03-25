@@ -257,14 +257,15 @@ if (START) {
             $('.game_stats').show();
 
             $('.game_winner').hide();
-
-            $('.stats-gamesToday').text(data.today);
-            $('.stats-uniqueUsers').text(data.userstoday);
-            $('.stats-wintoday').text(data.maxwin);
+            $('.game_items').html('');
             $('.game_num span').text(data.id);
             $('.game_bank').text(0);
             $('.game_hash_number').text(data.hash);
             $('.game_bar').css('width','0%');
+
+            $('.stats-gamesToday').text(data.today);
+            $('.stats-uniqueUsers').text(data.userstoday);
+            $('.stats-wintoday').text(data.maxwin);
             timerStatus = true;
             ngtimerStatus = true;
         })
