@@ -144,49 +144,9 @@ class PagesController extends Controller
             array_multisort($price, SORT_DESC, $items);
             $games[$key]->game_items = json_encode($items);
             $playGame = Game::where('id', $game->id)->first();
-            $games[$key]->chance = $this->_getChancesOfGame($playGame, true);
+            //$games[$key]->chance = $this->_getChancesOfGame($playGame, true);
         }
         return view('pages.myhistory', compact('games'));
-    }
-    private function _getChancesOfGame($game, $is_object = false)
-    {
-        $chances = [];
-        foreach($game->users() as $user){
-            if($is_object){
-                $chances[] = (object) [
-                    'chance' => $this->_getUserChanceOfGame($user, $game),
-                    'avatar' => $user->avatar,
-                    'steamid64'  => $user->steamid64
-                ];
-            }else{
-                $chances[] = [
-                    'chance' => $this->_getUserChanceOfGame($user, $game),
-                    'avatar' => $user->avatar,
-                    'steamid64'  => $user->steamid64
-                ];
-            }
-
-        }
-        return $chances;
-    }
-    public static function _getUserChanceOfGame($user, $game)
-    {
-        $chance = 0;
-        if (!is_null($user)) {
-            //if(isset(self::$chances_cache[$user->id])) return self::$chances_cache[$user->id];
-            $bet = Bet::where('game_id', $game->id)
-                ->where('user_id', $user->id)
-                ->sum('price');
-            
-            if ($bet) {
-                if($bet == 0)
-                    $chance = 0;
-                else
-                    $chance = round($bet / $game->price, 3) * 100;
-            }
-            self::$chances_cache[$user->id] = $chance;
-        }
-        return $chance;
     }
     public function game($gameId)
     {
