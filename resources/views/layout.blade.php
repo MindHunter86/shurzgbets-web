@@ -3,9 +3,9 @@
 <head>
     <title>SHURZGBETS.COM</title>
     <meta charset="utf-8">
-    <meta property="og:title" content="JOYSKINS.TOP" />
-    <meta name="keywords" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. JOYSKINS.TOP - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
-    <meta name="description" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. JOYSKINS.TOP - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
+    <meta property="og:title" content="SHURZGBETS.COM" />
+    <meta name="keywords" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. SHURZGBETS.COM - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
+    <meta name="description" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. SHURZGBETS.COM - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="csrf-token" content="{!!  csrf_token()   !!}">
     <link type="text/css" rel="stylesheet" href="{{ asset('shurzg/css/style.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ asset('shurzg/css/jquery.mCustomScrollbar.css') }}" />
@@ -166,7 +166,8 @@
         });
     }
     function addTicket(id) {
-        if(!timeout) {
+        $.notify('Карточки временно недоступны', {position: 'bottom middle', className :"error"});
+        /*if(!timeout) {
             timeout = true;
             $.post('{{route('add.ticket')}}',{id:id}, function(data){
                 updateBalance();
@@ -176,7 +177,7 @@
         }
         else {
             return $.notify('Пожалуйста подождите..', {position: 'bottom middle', className :'error'});
-        }
+        }*/
 
     }
     
