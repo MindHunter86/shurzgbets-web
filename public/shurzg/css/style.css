@@ -1120,7 +1120,7 @@ b {
 	font-size:14px;
 }
 .all-players-list {
-	width: 11000px;
+	width: auto;
     text-align: center;
     white-space: nowrap;
     background: none;

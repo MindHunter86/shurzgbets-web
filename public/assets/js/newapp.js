@@ -240,7 +240,7 @@ if (START) {
                     }, 500);
                 }
                 var timeout = data.showSlider ? 10 : 0;
-                console.log($('.all-players-list').eq(100).getBoundingClientRect());
+
                 setTimeout(function () {
                     $('.round_number').text(data.round_number);
                     $('.game_round_number').show();
