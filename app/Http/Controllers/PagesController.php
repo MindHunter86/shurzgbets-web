@@ -143,14 +143,15 @@ class PagesController extends Controller
             }
             array_multisort($price, SORT_DESC, $items);
             $games[$key]->game_items = json_encode($items);
-            $games[$key]->chance = $this->_getChancesOfGame($game, $game->users(), true);
+            $playGame = Game::where('id', $game->id)->first();
+            $games[$key]->chance = $this->_getChancesOfGame($playGame, true);
         }
         return view('pages.myhistory', compact('games'));
     }
-    private function _getChancesOfGame($game, $users, $is_object = false)
+    private function _getChancesOfGame($game, $is_object = false)
     {
         $chances = [];
-        foreach($users as $user){
+        foreach($game->users() as $user){
             if($is_object){
                 $chances[] = (object) [
                     'chance' => $this->_getUserChanceOfGame($user, $game),
