@@ -249,7 +249,7 @@ if (START) {
                     $('.win_ticket').text('#'+data.ticket);
                     $('.win_username').text(data.winner.username + ' ('+data.chance +'%)');
                     setLastWinner(data);
-                }, 1100 * timeout);
+                }, 1200 * timeout);
             }
         })
         .on('newGame', function (data) {
