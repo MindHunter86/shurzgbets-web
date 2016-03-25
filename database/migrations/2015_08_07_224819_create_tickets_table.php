@@ -41,7 +41,7 @@ class CreateTicketsTable extends Migration
         \App\Ticket::create([
             'name' => 'Карточка на 600 руб',
             'img'  => '/new/images/carts-4.png',
-            'price' => 300
+            'price' => 600
         ]);
         \App\Ticket::create([
             'name' => 'Карточка на 1000 руб',
