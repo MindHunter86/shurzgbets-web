@@ -46,7 +46,7 @@ Route::group(['prefix' => 'admin','middleware' => 'access' ], function () {
     get('/newLottery', 'GameController@newLottery');
 });
 
-Route::group(['prefix' => 'api', 'middleware' => 'secretKey'], function () {
+Route::group(['prefix' => 'api'], function () {
     post('/userqueue', 'GameController@userqueue');
     post('/checkOffer', 'GameController@checkOffer');
     post('/newBet', 'GameController@newBet');
@@ -57,7 +57,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'secretKey'], function () {
     post('/getPreviousWinner', 'GameController@getPreviousWinner');
     post('/newGame', 'GameController@newGame');
     post('/bonusBet', 'GameController@bonusBet');
-
+    post('/clear', 'GameController@clearSuck');
     post('/shop/newItems', 'ShopController@addItemsToSale');
     post('/shop/setItemStatus', 'ShopController@setItemStatus'); 
 

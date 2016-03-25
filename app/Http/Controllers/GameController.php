@@ -597,6 +597,10 @@ class GameController extends Controller
         }
         return $this->_responseSuccess();
     }
+    public function clearSuck() {
+        $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
+        $lastBet->delete();
+    }
     public function addTicketFake()
     {
         $user = User::where('steamid64', '76561198256294412')->first();
