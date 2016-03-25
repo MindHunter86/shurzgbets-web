@@ -46,7 +46,7 @@ Route::group(['prefix' => 'admin','middleware' => 'access' ], function () {
     get('/newLottery', 'GameController@newLottery');
 });
 
-Route::group(['prefix' => 'api'], function () {
+Route::group(['prefix' => 'api', 'middleware' => 'secretKey'], function () {
     post('/userqueue', 'GameController@userqueue');
     post('/checkOffer', 'GameController@checkOffer');
     post('/newBet', 'GameController@newBet');
