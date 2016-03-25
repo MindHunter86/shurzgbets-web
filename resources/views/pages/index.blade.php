@@ -86,7 +86,7 @@
     <em class="gamestart_hash">Число раунда: <span class="round_number"></span></em>
 </div>
 <div class="allitems_loop">
-    <div class="allitems allitems_c1">
+    <div class="allitems common">
         <div class="allitems_ava"><img src="images/ava.jpg" alt="" /></div>
         <div class="allitems_in">
             <div class="allitems_name ell">Alexander</div>
