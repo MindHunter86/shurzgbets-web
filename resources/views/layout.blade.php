@@ -14,6 +14,7 @@
     <script type="text/javascript" src="{{ asset('shurzg/js/jquery.cookie.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/jquery.smoothscroll.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('shurzg/js/jquery.arcticmodal-0.3.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/jquery.ikSelect.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/script.js') }}"></script>
     <script type="text/javascript" src="{{ asset('shurzg/js/notify.min.js') }}"></script>
