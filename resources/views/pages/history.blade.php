@@ -15,13 +15,7 @@
             <div class="right hist_num">Игра <b>#{{ $game->id }}</b></div>
         </div>
     </div>
-    <div class="hist_chance chance">
-        <ul>
-            @foreach($game->chance as $c)
-            <li><b>{{ $c->chance }}%</b><img src="{{ $c->avatar }}" alt="" /></li>
-            @endforeach
-        </ul>
-    </div>
+
     <div class="hist_bg2">
         <em>Выигрыш:</em>
         @foreach(json_decode($game->game_items) as $i)
