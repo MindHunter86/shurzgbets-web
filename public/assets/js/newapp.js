@@ -276,7 +276,7 @@ if (START) {
 function setLastWinner(data) {
     $('.l-w-avatar').attr('src', data.winner.avatar);
     $('.l-w-username').text(data.winner.username);
-    $('.l-w-price').text(data.price);
+    $('.l-w-price').text(data.game.price);
     $('.l-w-chance').text(data.chance + "%.");
     $('.last_winner').show();
 }
