@@ -1,5 +1,5 @@
 @foreach(json_decode($bet->items) as $i)
-<div class="allitems {{ $i->rarity }} animated shake">
+<div class="allitems {{ $i->rarity }} animated fadeInDown">
   <div class="allitems_ava"><img src="{{ $bet->user->avatar }}" alt="" /></div>
   <div class="allitems_in">
     <div class="allitems_name ell">{{ $bet->user->username }}</div>
