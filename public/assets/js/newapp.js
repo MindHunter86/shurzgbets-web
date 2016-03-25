@@ -180,7 +180,7 @@ function replaceLogin(login) {
 }
 
 if (START) {
-    var socket = io.connect('https://joyskins.top', { secure: true });
+    var socket = io.connect('https://shurzgbets.com', { secure: true });
 
     socket
         .on('newDeposit', function(data) {
