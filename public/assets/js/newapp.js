@@ -46,6 +46,12 @@ $(document).ready(function() {
             }
         })
     });
+    $('.mini_profile_balance .plus').click(function(){
+        $('.chat').hide();
+        $('#modal').arcticmodal({
+            afterClose: function(data, el) {$('.chat').show();}
+        });
+    });
     $('.addbalBtn').click(function() {
         $.ajax({
             url: '/merchant',

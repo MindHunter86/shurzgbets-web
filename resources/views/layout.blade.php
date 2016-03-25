@@ -57,8 +57,8 @@
         <div class="modal_top"><b>ПОПОЛНЕНИЕ</b> БАЛАНСА</div>
         <div class="modal_balance">Ваш баланс: <em class="balanced">{{ $u->money }}</em><span>руб.</span></div>
         <div class="modal_balance_buy">
-            <input type="text" placeholder="Введите сумму" />
-            <input type="submit" value="Пополнить" />
+            <input type="text" placeholder="Введите сумму" id="sumadd" />
+            <input type="submit" value="Пополнить" class="addbalBtn"/>
         </div>
         <div class="modal_cart">
             <div class="modal_cart_text">Выберите нужную карточку:</div>
