@@ -185,6 +185,7 @@ if (START) {
     socket
         .on('newDeposit', function(data) {
             data = JSON.parse(data);
+            $('.game_items').prepend(data.html);
             $('.game_bank').text(Math.round(data.gamePrice));
             $('.game_bar').css('width', data.itemsCount + '%');
             html_chances = '';

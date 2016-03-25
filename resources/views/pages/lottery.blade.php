@@ -13,7 +13,7 @@
 		<div class="clear"></div>
 		<div class="lottery_text">
 			<div class="left">Список участников (<span class='currentPlayer'>{{ $lottery->players }}</span> / <span class='currentMax'>{{ $lottery->max }}</span>):</div>
-			<div class="right"><a href="#">История розыгрышей</a></div>
+			<div class="right"><a href="/giveaway/history">История розыгрышей</a></div>
 		</div>
 		<div class="lottery_loop">
 		@foreach($players as $player)

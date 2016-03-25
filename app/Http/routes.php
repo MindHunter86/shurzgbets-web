@@ -33,7 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
     get('/promo', ['as' => 'promo', 'uses' => 'PagesController@promo']);
 
     post('/giveaway/accept', 'GameController@acceptLottery');
-    get('/giveaway', ['as' => 'giveaway', 'uses' => 'PagesController@giveaway']);
+    get('/giveaway/history', ['as' => 'giveaway', 'uses' => 'PagesController@giveaway']);
+    get('/giveaway', ['as' => 'giveaway', 'uses' => 'PagesController@lottery']);
 
 });
 Route::group(['prefix' => 'admin','middleware' => 'access' ], function () {

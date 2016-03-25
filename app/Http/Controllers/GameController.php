@@ -64,11 +64,6 @@ class GameController extends Controller
     {
         Referer::referer();
 
-        /*$lottery = Lottery::where('status', 0)->orderBy('id', 'desc')->first();
-        if(!is_null($lottery)) {
-            $lottery->items = json_decode($lottery->items);
-            $players = $lottery->players()->with(['user','lottery'])->get()->sortByDesc('created_at');
-        }*/
         $game = Game::orderBy('id', 'desc')->first();
         $bets = $game->bets()->with(['user','game'])->get()->sortByDesc('to');
         $percents = $this->_getChancesOfGame($game, true);
@@ -134,7 +129,7 @@ class GameController extends Controller
         $this->game->save();
         $this->game->chance         = $this->_getUserChanceOfGame($this->game->winner, $this->game);
         $this->game->save();
-        
+
         $returnValue = [
             'game'   => $this->game,
             'winner' => $this->game->winner,

@@ -34,6 +34,14 @@ class PagesController extends Controller
         }
         return view('pages.promo', compact('referal'));
     }
+    public function lottery() {
+        $lottery = Lottery::where('status', 0)->orderBy('id', 'desc')->first();
+        if(!is_null($lottery)) {
+            $lottery->items = json_decode($lottery->items);
+            $players = $lottery->players()->with(['user','lottery'])->get()->sortByDesc('created_at');
+        }
+        return view('pages.lottery', compact('lottery', 'players'));
+    }
     public function giveaway() {
         $lottery = Lottery::where('status', Game::STATUS_FINISHED)
             ->orderBy('created_at', 'desc')

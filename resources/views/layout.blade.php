@@ -103,7 +103,7 @@
                 <li class="ico2"><a href="/top">Топ игроков</a></li>
                 <li class="ico3"><a href="/history">История игр</a></li>
                 <li class="ico4"><a href="/about">О сайте</a></li>
-                <li class="ico5"><a href="/">Розыгрыш</a></li>
+                <li class="ico5"><a href="/giveaway">Розыгрыш</a></li>
                 <li class="ico6"><a href="/shop">Магазин</a></li>
                 @if(!Auth::guest())
                 <li class="ico7"><a href="/referals">Реф.система</a></li>
