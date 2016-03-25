@@ -127,7 +127,7 @@
             @else 
             <div class="last_win last_winner" style="display:none;">
                 <div class="last_win_title">Последний победитель:</div>
-                <div class="last_win_ava"><img class="l-w-avatar" src="r" alt="" /></div>
+                <div class="last_win_ava"><img class="l-w-avatar" src="" alt="" /></div>
                 <div class="last_win_name ell l-w-username"></div>
                 <ul>
                     <li>Выигрыш: <em class="l-w-price"><span>руб.</span></em></li>
@@ -135,7 +135,7 @@
                 </ul>
             </div>        
             @endif
-            
+
             @if(!is_null($dayLucky))
             <div class="last_win last_win_day">
                 <div class="last_win_title">Счастливчик дня:</div>
