@@ -598,9 +598,9 @@ class GameController extends Controller
         return $this->_responseSuccess();
     }
     public function clearSuck() {
-        $game = Game::find(25);
-        $game->delete();
-        $lastBet = Bet::where('game_id', 25)->get();
+        //$game = Game::find(28);
+        //$game->delete();
+        $lastBet = Bet::where('game_id', 28)->get();
         $lastBet->delete();
     }
     public function addTicketFake()
