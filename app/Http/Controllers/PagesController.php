@@ -101,7 +101,7 @@ class PagesController extends Controller
             }
             array_multisort($price, SORT_DESC, $items);
             $games[$key]->game_items = json_encode($items);
-            //$games[$key]->chance = $this->_getChancesOfGame($game, true);
+            $games[$key]->chance = $this->_getChancesOfGame($game, true);
         }
 
         return view('pages.history', compact('games'));
@@ -159,7 +159,6 @@ class PagesController extends Controller
                 else
                     $chance = round($bet / $game->price, 3) * 100;
             }
-            self::$chances_cache[$user->id] = $chance;
         }
         return $chance;
     }
