@@ -135,15 +135,17 @@
                 </ul>
             </div>        
             @endif
+            @if(!is_null($dayLucky))
             <div class="last_win last_win_day">
                 <div class="last_win_title">Счастливчик дня:</div>
-                <div class="last_win_ava"><img src="images/ava.jpg" alt="" /></div>
-                <div class="last_win_name ell">Alexander Boom™</div>
+                <div class="last_win_ava"><img src="{{ $dayLucky->winner->avatar }}" alt="" /></div>
+                <div class="last_win_name ell">{{ $dayLucky->winner->username }}</div>
                 <ul>
-                    <li>Выигрыш: <em>48 800<span>руб.</span></em></li>
-                    <li>Шанс на победу: <em>48.4%.</em></li>
+                    <li>Выигрыш: <em>{{ $dayLucky->price }}<span>руб.</span></em></li>
+                    <li>Шанс на победу: <em>{{ $dayLucky->chance }}%.</em></li>
                 </ul>
             </div>
+            @endif
             <a href="#" class="support">Техническая поддержка</a>
         </div>
         <div class="container_r">
