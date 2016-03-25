@@ -216,7 +216,7 @@ if (START) {
                 var users = data.users;
                 users = mulAndShuffle(users, Math.ceil(110 / users.length));
                 users[6] = data.winner;
-                users[100] = data.winner;
+                users[99] = data.winner;
                 html = '';
                 users.forEach(function (i) {
                     html += '<li><img src="' + i.avatar + '"></li>';
