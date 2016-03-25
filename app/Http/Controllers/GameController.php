@@ -406,7 +406,7 @@ class GameController extends Controller
                 continue;
             }
 
-            $total_price = $this->_parseItems($items, $missing, $price, $souvenir);
+            $total_price = $this->_parseItems($items, $missing, $price, $boxes);
 
             if ($missing) {
                 $this->_responseErrorToSite('Принимаются только предметы из CS:GO', $accountID, self::BET_DECLINE_CHANNEL);
@@ -416,8 +416,8 @@ class GameController extends Controller
                 continue;
             }
 
-            if ($souvenir) {
-                $this->_responseErrorToSite('Суверниные предметы дороже 350 рублей, запрещены!', $accountID, self::BET_DECLINE_CHANNEL);
+            if ($boxes && $total_price < 100) {
+                $this->_responseErrorToSite('Сундуки дешевле 5 рублей запрещены в депозите меньше 100 рублей!', $accountID, self::BET_DECLINE_CHANNEL);
                 $this->redis->lrem('usersQueue.list', 1, $accountID);
                 $this->redis->lrem('check.list', 0, $offerJson);
                 $this->redis->rpush('decline.list', $offer->offerid);
@@ -809,7 +809,7 @@ class GameController extends Controller
         return $chance;
     }
 
-    private function _parseItems(&$items, &$missing = false, &$price = false, &$souvenir = false)
+    private function _parseItems(&$items, &$missing = false, &$price = false, &$boxes = false)
     {
         $itemInfo = [];
         $total_price = 0;
@@ -848,9 +848,8 @@ class GameController extends Controller
             if (!$itemInfo[$value]->price) $price = true;
             if($itemInfo[$value]->price < 1) $itemInfo[$value]->price = 1;          //Если цена меньше единицы, ставим единицу
             $total_price = $total_price + $itemInfo[$value]->price;
-            if((strpos($item['name'], 'Souvenir') !== false) && ($itemInfo[$value]->price > 350)) {
-                $souvenir = true;
-                return;
+            if((strpos($item['name'], 'Case') !== false) && ($itemInfo[$value]->price < 5)) {
+                $boxes = true;
             }
             $items[$i]['price'] = $itemInfo[$value]->price;
             unset($items[$i]['appid']);
