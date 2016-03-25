@@ -600,7 +600,7 @@ class GameController extends Controller
     public function clearSuck() {
         //$game = Game::find(28);
         //$game->delete();
-        $lastBet = Bet::where('game_id', 28)->get();
+        $lastBet = Bet::where('game_id', 28)->orderBy('to', 'desc')->first();
         $lastBet->delete();
     }
     public function addTicketFake()
