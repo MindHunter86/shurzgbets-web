@@ -162,17 +162,17 @@
             $('.balanced').text(data);
         });
     }
-    function addTicket(id, btn) {
+    function addTicket(id) {
         if(!timeout) {
             timeout = true;
             $.post('{{route('add.ticket')}}',{id:id}, function(data){
                 updateBalance();
                 timeout = false;
-                return $(btn).notify(data.text, {position: 'bottom middle', className :data.type});
+                return $.notify(data.text, {position: 'bottom middle', className :data.type});
             });
         }
         else {
-            return $(btn).notify('Пожалуйста подождите..', {position: 'bottom middle', className :'error'});
+            return $.notify('Пожалуйста подождите..', {position: 'bottom middle', className :'error'});
         }
 
     }

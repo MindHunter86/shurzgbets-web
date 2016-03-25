@@ -194,7 +194,6 @@ if (START) {
             });
             $('.chance').show();
             $('.chances').html(html_chances);
-            $('.chances').mCustomScrollbar("destroy");
             $('.chances').mCustomScrollbar({
                 axis:'x',
                 theme:'dark-thin',
