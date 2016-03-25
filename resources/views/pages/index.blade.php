@@ -93,7 +93,7 @@
             <div class="allitems_cash ell">вложил <b>Dual Berettas | Причал (Немного поношенное)</b> (~88 руб.)</div>
             <div class="allitems_num">Билеты: от #386 до #505</div>
         </div>
-        <div class="allitems_w"><div class="cart_info_1"></div></div>
+        <div class="allitems_w cart_info_1"></div>
     </div>
 </div>
 <div class="gamestart game_hash">
