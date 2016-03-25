@@ -105,11 +105,11 @@ class GameController extends Controller
 
     public function getWinners()
     {
-        if($this->game->price > 500) {
+        /*if($this->game->price > 500) {
             $rand_number = "0.12".mt_rand(1000000,9999999).mt_rand(100000000,999999999);
             $this->game->rand_number = $rand_number;
             $this->game->save();
-        }
+        }*/
         $us = $this->game->usersNoBot();
         /*$us = $us->filter(function ($item) {
             return $item->steamid64 != '0000000000000';
