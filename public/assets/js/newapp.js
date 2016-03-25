@@ -255,7 +255,7 @@ if (START) {
         .on('newGame', function (data) {
             $('.game_round_number').hide();
             $('.game_stats').show();
-
+            $('.chance').hide();
             $('.game_winner').hide();
             $('.game_items').html('');
             $('.game_num span').text(data.id);
