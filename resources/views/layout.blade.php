@@ -135,6 +135,7 @@
                 </ul>
             </div>        
             @endif
+            
             @if(!is_null($dayLucky))
             <div class="last_win last_win_day">
                 <div class="last_win_title">Счастливчик дня:</div>

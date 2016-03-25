@@ -51,7 +51,11 @@ abstract class Controller extends BaseController
             view()->share('lastWinner', $lastWinner);
         }
         $dayLucky = Game::orderBy('price', 'desc')->get()->sortBy('chance')->first();
-        view()->share('dayLucky', $dayLucky);
+        if(!is_null($dayLucky)) {
+            view()->share('dayLucky', $dayLucky);
+        } else {
+            $dayLucky = null;
+        }
     }
 
     public function  __destruct()
