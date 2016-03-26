@@ -167,8 +167,7 @@
         });
     }
     function addTicket(id) {
-        $.notify('Карточки временно недоступны', {position: 'bottom middle', className :"error"});
-        /*if(!timeout) {
+        if(!timeout) {
             timeout = true;
             $.post('{{route('add.ticket')}}',{id:id}, function(data){
                 updateBalance();
@@ -178,7 +177,7 @@
         }
         else {
             return $.notify('Пожалуйста подождите..', {position: 'bottom middle', className :'error'});
-        }*/
+        }
 
     }
     
