@@ -114,7 +114,7 @@ $(document).ready(function() {
         return false;
     });
     $('.save-link, .save-link2').click(function () {
-        var that = $(this).prev();
+        var that = $(this);
         $.ajax({
             url: '/settings/save',
             type: 'POST',
