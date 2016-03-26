@@ -9,14 +9,7 @@ var ITEMUP = function(){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        $('.chances').mCustomScrollbar({
-            axis:'x',
-            theme:'dark-thin',
-            autoExpandScrollbar:true,
-            advanced:{autoExpandHorizontalScroll:true}
-        }); 
     };
-
     return {
         init: function() {
             initAjaxToken();

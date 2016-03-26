@@ -2,6 +2,12 @@ var BANNED_DOMAINS = '(csgofast|csgolucky|csgocasino|game-luck|g2a|csgostar|hell
 $(document).ready(function() {
 
     ITEMUP.init();
+    $('.chances').mCustomScrollbar({
+        axis:'x',
+        theme:'dark-thin',
+        autoExpandScrollbar:true,
+        advanced:{autoExpandHorizontalScroll:true}
+    }); 
     var helpers = {
         showPopup: function(t, e, o) {
             var n = this,
