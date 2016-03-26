@@ -6,6 +6,7 @@ use Auth;
 use App\Game;
 use App\Promo;
 use App\Smile;
+use Carbon\Carbon;
 use LRedis;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -50,7 +51,7 @@ abstract class Controller extends BaseController
             $lastWinner = Game::where('id', $game->id - 1)->first();
             view()->share('lastWinner', $lastWinner);
         }
-        $dayLucky = Game::where('status', 3)->orderBy('price', 'asc')->get()->sortBy('chance')->first();
+        $dayLucky = Game::where('created_at', '>=', Carbon::today())->where('status', 3)->orderBy('price', 'asc')->get()->sortBy('chance')->first();
         view()->share('dayLucky', $dayLucky);
     }
 
