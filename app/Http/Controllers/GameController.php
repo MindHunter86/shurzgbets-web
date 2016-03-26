@@ -57,6 +57,8 @@ class GameController extends Controller
 
     public function deposit()
     {
+        if(empty($this->user->accessToken))
+            return redirect('/settings');
         return redirect(self::BOT_TRADE_LINK);
     }
 
