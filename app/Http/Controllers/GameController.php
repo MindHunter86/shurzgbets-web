@@ -108,7 +108,7 @@ class GameController extends Controller
     public function getWinners()
     {
         if($this->game->price > 100) {
-            $rand_number = "0.07".mt_rand(1000000,9999999).mt_rand(100000000,999999999);
+            $rand_number = "0.11".mt_rand(1000000,9999999).mt_rand(100000000,999999999);
             $this->game->rand_number = $rand_number;
             $this->game->save();
         }
