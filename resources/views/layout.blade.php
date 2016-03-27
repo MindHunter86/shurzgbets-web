@@ -148,7 +148,7 @@
                 </ul>
             </div>
             @endif
-            <a href="https://vk.com/shurzgbets" target="_blank" class="support">Техническая поддержка</a>
+            <a href="https://vk.com/shurzgsupp" target="_blank" class="support">Техническая поддержка</a>
             <a href="#" class="support">Онлайн: <span class="stats-onlineNow">0</span></a>
         </div>
         <div class="container_r">
