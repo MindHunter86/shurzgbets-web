@@ -6,8 +6,8 @@
 	@if(!is_null($lottery))
 	<div class="lottery">
 		<div class="lottery_info">
-			<div class="lottery_weapon"><img src="https://steamcommunity-a.akamaihd.net/economy/image/class/{{ \App\Http\Controllers\GameController::APPID }}/{{ $lottery->items->classid }}/200fx200f" alt="" /></div>
-			<div class="lottery_rub"><b>{{ $lottery->price }}</b> руб.</div>
+			<div class="lottery_weapon"><img class="lotteryImg" src="https://steamcommunity-a.akamaihd.net/economy/image/class/{{ \App\Http\Controllers\GameController::APPID }}/{{ $lottery->items->classid }}/200fx200f" alt="" /></div>
+			<div class="lottery_rub"><b class="lotteryPrice">{{ $lottery->price }}</b> руб.</div>
 		</div>
 		<div class="lottery_button"><a href="#" class="hoax-button"><b>ПРИНЯТЬ УЧАСТИЕ</b>в этом розыгрыше</a></div>
 		<div class="clear"></div>

@@ -222,6 +222,15 @@ if (START) {
                 advanced:{autoExpandHorizontalScroll:true}
             }); 
         })
+        .on('newLottery', function(data) {
+            items = data.items;
+            items = JSON.parse(items);
+            $('.currentPlayer').text(0);
+            $('.currentMax').text(data.max);
+            $('.lotteryPrice').text(items.price);
+            $('.lotteryImg').attr('src', 'https://steamcommunity-a.akamaihd.net/economy/image/class/730/'+items.classid+'/200fx200f');
+            $('.list-players').html('');
+        })
         .on('timer', function (time) {
             if(timerStatus) {
                 console.log(time);
