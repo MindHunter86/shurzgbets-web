@@ -189,6 +189,20 @@ if (START) {
     var socket = io.connect('https://shurzgbets.com', { secure: true });
 
     socket
+        .on('newPlayer', function(data) {
+            data = JSON.parse(data);
+            $('.currentPlayer').text(data.players);
+            $('.list-players').prepend('<img src="'+data.user.avatar+'" data-id="'+data.user.id+'" alt="" />');
+        })
+        .on('sliderLottery', function (data) {
+            var users = data.players;
+            var random = randomInteger(0,10);
+            $('.list-players img:eq('+(users-random)+')').attr('src', data.winner.avatar);
+
+            setTimeout(function() {
+                $('.list-players img:eq('+(users-random)+')').css("border", "1px solid red");
+            }, 1000);
+        })
         .on('newDeposit', function(data) {
             data = JSON.parse(data);
             $('.game_items').prepend(data.html);
