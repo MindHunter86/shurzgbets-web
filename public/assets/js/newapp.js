@@ -239,6 +239,9 @@ if (START) {
                 $('.gameEndTimer').empty().countdown({seconds: time});
             }
         })
+        .on('online', function (data) {
+            $('.stats-onlineNow').text(Math.abs(data));
+        })
         .on('slider', function (data) {
             if(ngtimerStatus) {
                 ngtimerStatus = false;
