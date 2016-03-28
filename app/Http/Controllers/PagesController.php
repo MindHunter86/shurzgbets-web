@@ -27,7 +27,7 @@ class PagesController extends Controller
         return view('pages.support');
     }
     public function promoSettings() {
-        $code = Promo::where('steamid64', Auth::user()->steamid64)->first();
+        $code = Promo::where('steamid64', $this->user->steamid64)->first();
         if(is_null($code)) {
             $code = '';
         }
