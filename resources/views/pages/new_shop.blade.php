@@ -28,7 +28,6 @@
     <div class="shop_select shop_select2">
         <em>Качество:</em>
         <select class="intro-select1" id="searchQuality" multiple="multiple">
-            <select id="searchQuality" multiple="multiple">
             <option value="Factory new">Factory new</option>
             <option value="Minimal Wear">Minimal Wear</option>
             <option value="Field-Tested">Field-Tested</option>
@@ -40,12 +39,6 @@
     <input type="text" id="searchName" name="searchName" placeholder="Поиск" class="shop_search" />
     <div class="clear"></div>
     <div class="shop_line">
-        <ul class="shop_sort">
-            <em>Сортировать по:</em>
-            <li class="active">Цене</li>
-            <li>Названию</li>
-        </ul>
-        <div class="shop_cart">Ваша корзина:</div>
     </div>
     <div class="hidden">
         <div class="shop_left">
