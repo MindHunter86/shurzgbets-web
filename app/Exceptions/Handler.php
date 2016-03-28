@@ -44,6 +44,9 @@ class Handler extends ExceptionHandler
         {
             abort(404);
         }
+        if($e instanceof TokenMismatchException) {
+            abort(403);
+        }
         return parent::render($request, $e);
 
     }
