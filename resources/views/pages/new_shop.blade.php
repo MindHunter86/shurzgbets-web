@@ -47,9 +47,6 @@
 </div>
 @endsection
 
-
-@extends('layout')
-
 @section('content')
 <script type="text/javascript" src="{{ asset('new/js/jquery.multiple.select.js') }}"></script>
 <script type="text/javascript" src="{{ asset('new/js/jquery-ui.min.js') }}"></script>
