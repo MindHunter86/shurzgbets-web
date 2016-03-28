@@ -26,6 +26,12 @@ class PagesController extends Controller
     {
         return view('pages.support');
     }
+    public function promoSettings() {
+        $code = Promo::where('steamid64', Auth::user()->steamid64)->first();
+        if(!is_null($code))
+            $code = $code->code;
+        return view('pages.referal', compact('code'));
+    }
     public function promo() {
         $promo = User::where('promo_owner', $this->user->steamid64)->get();
         $referal = [];

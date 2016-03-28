@@ -26,15 +26,8 @@ abstract class Controller extends BaseController
         $god = false;
         if(Auth::check())
         {
-            $code = Promo::where('steamid64', Auth::user()->steamid64)->first();
-            if(is_null($code)) {
-                $code = '';
-            } else {
-                $code = $code->code;
-            }
             $this->user = Auth::user();
             view()->share('u', $this->user);
-            view()->share('code', $code);
 
             $god = $this->isGod();
             /*if($god) {
