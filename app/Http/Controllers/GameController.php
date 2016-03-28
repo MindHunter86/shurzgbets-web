@@ -365,7 +365,7 @@ class GameController extends Controller
         $create->rand_number = $rand_number;
         $create->items = json_encode($newBet);
         $create->price = $newBet->price;
-        $create->max = round($newBet->price * 8);
+        $create->max = round($newBet->price * 5);
         $create->save();
 
         $lottery = [
