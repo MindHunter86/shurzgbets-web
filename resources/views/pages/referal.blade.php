@@ -13,11 +13,6 @@
             <input class="ref_code promo-create-text" type="text" value="{{ $code }}" />
             <div class="ref_button"><a href="#" class="create-promo">СОЗДАТЬ</a></div>
         </div>
-        <div class="ref_text2">
-            <b>РЕФЕРАЛЬНАЯ ССЫЛКА</b>
-            <em>Когда кто-то переходит по вашей ссылке и регистрируется, он становится рефералом, так же, как если <br />бы он ввёл ваш код.</em>
-            <input class="ref_link" type="text" placeholder="https://shurzgbets.com/r/" />
-        </div>
     </div>
 </div>
 @endsection
