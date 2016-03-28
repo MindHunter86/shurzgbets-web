@@ -3,8 +3,6 @@
 @section('content')
 <div class="rulet_bg" style="overflow:visible;">
     <div class="rulet_title"><b>Магазин</b> предметов</div>
-    <div class="shop_panel">
-    </div>
     <div class="shop_select">
         <em>Категории:</em>
         <select class="intro-select1" id="searchType" multiple="multiple">
