@@ -7,7 +7,7 @@
     <div class="rulet_title"><b>История </b>раздач</div>
     <div class="table">
         <div class="table_panel">
-            <div class="t1"></div>
+            <div class="t1">#</div>
             <div class="t2">Предмет</div>
             <div class="t3">Победитель</div>
             <div class="t4">Участники</div>
