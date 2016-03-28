@@ -28,8 +28,12 @@ class PagesController extends Controller
     }
     public function promoSettings() {
         $code = Promo::where('steamid64', Auth::user()->steamid64)->first();
-        if(!is_null($code))
-            $code = $code->code;
+        if(is_null($code)) {
+            $code = '';
+        }
+        else {
+            $code = $code->code;  
+        }
         return view('pages.referal', compact('code'));
     }
     public function promo() {
