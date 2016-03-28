@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="rulet_bg">
-    <div class="rulet_title"><b>Реферальная </b>статистика</div>
+    <div class="rulet_title"><b>Реферальная </b>статистика (Всего заработано: )</div>
     <div class="table">
         <div class="table_panel">
             <div class="t1"></div>

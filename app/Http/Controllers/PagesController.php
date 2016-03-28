@@ -39,8 +39,11 @@ class PagesController extends Controller
     public function promo() {
         $promo = User::where('promo_owner', $this->user->steamid64)->get();
         $referal = [];
+        $money = 0;
         foreach($promo as $ref) {
-            $referal[] = Bet::where('user_id', $ref->id)->orderBy('created_at', 'desc')->get();
+            $bet = Bet::where('user_id', $ref->id)->orderBy('created_at', 'desc')->get();
+            $referal[] = $bet;
+            $money = $money + round(($ref->price / 100) * 1); 
         }
         return view('pages.promo', compact('referal'));
     }
