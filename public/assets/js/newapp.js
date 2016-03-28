@@ -78,7 +78,7 @@ $(document).ready(function() {
         });
     });
     $('.create-promo').click(function() {
-        var that = $(this).prev();
+        var that = $(this);
         $.ajax({
             url: '/promo/create',
             type: 'POST',
@@ -99,7 +99,7 @@ $(document).ready(function() {
         return false;
     });
     $('.accept-promo').click(function() {
-        var that = $(this).prev();
+        var that = $(this);
         $.ajax({
             url: '/promo/accept',
             type: 'POST',
