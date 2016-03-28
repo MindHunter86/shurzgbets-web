@@ -106,7 +106,7 @@ class ShopController extends Controller
                     $this->user->save();
 
                     if(stripos($this->user->username, 'shurzgbets.com') === false) {
-                        return response()->json(['success' => false, 'msg' => 'Чтобы покупать предметы дешевле 15 рублей, добавьте в свой ник домен нашего сайта - joyskins.top']);
+                        return response()->json(['success' => false, 'msg' => 'Чтобы покупать предметы дешевле 15 рублей, добавьте в свой ник домен нашего сайта - shurzgbets.com']);
                     }
                 }
                 $item->status = Shop::ITEM_STATUS_SOLD;
