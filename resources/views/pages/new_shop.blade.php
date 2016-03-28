@@ -102,14 +102,6 @@
 
 
             /* Select */
-            $('select').multipleSelect({
-                selectAll: false,
-                width: '161px',
-                placeholder: 'Все',
-                allSelected: 'Выбраны все',
-                countSelected: 'Выбраны # из %'
-            });
-
 
             $('#searchType').change(function(){
                 options.searchType = $(this).val();
