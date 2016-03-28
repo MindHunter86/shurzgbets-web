@@ -45,7 +45,154 @@
         </div>
     </div>
 </div>
+<script>
+    var options = {
+        maxPrice : 100000,
+        minPrice : 0,
+        searchName : $('#searchName').val(),
+        searchType : null,
+        searchRarity: null,
+        searchQuality: null,
+        sort: 'desc'
+    }, timer;
+        function getSortedItems(){
+            $.post('{{ route("ajax") }}', {action:'shopSort',options:options}, function(response){
+                var html = '';
+                var i = 0;
+                response.forEach(function(item){
+                    i++;
+                    html += '<div class="shop_item shop_item_c1">';
+                    html += '<div class="shop_item_w"><img src="https://steamcommunity-a.akamaihd.net/economy/image/class/730/'+ item.classId +'/120fx120f" /></div>';
+                    html += '<div class="shop_item_n ell">'+ item.name +'</div>';
+                    html += '<div class="shop_item_r">'+ item.price +' <span>руб.</span></div>';
+                    html += '<div class="shop_item_n ell"><a class="buyItem" href="#" data-item="'+ item.id +'">Купить</a></div>';
+                    html += '</div>';
+                })
+                $('.list-products').html(html);
+                //$('#countItems').show();
+                //$('#paginator').html(response.pages);
+                
+
+                $('.buyItem').click(function () {
+                    var that = $(this);
+                    $.ajax({
+                        url: '{{ route("shop.buy") }}',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {id: $(this).data('item')},
+                        success: function (data) {
+                            if (data.success) {
+                                that.notify(data.msg, {position: 'bottom middle', className :"success"});
+                                setTimeout(function(){that.parent().parent().parent().hide()}, 5500);
+                            }
+                            else {
+                                if(data.msg) that.notify(data.msg, {position: 'bottom middle', className :"error"});
+                            }
+                        },
+                        error: function () {
+                            that.notify("Произошла ошибка. Попробуйте еще раз", {position: 'bottom middle', className :"error"});
+                        }
+                    });
+                    return false;
+                });
+            });
+        }
+        $(function(){
+            /* Price */
+            $('#price-bar').slider({
+                range: true,
+                min: 0,
+                max: 100000,
+                values: [0, 100000],
+                slide: function( event, ui ){
+                    $('#price-min').html(ui.values[0]);
+                    $('#price-max').html(ui.values[1]);
+
+                    clearTimeout(timer);
+                    timer = setTimeout(getSortedItems, 300);
+                    options.minPrice = ui.values[0];
+                    options.maxPrice = ui.values[1];
+
+                    moveValueLabels();
+                }
+            });
+            $('#price-min').html($('#price-bar').slider('values', 0));
+            $('#price-max').html($('#price-bar').slider('values', 1));
+
+
+            function moveValueLabels() {
+                var pos_first_handle = $('.ui-slider-handle:first').position();
+                var pos_last_handle = $('.ui-slider-handle:last').position();
+                $('#price-min').css('left', pos_first_handle.left);
+                $('#price-max').css('left', pos_last_handle.left);
+            }
+
+            moveValueLabels();
+
+            /* Select */
+            $('select').multipleSelect({
+                selectAll: false,
+                width: '161px',
+                placeholder: 'Все',
+                allSelected: 'Выбраны все',
+                countSelected: 'Выбраны # из %'
+            });
+
+
+            $('#searchType').change(function(){
+                options.searchType = $(this).val();
+                clearTimeout(timer);
+                timer = setTimeout(getSortedItems, 100);
+                console.log(options);
+            })
+            $('#searchRarity').change(function(){
+                options.searchRarity = $(this).val();
+                clearTimeout(timer);
+                timer = setTimeout(getSortedItems, 100);
+                console.log(options);
+            })
+            $('#searchQuality').change(function(){
+                options.searchQuality = $(this).val();
+                clearTimeout(timer);
+                timer = setTimeout(getSortedItems, 100);
+                console.log(options);
+            })
+
+            $('#searchName').keyup(function(){
+                options.searchName = $(this).val();
+                clearTimeout(timer);
+                timer = setTimeout(getSortedItems, 100);
+                console.log(options);
+            })
+
+            $('.buyItem').click(function () {
+                var that = $(this);
+                $.ajax({
+                    url: '{{ route("shop.buy") }}',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {id: $(this).data('item')},
+                    success: function (data) {
+                        if (data.success) {
+                            that.notify(data.msg, {position: 'bottom middle', className :"success"});
+                            setTimeout(function(){that.parent().parent().parent().hide()}, 5500);
+                        }
+                        else {
+                            if(data.msg) that.notify(data.msg, {position: 'bottom middle', className :"error"});
+                        }
+                    },
+                    error: function () {
+                        that.notify("Произошла ошибка. Попробуйте еще раз", {position: 'bottom middle', className :"error"});
+                    }
+                });
+                return false;
+            });
+            setTimeout(getSortedItems, 1500);
+        });
+
+</script>
 @endsection
+
 
 @section('content')
 <script type="text/javascript" src="{{ asset('new/js/jquery.multiple.select.js') }}"></script>
