@@ -41,7 +41,7 @@
     <div class="shop_line">
     </div>
     <div class="hidden">
-        <div class="shop_left">
+        <div class="shop_left" style="width: 100%;">
             <div class="shop_item_loop list-products">
             </div>
         </div>
