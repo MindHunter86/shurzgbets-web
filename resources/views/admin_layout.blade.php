@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Админ Панель</title>
+    <title>ЖОПА</title>
     <meta name="csrf-token" content="{!!  csrf_token()   !!}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -57,7 +57,7 @@
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>i</b>a</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>itemup</b>admin</span>
+          <span class="logo-lg"><b>ЖОПА</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
