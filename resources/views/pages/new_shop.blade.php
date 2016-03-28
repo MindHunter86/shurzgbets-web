@@ -99,35 +99,7 @@
         }
         $(function(){
             /* Price */
-            $('#price-bar').slider({
-                range: true,
-                min: 0,
-                max: 100000,
-                values: [0, 100000],
-                slide: function( event, ui ){
-                    $('#price-min').html(ui.values[0]);
-                    $('#price-max').html(ui.values[1]);
 
-                    clearTimeout(timer);
-                    timer = setTimeout(getSortedItems, 300);
-                    options.minPrice = ui.values[0];
-                    options.maxPrice = ui.values[1];
-
-                    moveValueLabels();
-                }
-            });
-            $('#price-min').html($('#price-bar').slider('values', 0));
-            $('#price-max').html($('#price-bar').slider('values', 1));
-
-
-            function moveValueLabels() {
-                var pos_first_handle = $('.ui-slider-handle:first').position();
-                var pos_last_handle = $('.ui-slider-handle:last').position();
-                $('#price-min').css('left', pos_first_handle.left);
-                $('#price-max').css('left', pos_last_handle.left);
-            }
-
-            moveValueLabels();
 
             /* Select */
             $('select').multipleSelect({
