@@ -15,7 +15,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        TokenMismatchException::class,
+        \Illuminate\Session\TokenMismatchException::class,
         HttpException::class,
     ];
 
