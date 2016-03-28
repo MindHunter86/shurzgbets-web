@@ -45,7 +45,7 @@ class PagesController extends Controller
             $referal[] = $bet;
             $money = $money + round(($ref->price / 100) * 1); 
         }
-        return view('pages.promo', compact('referal'));
+        return view('pages.promo', compact('referal', 'money'));
     }
     public function lottery() {
         $lottery = Lottery::where('status', 0)->orderBy('id', 'desc')->first();
