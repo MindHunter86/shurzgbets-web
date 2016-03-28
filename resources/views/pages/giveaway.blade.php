@@ -12,9 +12,9 @@
             <div class="t3">Победитель</div>
             <div class="t4">Участники</div>
         </div>
-        @foreach($lottery as $lot)
+        @foreach($lottery as $key => $lot)
             <div class="table_info">
-                <div class="t1"></div>
+                <div class="t1">{{ $key +1 }}</div>
                 <div class="t2">
                     <em class="tava"><img src="https://steamcommunity-a.akamaihd.net/economy/image/class/730/{{$lot->items->classid}}/200fx200f" alt="" /></em>
                     <em class="tname ell">{{$lot->items->market_hash_name}}</em>
