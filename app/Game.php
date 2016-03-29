@@ -44,7 +44,7 @@ class Game extends Model
             ->groupBy('bets.price')
             ->orderBy('bets.price', 'desc')
             ->select('users.*')
-            ->get();
+            ->get()->unique();
     }
     public function usersNoBot()
     {
