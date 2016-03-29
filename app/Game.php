@@ -42,7 +42,7 @@ class Game extends Model
             ->where('games.id', $this->id)
             ->groupBy('users.username')
             ->groupBy('bets.price')
-            ->orderBy('bets.price', 'desc')
+            ->lists('sum', 'bets.price');
             ->select('users.*')
             ->get();
     }
