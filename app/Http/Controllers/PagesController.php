@@ -100,7 +100,7 @@ class PagesController extends Controller
         $games = Game::with(['bets', 'winner'])
             ->where('status', Game::STATUS_FINISHED)
             ->orderBy('created_at', 'desc')
-            ->limit(50)
+            ->limit(10)
             ->get();
  
         foreach($games as $key => $game) {
@@ -139,7 +139,9 @@ class PagesController extends Controller
     private function _getChancesOfGame($game, $is_object = false)
     {
         $chances = [];
+        $sort = [];
         foreach($game->users() as $user){
+            $chan = $this->_getUserChanceOfGame($user, $game);
             if($is_object){
                 $chances[] = (object) [
                     'chance' => $this->_getUserChanceOfGame($user, $game),
@@ -155,6 +157,10 @@ class PagesController extends Controller
             }
 
         }
+        if($is_object) 
+            $chances = (object) array_multisort($chan, SORT_DESC, (array) $chances);
+        else
+            $chances = array_multisort($chan, SORT_DESC, (array) $chances);
         return $chances;
     }
     public static function _getUserChanceOfGame($user, $game)

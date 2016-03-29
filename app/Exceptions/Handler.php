@@ -45,6 +45,7 @@ class Handler extends ExceptionHandler
         {
             abort(404);
         }
+        
         return parent::render($request, $e);
 
     }
