@@ -32,7 +32,7 @@ class Game extends Model
             ->where('games.id', $this->id)
             ->groupBy('users.username')
             ->select('users.*')
-            ->unique();
+            ->get();
     }
     public function usersChance()
     {
@@ -42,7 +42,7 @@ class Game extends Model
             ->where('games.id', $this->id)
             ->orderBy('bets.price', 'desc')
             ->select('users.*')
-            ->get();
+            ->unique();
     }
     public function usersNoBot()
     {
