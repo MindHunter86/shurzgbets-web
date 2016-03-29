@@ -76,6 +76,8 @@ $(document).ready(function() {
 	    //messageList.mCustomScrollbar();
 	});
 	msgs.on('child_added', function (snapshot) {
+		var a = $(".chat_scroll")[0];
+		var isScrollDown = Math.abs((a.offsetHeight + a.scrollTop) - a.scrollHeight) < 5;
 	    var data = snapshot.val();
 	    data.uuid = snapshot.key();
 	    var username = data.username || "Error";
@@ -103,6 +105,6 @@ $(document).ready(function() {
 	    bodyElement.prepend(msgBodyElement).prepend(avatarElement);
 
 	    $('.chat_scroll .mCSB_container').append(bodyElement);
-	    $('.chat_scroll').mCustomScrollbar('scrollTo', 'bottom');
+	    if (isScrollDown) a.scrollTop = a.scrollHeight;
   	});
 });
