@@ -101,10 +101,10 @@ $(document).ready(function() {
 	    	nameElement.attr('style', 'color:green;');
 	    }
 	    bodyElement.prepend(msgBodyElement).prepend(avatarElement);
-
 	    $('.chat_scroll .mCSB_container').append(bodyElement);
-	    var a = $(".mCSB_container")[0];
-		var isScrollDown = Math.abs((a.offsetHeight + a.scrollTop) - a.scrollHeight) < 5;
-	    if (isScrollDown) a.scrollTop = a.scrollHeight;
+	   	messageList.mCustomScrollbar('update');
+	   	setTimeout(function() {
+	    	messageList.mCustomScrollbar('scrollTo', 'bottom');
+		}, 500);
   	});
 });
