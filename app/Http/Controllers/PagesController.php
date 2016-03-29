@@ -158,9 +158,9 @@ class PagesController extends Controller
 
         }
         if($is_object) 
-            $chances = (object) array_multisort($chan, SORT_DESC, (array) $chances);
+            $chances = (object) array_multisort($sort, SORT_DESC, (array) $chances);
         else
-            $chances = array_multisort($chan, SORT_DESC, (array) $chances);
+            $chances = array_multisort($sort, SORT_DESC, (array) $chances);
         return $chances;
     }
     public static function _getUserChanceOfGame($user, $game)
