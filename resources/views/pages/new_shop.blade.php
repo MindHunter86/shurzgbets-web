@@ -62,8 +62,9 @@
                 response.forEach(function(item){
                     i++;
                     html += '<div class="shop_item shop_item_c1">';
-                    html += '<div class="shop_item_w"><img src="https://steamcommunity-a.akamaihd.net/economy/image/class/730/'+ item.classId +'/120fx120f" /></div>';
                     html += '<div class="shop_item_n ell">'+ item.name +'</div>';
+                    html += '<div class="shop_item_w"><img src="https://steamcommunity-a.akamaihd.net/economy/image/class/730/'+ item.classId +'/120fx120f" /></div>';
+                    html += '<div class="shop_item_n ell">'+ item.quality +'</div>';
                     html += '<div class="shop_item_r">'+ item.price +' <span>руб.</span></div>';
                     html += '<div class="shop_item_n ell"><a class="buyItem" href="#" data-item="'+ item.id +'">Купить</a></div>';
                     html += '</div>';
