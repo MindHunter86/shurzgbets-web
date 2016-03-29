@@ -72,6 +72,14 @@ class AdminController extends Controller {
         $items = json_encode($items);
         return view('admin.index', compact('sumPay', 'sales', 'users', 'botSumBet','items', 'sum', 'plays', 'sumplays', 'average', 'averageGame', 'referer', 'hourgames'));
     }
+    public function history()
+    {
+        $games = Game::with(['bets', 'winner'])
+            ->where('status', Game::STATUS_FINISHED)
+            ->orderBy('created_at', 'desc')
+            ->get();
+        return view('admin.history', compact('games'));
+    }
     public function send() {
     	return view('admin.send');
     }

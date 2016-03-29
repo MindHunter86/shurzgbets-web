@@ -115,6 +115,11 @@
             <li>
               <a href="/admin">
                 <i class="fa fa-th"></i> <span>Основная статистика</span>
+
+              </a>
+              <a href="/admin/history">
+                <i class="fa fa-th"></i> <span>История игр</span>
+                
               </a>
             </li>
             <li class="header">Магазин</li>
