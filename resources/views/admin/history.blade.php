@@ -28,7 +28,6 @@
                     <td>{{ $game->id }}</td>
                     <td>{{ $game->winner->username }}</td>
                     <td>{{ $game->price }} руб.</td>
-                    <td>{{ $sell->username }}</td>
                     <td>{{ $game->updated_at->format('d.m.Y - H:i') }}</td>
                     @if($game->status_prize == \App\Game::STATUS_PRIZE_SEND)
                       <td><span class="badge bg-green">Отправлен</span></td>
