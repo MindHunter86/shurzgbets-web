@@ -30,7 +30,7 @@
                     <td>{{ $game->price }}</td>
                     <td>{{ $game->updated_at->format('d-m-Y H:i') }}</td>
                     @if($game->status_prize == \App\Game::STATUS_PRIZE_WAIT_TO_SENT)
-                      <td><span class="badge bg-yellow">Отправка</span></td>
+                      <td><span class="badge bg-green">Отправлен</span></td>
                     @endif
                     @if($game->status_prize == \App\Game::STATUS_PRIZE_SEND)
                       <td><span class="badge bg-green">Отправлен</span></td>
