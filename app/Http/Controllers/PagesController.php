@@ -139,7 +139,7 @@ class PagesController extends Controller
     private function _getChancesOfGame($game, $is_object = false)
     {
         $chances = [];
-        foreach($game->sortBy('price')->users() as $user){
+        foreach($game->users() as $user){
             if($is_object){
                 $chances[] = (object) [
                     'chance' => $this->_getUserChanceOfGame($user, $game),
