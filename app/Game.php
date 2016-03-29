@@ -41,6 +41,7 @@ class Game extends Model
             ->join('users', 'bets.user_id', '=', 'users.id')
             ->where('games.id', $this->id)
             ->groupBy('users.username')
+            ->orderBy('bets.price', 'desc')
             ->select('users.*')
             ->get();
     }
