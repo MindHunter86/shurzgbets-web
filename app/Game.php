@@ -34,6 +34,17 @@ class Game extends Model
             ->select('users.*')
             ->get();
     }
+    public function usersChance()
+    {
+        return \DB::table('games')
+            ->join('bets', 'games.id', '=', 'bets.game_id')
+            ->join('users', 'bets.user_id', '=', 'users.id')
+            ->where('games.id', $this->id)
+            ->orderBy('bets.price', 'desc')
+            ->groupBy('users.username')
+            ->select('users.*')
+            ->get();
+    }
     public function usersNoBot()
     {
         return \DB::table('games')
