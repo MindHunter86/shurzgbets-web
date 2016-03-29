@@ -142,25 +142,16 @@ class PagesController extends Controller
         $sort = [];
         foreach($game->users() as $user){
             $sort[] = (array) $this->_getUserChanceOfGame($user, $game);
-            if($is_object){
-                $chances[] = (object) [
-                    'chance' => $this->_getUserChanceOfGame($user, $game),
-                    'avatar' => $user->avatar,
-                    'steamid64'  => $user->steamid64
-                ];
-            }else{
-                $chances[] = [
-                    'chance' => $this->_getUserChanceOfGame($user, $game),
-                    'avatar' => $user->avatar,
-                    'steamid64'  => $user->steamid64
-                ];
-            }
-
+            $chances[] = (array) [
+                'chance' => $this->_getUserChanceOfGame($user, $game),
+                'avatar' => $user->avatar,
+                'steamid64'  => $user->steamid64
+            ];
         }
         if($is_object) 
-            $chances = (object) array_multisort($sort, SORT_DESC, (array) $chances);
+            $chances = (object) array_multisort($sort, SORT_DESC, $chances);
         else
-            $chances = array_multisort($sort, SORT_DESC, (array) $chances);
+            $chances = array_multisort($sort, SORT_DESC, $chances);
         return $chances;
     }
     public static function _getUserChanceOfGame($user, $game)
