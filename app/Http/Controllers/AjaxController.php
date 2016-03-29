@@ -9,6 +9,7 @@ use App\Item;
 use App\Bet;
 use Firebase\Firebase;
 use App\Services\BackPack;
+use App\Services\CsgoFast;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -77,7 +78,7 @@ class AjaxController extends Controller
                     foreach ($items['rgDescriptions'] as $class_instance => $item) {
                         $info = Item::where('market_hash_name', $item['market_hash_name'])->first();
                         if (is_null($info)) {
-                            $info = new BackPack($item);
+                            $info = new CsgoFast($item);
                             if ($info->price != null) {
                                 //Item::create((array)$info);
                             }

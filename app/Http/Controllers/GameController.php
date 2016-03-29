@@ -10,6 +10,7 @@ use App\Lottery;
 use App\Referer;
 use App\Services\SteamItem;
 use App\Services\BackPack;
+use App\Services\CsgoFast;
 use App\Ticket;
 use App\User;
 use App\Bonus;
@@ -830,7 +831,7 @@ class GameController extends Controller
             $dbItemInfo = Item::where('market_hash_name', $item['market_hash_name'])->first();
             if(is_null($dbItemInfo)){
                 if(!isset($itemInfo[$item['classid']]))
-                    $itemInfo[$value] = new BackPack($item);
+                    $itemInfo[$value] = new CsgoFast($item);
 
                 if(empty($itemInfo[$item['classid']]->name))
                     $itemInfo[$item['classid']]->name = "";
@@ -840,7 +841,7 @@ class GameController extends Controller
                 if (!$itemInfo[$value]->price) $price = true;
             }else{
                 if($dbItemInfo->updated_at->getTimestamp() < Carbon::now()->subHours(5)->getTimestamp()) {
-                    $si = new BackPack($item);
+                    $si = new CsgoFast($item);
                     if (!$si->price) $price = true;
                     $dbItemInfo->price = $si->price;
                     $dbItemInfo->save();
@@ -850,7 +851,7 @@ class GameController extends Controller
             $itemInfo[$value] = $dbItemInfo;
 
             if(!isset($itemInfo[$value]))
-                $itemInfo[$value] = new BackPack($item);
+                $itemInfo[$value] = new CsgoFast($item);
             if (!$itemInfo[$value]->price) $price = true;
             if($itemInfo[$value]->price < 1) $itemInfo[$value]->price = 1;          //Если цена меньше единицы, ставим единицу
             $total_price = $total_price + $itemInfo[$value]->price;
