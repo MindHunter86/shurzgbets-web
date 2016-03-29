@@ -149,7 +149,7 @@ class PagesController extends Controller
             ];
         }
         if($is_object) 
-            $chances = (object) array_multisort($sort, SORT_DESC, $chances);
+            $chances = array_multisort($sort, SORT_DESC, $chances);
         else
             $chances = array_multisort($sort, SORT_DESC, $chances);
         return $chances;
