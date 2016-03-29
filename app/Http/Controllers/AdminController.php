@@ -77,6 +77,7 @@ class AdminController extends Controller {
         $games = Game::with(['bets', 'winner'])
             ->where('status', Game::STATUS_FINISHED)
             ->orderBy('created_at', 'desc')
+            ->limit(500)
             ->get();
         return view('admin.history', compact('games'));
     }
