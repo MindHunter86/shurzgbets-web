@@ -42,7 +42,7 @@ class Game extends Model
             ->where('games.id', $this->id)
             ->groupBy('users.username')
             ->select('users.*')
-            ->get()->sortBy('bets.price');
+            ->get();
     }
     public function usersNoBot()
     {
