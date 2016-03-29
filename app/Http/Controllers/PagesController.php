@@ -141,7 +141,7 @@ class PagesController extends Controller
         $chances = [];
         $sort = [];
         foreach($game->users() as $user){
-            $chan[] = $this->_getUserChanceOfGame($user, $game);
+            $sort[] = $this->_getUserChanceOfGame($user, $game);
             if($is_object){
                 $chances[] = (object) [
                     'chance' => $this->_getUserChanceOfGame($user, $game),
