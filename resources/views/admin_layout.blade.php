@@ -117,6 +117,8 @@
                 <i class="fa fa-th"></i> <span>Основная статистика</span>
 
               </a>
+            </li>
+            <li>
               <a href="/admin/history">
                 <i class="fa fa-th"></i> <span>История игр</span>
                 
