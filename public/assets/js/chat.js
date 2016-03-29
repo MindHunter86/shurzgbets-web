@@ -76,7 +76,7 @@ $(document).ready(function() {
 	    //messageList.mCustomScrollbar();
 	});
 	msgs.on('child_added', function (snapshot) {
-		var a = $(".chat_scroll")[0];
+		var a = $(".mCSB_2_container")[0];
 		var isScrollDown = Math.abs((a.offsetHeight + a.scrollTop) - a.scrollHeight) < 5;
 	    var data = snapshot.val();
 	    data.uuid = snapshot.key();
