@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Item;
 use App\Services\SteamItem;
 use App\Services\BackPack;
+use App\Services\CsgoFast;
 use App\Shop;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -72,7 +73,7 @@ class ShopController extends Controller
         foreach($jsonItems as $jsonItem){
             $items = json_decode($jsonItem, true);
             foreach($items as $item) {
-                $itemInfo = new BackPack($item);
+                $itemInfo = new CsgoFast($item);
                 $item['steam_price'] = $itemInfo->price;
                 $item['price'] = round($item['steam_price']/100 * self::PRICE_PERCENT_TO_SALE);
                 if(empty($item['quality'])) {
