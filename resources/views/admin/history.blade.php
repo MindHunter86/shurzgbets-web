@@ -35,7 +35,7 @@
                     @if($game->status_prize == \App\Game::STATUS_PRIZE_SEND)
                       <td><span class="badge bg-green">Отправлен</span></td>
                     @endif
-                    @if($game->status_prize == \App\Game::STATUS_ERROR)
+                    @if($game->status_prize == \App\Game::STATUS_PRIZE_SEND_ERROR)
                       <td><span class="badge bg-red">Ошибка</span></td>
                     @endif
                   </tr>
