@@ -40,9 +40,6 @@ class PagesController extends Controller
         $money = 0;
         foreach($promo as $ref) {
             $bet = Bet::where('user_id', $ref->id)->orderBy('created_at', 'desc')->get();
-            $price = round(($bet->price / 100) * 1);
-            if($price == 0)
-                continue;
             $referal[] = $bet;
             $money = $money + $bet->price; 
         }
