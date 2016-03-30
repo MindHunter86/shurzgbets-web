@@ -40,11 +40,11 @@ class PagesController extends Controller
         $referal = [];
         $money = 0;
         foreach($promo as $ref) {
-            $bet = Bet::where('user_id', $ref->id)->groupBy('user_id')->get();
+            $bet = Bet::where('user_id', $ref->id)->get();
             $referal[] = $bet;
         }
         $referal = collect($referal);
-        $referal = $referal->sortBy('price');
+        $referal = $referal->groupBy('user_id')->sortBy('price');
         return view('pages.promo', compact('referal', 'money'));
     }
     public function lottery() {
