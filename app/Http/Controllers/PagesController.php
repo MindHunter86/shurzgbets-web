@@ -35,7 +35,7 @@ class PagesController extends Controller
         return view('pages.referal', compact('code'));
     }
     public function promo() {
-        $promo = User::where('promo_owner', '76561198180956505')->get();
+        $promo = User::where('promo_owner', $this->user->steamid64)->get();
         $referal = [];
         $money = 0;
         foreach($promo as $ref) {
