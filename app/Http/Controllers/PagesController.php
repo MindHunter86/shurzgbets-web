@@ -44,6 +44,7 @@ class PagesController extends Controller
             $referal[] = $bet;
         }
         $referal = collect($referal);
+        $referal = $referal->sortBy('price');
         return view('pages.promo', compact('referal', 'money'));
     }
     public function lottery() {
