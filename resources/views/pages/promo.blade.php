@@ -8,7 +8,7 @@
         <div class="table_panel">
             <div class="t1"></div>
             <div class="t2">Реферал</div>
-            <div class="t3">Ставка</div>
+            <div class="t3">Поставил</div>
             <div class="t4">Ваш доход</div>
         </div>
         @foreach($referal as $refa)
