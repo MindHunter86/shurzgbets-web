@@ -9,6 +9,7 @@ use App\Item;
 use App\Lottery;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -39,9 +40,10 @@ class PagesController extends Controller
         $referal = [];
         $money = 0;
         foreach($promo as $ref) {
-            $bet = Bet::where('user_id', $ref->id)->orderBy('price', 'desc')->groupBy('user_id')->get();
+            $bet = Bet::where('user_id', $ref->id)->groupBy('user_id')->get();
             $referal[] = $bet;
         }
+        $referal = collect($referal);
         return view('pages.promo', compact('referal', 'money'));
     }
     public function lottery() {
