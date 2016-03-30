@@ -41,7 +41,7 @@ class PagesController extends Controller
         $money = 0;
         foreach($promo as $ref) {
             $bet = Bet::where('user_id', $ref->id)->get();
-            $referal[] = $bet;
+            $referal[] = $bet->toArray();
         }
         $referal = collect($referal);
         $referal = $referal->groupBy('user_id');
