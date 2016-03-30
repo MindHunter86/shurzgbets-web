@@ -48,7 +48,7 @@ class ReferalController extends Controller {
             Promo::create([
                 'steamid64' => Auth::user()->steamid64,
                 'code' => $code,
-                'money' => 10,
+                'money' => 15,
                 'type' => 0
             ]);
         } else {

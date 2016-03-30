@@ -80,8 +80,8 @@ class ShopController extends Controller
                 if(empty($item['quality'])) {
                     $item['quality'] = 'Normal';
                 }
-                if($item['price']  < 10) {
-                    $item['price'] = 10;
+                if($item['price']  < 15) {
+                    $item['price'] = 15;
                 }
                 Shop::create($item);
             }
@@ -103,7 +103,7 @@ class ShopController extends Controller
             }
             if($item->status == Shop::ITEM_STATUS_SOLD) return response()->json(['success' => false, 'msg' => 'Предмет уже куплен!']);
             if($this->user->money >= $item->price){
-                if($item->price <= 10) {
+                if($item->price <= 15) {
                     $this->steamAuth->steamId = $this->user->steamid64;
                     $steamInfo = $this->steamAuth->parseInfo();
                     $steamInfo = $this->steamAuth->getUserInfo();
@@ -112,7 +112,7 @@ class ShopController extends Controller
                     $this->user->save();
 
                     if(stripos($this->user->username, 'shurzgbets.com') === false) {
-                        return response()->json(['success' => false, 'msg' => 'Чтобы покупать предметы дешевле 10 рублей, добавьте в свой ник домен нашего сайта - shurzgbets.com']);
+                        return response()->json(['success' => false, 'msg' => 'Чтобы покупать предметы дешевле 15 рублей, добавьте в свой ник домен нашего сайта - shurzgbets.com']);
                     }
                 }
                 $item->status = Shop::ITEM_STATUS_SOLD;
