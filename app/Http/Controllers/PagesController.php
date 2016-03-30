@@ -44,7 +44,7 @@ class PagesController extends Controller
             $referal[] = $bet;
         }
         $referal = collect($referal);
-        $referal = $referal->groupBy('user_id')->sortBy('price');
+        $referal = $referal->groupBy('user_id');
         return view('pages.promo', compact('referal', 'money'));
     }
     public function lottery() {
