@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use App\Bet;
 use App\Services\SteamItem;
 use App\Services\BackPack;
 use App\Services\CsgoFast;
@@ -79,8 +80,8 @@ class ShopController extends Controller
                 if(empty($item['quality'])) {
                     $item['quality'] = 'Normal';
                 }
-                if($item['price']  < 15) {
-                    $item['price'] = 15;
+                if($item['price']  < 10) {
+                    $item['price'] = 10;
                 }
                 Shop::create($item);
             }
@@ -96,9 +97,13 @@ class ShopController extends Controller
             if(empty($this->user->accessToken)) {
                 return response()->json(['success' => false, 'msg' => 'Вы не ввели ссыклу на обмен!']);
             }
+            $gamesCount = Bet::where('user_id', $this->user->id)->count();
+            if($gamesCount < 5) {
+                return response()->json(['success' => false, 'msg' => 'Вы должны сделать хотябы 5 депозитов на сайте!']);
+            }
             if($item->status == Shop::ITEM_STATUS_SOLD) return response()->json(['success' => false, 'msg' => 'Предмет уже куплен!']);
             if($this->user->money >= $item->price){
-                if($item->price <= 15) {
+                if($item->price <= 10) {
                     $this->steamAuth->steamId = $this->user->steamid64;
                     $steamInfo = $this->steamAuth->parseInfo();
                     $steamInfo = $this->steamAuth->getUserInfo();
@@ -107,7 +112,7 @@ class ShopController extends Controller
                     $this->user->save();
 
                     if(stripos($this->user->username, 'shurzgbets.com') === false) {
-                        return response()->json(['success' => false, 'msg' => 'Чтобы покупать предметы дешевле 15 рублей, добавьте в свой ник домен нашего сайта - shurzgbets.com']);
+                        return response()->json(['success' => false, 'msg' => 'Чтобы покупать предметы дешевле 10 рублей, добавьте в свой ник домен нашего сайта - shurzgbets.com']);
                     }
                 }
                 $item->status = Shop::ITEM_STATUS_SOLD;

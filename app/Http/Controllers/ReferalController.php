@@ -48,13 +48,13 @@ class ReferalController extends Controller {
             Promo::create([
                 'steamid64' => Auth::user()->steamid64,
                 'code' => $code,
-                'money' => 15,
+                'money' => 10,
                 'type' => 0
             ]);
         } else {
             $promo->code = $code;
             $promo->save();
         }
-        return response()->json(['success' => true, 'text' => 'Промо код '.$code.' успешно создан. Поделитесь им с друзьями, чтобы они получили 15 рублей на свой баланс']);
+        return response()->json(['success' => true, 'text' => 'Промо код '.$code.' успешно создан. Поделитесь им с друзьями, чтобы они получили 10 рублей на свой баланс']);
     }    
 }
