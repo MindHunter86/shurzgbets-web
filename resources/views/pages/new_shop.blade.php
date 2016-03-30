@@ -32,6 +32,7 @@
             <option value="Well-Worn">Well-Worn</option>
             <option value="Battle-Scarred">Battle-Scarred</option>
             <option value="Normal">Normal</option>
+            <option value="Normal">Not Painted</option>
         </select>
     </div>
     <input type="text" id="searchName" name="searchName" placeholder="Поиск" class="shop_search" />
