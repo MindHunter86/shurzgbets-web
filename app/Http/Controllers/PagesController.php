@@ -39,7 +39,7 @@ class PagesController extends Controller
         $referal = [];
         $money = 0;
         foreach($promo as $ref) {
-            $bet = Bet::where('user_id', $ref->id)->orderBy('created_at', 'desc')->groupBy('user_id')->get();
+            $bet = Bet::where('user_id', $ref->id)->orderBy('price', 'desc')->groupBy('user_id')->get();
             $referal[] = $bet;
         }
         return view('pages.promo', compact('referal', 'money'));
