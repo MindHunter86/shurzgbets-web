@@ -11,18 +11,18 @@
     </div>
     @endif
 @endif
-<div class="rules rulet_bg">Участвующие вносят скины, по достижении определенного максимального количества случайным образом выбирается победитель, который получит все скины. Шанс выигрыша зависит от стоимости внесенных скинов.</div>
+<div class="rules rulet_bg">{{ trans('all.info') }}</div>
 <ul class="stats rulet_bg">
-    <li><em>Сегодня игр</em> <b class="stats-gamesToday">{{ \App\Game::gamesToday() }}</b></li>
-    <li><em>Сегодня игроков</em> <b class="stats-uniqueUsers">{{ \App\Game::usersToday() }}</b></li>
-    <li><em>Макс. выигрыш сегодня:</em> <b class="stats-wintoday">{{ \App\Game::maxPriceToday() }}</b> руб.</li>
-    <li><em>Максимальный выигрыш:</em> <b>{{ \App\Game::maxPrice() }}</b> руб.</li>
+    <li><em>{{ trans('all.stats.games') }}</em> <b class="stats-gamesToday">{{ \App\Game::gamesToday() }}</b></li>
+    <li><em>{{ trans('all.stats.players') }}</em> <b class="stats-uniqueUsers">{{ \App\Game::usersToday() }}</b></li>
+    <li><em>{{ trans('all.stats.max_win_day') }}</em> <b class="stats-wintoday">{{ \App\Game::maxPriceToday() }}</b> {{ trans('all.valute') }}</li>
+    <li><em>{{ trans('all.stats.max_win') }}</em> <b>{{ \App\Game::maxPrice() }}</b> {{ trans('all.valute') }}</li>
 </ul>
 <div class="gamebg">
     <div class="game game_stats" style="display:block;">
         <div class="game_panel">
-            <div class="game_num left">Игра #<span>{{ $game->id }}</span></div>
-            <div class="game_cash right"><em>Вступай в игру сейчас и выиграй:</em> <b class="game_bank">{{ round($game->price) }}</b> <span>руб.</span></div>
+            <div class="game_num left">{{ trans('all.game.game_id') }} #<span>{{ $game->id }}</span></div>
+            <div class="game_cash right"><em>Вступай в игру сейчас и выиграй:</em> <b class="game_bank">{{ round($game->price) }}</b> <span>{{ trans('all.valute') }}</span></div>
         </div>
         <div class="game_scale left"><div class="progress game_bar" style="width:{{ $game->items }}%;"></div></div>
         <div class="game_timer right gameEndTimer">
@@ -30,14 +30,14 @@
             <span class="sec countSeconds">00</span>
         </div>
         <div class="clear"></div>
-        <div class="game_info"><em>Мин. ставка {{ $min_price = \App\Http\Controllers\GameController::MIN_PRICE }} руб., максимум предметов {{ $max_items = \App\Http\Controllers\GameController::MAX_ITEMS }}.</em></div>
-        <div class="game_info game_info_last"><em>Чем выше ваша ставка, тем выше шанс на победу.</em></div>
-        <div class="game_button"><a href="/deposit" class="depositModal" target="_blank">Внести депозит</a></div>
+        <div class="game_info"><em>{{ trans('all.game.min_deposite') }} {{ $min_price = \App\Http\Controllers\GameController::MIN_PRICE }} {{ trans('all.valute') }}, {{ trans('all.game.max_items') }} {{ $max_items = \App\Http\Controllers\GameController::MAX_ITEMS }}.</em></div>
+        <div class="game_info game_info_last"><em>{{ trans('all.game.chance_info') }}</em></div>
+        <div class="game_button"><a href="/deposit" class="depositModal" target="_blank">{{ trans('all.game.deposite') }}</a></div>
     </div>
     <div class="rul game_winner" style="display:none;">
         <div class="game_panel">
-            <div class="game_num left">Игра #{{ $game->id }}</div>
-            <div class="game_cash right"><em>Банк игры:</em> <b class="game_bank">{{ round($game->price) }}</b> <span>руб.</span></div>
+            <div class="game_num left">{{ trans('all.game.game_id') }} #{{ $game->id }}</div>
+            <div class="game_cash right"><em>{{ trans('all.game.game_bank') }}</em> <b class="game_bank">{{ round($game->price) }}</b> <span>{{ trans('all.valute') }}</span></div>
         </div>
         <div class="rulet">
             <ul class="all-players-list">
@@ -61,8 +61,8 @@
 </div>
 <div class="cart">
     <div class="cart_text">
-        <em>Вы можете купить карточки и поставить их игру:</em>
-        <span>Пополните баланс и купите нужные карточки</span>
+        <em>{{ trans('all.card.info') }}</em>
+        <span>{{ trans('all.card.small_info') }}</span>
     </div>
     <div class="cart_loop">
         <div class="cart_info" onclick="addTicket(1);"><em>25</em></div>
@@ -91,8 +91,8 @@
     @endforeach
 </div>
 <div class="gamestart game_hash">
-    <em class="gamestart_title">ИГРА НАЧАЛАСЬ! ВНОСИТЕ ДЕПОЗИТ!</em>
-    <em class="gamestart_bg">ЧЕСТНАЯ ИГРА</em>
-    <em class="gamestart_hash">Хэш раунда: <span class="game_hash_number">{{ md5($game->rand_number) }}</span></em>
+    <em class="gamestart_title">{{ trans('all.hash.start') }}</em>
+    <em class="gamestart_bg">{{ trans('all.hash.fair') }}</em>
+    <em class="gamestart_hash">{{ trans('all.hash.hash') }} <span class="game_hash_number">{{ md5($game->rand_number) }}</span></em>
 </div>
 @endsection

@@ -1,5 +1,6 @@
 <? 
 return  [
+	'auth' => 'Sign in through <b>STEAM</b>',
 	'keywords' => 'Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. SHURZGBETS.COM - это cs go рулетка не больше 100 рублей без минимальной ставки. ',
 	'description' => 'Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. SHURZGBETS.COM - это cs go рулетка не больше 100 рублей без минимальной ставки. ',
 	'chat' => [
@@ -34,6 +35,42 @@ return  [
 		'title' => 'Last winner:',
 		'win' => 'Win:',
 		'chance' => 'Chance:'
-	]
+	],
 
+	'day_lucky' => [
+		'title' => 'Luck of the day:',
+		'win' => 'Win:',
+		'chance' => 'Chance:'
+	],
+
+	'support' => 'Tech support',
+	'online' => 'Online:',
+
+	'info' => 'All participants bring items or skins from CS:GO to the service. Once the necessary number of items has been reached or the time for the game has passed the system randomly selects a winner and awards them all the items. The chance to win depends on the value of the skins involved.',
+	'stats' => [
+		'games' => 'Games today',
+		'players' => 'Unique players today',
+		'max_win_day' => 'Biggest win today',
+		'max_win' => 'Biggest win'
+	],
+
+	'game' => [
+		'game_id' => 'Game',
+		'game_invite' => 'Join the game now and win:',
+		'game_bank' => 'Game bank:',
+		'min_deposit' => 'Min. bet',
+		'max_items' => 'max. items',
+		'chance_info' => 'The higher the bet, the greater the chance to win.',
+		'deposit' => 'Deposit more'
+
+	],
+	'card' => [
+		'info' => 'You can buy the card and put their game:',
+		'small_info' => 'Top up your balance and buy the desired card'
+	],
+	'hash' => [
+		'start' => 'THE GAME HAS BEGUN! MAKE YOUR DEPOSITS!',
+		'fair' => 'Fair game',
+		'hash' => 'Round hash:'
+	]
 ];

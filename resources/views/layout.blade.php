@@ -78,14 +78,14 @@
     <div class="header">
         <a href="/" class="logo"></a>
         @if(Auth::guest())
-        <div class="steam_login" style="display:block;"><a href="/login">Войти через <b>STEAM</b></a></div>
+        <div class="steam_login" style="display:block;"><a href="/login">{!! trans('all.auth') !!}</a></div>
         @else
         <div class="mini_profile">
             <div class="mini_profile_ava"><img src="{{ $u->avatar }}" alt="" /></div>
             <div class="mini_profile_in">
                 <div class="mini_profile_name ell">{{ $u->username }}</div>
                 <div class="mini_profile_balance">
-                    {{ trans('all.money') }} <em class="balanced">{{ $u->money }} {{ trans('all.valute') }}.</em>
+                    {{ trans('all.money') }} <em class="balanced">{{ $u->money }} {{ trans('all.valute') }}</em>
                     <a href="#" class="plus"></a>
                 </div>
             </div>
@@ -132,29 +132,29 @@
             </div>
             @else 
             <div class="last_win last_winner" style="display:none;">
-                <div class="last_win_title">Последний победитель:</div>
+                <div class="last_win_title">{{ trans('all.last_winner.title') }}</div>
                 <div class="last_win_ava"><img class="l-w-avatar" src="" alt="" /></div>
                 <div class="last_win_name ell l-w-username"></div>
                 <ul>
-                    <li>Выигрыш: <em class="l-w-price"><span>руб.</span></em></li>
-                    <li>Шанс на победу: <em class="l-w-chance"></em></li>
+                    <li>{{ trans('all.last_winner.win') }} <em class="l-w-price"><span>{{ trans('all.valute') }}</span></em></li>
+                    <li>{{ trans('all.last_winner.chance') }} <em class="l-w-chance"></em></li>
                 </ul>
             </div>        
             @endif
 
             @if(!is_null($dayLucky))
             <div class="last_win last_win_day">
-                <div class="last_win_title">Счастливчик дня:</div>
+                <div class="last_win_title">{{ trans('all.day_lucky.title') }}</div>
                 <div class="last_win_ava"><img src="{{ $dayLucky->winner->avatar }}" alt="" /></div>
                 <div class="last_win_name ell">{{ $dayLucky->winner->username }}</div>
                 <ul>
-                    <li>Выигрыш: <em>{{ $dayLucky->price }}<span>руб.</span></em></li>
-                    <li>Шанс на победу: <em>{{ $dayLucky->chance }}%.</em></li>
+                    <li>{{ trans('all.day_lucky.win') }} <em>{{ $dayLucky->price }}<span>{{ trans('all.valute') }}</span></em></li>
+                    <li>{{ trans('all.day_lucky.chance') }} <em>{{ $dayLucky->chance }}%.</em></li>
                 </ul>
             </div>
             @endif
-            <a href="https://vk.com/shurzgsupp" target="_blank" class="support">Техническая поддержка</a>
-            <a href="#" class="support">Онлайн: <span class="stats-onlineNow">0</span></a>
+            <a href="https://vk.com/shurzgsupp" target="_blank" class="support">{{ trans('all.support') }}</a>
+            <a href="#" class="support">{{ trans('all.online') }} <span class="stats-onlineNow">0</span></a>
         </div>
         <div class="container_r">
             @yield('content')
