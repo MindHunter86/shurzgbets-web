@@ -76,5 +76,11 @@ return  [
 		'fair' => 'Fair game',
 		'hash' => 'Round hash:',
 		'end' => 'GAME END!'
+	],
+	'deposit' => [
+		'ticekts' => 'Ticekts:',
+		'from' => 'from',
+		'to' => 'to',
+		'deposit' => 'deposited'
 	]
 ];
