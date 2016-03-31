@@ -56,7 +56,7 @@
 <div style="display:none;">
     <div class="modal" id="modal">
         <div class="modal_close arcticmodal-close"></div>
-        <div class="modal_top">{{ trans('all.money_modal_header') }}</div>
+        <div class="modal_top">{!! trans('all.money_modal_header') !!}</div>
         <div class="modal_balance">{{ trans('all.money_modal_balance') }} <em class="balanced">{{ $u->money }}</em><span>{{ trans('all.valute') }}</span></div>
         <div class="modal_balance_buy">
             <input type="text" placeholder="{{ trans('all.money_modal_sum') }}" id="sumadd" />
@@ -118,7 +118,7 @@
                 @endif
             </ul>
             <div class="sale">
-                <div class="sale_text">{{ trans('all.bonus.text') }}</div>
+                <div class="sale_text">{!! trans('all.bonus.text') !!}</div>
             </div>
             @if(!is_null($lastWinner)) 
             <div class="last_win last_winner">
