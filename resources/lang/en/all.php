@@ -2,15 +2,20 @@
 return  [
 	'keywords' => 'Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. SHURZGBETS.COM - это cs go рулетка не больше 100 рублей без минимальной ставки. ',
 	'description' => 'Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. SHURZGBETS.COM - это cs go рулетка не больше 100 рублей без минимальной ставки. ',
-	'chat' => 'Чат',
-	'money_modal_header' => '<b>ПОПОЛНЕНИЕ</b> БАЛАНСА',
-	'money_modal_balance' => 'Ваш баланс:',
-	'money_modal_value' => 'руб.',
-	'card_why' => 'ДЛЯ ЧЕГО НУЖНЫ ФИШКИ?',
-	'card_add_why' => 'Вы можете вносить депозит фишками вместо предметов. Фишки моментально вносятся в раунд без задержек.',
-	'card_add_change' => 'Фишки меняются на деньги, на которые вы можете совершать покупки в нашем магазине SHURZGBETS.COM/SHOP',
-	'money' => 'Баланс:',
-	'language' => 'Язык:',
+	'chat' => [
+		'header' => 'Chat'
+		'message' => 'Write message...'
+	],
+	'money_modal_header' => '<b>RECHARGE</b> BALANCE',
+	'money_modal_balance' => 'Your balance:',
+	'money_modal_sum' => 'Enter sum:',
+	'money_modal_add' => 'Payment',
+	'valute' => 'rub.',
+	'card_why' => 'WHAT IS CARD?',
+	'card_add_why' => 'You can Deposit card instead of objects. Immediately card are made in the round without delay.',
+	'card_add_change' => 'Change the card for money, you can make purchases in our store SHURZGBETS.COM/SHOP',
+	'money' => 'Balance:',
+	'language' => 'Language:',
 	'menu' => [
 		'main' => 'Play',
 		'top' => 'Top players',
@@ -23,12 +28,12 @@ return  [
 		'logout' => 'Exit'
 	],
 	'bonus' => [
-		'text' => 'Добавь <b>SHURZG</b><em>BETS</em> к своему Steam никнейму и получи <b>5%</b> бонус к выигрышу!'
+		'text' => 'Add <b>SHURZG</b><em>BETS</em> to your Steam nickname and get <b>5%</b> bonus to win!'
 	],
 	'last_winner' => [
-		'title' => 'Последний победитель:',
-		'win' => 'Выигрыш:',
-		'chance' => 'Шанс на победу:'
+		'title' => 'Last winner:',
+		'win' => 'Win:',
+		'chance' => 'Chance:'
 	]
 
 ];

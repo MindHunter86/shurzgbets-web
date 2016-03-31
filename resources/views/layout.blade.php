@@ -45,10 +45,10 @@
 <div class="chat">
     <div class="chat_button" onclick="chat()"></div>
     <div class="chat_loop">
-        <div class="chat_top"><em>Чат -</em> SHURZGBETS.COM</div>
+        <div class="chat_top"><em>{{ trans('all.chat.header') }} -</em> SHURZGBETS.COM</div>
         <div class="chat_scroll" id="chat_messages">
         </div>
-        <textarea class="chat_mess" placeholder="Введите сообщение..."></textarea>
+        <textarea class="chat_mess" placeholder="{{ trans('all.chat.message') }}"></textarea>
         <input class="chat_ok" type="submit" value="ОК" />
     </div>
 </div>
@@ -56,19 +56,19 @@
 <div style="display:none;">
     <div class="modal" id="modal">
         <div class="modal_close arcticmodal-close"></div>
-        <div class="modal_top"><b>ПОПОЛНЕНИЕ</b> БАЛАНСА</div>
-        <div class="modal_balance">Ваш баланс: <em class="balanced">{{ $u->money }}</em><span>руб.</span></div>
+        <div class="modal_top">{{ trans('all.money_modal_header') }}</div>
+        <div class="modal_balance">{{ trans('all.money_modal_balance') }} <em class="balanced">{{ $u->money }}</em><span>{{ trans('all.valute') }}</span></div>
         <div class="modal_balance_buy">
-            <input type="text" placeholder="Введите сумму" id="sumadd" />
-            <input type="submit" value="Пополнить" class="addbalBtn"/>
+            <input type="text" placeholder="{{ trans('all.money_modal_sum') }}" id="sumadd" />
+            <input type="submit" value="{{ trans('all.money_modal_add') }}" class="addbalBtn"/>
         </div>
         <div class="modal_cart">
             <div class="clear"></div>
             <div class="modal_cart_info">
-                <p><b>ДЛЯ ЧЕГО НУЖНЫ ФИШКИ?</b></p>
-                <p>Вы можете вносить депозит фишками вместо предметов. Фишки моментально вносятся в раунд без задержек.</p>
+                <p><b>{{ trans('all.card_why') }}</b></p>
+                <p>{{ trans('all.card_add_why') }}</p>
                 <br />
-                <p>Фишки меняются на деньги, на которые вы можете совершать покупки в нашем магазине SHURZGBETS.COM/SHOP</p>
+                <p>{{ trans('all.card_add_change') }}</p>
             </div>
         </div>
     </div>
@@ -85,14 +85,14 @@
             <div class="mini_profile_in">
                 <div class="mini_profile_name ell">{{ $u->username }}</div>
                 <div class="mini_profile_balance">
-                    Баланс: <em class="balanced">{{ $u->money }} руб.</em>
+                    {{ trans('all.money') }} <em class="balanced">{{ $u->money }} {{ trans('all.valute') }}.</em>
                     <a href="#" class="plus"></a>
                 </div>
             </div>
         </div>
         @endif
         <div class="language">
-            <div class="language_text">Язык:</div>
+            <div class="language_text">{{ trans('all.language') }}</div>
             @if(App::getLocale() == 'ru')
             <div class="language_ico"></div>
             <a href="/lang/en"><div class="language_row"></div></a>
@@ -118,16 +118,16 @@
                 @endif
             </ul>
             <div class="sale">
-                <div class="sale_text">Добавь <b>SHURZG</b><em>BETS</em> к своему Steam никнейму и получи <b>5%</b> бонус к выигрышу!</div>
+                <div class="sale_text">{{ trans('all.bonus.text') }}</div>
             </div>
             @if(!is_null($lastWinner)) 
             <div class="last_win last_winner">
-                <div class="last_win_title">Последний победитель:</div>
+                <div class="last_win_title">{{ trans('all.last_winner.title') }}</div>
                 <div class="last_win_ava"><img class="l-w-avatar" src="{{ $lastWinner->winner->avatar }}" alt="" /></div>
                 <div class="last_win_name ell l-w-username">{{ $lastWinner->winner->username }}</div>
                 <ul>
-                    <li>Выигрыш: <em class="l-w-price">{{ $lastWinner->price }}<span>руб.</span></em></li>
-                    <li>Шанс на победу: <em class="l-w-chance">{{ \App\Http\Controllers\GameController::_getUserChanceOfGame($lastWinner->winner, $lastWinner) }}%.</em></li>
+                    <li>{{ trans('all.last_winner.win') }} <em class="l-w-price">{{ $lastWinner->price }}<span>{{ trans('all.valute') }}</span></em></li>
+                    <li>{{ trans('all.last_winner.chance') }} <em class="l-w-chance">{{ \App\Http\Controllers\GameController::_getUserChanceOfGame($lastWinner->winner, $lastWinner) }}%.</em></li>
                 </ul>
             </div>
             @else 
