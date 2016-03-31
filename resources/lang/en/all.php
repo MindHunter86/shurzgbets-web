@@ -63,7 +63,7 @@ return  [
 		'chance_info' => 'The higher the bet, the greater the chance to win.',
 		'deposit' => 'Deposit more',
 		'deposit_one' => 'TO MAKE A DEPOSIT FIRST',
-		'win_ticekt' => 'Winning ticket:',
+		'win_ticket' => 'Winning ticket:',
 		'win_players' => 'Winner:',
 		'new_game' => 'New play through:'
 	],
@@ -78,7 +78,7 @@ return  [
 		'end' => 'GAME END!'
 	],
 	'deposit' => [
-		'ticekts' => 'Tickets:',
+		'tickets' => 'Tickets:',
 		'from' => 'from',
 		'to' => 'to',
 		'deposit' => 'deposited'

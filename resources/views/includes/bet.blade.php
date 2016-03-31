@@ -4,7 +4,7 @@
   <div class="allitems_in">
     <div class="allitems_name ell">{{ $bet->user->username }}</div>
     <div class="allitems_cash ell">{{ trans('all.deposit.deposit') }} <b>{{ $i->name }}</b> (~{{ $i->price }} {{ trans('all.valute') }})</div>
-    <div class="allitems_num">{{ trans('all.deposit.ticekts') }} {{ trans('all.deposit.from') }} #{{ $bet->from }} {{ trans('all.deposit.to') }} #{{ $bet->to }}</div>
+    <div class="allitems_num">{{ trans('all.deposit.tickets') }} {{ trans('all.deposit.from') }} #{{ $bet->from }} {{ trans('all.deposit.to') }} #{{ $bet->to }}</div>
   </div>
   <div class="allitems_w">
   @if(!isset($i->img))
