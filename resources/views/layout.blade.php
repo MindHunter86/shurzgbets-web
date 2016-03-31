@@ -100,7 +100,7 @@
     <div class="container">
         <div class="container_l">
             <ul class="nav">
-                <li class="ico1"><a href="/">{{ trans('messages.menu.main') }}</a></li>
+                <li class="ico1"><a href="/">{{ trans('all.menu.main') }}</a></li>
                 <li class="ico2"><a href="/top">Топ игроков</a></li>
                 <li class="ico3"><a href="/history">История игр</a></li>
                 <li class="ico4"><a href="/about">О сайте</a></li>
