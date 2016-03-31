@@ -101,15 +101,15 @@
         <div class="container_l">
             <ul class="nav">
                 <li class="ico1"><a href="/">{{ trans('all.menu.main') }}</a></li>
-                <li class="ico2"><a href="/top">Топ игроков</a></li>
-                <li class="ico3"><a href="/history">История игр</a></li>
-                <li class="ico4"><a href="/about">О сайте</a></li>
-                <li class="ico5"><a href="/giveaway">Розыгрыш</a></li>
-                <li class="ico6"><a href="/shop">Магазин</a></li>
+                <li class="ico2"><a href="/top">{{ trans('all.menu.top') }}</a></li>
+                <li class="ico3"><a href="/history">{{ trans('all.menu.history') }}</a></li>
+                <li class="ico4"><a href="/about">{{ trans('all.menu.about') }}</a></li>
+                <li class="ico5"><a href="/giveaway">{{ trans('all.menu.giveaway') }}</a></li>
+                <li class="ico6"><a href="/shop">{{ trans('all.menu.shop') }}</a></li>
                 @if(!Auth::guest())
-                <li class="ico7"><a href="/referals">Реф.система</a></li>
-                <li class="ico8"><a href="/settings">Настройки</a></li>
-                <li class="ico9"><a href="/logout">Выход</a></li>
+                <li class="ico7"><a href="/referals">{{ trans('all.menu.referals') }}</a></li>
+                <li class="ico8"><a href="/settings">{{ trans('all.menu.settings') }}</a></li>
+                <li class="ico9"><a href="/logout">{{ trans('all.menu.logout') }}</a></li>
                 @endif
             </ul>
             <div class="sale">

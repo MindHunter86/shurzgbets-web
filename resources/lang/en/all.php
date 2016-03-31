@@ -12,15 +12,15 @@ return  [
 	'money' => 'Баланс:',
 	'language' => 'Язык:',
 	'menu' => [
-		'main' => 'Начать играть',
-		'top' => 'Топ игроков',
-		'history' => 'История игр',
-		'about' => 'О сайте',
-		'giveaway' => 'Розыгрыш',
-		'shop' => 'Магазин',
-		'referals' => 'Реф.система',
-		'settings' => 'Настройки',
-		'logout' => 'Выход'
+		'main' => 'Play',
+		'top' => 'Top players',
+		'history' => 'Game history',
+		'about' => 'About',
+		'giveaway' => 'Giveaway',
+		'shop' => 'Store',
+		'referals' => 'Referals',
+		'settings' => 'Settings',
+		'logout' => 'Exit'
 	],
 	'bonus' => [
 		'text' => 'Добавь <b>SHURZG</b><em>BETS</em> к своему Steam никнейму и получи <b>5%</b> бонус к выигрышу!'
