@@ -93,8 +93,13 @@
         @endif
         <div class="language">
             <div class="language_text">Язык:</div>
+            @if(App::getLocale() == 'ru')
             <div class="language_ico"></div>
-            <div class="language_row" onclick="language()"></div>
+            <a href="/lang/en"><div class="language_row"></div></a>
+            @else
+            <div class="language_ico active"></div>
+            <a href="/lang/ru"><div class="language_row"></div></a>
+            @endif
         </div>
     </div>
     <div class="container">
