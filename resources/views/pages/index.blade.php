@@ -22,7 +22,7 @@
     <div class="game game_stats" style="display:block;">
         <div class="game_panel">
             <div class="game_num left">{{ trans('all.game.game_id') }} #<span>{{ $game->id }}</span></div>
-            <div class="game_cash right"><em>Вступай в игру сейчас и выиграй:</em> <b class="game_bank">{{ round($game->price) }}</b> <span>{{ trans('all.valute') }}</span></div>
+            <div class="game_cash right"><em>{{ trans('all.game.game_invite') }}</em> <b class="game_bank">{{ round($game->price) }}</b> <span>{{ trans('all.valute') }}</span></div>
         </div>
         <div class="game_scale left"><div class="progress game_bar" style="width:{{ $game->items }}%;"></div></div>
         <div class="game_timer right gameEndTimer">
@@ -32,7 +32,7 @@
         <div class="clear"></div>
         <div class="game_info"><em>{{ trans('all.game.min_deposite') }} {{ $min_price = \App\Http\Controllers\GameController::MIN_PRICE }} {{ trans('all.valute') }}, {{ trans('all.game.max_items') }} {{ $max_items = \App\Http\Controllers\GameController::MAX_ITEMS }}.</em></div>
         <div class="game_info game_info_last"><em>{{ trans('all.game.chance_info') }}</em></div>
-        <div class="game_button"><a href="/deposit" class="depositModal" target="_blank">{{ trans('all.game.deposite') }}</a></div>
+        <div class="game_button"><a href="/deposit" class="depositModal" target="_blank">{{ trans('all.game.deposit') }}</a></div>
     </div>
     <div class="rul game_winner" style="display:none;">
         <div class="game_panel">
