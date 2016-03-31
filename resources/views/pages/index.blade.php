@@ -30,7 +30,7 @@
             <span class="sec countSeconds">00</span>
         </div>
         <div class="clear"></div>
-        <div class="game_info"><em>{{ trans('all.game.min_deposite') }} {{ $min_price = \App\Http\Controllers\GameController::MIN_PRICE }} {{ trans('all.valute') }}, {{ trans('all.game.max_items') }} {{ $max_items = \App\Http\Controllers\GameController::MAX_ITEMS }}.</em></div>
+        <div class="game_info"><em>{{ trans('all.game.min_deposit') }} {{ $min_price = \App\Http\Controllers\GameController::MIN_PRICE }} {{ trans('all.valute') }}, {{ trans('all.game.max_items') }} {{ $max_items = \App\Http\Controllers\GameController::MAX_ITEMS }}.</em></div>
         <div class="game_info game_info_last"><em>{{ trans('all.game.chance_info') }}</em></div>
         <div class="game_button"><a href="/deposit" class="depositModal" target="_blank">{{ trans('all.game.deposit') }}</a></div>
     </div>
@@ -45,17 +45,17 @@
             </ul>
         </div>
         <div class="left">
-            <div class="rulet_num">Победный билет: <em class="win_ticket"></em></div>
-            <div class="rulet_win ell">Победитель: <em class="win_username"></em></div>
+            <div class="rulet_num">{{ trans('all.game.win_ticket') }} <em class="win_ticket"></em></div>
+            <div class="rulet_win ell">{{ trans('all.game.win_players') }} <em class="win_username"></em></div>
         </div>
         <div class="right">
             <div class="rulet_timer">
                 <div class="ngtimer">
                     <span class="countSeconds"><span class="position"><span class="digit static">0</span></span><span class="position"><span class="digit static">0</span></span></span>
                 </div>
-                <em>Новая игра через:</em>
+                <em>{{ trans('all.game.new_game') }}</em>
             </div>
-            <div class="rulet_button"><a href="/deposit" class="depositModal" target="_blank">ВНЕСТИ ДЕПОЗИТ ПЕРВЫМ</a></div>
+            <div class="rulet_button"><a href="/deposit" class="depositModal" target="_blank">{{ trans('all.game.deposit_one') }}</a></div>
         </div>
     </div>
 </div>
@@ -81,9 +81,9 @@
     </ul>
 </div>
 <div class="gamestart game_round_number" style="display:none;">
-    <em class="gamestart_title">ИГРА ЗАВЕРШЕНА!</em>
-    <em class="gamestart_bg">ЧЕСТНАЯ ИГРА</em>
-    <em class="gamestart_hash">Число раунда: <span class="round_number"></span></em>
+    <em class="gamestart_title">{{ trans('all.hash.end') }}</em>
+    <em class="gamestart_bg">{{ trans('all.hash.fair') }}</em>
+    <em class="gamestart_hash">{{ trans('all.hash.hash') }} <span class="round_number"></span></em>
 </div>
 <div class="allitems_loop game_items">
     @foreach($bets as $bet)
