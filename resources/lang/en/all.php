@@ -78,7 +78,7 @@ return  [
 		'end' => 'GAME END!'
 	],
 	'deposit' => [
-		'ticekts' => 'Ticekts:',
+		'ticekts' => 'Tickets:',
 		'from' => 'from',
 		'to' => 'to',
 		'deposit' => 'deposited'
