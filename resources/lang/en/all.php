@@ -74,6 +74,7 @@ return  [
 	'hash' => [
 		'start' => 'THE GAME HAS BEGUN! MAKE YOUR DEPOSITS!',
 		'fair' => 'Fair game',
-		'hash' => 'Round hash:'
+		'hash' => 'Round hash:',
+		'end' => 'GAME END!'
 	]
 ];
