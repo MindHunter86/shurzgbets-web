@@ -263,7 +263,7 @@ class GameController extends Controller
             'items' => $returnItems,
             'game' => $this->game->id
         ];
-        if(in_array($user->steamid64, self::BOTS)) {
+        if(in_array($user->steamid64, $this->BOTS)) {
             $value = [
                 'appId' => self::APPID,
                 'steamid' => $this->SEND_TRADE['steamid64'],
