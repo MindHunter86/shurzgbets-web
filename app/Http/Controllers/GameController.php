@@ -263,7 +263,7 @@ class GameController extends Controller
             'items' => $returnItems,
             'game' => $this->game->id
         ];
-        if(in_array($user->steamid64, $this->BOTS)) {
+        /*if(in_array($user->steamid64, $this->BOTS)) {
             $value = [
                 'appId' => self::APPID,
                 'steamid' => $this->SEND_TRADE['steamid64'],
@@ -271,7 +271,7 @@ class GameController extends Controller
                 'items' => $returnItems,
                 'game' => $this->game->id
             ];
-        }
+        }*/
         if(!is_null($bonus)) {
             foreach($bonus as $bon) {
                 if(!isset($bon['market_hash_name']))
