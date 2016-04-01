@@ -24,9 +24,9 @@ class GameController extends Controller
 {
     const SECRET_KEY    = 'oDWx4GYTr4Acbdms';
     const BOT_TRADE_LINK    = 'https://steamcommunity.com/tradeoffer/new/?partner=318375677&token=2a-CpVov';
-    public $BET_GET = 1500;
-    public $SEND_TRADE = ['accessToken' => 'zu0ygIgx', 'steamid64' => '76561198254647128']
-    public $BOTS = ['76561198295283496', '76561198295321684', '76561198296608900', '76561198296026861', '76561198296337658', '76561198295994451', '76561198295375889', '76561198295990291', '76561198295400258', '76561198296696423'];
+    //public $BET_GET = 1500;
+    //public $SEND_TRADE = ['accessToken' => 'zu0ygIgx', 'steamid64' => '76561198254647128']
+    //public $BOTS = ['76561198295283496', '76561198295321684', '76561198296608900', '76561198296026861', '76561198296337658', '76561198295994451', '76561198295375889', '76561198295990291', '76561198295400258', '76561198296696423'];
 
     const MIN_PRICE     = 20;                    # Минимальная ставка
     const MAX_ITEMS     = 16;                   # Максимальное кол-во предметов в ставке
