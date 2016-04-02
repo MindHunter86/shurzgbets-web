@@ -119,7 +119,7 @@ class GameController extends Controller
 
             $rand = array_rand($this->bots);
             $this->addTicketFake($this->bots[$rand]);
-            $this->addTicketFake($this->bots[$rand]);
+            //$this->addTicketFake($this->bots[$rand]);
         }
         $us = $this->game->usersNoBot();
 
