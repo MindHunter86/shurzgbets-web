@@ -168,14 +168,16 @@ class PagesController extends Controller
                 $chances[] = (object) [
                     'chance' => $this->_getUserChanceOfGame($user, $game),
                     'avatar' => $user->avatar,
-                    'steamid64'  => $user->steamid64
+                    'steamid64'  => $user->steamid64,
+                    'username' => $user->username
                 ];
 
             }else{
                 $chances[] = [
                     'chance' => $this->_getUserChanceOfGame($user, $game),
                     'avatar' => $user->avatar,
-                    'steamid64'  => $user->steamid64
+                    'steamid64'  => $user->steamid64,
+                    'username' => $user->username
                 ];
             }
 

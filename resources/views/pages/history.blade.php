@@ -18,7 +18,7 @@
     <div class="hist_chance chance">
         <ul>
             @foreach($game->chance as $c)
-            <li data-toggle="tooltip" data-original-title="{{$c->username}}"><b>{{ $c->chance }}%</b><img src="{{ $c->avatar }}" alt="" /></li>
+            <li data-toggle="tooltip" data-original-title="{{ $c->username }}"><b>{{ $c->chance }}%</b><img src="{{ $c->avatar }}" alt="" /></li>
             @endforeach
         </ul>
     </div>
