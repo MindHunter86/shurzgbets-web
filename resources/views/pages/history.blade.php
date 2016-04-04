@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="hist_chance chance">
-        <ul>
+        <ul class="chances">
             @foreach($game->chance as $c)
             <li><b>{{ $c->chance }}%</b><img data-toggle="tooltip" data-original-title="{{ $c->username }}" src="{{ $c->avatar }}" alt="" /></li>
             @endforeach
@@ -38,7 +38,13 @@
         $('.wrapper').tooltip({
             trigger: "hover",
             selector: "div[data-toggle=tooltip]"
-        })
+        });
+        $('.chances').mCustomScrollbar({
+            axis:'x',
+            theme:'dark-thin',
+            autoExpandScrollbar:true,
+            advanced:{autoExpandHorizontalScroll:true}
+        }); 
     })
 </script>
 @empty
