@@ -214,13 +214,8 @@ if (START) {
                 html_chances += '<li><b>'+info.chance+'%</b><img src="'+info.avatar+'" alt="" /></li>';
             });
             $('.chance').show();
-            $('.chances').html(html_chances);
-            $('.chances').mCustomScrollbar({
-                axis:'x',
-                theme:'dark-thin',
-                autoExpandScrollbar:true,
-                advanced:{autoExpandHorizontalScroll:true}
-            }); 
+            $('.mCSB_1_container').html(html_chances);
+
         })
         .on('newLottery', function(data) {
             items = data.items;
