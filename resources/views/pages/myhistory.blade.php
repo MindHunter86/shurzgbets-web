@@ -26,9 +26,9 @@
         <em>Выигрыш:</em>
         @foreach(json_decode($game->game_items) as $i)
             @if(!isset($i->img))
-            <div class="item" data-toggle="tooltip" data-original-title="{{ $i->name }} {{ $i->price }} {{ trans('all.valute') }}"><img src="https://steamcommunity-a.akamaihd.net/economy/image/class/{{ \App\Http\Controllers\GameController::APPID }}/{{ $i->classid }}/200fx200f" alt="" /></div>
+            <div class="item" data-toggle="tooltip" data-original-title="{{ $i->name }} (~{{ $i->price }} {{ trans('all.valute') }})"><img src="https://steamcommunity-a.akamaihd.net/economy/image/class/{{ \App\Http\Controllers\GameController::APPID }}/{{ $i->classid }}/200fx200f" alt="" /></div>
             @else
-            <div class="item" data-toggle="tooltip" data-original-title="{{ $i->name }} {{ $i->price }} {{ trans('all.valute') }}"><img src="{{ $i->img }}" alt="" /></div>
+            <div class="item" data-toggle="tooltip" data-original-title="{{ $i->name }} (~{{ $i->price }} {{ trans('all.valute') }})"><img src="{{ $i->img }}" alt="" /></div>
             @endif
         @endforeach
     </div>
