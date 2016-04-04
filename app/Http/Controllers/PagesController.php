@@ -141,7 +141,7 @@ class PagesController extends Controller
             $games[$key]->chance = $this->_getChancesOfGame($game, true);
         }
 
-        return view('pages.profile_history', compact('games'));
+        return view('pages.myhistory', compact('games'));
     }
     public function profile()
     {
