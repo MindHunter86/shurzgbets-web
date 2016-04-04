@@ -118,6 +118,31 @@ class PagesController extends Controller
 
         return view('pages.history', compact('games'));
     }
+    public function profile_history()
+    {
+        $games = Game::with(['bets', 'winner'])
+            ->where('status', Game::STATUS_FINISHED)
+            ->where('games.winner_id', $this->user->id)
+            ->orderBy('created_at', 'desc')
+            ->limit(10)
+            ->get();
+ 
+        foreach($games as $key => $game) {
+            $items = array();
+            $price = array();
+            foreach($game->bets as $bet) {
+                foreach(json_decode($bet->items) as $item) {
+                    $items[] = (array)$item;
+                    $price[] = (array)$item->price;
+                }
+            }
+            array_multisort($price, SORT_DESC, $items);
+            $games[$key]->game_items = json_encode($items);
+            $games[$key]->chance = $this->_getChancesOfGame($game, true);
+        }
+
+        return view('pages.profile_history', compact('games'));
+    }
     public function profile()
     {
         $games = Game::where('winner_id', $this->user->id)->get();

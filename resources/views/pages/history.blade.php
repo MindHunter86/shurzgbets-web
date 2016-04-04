@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<div class="hist_title"><b>История</b> игр</div>
+<div class="hist_title"><b>История</b> игр <a href="/history/profile" style="float: right;">Мои победы</a></div>
 @forelse($games as $game)
 <div class="hist">
     <div class="hist_bg">

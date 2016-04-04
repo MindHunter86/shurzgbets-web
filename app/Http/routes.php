@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     get('/shop/admin', ['as' => 'shop.admin', 'uses' => 'ShopController@admin', 'middleware' => 'access:admin']);
     get('/settings', ['as' => 'settings', 'uses' => 'PagesController@settings']);
     post('/settings/save', ['as' => 'settings.update', 'uses' => 'SteamController@updateSettings']);
-    get('/profile/history', ['as' => 'myhistory', 'uses' => 'PagesController@myhistory']);
+    get('/history/profile', ['as' => 'myhistory', 'uses' => 'PagesController@profile_history']);
     get('/logout', ['as' => 'logout', 'uses' => 'SteamController@logout']);
     post('/addTicket', ['as' => 'add.ticket', 'uses' => 'GameController@addTicket']);
     post('/getBalance', ['as' => 'get.balance', 'uses' => 'GameController@getBalance']);
