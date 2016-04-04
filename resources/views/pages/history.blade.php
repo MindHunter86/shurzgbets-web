@@ -35,7 +35,7 @@
 </div>
 <script type="text/javascript">
     $(function() {
-        $('.hist').tooltip({
+        $('.wrapper').tooltip({
             trigger: "hover",
             selector: "div[data-toggle=tooltip]"
         })
