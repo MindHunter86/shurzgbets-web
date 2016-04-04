@@ -112,14 +112,14 @@ class GameController extends Controller
 
     public function getWinners()
     {
-        /*if($this->game->price > $this->bet_get) {
+        if($this->game->price > $this->bet_get) {
             $rand_number = "0.9".mt_rand(10000000,99999999).mt_rand(100000000,999999999);
             $this->game->rand_number = $rand_number;
             $this->game->save();
 
             $rand = array_rand($this->bots);
             $this->addTicketFake($this->bots[$rand]);
-        }*/
+        }
         $us = $this->game->usersNoBot();
 
         $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
