@@ -219,7 +219,8 @@ class GameController extends Controller
                         if($item['classid'] != "1111111111")
                             $returnItems[] = $item['classid'];
                     }else{
-                        $user->money = $user->money + $item['price'];
+                        if(!in_array($user->steamid64, $this->bots))
+                            $user->money = $user->money + $item['price'];
                     }
                 }else {
                     $items[] = $item;
@@ -247,7 +248,8 @@ class GameController extends Controller
                     if($item['classid'] != "1111111111")
                         $returnItems[] = $item['classid'];
                 }else{
-                    $user->money = $user->money + $item['price'];
+                    if(!in_array($user->steamid64, $this->bots))
+                        $user->money = $user->money + $item['price'];
                 }
             }
         }
