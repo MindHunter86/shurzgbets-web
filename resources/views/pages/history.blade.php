@@ -18,7 +18,7 @@
     <div class="hist_chance chance">
         <ul>
             @foreach($game->chance as $c)
-            <li><b>{{ $c->chance }}%</b><img src="{{ $c->avatar }}" alt="" /></li>
+            <li data-toggle="tooltip" data-original-title="{{$c->username}}"><b>{{ $c->chance }}%</b><img src="{{ $c->avatar }}" alt="" /></li>
             @endforeach
         </ul>
     </div>
@@ -33,6 +33,14 @@
         @endforeach
     </div>
 </div>
+<script type="text/javascript">
+    $(function() {
+        $('.hist').tooltip({
+            trigger: "hover",
+            selector: "div[data-toggle=tooltip]"
+        })
+    })
+</script>
 @empty
 <center><h1 style="color: #33BDA6;">Игр нет!</h1></center>
 @endforelse

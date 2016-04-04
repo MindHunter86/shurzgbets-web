@@ -2435,3 +2435,84 @@ b {
 	text-transform:uppercase;
 	z-index:30;
 }
+.tooltip {
+	position:absolute;
+	z-index:1030;
+	display:block;
+	padding:5px;
+	font-size:11px;
+	opacity:0;
+	visibility:visible;
+}
+
+.tooltip.in {
+	opacity:1;
+}
+
+.tooltip.top {
+	margin-top:-3px;
+}
+
+.tooltip.right {
+	margin-left:3px;
+}
+
+.tooltip.bottom {
+	margin-top:3px;
+}
+
+.tooltip.left {
+  margin-left:-3px;
+}
+
+.tooltip-inner {
+	max-width:200px;
+	padding:5px 8px;
+	color:#fff;
+	text-align:center;
+	text-decoration:none;
+	background:rgba(0,0,0, 0.9);
+	border-radius:3px;
+	border:1px solid #1d1d1d;
+}
+
+.tooltip-arrow {
+	position:absolute;
+	width:0;
+	height:0;
+	border-color:transparent;
+	border-style:solid;
+}
+
+.tooltip.top .tooltip-arrow {
+	background:url(../images/tooltip.png) no-repeat 0 0;
+	bottom:-3px;
+	left:50%;
+	margin-left:-5px;
+	width:9px;
+	height:6px;
+}
+
+.tooltip.right .tooltip-arrow {
+	top:50%;
+	left:0;
+	margin-top:-5px;
+	border-right-color:#000000;
+	border-width:5px 5px 5px 0;
+}
+
+.tooltip.left .tooltip-arrow {
+	top:50%;
+	right:0;
+	margin-top:-5px;
+	border-left-color:#000000;
+	border-width:5px 0 5px 5px;
+}
+
+.tooltip.bottom .tooltip-arrow {
+	top:0;
+	left:50%;
+	margin-left:-5px;
+	border-bottom-color:#000000;
+	border-width:0 5px 5px;
+}
