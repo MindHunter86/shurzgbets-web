@@ -26,13 +26,21 @@
         <em>Выигрыш:</em>
         @foreach(json_decode($game->game_items) as $i)
             @if(!isset($i->img))
-            <div class="item"><img src="https://steamcommunity-a.akamaihd.net/economy/image/class/{{ \App\Http\Controllers\GameController::APPID }}/{{ $i->classid }}/200fx200f" alt="" /></div>
+            <div class="item" data-toggle="tooltip" data-original-title="{{ $i->name }}"><img src="https://steamcommunity-a.akamaihd.net/economy/image/class/{{ \App\Http\Controllers\GameController::APPID }}/{{ $i->classid }}/200fx200f" alt="" /></div>
             @else
-            <div class="item"><img src="{{ $i->img }}" alt="" /></div>
+            <div class="item" data-toggle="tooltip" data-original-title="{{ $i->name }}"><img src="{{ $i->img }}" alt="" /></div>
             @endif
         @endforeach
     </div>
 </div>
+<script type="text/javascript">
+    $(function() {
+        $('.wrapper').tooltip({
+            trigger: "hover",
+            selector: "div[data-toggle=tooltip]"
+        })
+    })
+</script>
 @empty
 <center><h1 style="color: #33BDA6;">Игр нет!</h1></center>
 @endforelse
