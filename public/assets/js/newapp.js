@@ -214,7 +214,7 @@ if (START) {
                 html_chances += '<li><b>'+info.chance+'%</b><img src="'+info.avatar+'" alt="" /></li>';
             });
             $('.chance').show();
-            $('.mCSB_1_container').html(html_chances);
+            $('#mCSB_1_container').html(html_chances);
 
         })
         .on('newLottery', function(data) {
