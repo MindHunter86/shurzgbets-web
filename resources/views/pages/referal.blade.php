@@ -16,6 +16,11 @@
         <div class="ref_text2">
             <div class="ref_button"><a href="/referals/stats">Реферальная статистика</a></div>
         </div>
+        <div class="ref_text2">
+        <center>Как это работает?</center>
+        <p>На Ваш баланс зачисляется 15 рублей с каждого приглашенного игрока.</p>
+        <p>Подробную информацию можно посмотреть в реферальной статистике</p>
+        </div>
     </div>
 </div>
 @endsection
