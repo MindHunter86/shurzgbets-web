@@ -45,7 +45,7 @@ class ReferalController extends Controller {
         Auth::user()->save();
 
         $promo = User::where('steamid64', Auth::user()->promo_owner)->first();
-        $promo->money = $promo->money + 15;
+        $promo->money = $promo->money + 10;
         $promo->save();
 
         return response()->json(['success' => true, 'text' => 'Вы успешно активировали промо код']);

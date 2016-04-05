@@ -37,7 +37,7 @@ class PagesController extends Controller
     public function promo() {
         $promo = User::where('promo_owner', $this->user->steamid64)->get();
         $referal = [];
-        $money = $promo->count() * 15;
+        $money = $promo->count() * 10;
         /*foreach($promo as $ref) {
             $bet = Bet::where('user_id', $ref->id)->orderBy('created_at', 'desc')->get();
             $money = $money + 15;
