@@ -11,7 +11,10 @@ get('/history', ['as' => 'history', 'uses' => 'PagesController@history']);
 get('/shop', ['as' => 'shop', 'uses' => 'ShopController@index']);
 get('/payment', 'DonateController@payment');  
 get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
-
+get('/csgo', function() {
+    $game = file_get_contents('http://steamcommunity.com/profiles/76561198061133470/games?tab=all&xml=1'); 
+    print_r($game);
+});
 Route::group(['middleware' => 'auth'], function () {
     post('/merchant', 'DonateController@merchant'); 
     post('/ajax/chat', 'AjaxController@chat'); 
