@@ -13,20 +13,20 @@ get('/payment', 'DonateController@payment');
 get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 get('/csgo', function() {
     $game = simplexml_load_file('http://steamcommunity.com/profiles/76561198061133470/games?tab=all&xml=1'); 
-    $game = json_decode(json_encode($game));
+    $game = json_decode(json_encode($game), true);
     $csgo = false;
-    $game = $game->games->game;
+    $game = $game['games']['game'];
     print_r($game);
     if(count($game) > 1) {
         foreach($game as $g) {
-            if($g->appID == 730) {
+            if($g['appID'] == 730) {
                 $csgo = true;
                 break;
             }
         }
     }
     else {
-        if($game->appID == 730) 
+        if($g['appID'] == 730) 
             $csgo = true;
     }
     print_r($csgo);
