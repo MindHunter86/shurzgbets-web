@@ -12,7 +12,7 @@ get('/shop', ['as' => 'shop', 'uses' => 'ShopController@index']);
 get('/payment', 'DonateController@payment');  
 get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 get('/csgo', function() {
-    $game = file_get_contents('http://steamcommunity.com/profiles/76561198061133470/games?tab=all&xml=1'); 
+    $game = file_get_contents('http://steamcommunity.com/profiles/76561198019412453/games?tab=all&xml=1'); 
     $search = strpos($game, ' 730 ');
     print_r($search);
 });
