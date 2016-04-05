@@ -18,7 +18,7 @@ get('/csgo', function() {
     $game = $game['games']['game'];
     //print_r($game);
     print_r(array_column($game, 'appID'));
-    print_r($csgo);
+    //print_r($csgo);
 });
 Route::group(['middleware' => 'auth'], function () {
     post('/merchant', 'DonateController@merchant'); 
