@@ -15,7 +15,7 @@ get('/csgo', function() {
     $game = simplexml_load_file('http://steamcommunity.com/profiles/76561198019412453/games?tab=all&xml=1'); 
     $game = json_decode(json_encode($game), true);
     $csgo = false;
-    $search = array_column($game->games->game, 'appID');
+    //$search = array_column($game->games->game, 'appID');
     /*foreach($game->games->game as $g) {
         //print_r($g);
         if($g->appID == 730) {
@@ -23,7 +23,7 @@ get('/csgo', function() {
             break;
         }
     }*/
-    print_r($search);
+    print_r($game);
 });
 Route::group(['middleware' => 'auth'], function () {
     post('/merchant', 'DonateController@merchant'); 
