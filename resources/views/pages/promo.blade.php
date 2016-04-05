@@ -10,14 +10,12 @@
             <div class="t3">Код</div>
             <div class="t4">Начисления</div>
         </div>
-        @foreach($referal as $refa)
-            @foreach($promo as $key => $pro)
-            <div class="table_info">
-                <div class="t2">{{ $pro->username }}</div>
-                <div class="t3">{{ $pro->promo }}</div>
-                <div class="t4">15 руб.</div>
-            </div>
-            @endforeach
+        @foreach($promo as $key => $pro)
+        <div class="table_info">
+            <div class="t2">{{ $pro->username }}</div>
+            <div class="t3">{{ $pro->promo }}</div>
+            <div class="t4">15 руб.</div>
+        </div>
         @endforeach
     </div>
 </div>
