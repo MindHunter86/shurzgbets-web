@@ -16,13 +16,13 @@ get('/csgo', function() {
     $game = json_decode(json_encode($game));
     $csgo = false;
     foreach($game->games as $g) {
-        print_r($g);
+        //print_r($g);
         /*if($g->appID == 730) {
             $csgo = true;
             break;
         }*/
     }
-    //print_r($csgo);
+    print_r($game->games);
 });
 Route::group(['middleware' => 'auth'], function () {
     post('/merchant', 'DonateController@merchant'); 
