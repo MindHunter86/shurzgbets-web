@@ -17,7 +17,10 @@ get('/csgo', function() {
     $csgo = false;
     $game = $game['games']['game'];
     //print_r($game);
-    if(count($game) > 1) {
+    if(count($game) == 1) {
+        print_r($game);
+    }
+    else {
         foreach($game as $g) {
             print_r($g);
             /*if($g['appID'] == 730) {
@@ -25,8 +28,6 @@ get('/csgo', function() {
                 break;
             }*/
         }
-    }
-    else {
         print_r($game);
         //if($game['appID'] == 730) 
           //  $csgo = true;
