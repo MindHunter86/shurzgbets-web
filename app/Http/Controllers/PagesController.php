@@ -37,14 +37,13 @@ class PagesController extends Controller
     public function promo() {
         $promo = User::where('promo_owner', $this->user->steamid64)->get();
         $referal = [];
-        $money = 0;
-        foreach($promo as $ref) {
+        $money = $promo->count() * 15;
+        /*foreach($promo as $ref) {
             $bet = Bet::where('user_id', $ref->id)->orderBy('created_at', 'desc')->get();
-            $price = Bet::where('user_id', $ref->id)->sum('price');
-            $money = $money + round(($price/100)*1);
+            $money = $money + 15;
             $referal[] = $bet;
-        }
-        return view('pages.promo', compact('referal', 'money'));
+        }*/
+        return view('pages.promo', compact('promo', 'money'));
     }
     public function lottery() {
         $lottery = Lottery::where('status', 0)->orderBy('id', 'desc')->first();
