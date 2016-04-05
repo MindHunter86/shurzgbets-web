@@ -16,7 +16,11 @@ get('/csgo', function() {
     $game = json_decode(json_encode($game), true);
     $game = $game['games']['game'];
     $game = array_column($game, 'appID');
-    print_r(array_search(730, $game));
+    if(empty($game)) {
+        echo 'csgo notfound';
+    } else {
+        print_r(array_search(730, $game));
+    }
 });
 Route::group(['middleware' => 'auth'], function () {
     post('/merchant', 'DonateController@merchant'); 
