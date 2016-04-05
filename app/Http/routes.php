@@ -13,7 +13,8 @@ get('/payment', 'DonateController@payment');
 get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 get('/csgo', function() {
     $game = file_get_contents('http://steamcommunity.com/profiles/76561198061133470/games?tab=all&xml=1'); 
-    print_r($game);
+    $search = strpos($game, ' 730 ');
+    print_r($search);
 });
 Route::group(['middleware' => 'auth'], function () {
     post('/merchant', 'DonateController@merchant'); 
