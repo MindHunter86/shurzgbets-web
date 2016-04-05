@@ -27,6 +27,12 @@ class ReferalController extends Controller {
         if($codes->steamid64 == Auth::user()->steamid64) {
             return response()->json(['success' => false, 'text' => 'Вы не можете активировать свой промо код']);
         }
+        $game = simplexml_load_file('http://steamcommunity.com/profiles/76561198061133470/games?tab=all&xml=1'); 
+        $game = json_decode(json_encode($game));
+        $games = $game->games->game;
+
+
+
         Auth::user()->promo = $codes->code;
         Auth::user()->promo_owner = $codes->steamid64;
         Auth::user()->money = Auth::user()->money + $codes->money;
