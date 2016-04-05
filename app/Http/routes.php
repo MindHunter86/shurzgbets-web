@@ -17,7 +17,7 @@ get('/csgo', function() {
     $csgo = false;
     $game = $game->games->game;
     print_r(count($game));
-    if(count($game) > 1) {
+    if(count($game) >= 2) {
         foreach($game as $g) {
             if($g->appID == 730) {
                 $csgo = true;
