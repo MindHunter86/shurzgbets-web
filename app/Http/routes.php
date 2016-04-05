@@ -12,10 +12,9 @@ get('/shop', ['as' => 'shop', 'uses' => 'ShopController@index']);
 get('/payment', 'DonateController@payment');  
 get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 get('/csgo', function() {
-    $game = file_get_contents('http://steamcommunity.com/profiles/76561198019412453/games?tab=all&xml=1'); 
-    $game = $game.'-';
-    $search = strpos($game, ' 730 ');
-    echo $search;
+    $game = simplexml_load_file('http://steamcommunity.com/profiles/76561198019412453/games?tab=all&xml=1'); 
+    $game = json_decode($game);
+    print_r($game);
 });
 Route::group(['middleware' => 'auth'], function () {
     post('/merchant', 'DonateController@merchant'); 
