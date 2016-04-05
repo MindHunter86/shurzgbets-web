@@ -16,7 +16,7 @@ get('/csgo', function() {
     $game = json_decode(json_encode($game));
     $csgo = false;
     $game = $game->games->game;
-    print_r($game->appID);
+    print_r(count($game));
     if(count($game) > 1) {
         foreach($game as $g) {
             if($g->appID == 730) {
