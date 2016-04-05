@@ -13,17 +13,22 @@ get('/payment', 'DonateController@payment');
 get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 get('/csgo', function() {
     $game = simplexml_load_file('http://steamcommunity.com/profiles/76561198061133470/games?tab=all&xml=1'); 
-    $game = json_decode(json_encode($game), true);
+    $game = json_decode(json_encode($game));
     $csgo = false;
-    //$search = array_search(730, array_column($game->games->game, 'appID'));
-    /*foreach($game->games->game as $g) {
-        //print_r($g);
-        if($g->appID == 730) {
-            $csgo = true;
-            break;
+    $game = $game->games->game;
+    if(count($game) > 1) {
+        foreach($game as $g) {
+            if($g->appID == 730) {
+                $csgo = true;
+                break;
+            }
         }
-    }*/
-    print_r($game);
+    }
+    else {
+        if($game->appID == 730) 
+            $csgo = true;
+    }
+    print_r($csgo);
 });
 Route::group(['middleware' => 'auth'], function () {
     post('/merchant', 'DonateController@merchant'); 
