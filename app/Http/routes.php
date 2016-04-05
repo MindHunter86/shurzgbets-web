@@ -14,11 +14,9 @@ get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang
 get('/csgo', function() {
     $game = simplexml_load_file('http://steamcommunity.com/profiles/76561198019412453/games?tab=all&xml=1'); 
     $game = json_decode(json_encode($game), true);
-    $csgo = false;
     $game = $game['games']['game'];
-    //print_r($game);
-    print_r(array_column($game, 'appID'));
-    //print_r($csgo);
+    $game = array_column($game, 'appID');
+    print_r(array_search(730, $game));
 });
 Route::group(['middleware' => 'auth'], function () {
     post('/merchant', 'DonateController@merchant'); 
