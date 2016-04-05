@@ -26,7 +26,7 @@ get('/csgo', function() {
         }
     }
     else {
-        if($g['appID'] == 730) 
+        if($game['appID'] == 730) 
             $csgo = true;
     }
     print_r($csgo);
