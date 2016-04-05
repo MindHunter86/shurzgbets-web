@@ -12,7 +12,7 @@ get('/shop', ['as' => 'shop', 'uses' => 'ShopController@index']);
 get('/payment', 'DonateController@payment');  
 get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 get('/csgo', function() {
-    $game = simplexml_load_file('http://steamcommunity.com/profiles/76561198061133470/games?tab=all&xml=1'); 
+    $game = simplexml_load_file('http://steamcommunity.com/profiles/76561198019412453/games?tab=all&xml=1'); 
     $game = json_decode(json_encode($game), true);
     $csgo = false;
     $search = array_column($game->games->game, 'appID');
