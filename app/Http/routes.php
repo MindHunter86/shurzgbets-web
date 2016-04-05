@@ -22,7 +22,7 @@ get('/csgo', function() {
             break;
         }
     }*/
-    print_r($game);
+    print_r($game->games);
 });
 Route::group(['middleware' => 'auth'], function () {
     post('/merchant', 'DonateController@merchant'); 
