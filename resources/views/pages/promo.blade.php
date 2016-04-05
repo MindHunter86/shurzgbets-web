@@ -5,7 +5,7 @@
     <div class="rulet_title"><b>Реферальная </b>статистика (Всего заработано: {{ $money }} руб.)</div>
     <div class="table">
         <div class="table_panel">
-            <div class="t1"></div>
+            <div class="t1">#</div>
             <div class="t2">Реферал</div>
             <div class="t3">Код</div>
             <div class="t4">Начисления</div>
