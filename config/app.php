@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'http://static.shurzgbets.com',
+    'url' => 'https://shurzgbets.com',
 
     /*
     |--------------------------------------------------------------------------
