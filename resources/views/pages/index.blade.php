@@ -65,12 +65,12 @@
         <span>{{ trans('all.card.small_info') }}</span>
     </div>
     <div class="cart_loop">
-        <div class="cart_info" onclick="addTicket(1);"><em>25</em></div>
-        <div class="cart_info" onclick="addTicket(2);"><em>50</em></div>
-        <div class="cart_info" onclick="addTicket(3);"><em>150</em></div>
-        <div class="cart_info" onclick="addTicket(4);"><em>300</em></div>
-        <div class="cart_info" onclick="addTicket(5);"><em>600</em></div>
-        <div class="cart_info" onclick="addTicket(6);"><em>1000</em></div>
+        <div class="cart_info" onclick="addTicket(1);"><em>100</em></div>
+        <div class="cart_info" onclick="addTicket(2);"><em>300</em></div>
+        <div class="cart_info" onclick="addTicket(3);"><em>600</em></div>
+        <div class="cart_info" onclick="addTicket(4);"><em>900</em></div>
+        <div class="cart_info" onclick="addTicket(5);"><em>1800</em></div>
+        <div class="cart_info" onclick="addTicket(6);"><em>3600</em></div>
     </div>
 </div>
 <div class="chance" @if(count($percents) == 0) style="display:none;" @endif>
