@@ -25,7 +25,7 @@
 
                   @forelse($games as $game)
                   <tr>
-                    <td>{{ $game->id }}</td>
+                    <td><a href="/admin/history/{{ $game->id }}">{{ $game->id }}</a></td>
                     <td>{{ $game->winner->username }}</td>
                     <td>{{ $game->price }}</td>
                     <td>{{ $game->updated_at->format('d-m-Y H:i') }}</td>
