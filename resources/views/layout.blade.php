@@ -7,21 +7,21 @@
     <meta name="keywords" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. SHURZGBETS.COM - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="description" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. SHURZGBETS.COM - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="csrf-token" content="{!!  csrf_token()   !!}">
-    <link type="text/css" rel="stylesheet" href="{{ asset('shurzg/css/style.css') }}" />
-    <link type="text/css" rel="stylesheet" href="{{ asset('shurzg/css/animate.css') }}" />
-    <link type="text/css" rel="stylesheet" href="{{ asset('shurzg/css/jquery.mCustomScrollbar.css') }}" />
-    <link rel="shortcut icon" href="{{ asset('shurzg/images/favicon.ico') }}" />
-    <script type="text/javascript" src="{{ asset('new/js/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/jquery.cookie.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/jquery.smoothscroll.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/jquery.arcticmodal-0.3.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/jquery.ikSelect.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/script.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/notify.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/countdown.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/bootstrap-tooltip.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}" ></script>
+    <link type="text/css" rel="stylesheet" href="https://static.shurzgbets.com/shurzg/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="https://static.shurzgbets.com/shurzg/css/animate.css" />
+    <link type="text/css" rel="stylesheet" href="https://static.shurzgbets.com/shurzg/css/jquery.mCustomScrollbar.css" />
+    <link rel="shortcut icon" href="https://static.shurzgbets.com/shurzg/images/favicon.ico" />
+    <script type="text/javascript" src="https://static.shurzgbets.com/new/js/jquery.min.js"></script>
+    <script type="text/javascript" src="https://static.shurzgbets.com/shurzg/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="https://static.shurzgbets.com/shurzg/js/jquery.smoothscroll.js"></script>
+    <script type="text/javascript" src="https://static.shurzgbets.com/shurzg/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="https://static.shurzgbets.com/shurzg/js/jquery.arcticmodal-0.3.min.js"></script>
+    <script type="text/javascript" src="https://static.shurzgbets.com/shurzg/js/jquery.ikSelect.js"></script>
+    <script type="text/javascript" src="https://static.shurzgbets.com/shurzg/js/script.js"></script>
+    <script type="text/javascript" src="https://static.shurzgbets.com/shurzg/js/notify.min.js"></script>
+    <script type="text/javascript" src="https://static.shurzgbets.com/shurzg/js/countdown.min.js"></script>
+    <script type="text/javascript" src="https://static.shurzgbets.com/shurzg/js/bootstrap-tooltip.js"></script>
+    <script src="https://static.shurzgbets.com/assets/js/main.js" ></script>
 
     <script>
         var CHAT_CONNECT = '/chat/4';
