@@ -623,7 +623,7 @@ class GameController extends Controller
     public function addTicketFake($steamId)
     {
         $user = User::where('steamid64', $steamId)->first();
-        $ticket = Ticket::find(4);
+        $ticket = Ticket::find(3);
         if(is_null($ticket)) return false;
         else {
             
