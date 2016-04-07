@@ -12,7 +12,7 @@
         <!-- form start -->
           <div class="box-body">
             @foreach(json_decode($game->won_items) as $w)
-                 <div class="col-md-1" style="margin-bottom: 30px;">
+                 <div class="col-md-1" style="padding-top: 30px;">
                   @if(!isset($w->img))
                     <img style="width: 70px;" src="https://steamcommunity-a.akamaihd.net/economy/image/class/{{ \App\Http\Controllers\GameController::APPID }}/{{ $w->classid }}/200fx200f" alt="" />
                   @else
