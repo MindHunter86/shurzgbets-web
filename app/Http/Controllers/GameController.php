@@ -584,8 +584,10 @@ class GameController extends Controller
             $this->game->price = $bets->sum('price');
 
             if (count($this->game->users()) >= 2 || $this->game->items >= 100) {
-                $this->game->status = Game::STATUS_PLAYING;
-                $this->game->started_at = Carbon::now();
+                if($this->game->status != 2 && $this->game->status != 3) {
+                    $this->game->status = Game::STATUS_PLAYING;
+                    $this->game->started_at = Carbon::now();
+                }
             }
             if ($this->game->items >= 100) {
                 $this->game->status = Game::STATUS_FINISHED;
