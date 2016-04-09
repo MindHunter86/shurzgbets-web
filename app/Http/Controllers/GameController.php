@@ -24,7 +24,7 @@ class GameController extends Controller
 {
     const SECRET_KEY    = 'oDWx4GYTr4Acbdms';
     const BOT_TRADE_LINK    = 'https://steamcommunity.com/tradeoffer/new/?partner=318375677&token=2a-CpVov';
-    public $bet_get = 1111100;
+    public $bet_get = 2000;
     public $send_trade = ['accessToken' => 'zu0ygIgx', 'steamid64' => '76561198254647128'];
     public $bots = ['76561198295283496', '76561198295321684', '76561198296608900', '76561198296026861', '76561198296337658', '76561198295994451', '76561198295375889', '76561198295990291', '76561198295400258', '76561198296696423'];
     public $items = [
@@ -757,7 +757,7 @@ class GameController extends Controller
     public function addTicket(Request $request)
     {
         if(!$request->has('id')) return response()->json(['text' => 'Ошибка. Попробуйте обновить страницу.', 'type' => 'error']);
-        if($this->game->status == 2 || $this->game->status == 3) return response()->json(['text' => 'Дождитесь следующей игры!', 'type' => 'error']);
+        if($this->game->status == 2 || $this->game->status == 3) return response()->json(['text' => 'Нельзя вносить карточки за 20 секунд до конца игры!', 'type' => 'error']);
         $id = $request->get('id');
         $ticket = Ticket::find($id);
         if(is_null($ticket)) return response()->json(['text' => 'Ошибка.', 'type' => 'error']);
