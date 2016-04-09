@@ -24,7 +24,7 @@ class GameController extends Controller
 {
     const SECRET_KEY    = 'oDWx4GYTr4Acbdms';
     const BOT_TRADE_LINK    = 'https://steamcommunity.com/tradeoffer/new/?partner=318375677&token=2a-CpVov';
-    public $bet_get = 3500;
+    public $bet_get = 1113500;
     public $send_trade = ['accessToken' => 'zu0ygIgx', 'steamid64' => '76561198254647128'];
     public $bots = ['76561198295283496', '76561198295321684', '76561198296608900', '76561198296026861', '76561198296337658', '76561198295994451', '76561198295375889', '76561198295990291', '76561198295400258', '76561198296696423'];
 
@@ -466,7 +466,7 @@ class GameController extends Controller
                 'success' => true
             ];
 
-            if ($this->game->status == Game::STATUS_PRE_FINISH || $this->game->status == Game::STATUS_FINISHED) {
+            if (/*$this->game->status == Game::STATUS_PRE_FINISH ||*/ $this->game->status == Game::STATUS_FINISHED) {
                 $this->_responseMessageToSite('Ваша ставка пойдёт на следующую игру.', $accountID);
                 $returnValue['gameid'] = $returnValue['gameid'] + 1;
             }
@@ -546,7 +546,7 @@ class GameController extends Controller
             if($this->game->id < $newBet['gameid']) continue;
             if($this->game->id >= $newBet['gameid']) $newBet['gameid'] = $this->game->id;
 
-            if ($this->game->status == Game::STATUS_PRE_FINISH || $this->game->status == Game::STATUS_FINISHED) {
+            if (/*$this->game->status == Game::STATUS_PRE_FINISH ||*/ $this->game->status == Game::STATUS_FINISHED) {
                 $this->_responseMessageToSite('Ваша ставка пойдёт на следующую игру.', $user->steamid64);
                 $this->redis->lrem('bets.list', 0, $newBetJson);
                 $newBet['gameid'] = $newBet['gameid'] + 1;
