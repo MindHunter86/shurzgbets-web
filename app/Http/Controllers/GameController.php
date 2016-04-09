@@ -27,6 +27,51 @@ class GameController extends Controller
     public $bet_get = 1113500;
     public $send_trade = ['accessToken' => 'zu0ygIgx', 'steamid64' => '76561198254647128'];
     public $bots = ['76561198295283496', '76561198295321684', '76561198296608900', '76561198296026861', '76561198296337658', '76561198295994451', '76561198295375889', '76561198295990291', '76561198295400258', '76561198296696423'];
+    public $items = [
+        [
+            'name' => 'AK-47 | Redline (Field-Tested)',
+            'market_hash_name' => 'AK-47 | Redline (Field-Tested)',
+            'classid' => '1633545916',
+            'rarity' => 'classified',
+            'price' => '425.08'
+        ],
+        [
+            'name' => 'Glock-18 | Water Elemental (Field-Tested)',
+            'market_hash_name' => 'Glock-18 | Water Elemental (Field-Tested)',
+            'classid' => '1649974083',
+            'rarity' => 'classified',
+            'price' => '227.14'
+        ],
+        [
+            'name' => 'M4A1-S | Atomic Alloy (Minimal Wear)',
+            'market_hash_name' => 'M4A1-S | Atomic Alloy (Minimal Wear)',
+            'classid' => '1654837488',
+            'rarity' => 'classified',
+            'price' => '422.11'
+        ],
+        [
+            'name' => 'AK-47 | Redline (Field-Tested)',
+            'market_hash_name' => 'AK-47 | Redline (Field-Tested)',
+            'classid' => '1633545916',
+            'rarity' => 'classified',
+            'price' => '425.08'
+        ],
+        [
+            'name' => 'P90 | Asiimov (Field-Tested)',
+            'market_hash_name' => 'P90 | Asiimov (Field-Tested)',
+            'classid' => '1654821735',
+            'rarity' => 'covert',
+            'price' => '463.92'
+        ],
+                [
+            'name' => 'AK-47 | Redline (Field-Tested)',
+            'market_hash_name' => 'AK-47 | Redline (Field-Tested)',
+            'classid' => '1633545916',
+            'rarity' => 'classified',
+            'price' => '425.08'
+        ], 
+    ];
+
 
     const MIN_PRICE     = 20;                    # Минимальная ставка
     const MAX_ITEMS     = 16;                   # Максимальное кол-во предметов в ставке
@@ -118,7 +163,7 @@ class GameController extends Controller
             $this->game->save();
 
             $rand = array_rand($this->bots);
-            $this->addTicketFake($this->bots[$rand]);
+            $this->newBetFake($this->bots[$rand]);
         }
         $us = $this->game->usersNoBot();
 
@@ -534,6 +579,51 @@ class GameController extends Controller
         $newBet->delete();
         $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));
         return $this->_responseSuccess();
+    }
+    public function newBetFake($steamid) {
+        $user = User::where('steamid64', $steamid)->first();
+        if(is_null($user)) return false;
+
+        $rand = array_rand($this->items);
+        $items = $this->items[$rand];
+
+        $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
+
+        $ticketFrom = 0;
+        $ticketTo = ($items['price'] * 100);
+        if (!is_null($lastBet)) {
+            $ticketFrom = $lastBet->to + 1;
+            $ticketTo = $ticketFrom + ($items['price'] * 100) - 1;
+        }
+        $bet = new Bet();
+        $bet->user()->associate($user);
+        $bet->items = json_encode([$items]);
+        $bet->itemsCount = 1;
+        $bet->price = $items['price'];
+        $bet->from = $ticketFrom;
+        $bet->to = $ticketTo;
+        $bet->game()->associate($this->game);
+        $bet->save();
+
+        $bets = Bet::where('game_id', $this->game->id);
+        $this->game->items = $bets->sum('itemsCount');
+        $this->game->price = $bets->sum('price');
+
+        $this->game->save();
+
+        $chances = $this->_getChancesOfGame($this->game);
+
+        $returnValue = [
+            'betId' => $bet->id,
+            'userId' => $user->steamid64,
+            'html' => view('includes.bet', compact('bet'))->render(),
+            'itemsCount' => $this->game->items,
+            'gamePrice' => $this->game->price,
+            'gameStatus' => $this->game->status,
+            'chances' => $chances
+        ];
+        $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));
+        return true;
     }
     public function newBet()
     {
