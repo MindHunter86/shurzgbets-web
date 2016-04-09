@@ -665,7 +665,7 @@ class GameController extends Controller
     public function addTicket(Request $request)
     {
         if(!$request->has('id')) return response()->json(['text' => 'Ошибка. Попробуйте обновить страницу.', 'type' => 'error']);
-        if($this->game->status == Game::STATUS_PRE_FINISH || $this->game->status == Game::STATUS_FINISHED) return response()->json(['text' => 'Дождитесь следующей игры!', 'type' => 'error']);
+        if($this->game->status == 2 || $this->game->status == 3) return response()->json(['text' => 'Дождитесь следующей игры!', 'type' => 'error']);
         $id = $request->get('id');
         $ticket = Ticket::find($id);
         if(is_null($ticket)) return response()->json(['text' => 'Ошибка.', 'type' => 'error']);
