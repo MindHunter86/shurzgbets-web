@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<div class="hist_title">{!! trans('history.title') !!} <a href="/history/profile" style="float: right;">{!! trans('history.title_my') !!}</a></div>
+<div class="hist_title">{!! trans('history.title_my') !!} <a href="/history" style="float: right;">{!! trans('history.title') !!}</a></div>
 @forelse($games as $game)
 <div class="hist">
     <div class="hist_bg">
