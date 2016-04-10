@@ -33,7 +33,7 @@ class GameController extends Controller
             'market_hash_name' => 'AK-47 | Redline (Field-Tested)',
             'classid' => '1633545916',
             'rarity' => 'classified',
-            'price' => '425.08'
+            'price' => '365.82'
         ],
         [
             'name' => 'Glock-18 | Water Elemental (Field-Tested)',
@@ -47,28 +47,28 @@ class GameController extends Controller
             'market_hash_name' => 'M4A1-S | Atomic Alloy (Minimal Wear)',
             'classid' => '1654837488',
             'rarity' => 'classified',
-            'price' => '422.11'
+            'price' => '375.87'
         ],
         [
             'name' => 'AK-47 | Redline (Field-Tested)',
             'market_hash_name' => 'AK-47 | Redline (Field-Tested)',
             'classid' => '1633545916',
             'rarity' => 'classified',
-            'price' => '425.08'
+            'price' => '365.82'
         ],
         [
             'name' => 'P90 | Asiimov (Field-Tested)',
             'market_hash_name' => 'P90 | Asiimov (Field-Tested)',
             'classid' => '1654821735',
             'rarity' => 'covert',
-            'price' => '463.92'
+            'price' => '365.82'
         ],
                 [
             'name' => 'AK-47 | Redline (Field-Tested)',
             'market_hash_name' => 'AK-47 | Redline (Field-Tested)',
             'classid' => '1633545916',
             'rarity' => 'classified',
-            'price' => '425.08'
+            'price' => '365.82'
         ]
     ];
 
