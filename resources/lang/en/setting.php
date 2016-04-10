@@ -1,6 +1,6 @@
 <?
 return [
-	'title' => '<b>SETTING</b>',
+	'title' => '<b>SETTINGS</b>',
 	'setting' => [
 		'title' => 'You must enter a reference to the exchange',
 		'why' => 'Where can i get a link?',
