@@ -1,7 +1,7 @@
 <?
 return  [
-	'title' => '<b>История</b> игр',
-	'title_my' => 'Мои победы',
+	'title' => '<b>Games</b> history',
+	'title_my' => 'My win',
 	'history' => [
 		'win' => 'Win:',
 		'chance' => 'Chance:',
