@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="rulet_bg">
-    <div class="rulet_title"><b>Топ</b> игроков</div>
+    <div class="rulet_title">{!! trans('top.title') !!}</div>
     <div class="table">
         <div class="table_panel">
-            <div class="t1">Место</div>
-            <div class="t2">Ник в Steam</div>
-            <div class="t3">Кол-во побед</div>
-            <div class="t4">Выигрыш</div>
+            <div class="t1">{{ trans('top.table.t1') }}</div>
+            <div class="t2">{{ trans('top.table.t2') }}</div>
+            <div class="t3">{{ trans('top.table.t3') }}</div>
+            <div class="t4">{{ trans('top.table.t4') }}</div>
         </div>
         @foreach($users as $key => $user)
             @if($user->steamid64 != '76561198254647128')
@@ -20,7 +20,7 @@
                     <em class="tname ell">{{ $user->username }}</em>
                 </div>
                 <div class="t3">{{ $user->wins_count }}</div>
-                <div class="t4">{{ round($user->top_value) }} руб.</div>
+                <div class="t4">{{ round($user->top_value) }} {{ trans('all.valute') }}</div>
             </div>
             @endif
         @endforeach
