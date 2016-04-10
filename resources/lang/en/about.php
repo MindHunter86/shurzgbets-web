@@ -16,7 +16,7 @@ The winner is randomly determined, the chance of winning depends on the amount o
 <span style="color: #60B3E5; padding-bottom: 5px; text-transform: uppercase;">How it works:</span><br>
  <div style="margin-bottom: 8px; margin-top: 2px; padding-left: 10px;">
 1: <span style="">You make your own items using the button "participate" by sending a trade to our bot.<br>
-You can enter a maximum of {{ \App\Http\Controllers\GameController::MAX_ITEMS }} skins at a time, the total amount of which cannot be less than {{ \App\Http\Controllers\GameController::MIN_PRICE }}p</span>
+You can enter a maximum of 16 skins at a time, the total amount of which cannot be less than 20p</span>
 </div>
 <div style="margin-bottom: 8px; padding-left: 10px;">
  2: We translate the items entered in points in accordance with their price. For each 1 cent the value of items you get 1 point (1 ruble - 100 points)<br>
@@ -31,9 +31,9 @@ The winner gets all items listed at the end of the round.
 <div style="margin-bottom: 10px;padding-left: 6px;line-height: 18px;border: 1px solid #EC785D;">
 <div style="color: #EC785D; padding-top: 5px; text-transform: uppercase;">Rules and features:</div>
  <ol style="padding: 0px 30px; margin: 3px; line-height: 15px; font-size: 13px;">
-<li style="padding-bottom: 6px;">a Maximum Deposit of items - 20 pieces per trade. There are no upper limits to the price for the item, the Deposit may begin with a total amount of at least {{ \App\Http\Controllers\GameController::MIN_PRICE }}R.</li>
+<li style="padding-bottom: 6px;">a Maximum Deposit of items - 20 pieces per trade. There are no upper limits to the price for the item, the Deposit may begin with a total amount of at least 20R.</li>
  <li style="padding-bottom: 6px;">If any item be entered in the “Bank” on a recent Deposit and the count of items passes a certain threshold, they will be considered in the current round, since the user has made their participation in current and not in the previous round.</li>
-<li style="padding-bottom: 6px;">For site development and carrying out of competitions, we charge a Commission on each game - {{ \App\Http\Controllers\GameController::COMMISSION }}% of all things of the game.</li>
+<li style="padding-bottom: 6px;">For site development and carrying out of competitions, we charge a Commission on each game - 10% of all things of the game.</li>
  <li style="padding-bottom: 6px;">Deposits and withdrawal of the prize Fund occur very rapidly (depending on the workload of the bot and the Steam servers)</li>
 <li style="padding-bottom: 6px;">Each time sending the items, You agree to the terms of use.</li>
 <li style="padding-bottom: 6px;">If Your inventory is closed, Your winnings will not be sent.</li>

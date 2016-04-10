@@ -16,7 +16,7 @@ return [
 	            <span style="color: #60B3E5; padding-bottom: 5px; text-transform: uppercase;">Как это работает:</span><br>
 	            <div style="margin-bottom: 8px; margin-top: 2px; padding-left: 10px;">
 	                1: <span style="">Вы вносите свои предметы через кнопку «Принять участие», отправляя трейд нашему боту.<br>
-	            Вы можете внести максимум {{ \App\Http\Controllers\GameController::MAX_ITEMS }} скинов за раз, общая сумма которых не может быть меньше {{ \App\Http\Controllers\GameController::MIN_PRICE }}р</span>
+	            Вы можете внести максимум 16 скинов за раз, общая сумма которых не может быть меньше 20</span>
 	            </div>
 	            <div style="margin-bottom: 8px; padding-left: 10px;">
 	                2: Мы переводим внесенные вами предметы в поинты в соотвествии с их ценой. За каждую 1 копейку стоимости предметы вы получити 1 поинт (1 рубль - 100 поинтов)<br>
@@ -31,9 +31,9 @@ return [
 	        <div style="margin-bottom: 10px;padding-left: 6px;line-height: 18px;border: 1px solid #EC785D;">
 	            <div style="color: #EC785D; padding-top: 5px; text-transform: uppercase;">Правила и особенности:</div>
 	            <ol style="padding: 0px 30px; margin: 3px; line-height: 15px; font-size: 13px;">
-	                <li style="padding-bottom: 6px;">Максимальный депозит предметов - 20 штук за трейд. Нет никаких верхних ограничений цены за предмет, депозит может начинаться общей суммой предметов не менее {{ \App\Http\Controllers\GameController::MIN_PRICE }}р.</li>
+	                <li style="padding-bottom: 6px;">Максимальный депозит предметов - 20 штук за трейд. Нет никаких верхних ограничений цены за предмет, депозит может начинаться общей суммой предметов не менее 20р.</li>
 	                <li style="padding-bottom: 6px;">Если любой предмет ввести в “банк” на последний депозит и счётчик предметов переходит определенный порог, то они будут рассматриваться в рамках нынешнего раунда, поскольку пользователь внёс их на участие в текущем, а не в предыдущем раунде.</li>
-	                <li style="padding-bottom: 6px;">Для развития сайта и проведения конкурсов, мы взимаем комиссию с каждой игры - {{ \App\Http\Controllers\GameController::COMMISSION }}% от всех вещей игры.</li>
+	                <li style="padding-bottom: 6px;">Для развития сайта и проведения конкурсов, мы взимаем комиссию с каждой игры - 10% от всех вещей игры.</li>
 	                <li style="padding-bottom: 6px;">Депозиты и вывод призового фонда происходят очень быстро (в засимости от загруженности бота и серверов Steam)</li>
 	                <li style="padding-bottom: 6px;">Каждый раз отправляя предметы, Вы соглашаетесь с правилами использования сайта.</li>
 	                <li style="padding-bottom: 6px;">Если Ваш инвентарь закрыт, то Ваш выигрыш не будет отправлен.</li>
