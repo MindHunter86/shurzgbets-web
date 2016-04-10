@@ -1,6 +1,6 @@
 <?
 return  [
-	'title' => '<b>Games</b> history',
+	'title' => '<b>Game</b> history',
 	'title_my' => 'My win',
 	'history' => [
 		'win' => 'Win:',
