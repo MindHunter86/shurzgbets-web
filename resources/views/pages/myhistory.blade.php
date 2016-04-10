@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<div class="hist_title"><b>Мои</b> победы <a href="/history" style="float: right;">История игр</a></div>
+<div class="hist_title">{!! trans('history.title') !!} <a href="/history/profile" style="float: right;">{!! trans('history.title_my') !!}</a></div>
 @forelse($games as $game)
 <div class="hist">
     <div class="hist_bg">
@@ -9,10 +9,10 @@
         <div class="hist_in">
             <div class="left">
                 <div class="hist_name ell">{{ $game->winner->username }}</div>
-                <div class="hist_cash">Выигрыш: <em>{{ $game->price }}руб.</em></div>
-                <div class="hist_win">Шанс на победу: <span>{{ \App\Http\Controllers\GameController::_getUserChanceOfGame($game->winner, $game) }}%</span></div>
+                <div class="hist_cash">{{ trans('history.history.win') }} <em>{{ $game->price }} {{ trans('all.valute') }}</em></div>
+                <div class="hist_win">{{ trans('history.history.chance') }} <span>{{ \App\Http\Controllers\GameController::_getUserChanceOfGame($game->winner, $game) }}%</span></div>
             </div>
-            <div class="right hist_num">Игра <b>#{{ $game->id }}</b></div>
+            <div class="right hist_num">{{ trans('history.history.game') }} <b>#{{ $game->id }}</b></div>
         </div>
     </div>
     <div class="hist_chance chance">

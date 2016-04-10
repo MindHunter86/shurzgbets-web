@@ -1,6 +1,6 @@
 <?
 return [
-	'title' => '<b>SHOP</b>',
+	'title' => '<b>Store</b>',
 	'select' => [
 		't1' => 'Category:',
 		't2' => 'Rarity:',
