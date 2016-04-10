@@ -4,13 +4,13 @@
 
 @section('content')
 <div class="rulet_bg">
-    <div class="rulet_title"><b>История </b>раздач</div>
+    <div class="rulet_title">{!! trans('giveaway.history.title') !!}</div>
     <div class="table">
         <div class="table_panel">
-            <div class="t1">#</div>
-            <div class="t2">Предмет</div>
-            <div class="t3">Победитель</div>
-            <div class="t4">Участники</div>
+            <div class="t1">{{ trans('giveaway.history.table.t1') }}</div>
+            <div class="t2">{{ trans('giveaway.history.table.t2') }}</div>
+            <div class="t3">{{ trans('giveaway.history.table.t3') }}</div>
+            <div class="t4">{{ trans('giveaway.history.table.t4') }}</div>
         </div>
         @foreach($lottery as $key => $lot)
             <div class="table_info">
