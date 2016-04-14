@@ -11,7 +11,7 @@ return  [
 	'money_modal_balance' => 'Your balance:',
 	'money_modal_sum' => 'Enter sum:',
 	'money_modal_add' => 'Payment',
-	'valute' => '$',
+	'valute' => 'rub.',
 	'card_why' => 'WHAT IS CARD?',
 	'card_add_why' => 'You can Deposit card instead of objects. Immediately card are made in the round without delay.',
 	'card_add_change' => 'Change the card for money, you can make purchases in our store SHURZGBETS.COM/SHOP',
