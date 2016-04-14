@@ -99,32 +99,35 @@ class ShopController extends Controller
             }
             $gamesCount = Bet::where('user_id', $this->user->id)->count();
             if($gamesCount < 5) {
-                return response()->json(['success' => false, 'msg' => 'Вы должны сделать хотябы 5 депозитов на сайте!']);
+                return response()->json(['success' => false, 'msg' => 'Вы должны сделать 5 депозитов на сайте!']);
             }
-            if($item->status == Shop::ITEM_STATUS_SOLD) return response()->json(['success' => false, 'msg' => 'Предмет уже куплен!']);
-            if($this->user->money >= $item->price){
-                if($item->price <= 15) {
-                    $this->steamAuth->steamId = $this->user->steamid64;
-                    $steamInfo = $this->steamAuth->parseInfo();
-                    $steamInfo = $this->steamAuth->getUserInfo();
+            if($item->status != Shop::ITEM_STATUS_SOLD) {
+                if($this->user->money >= $item->price) {
+                    if($item->price <= 15) {
+                        $this->steamAuth->steamId = $this->user->steamid64;
+                        $steamInfo = $this->steamAuth->parseInfo();
+                        $steamInfo = $this->steamAuth->getUserInfo();
 
-                    $this->user->username = $steamInfo->getNick();
-                    $this->user->save();
+                        $this->user->username = $steamInfo->getNick();
+                        $this->user->save();
 
-                    if(stripos($this->user->username, 'shurzgbets.com') === false) {
-                        return response()->json(['success' => false, 'msg' => 'Чтобы покупать предметы дешевле 15 рублей, добавьте в свой ник домен нашего сайта - shurzgbets.com']);
+                        if(stripos($this->user->username, 'shurzgbets.com') === false) {
+                            return response()->json(['success' => false, 'msg' => 'Чтобы покупать предметы дешевле 15 рублей, добавьте в свой ник домен нашего сайта - shurzgbets.com']);
+                        }
                     }
+                    $item->status = Shop::ITEM_STATUS_SOLD;
+                    $item->buyer_id = $this->user->id;
+                    $item->buy_at = Carbon::now();
+                    $item->save();
+                    $this->sendItem($item);
+                    $this->user->money = $this->user->money - $item->price;
+                    $this->user->save();
+                    return response()->json(['success' => true, 'msg' => 'Вы успешно купили предмет! Вы получите его в течении 5 минут.']);
+                } else {
+                    return response()->json(['success' => false, 'msg' => 'У вас недостаточно средств для покупки.']);
                 }
-                $item->status = Shop::ITEM_STATUS_SOLD;
-                $item->buyer_id = $this->user->id;
-                $item->buy_at = Carbon::now();
-                $item->save();
-                $this->sendItem($item);
-                $this->user->money = $this->user->money - $item->price;
-                $this->user->save();
-                return response()->json(['success' => true, 'msg' => 'Вы успешно купили предмет! Вы получите его в течении 5 минут.']);
-            }else{
-                return response()->json(['success' => false, 'msg' => 'У вас недостаточно средств для покупки.']);
+            } else {
+                return response()->json(['success' => false, 'msg' => 'Предмет уже куплен!']);
             }
         }else{
             return response()->json(['success' => false, 'msg' => 'Ошибка! Предмет не найден!']);

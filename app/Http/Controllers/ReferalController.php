@@ -20,6 +20,9 @@ class ReferalController extends Controller {
         if(!empty(strlen(Auth::user()->promo))) {
             return response()->json(['success' => false, 'text' => 'Вы уже активировали промо код']);
         }
+        if(empty(Auth::user()->accessToken)) {
+            return response()->json(['success' => false, 'text' => 'Вы не ввели ссыклу на обмен!']);
+        }
         $codes = Promo::where('code', $code)->first();
         if(is_null($codes)) {
             return response()->json(['success' => false, 'text' => 'Данный промо код не найден']);
