@@ -6,7 +6,7 @@ use App\Http\Controllers\SteamController;
 use Exception;
 
 class CsgoFast {
-	const DOLLAR = 67;
+	const DOLLAR = 66;
 
     public  $classid;
     public  $name;
@@ -22,7 +22,7 @@ class CsgoFast {
         $this->rarity = isset($info['rarity']) ? $info['rarity'] : $this->getItemRarity($info);
         if ($price = $this->getItemPrice()) {
             if(isset($price))
-                $this->price = round(($price->value/100)*self::DOLLAR, 2);
+                $this->price = round($price*self::DOLLAR, 2);
         }else{
             $this->_setToFalse();
         }
