@@ -101,6 +101,9 @@ class ShopController extends Controller
             if($gamesCount < 5) {
                 return response()->json(['success' => false, 'msg' => 'Вы должны сделать 5 депозитов на сайте!']);
             }
+            if($item->status > 0) {
+                return response()->json(['success' => false, 'msg' => 'Предмет уже куплен!']);
+            }
             if($item->status != Shop::ITEM_STATUS_SOLD) {
                 if($this->user->money >= $item->price) {
                     if($item->price <= 15) {
