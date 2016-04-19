@@ -749,7 +749,7 @@ class GameController extends Controller
         }
     }
     public function addTicketDisable(Request $request) {
-        return response()->json(['text' => 'Карточки временно недоступны.', 'type' => 'error']);//
+        return response()->json(['text' => 'Карточки временно недоступны.', 'type' => 'error']);
     }
     public function addTicket(Request $request)
     {
