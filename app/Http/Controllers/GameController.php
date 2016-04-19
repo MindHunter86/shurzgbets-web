@@ -754,6 +754,9 @@ class GameController extends Controller
             $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));
         }
     }
+    public function addTicketDisable(Request $request) {
+        return response()->json(['text' => 'Карточки временно недоступны.', 'type' => 'error']);
+    }
     public function addTicket(Request $request)
     {
         if(!$request->has('id')) return response()->json(['text' => 'Ошибка. Попробуйте обновить страницу.', 'type' => 'error']);
