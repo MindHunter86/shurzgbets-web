@@ -706,12 +706,6 @@ class GameController extends Controller
         }
         return $this->_responseSuccess();
     }
-    public function clearSuck() {
-        //$game = Game::find(28);
-        //$game->delete();
-        $this->game->delete();
-        return response()->json($this->game);
-    }
     public function addTicketFake($steamId)
     {
         $user = User::where('steamid64', $steamId)->first();
