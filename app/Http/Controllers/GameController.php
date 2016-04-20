@@ -748,11 +748,11 @@ class GameController extends Controller
             $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));
         }
     }
-    public function addTicketDisable(Request $request) {
+    public function addTicket(Request $request) {
         return response()->json(['text' => 'Карточки временно недоступны.', 'type' => 'error']);
     }
     //жопа
-    public function addTicket(Request $request)
+    public function addTicketDisable(Request $request)
     {
         if(!$request->has('id')) return response()->json(['text' => 'Ошибка. Попробуйте обновить страницу.', 'type' => 'error']);
         if($this->game->status == 2 || $this->game->status == 3) return response()->json(['text' => 'Нельзя вносить карточки за 20 секунд до конца игры!', 'type' => 'error']);
