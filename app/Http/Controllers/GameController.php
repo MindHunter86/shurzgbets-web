@@ -810,7 +810,7 @@ class GameController extends Controller
                 $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));
                 return response()->json(['text' => 'Действие выполнено.', 'type' => 'success']);
             }else{
-                return response()->json(['text' => 'Недостаточно средств на вашем балансе.', 'type' => 'error']);
+                return response()->json(['text' => 'Недостаточно средств на вашем балансе хуй.', 'type' => 'error']);
             }
         }
     }
