@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
     get('/history/profile', ['as' => 'myhistory', 'uses' => 'PagesController@profile_history']);
     get('/logout', ['as' => 'logout', 'uses' => 'SteamController@logout']);
     //post('/addTicket', ['as' => 'add.ticket', 'uses' => 'GameController@addTicket']);
-    post('/addTicket', ['as' => 'add.ticket', 'uses' => 'GameController@addTicket']);//
+    post('/addTicket', ['as' => 'add.ticket', 'uses' => 'GameController@addTicket']);
     post('/getBalance', ['as' => 'get.balance', 'uses' => 'GameController@getBalance']);
 
     //рефералка
