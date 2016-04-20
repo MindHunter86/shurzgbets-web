@@ -83,7 +83,7 @@
         <div class="mini_profile">
             <div class="mini_profile_ava"><img src="{{ $u->avatar }}" alt="" /></div>
             <div class="mini_profile_in">
-                <div class="mini_profile_name ell">{{ $u->username }}</div>
+                <div class="mini_profile_name ell">123{{ $u->username }}</div>
                 <div class="mini_profile_balance">
                     {{ trans('all.money') }} <em class="balanced">{{ $u->money }} {{ trans('all.valute') }}</em>
                     <a href="#" class="plus"></a>
