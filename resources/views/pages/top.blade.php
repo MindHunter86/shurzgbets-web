@@ -11,7 +11,7 @@
             <div class="t4">{{ trans('top.table.t4') }}</div>
         </div>
         @foreach($users as $key => $user)
-            @if($user->steamid64 != '76561198254647128')
+            @if($user->steamid64 != '76561198229084480')
             <div class="table_info">
                 <div class="t1">{{ $key+1 }}</div>
                 <div class="t2">
