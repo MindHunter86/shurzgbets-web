@@ -3,7 +3,7 @@
 <head>
     <title>SHURZGBETS.COM</title>
     <meta charset="utf-8">
-    <meta property="og:title" content="SHURZGBETS.COM" />
+    <meta property="og:title" content="SHURZGBETS.COM1" />
     <meta name="keywords" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. SHURZGBETS.COM - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="description" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. SHURZGBETS.COM - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="csrf-token" content="{!!  csrf_token()   !!}">
