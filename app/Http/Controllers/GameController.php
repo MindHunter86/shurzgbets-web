@@ -562,7 +562,7 @@ class GameController extends Controller
         }
         if ($this->game->items >= 100) {
             $this->game->status = Game::STATUS_FINISHED;
-            $this->redis->publish(self::SHOW_WINNERS, true);
+            $this->redis->publish(self::SHOW_WINNERS, true);//
         }
         $this->game->save();
 
