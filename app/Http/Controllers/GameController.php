@@ -245,6 +245,7 @@ class GameController extends Controller
     public function sendItems($bets, $user) {
         $itemsInfo = [];
         $items = [];
+        
         $commission = self::COMMISSION;
         $commissionItems = [];
         $returnItems = [];
