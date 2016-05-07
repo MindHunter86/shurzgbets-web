@@ -11,7 +11,6 @@
             <div class="t4">{{ trans('top.table.t4') }}</div>
         </div>
         @foreach($users as $key => $user)
-            @if($user->username != 'GodMan')
             <div class="table_info">
                 <div class="t1">{{ $key+1 }}</div>
                 <div class="t2">
@@ -22,7 +21,6 @@
                 <div class="t3">{{ $user->wins_count }}</div>
                 <div class="t4">{{ round($user->top_value) }} {{ trans('all.valute') }}</div>
             </div>
-            @endif
         @endforeach
     </div>
 </div>

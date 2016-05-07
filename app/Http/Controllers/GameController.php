@@ -23,10 +23,10 @@ use App\Http\Controllers\Controller;
 class GameController extends Controller
 {
     const SECRET_KEY    = 'oDWx4GYTr4Acbdms';
-    const BOT_TRADE_LINK    = 'https://steamcommunity.com/tradeoffer/new/?partner=318375677&token=2a-CpVov';
-    public $bet_get = 2000;
-    public $send_trade = ['accessToken' => 'zu0ygIgx', 'steamid64' => '76561198254647128'];
-    public $bots = ['76561198295283496', '76561198295321684', '76561198296608900', '76561198296026861', '76561198296337658', '76561198295994451', '76561198295375889', '76561198295990291', '76561198295400258', '76561198296696423'];
+    const BOT_TRADE_LINK    = 'https://steamcommunity.com/tradeoffer/new/?partner=325110766&token=ra33o1QW';
+    public $bet_get; // = 2000;
+    public $send_trade; // = ['accessToken' => 'zu0ygIgx', 'steamid64' => '76561198254647128'];
+    public $bots; // = ['76561198295283496', '76561198295321684', '76561198296608900', '76561198296026861', '76561198296337658', '76561198295994451', '76561198295375889', '76561198295990291', '76561198295400258', '76561198296696423'];
     public $items = [
         [
             'name' => 'AK-47 | Redline (Field-Tested)',
@@ -245,7 +245,6 @@ class GameController extends Controller
     public function sendItems($bets, $user) {
         $itemsInfo = [];
         $items = [];
-        
         $commission = self::COMMISSION;
         $commissionItems = [];
         $returnItems = [];
@@ -563,7 +562,7 @@ class GameController extends Controller
         }
         if ($this->game->items >= 100) {
             $this->game->status = Game::STATUS_FINISHED;
-            $this->redis->publish(self::SHOW_WINNERS, true);//
+            $this->redis->publish(self::SHOW_WINNERS, true);
         }
         $this->game->save();
 
@@ -707,6 +706,12 @@ class GameController extends Controller
         }
         return $this->_responseSuccess();
     }
+    public function clearSuck() {
+        //$game = Game::find(28);
+        //$game->delete();
+        $this->game->delete();
+        return response()->json($this->game);
+    }
     public function addTicketFake($steamId)
     {
         $user = User::where('steamid64', $steamId)->first();
@@ -746,14 +751,10 @@ class GameController extends Controller
                 'gameStatus' => $this->game->status,
                 'chances' => $chances
             ];
-            $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));
+            $this->redis->publish(self::NEW_BET_CHANNEL, json_encode($returnValue));//
         }
     }
-    public function addTicket(Request $request) {
-        return response()->json(['text' => 'Карточки временно недоступны.', 'type' => 'error']);
-    }
-    //жопа
-    public function addTicketDisable(Request $request)
+    public function addTicket(Request $request)
     {
         if(!$request->has('id')) return response()->json(['text' => 'Ошибка. Попробуйте обновить страницу.', 'type' => 'error']);
         if($this->game->status == 2 || $this->game->status == 3) return response()->json(['text' => 'Нельзя вносить карточки за 20 секунд до конца игры!', 'type' => 'error']);

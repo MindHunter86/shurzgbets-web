@@ -47,11 +47,11 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'unix_socket'  => '/media/node/run/mysqld/mysql.sock',
+            'unix_socket'  => '/var/run/mysqld/mysqld.sock',
             'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'forge'),
-            'username'  => env('DB_USERNAME', 'forge'),
-            'password'  => env('DB_PASSWORD', ''),
+            'database'  => env('DB_DATABASE', 'shurzgbets'),
+            'username'  => env('DB_USERNAME', 'shurzgbot'),
+            'password'  => env('DB_PASSWORD', '1pEPiqVmy8V60JzKzUj2zae9v6Tq9Ixm'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

@@ -318,7 +318,7 @@
                 <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/aa/aa65d61be43d19ebbd4fb5be16c91f51c33ac3dd_full.jpg"></img>
                 <div style="float: left; margin-top: 2px;">
                     <span>ITEMUP.RU SHOP BOT</span><br>
-                    <a href="https://steamcommunity.com/profiles/76561198038766700/inventory/#730" target="_blank">Посмотреть инвентарь</a>
+                    <a href="https://steamcommunity.com/profiles/76561198282404874/inventory/#730" target="_blank">Посмотреть инвентарь</a>
                 </div>
             </div>
         </div>
