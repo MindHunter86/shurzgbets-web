@@ -938,18 +938,18 @@ class GameController extends Controller
             }
             $dbItemInfo = Item::where('market_hash_name', $item['market_hash_name'])->first();
             if(is_null($dbItemInfo)){
-                if(!isset($itemInfo[$item['classid']]))
+                if(!isset($itemInfo[$value]))
                     $itemInfo[$value] = new CsgoFast($item);
 
-                if(empty($itemInfo[$item['classid']]->name))
-                    $itemInfo[$item['classid']]->name = "";
+                if(empty($itemInfo[$value]->name))
+                    $itemInfo[$value]->name = "";
                 
                 $dbItemInfo = Item::create((array)$itemInfo[$item['classid']]);
 
                 if (!$itemInfo[$value]->price) $price = true;
             }else{
                 if($dbItemInfo->updated_at->getTimestamp() < Carbon::now()->subHours(5)->getTimestamp()) {
-                    $si = new CsgoFast($item);
+                    $si = new SteamItem($item);
                     if (!$si->price) $price = true;
                     $dbItemInfo->price = $si->price;
                     $dbItemInfo->save();
