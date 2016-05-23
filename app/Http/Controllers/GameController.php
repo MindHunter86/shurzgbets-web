@@ -938,10 +938,19 @@ class GameController extends Controller
                 if (!$itemInfo[$value]->price) $price = true;
             }else{
                 if($dbItemInfo->updated_at->getTimestamp() < Carbon::now()->subHours(5)->getTimestamp()) {
-                    $si = new SteamItem($item);
-                    if (!$si->price) $price = true;
-                    $dbItemInfo->price = $si->price;
-                    $dbItemInfo->save();
+                    if ($dbItemInfo->price == 0) {
+                        $si = new CsGoFast($item);
+                        if ($si->price) {
+                            $dbItemInfo->price = $si->price;
+                            $dbItemInfo->save();
+                        }
+                    } else {
+                        $si = new SteamItem($item);
+                        if ($si->price) {
+                            $dbItemInfo->price = $si->price;
+                            $dbItemInfo->save();
+                        }
+                    }
                 }
             }
 
