@@ -12,6 +12,14 @@ use App\Http\Controllers\Controller;
 
 
 class ReferalController extends Controller {
+    private function checkGame($steamid,$game=false) {
+        $res = file_get_contents(sprintf('http://steamcommunity.com/profiles/%s/games/?tab=all&xml=1',$steamid));
+        if ($game) {
+            return (strpos($res,'<appID>'.$game.'</appID>') !== false);
+        } else {
+            return $res;
+        }
+    }
     public function accept(Request $request) {
         $code = $request->get('code');
         if(!$request->has('code')) {
@@ -30,15 +38,8 @@ class ReferalController extends Controller {
         if($codes->steamid64 == Auth::user()->steamid64) {
             return response()->json(['success' => false, 'text' => 'Вы не можете активировать свой промо код']);
         }
-        $game = simplexml_load_file('http://steamcommunity.com/profiles/'.Auth::user()->steamid64.'/games?tab=all&xml=1'); 
-        $game = json_decode(json_encode($game), true);
-        $game = $game['games']['game'];
-        $game = array_column($game, 'appID');
+        $game = $this->checkGame(Auth::user()->steamid64,730);
         if(!$game) {
-            return response()->json(['success' => false, 'text' => 'Профиль скрыт или CS:GO не найдена']);
-        }
-        $game = array_search(730, $game);
-        if($game === false) {
             return response()->json(['success' => false, 'text' => 'Профиль скрыт или CS:GO не найдена']);
         }
 
