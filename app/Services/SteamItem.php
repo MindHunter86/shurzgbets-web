@@ -32,7 +32,7 @@ class SteamItem {
     public function getItemPrice() {
         if (Cache::has('steam_market_prices')) {
             $prices = Cache::get('steam_market_prices');
-            return $prices[$this->market_hash_name];
+            return isset($prices[$this->market_hash_name]) ? $prices[$this->market_hash_name] : false;
         }
         return false;
     }
