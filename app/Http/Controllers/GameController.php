@@ -937,7 +937,7 @@ class GameController extends Controller
 
                 if (!$itemInfo[$value]->price) $price = true;
             }else{
-                if($dbItemInfo->updated_at->getTimestamp() < Carbon::now()->subHours(5)->getTimestamp()) {
+                if($dbItemInfo->updated_at->getTimestamp() < Carbon::now()->subHours(5)->getTimestamp() || $dbItemInfo->price == 0) {
                     if ($dbItemInfo->price == 0) {
                         $si = new CsGoFast($item);
                         if ($si->price) {
