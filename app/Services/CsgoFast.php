@@ -3,11 +3,10 @@ namespace App\Services;
 
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\SteamController;
+use Cache;
 use Exception;
 
 class CsgoFast {
-	const DOLLAR = 66;
-
     public  $classid;
     public  $name;
     public  $market_hash_name;
@@ -22,24 +21,18 @@ class CsgoFast {
         $this->rarity = isset($info['rarity']) ? $info['rarity'] : $this->getItemRarity($info);
         if ($price = $this->getItemPrice()) {
             if(isset($price))
-                $this->price = round($price*self::DOLLAR, 2);
+                $this->price = $price;
         }else{
             $this->_setToFalse();
         }
     }
 
     public function getItemPrice() {
-        try{
-		    $json = file_get_contents(__DIR__.'/csgofast.json');
-		    $json = json_decode($json);
-	        $items = $json;
-	        if($items) 
-	            return $items->{$this->market_hash_name};
-	        else
-	        	return false;
-        }catch(Exception $e){
-            return false;
+        if (Cache::has('csgofast_prices')) {
+            $prices = Cache::get('csgofast_prices');
+            return array_key_exists($this->market_hash_name, $prices) ? $prices[$this->market_hash_name] : false;
         }
+        return false;
     }
 
     public function getItemRarity($info) {
