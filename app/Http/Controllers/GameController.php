@@ -264,8 +264,7 @@ class GameController extends Controller
                         if($item['classid'] != "1111111111")
                             $returnItems[] = $item['classid'];
                     }else{
-                        if(!in_array($user->steamid64, $this->bots))
-                            $user->money = $user->money + $item['price'];
+                        $user->money = $user->money + $item['price'];
                     }
                 }else {
                     $items[] = $item;
@@ -293,8 +292,7 @@ class GameController extends Controller
                     if($item['classid'] != "1111111111")
                         $returnItems[] = $item['classid'];
                 }else{
-                    if(!in_array($user->steamid64, $this->bots))
-                        $user->money = $user->money + $item['price'];
+                    $user->money = $user->money + $item['price'];
                 }
             }
         }
@@ -309,15 +307,6 @@ class GameController extends Controller
             'items' => $returnItems,
             'game' => $this->game->id
         ];
-        if(in_array($user->steamid64, $this->bots)) {
-            $value = [
-                'appId' => self::APPID,
-                'steamid' => $this->send_trade['steamid64'],
-                'accessToken' => $this->send_trade['accessToken'],
-                'items' => $returnItems,
-                'game' => $this->game->id
-            ];
-        }
         if(!is_null($bonus)) {
             foreach($bonus as $bon) {
                 if(!isset($bon['market_hash_name']))
