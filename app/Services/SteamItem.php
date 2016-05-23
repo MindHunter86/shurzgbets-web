@@ -50,6 +50,7 @@ class SteamItem {
             else
                 return false;
         }catch(Exception $e){
+            echo $e->getMessage();
             return false;
         }
     }

@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \App\Console\Commands\Inspire::class,
         \App\Console\Commands\UpdatePrices::class,
+        \App\Console\Commands\UpdatePricesFast::class,
     ];
 
     /**
@@ -27,7 +28,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('inspire')
                  ->hourly();
-        $schedule->command('steam:priceupdate')
-            ->daily()->sendOutputTo(storage_path('logs/priceupdate.log'));
+        $schedule->command('csgofast:priceupdate')
+            ->hourly()->sendOutputTo(storage_path('logs/priceupdate.log'));
     }
 }
