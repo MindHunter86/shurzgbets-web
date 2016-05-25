@@ -30,5 +30,7 @@ class Kernel extends ConsoleKernel
                  ->hourly();
         $schedule->command('csgofast:priceupdate')
             ->hourly()->sendOutputTo(storage_path('logs/priceupdate.log'));
+        $schedule->command('steam:priceupdate --instant')
+            ->daily()->sendOutputTo(storage_path('logs/steampriceupdate.log'));
     }
 }

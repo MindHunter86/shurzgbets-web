@@ -933,11 +933,16 @@ class GameController extends Controller
                 if(empty($itemInfo[$value]->name))
                     $itemInfo[$value]->name = "";
                 
-                $dbItemInfo = Item::create((array)$itemInfo[$item['classid']]);
+                $dbItemInfo = Item::create((array)$itemInfo[$value]);
 
                 if (!$itemInfo[$value]->price) $price = true;
             }else{
-                if($dbItemInfo->updated_at->getTimestamp() < Carbon::now()->subHours(5)->getTimestamp()) {
+                if ($dbItemInfo->classid == 0) {
+                    $dbItemInfo->classid = $item['classid'];
+                    $dbItemInfo->rarity = $item['rarity'];
+                    $dbItemInfo->save();
+                }
+                if($dbItemInfo->updated_at->getTimestamp() < Carbon::now()->subHours(5)->getTimestamp() || $dbItemInfo->price == 0) {
                     $si = new CsGoFast($item);
                     if ($si->price) {
                         $dbItemInfo->price = $si->price;

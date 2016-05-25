@@ -20,7 +20,7 @@ class SteamItem {
         $this->classid = !isset($info['classid']) ? $info['classId'] : $info['classid'];
         $this->name = $info['name'];
         $this->market_hash_name = $info['market_hash_name'];
-        $this->rarity = isset($info['rarity']) ? $info['rarity'] : $this->getItemRarity($info);
+        $this->rarity = isset($info['rarity']) ? $info['rarity'] : self::getItemRarity($info);
         if ($price = $this->getItemPrice()) {
             if (isset($price))
                 $this->price = $price;
@@ -65,7 +65,7 @@ class SteamItem {
     }
 */
 
-    public function getItemRarity($info) {
+    public static function getItemRarity($info) {
         $type = $info['type'];
         $rarity = '';
 
@@ -74,13 +74,23 @@ class SteamItem {
         $type = str_replace($types, $typesrep, $type);
 
         switch ($type) {
-            case 'Mil-Spec Grade':      $rarity = 'milspec'; break;
-            case 'Restricted':             $rarity = 'restricted'; break;
-            case 'Classified':           $rarity = 'classified'; break;
-            case 'Covert':                  $rarity = 'covert'; break;
-            case 'Consumer Grade':               $rarity = 'common'; break;
-            case 'Industrial Grade':   $rarity = 'common'; break;
-            case '★':                       $rarity = 'rare'; break;
+            case 'Mil-Spec Grade':
+            case 'High Grade':
+                $rarity = 'milspec'; break;
+            case 'Restricted':
+            case 'Remarkable':
+                $rarity = 'restricted'; break;
+            case 'Classified':
+            case 'Exotic':
+                $rarity = 'classified'; break;
+            case 'Covert':
+                $rarity = 'covert'; break;
+            case 'Consumer Grade':
+            case 'Base':
+            case 'Industrial Grade':
+                $rarity = 'common'; break;
+            case '★':
+                $rarity = 'rare'; break;
         }
 
         return $rarity;
