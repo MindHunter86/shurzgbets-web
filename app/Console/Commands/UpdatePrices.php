@@ -51,7 +51,7 @@ class UpdatePrices extends Command
             $this->log('Start price loading');
             if ($isInstant)
                 $this->log('Update applied instantly');
-            $this->parseMarket($tmpPrices);
+            $parsedPages = $this->parseMarket($tmpPrices);
             $updated = 0;
             $created = 0;
             foreach (array_keys($tmpPrices) as $itemname) {
@@ -73,7 +73,7 @@ class UpdatePrices extends Command
                     }
             }
             Cache::forever('steam_market_prices', $tmpPrices);
-            $this->log("Market parsed. Total updated items: {$updated}. New items: {$created}");
+            $this->log("Market parsed. Total updated items: {$updated}. New items: {$created}. Market pages parsed: {$parsedPages}");
             return true;
         }
 
@@ -113,10 +113,8 @@ class UpdatePrices extends Command
 
     }
 
-    private function parseMarket(&$items) {
+    private function parseMarket(&$items, $from=0,$to=50000) {
         //Code from hellstore.net
-        $from = 35;
-        $to = 500000;
         $dir = 'desc';
         $page = 0;
         for ($k = (int)$from; $k <= (int)$to; $k++) {
@@ -126,13 +124,13 @@ class UpdatePrices extends Command
                 $lol = ((int)$k * 100) + 1;
             }
 
-            $link = "http://steamcommunity.com/market/search/render/?query=&start={$lol}&currency=5&count=100&search_descriptions=0&sort_column=price&sort_dir=$dir&appid=730";
+            $link = "http://steamcommunity.com/market/search/render/?query=&start={$lol}&count=100&search_descriptions=0&sort_column=price&sort_dir=$dir&appid=730";
             $strpage = file_get_contents($link);
             $json = json_decode($strpage);
 
             $sdata = $json->results_html;
             $total_count = $json->total_count;
-            $totalPages = floor($total_count / 100)+1;
+            $totalPages = floor($total_count / 100)+$from+1;
             $this->log("Parsing market list page ".++$page." of ".$totalPages);
 
             preg_match_all('%<a class="market_listing_row_link" href="(.+?)" id="resultlink.*?<span class="normal_price">(.+?) .+?</span>.+?<span class="sale_price">(.+?) .+?</span>.*?class="market_listing_item_name" style=".*?">(.+?)</span>%s', $sdata, $result, PREG_PATTERN_ORDER);
@@ -152,7 +150,7 @@ class UpdatePrices extends Command
                 }
             }
             if ($total_count < $lol) {
-                return;
+                return $page;
             }
         }
     }
