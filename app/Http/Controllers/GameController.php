@@ -316,11 +316,7 @@ class GameController extends Controller
                 if(!isset($bon['rarity']))
                     $bon['rarity'] = 'Undefined';
                 Bonus::create([
-                    'name' => $bon['name'],
-                    'market_hash_name' => $bon['market_hash_name'],
                     'classid' => $bon['classid'],
-                    'price' => $bon['price'],
-                    'rarity' => $bon['rarity']
                 ]);
             }
         }
@@ -414,14 +410,14 @@ class GameController extends Controller
         }
         $create = new Lottery();
         $create->rand_number = $rand_number;
-        $create->items = json_encode($newBet);
-        $create->price = $newBet->price;
-        $create->max = round($newBet->price * 5);
+        $create->items = json_encode($newBet->item);
+        $create->price = $newBet->item->price;
+        $create->max = round($newBet->item->price * 5);
         $create->save();
 
         $lottery = [
             'max' => $create->max,
-            'items' => json_encode($newBet),
+            'items' => json_encode($newBet->item),
             'hash' => md5($rand_number),
             'id' => $create->id,
             'success' => true
@@ -530,11 +526,11 @@ class GameController extends Controller
         }
         $ticketFrom = 0;
         $ticketTo = 0;
-        $betInsert[] = $newBet;
+        $betInsert[] = $newBet->item;
         $bet = new Bet();
         $bet->user()->associate($bonususer);
         $bet->items = json_encode($betInsert);
-        $bet->itemsCount = count($newBet);
+        $bet->itemsCount = count($newBet->item);
         $bet->price = 0;
         $bet->from = $ticketFrom;
         $bet->to = $ticketTo;
