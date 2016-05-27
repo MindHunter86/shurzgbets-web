@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Bonus extends Model
 {
 	protected $table = 'bonus';
-    protected $fillable = ['name', 'market_hash_name', 'classid', 'price', 'rarity'];
+    protected $fillable = ['classid', 'assetid'];
+
+    public function item() {
+        return $this->hasOne('App\Item','classid','classid');
+    }
 }
