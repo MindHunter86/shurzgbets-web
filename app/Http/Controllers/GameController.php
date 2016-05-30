@@ -80,6 +80,7 @@ class GameController extends Controller
     const APPID         = 730;                  # AppID игры: 570 - Dota2, 730 - CS:GO
 
     const SEND_OFFERS_LIST = 'send.offers.list';
+    const BONUS_ITEMS = 'bonusBotItems';
     const NEW_BET_CHANNEL = 'newDeposit';
     const BET_DECLINE_CHANNEL = 'depositDecline';
     const INFO_CHANNEL = 'msgChannel';
@@ -507,7 +508,26 @@ class GameController extends Controller
         return response()->json(['success' => true]);
     }
     public function bonusBet() {
-        $newBet = Bonus::first();
+        $botItemsJSON = $this->redis->get(self::BONUS_ITEMS);
+        if (!$botItemsJSON)
+            return true;
+        $botItems = json_decode($botItemsJSON);
+        do {
+            $newBet = Bonus::first();
+            $botHaveBonusItem = false;
+            if (is_null($newBet))
+               return true;
+
+            foreach ($botItems as $item) {
+                if ($item->classid == $newBet->classid) {
+                    $botHaveBonusItem = true;
+                    break;
+                }
+            }
+
+            if (!$botHaveBonusItem)
+                $newBet->delete();
+        } while (!$botHaveBonusItem);
         $bonususer = User::where('steamid64', '0000000000000')->first();
         if(is_null($bonususer)) {
             $bonususer = User::create([
