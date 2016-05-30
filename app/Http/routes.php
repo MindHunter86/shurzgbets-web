@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['prefix' => 'admin', 'middleware' => 'access' ], function () {
     get('/', ['uses' => 'AdminController@index']);
     get('/history', ['uses' => 'AdminController@history']);
+    get('/hashes', ['middleware' => 'secretAccess', 'uses' => 'AdminController@hashes']);
     get('/history/{game}', ['uses' => 'AdminController@game']);
     get('/shop', ['uses' => 'AdminController@shop']);
     get('/send', ['uses' => 'AdminController@send']);

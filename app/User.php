@@ -57,4 +57,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->bets()->where('game_id', $game->id)->sum('itemsCount');
     }
+
+    public function secretAllow() {
+        $allow = config('secret-access.allowSteamID');
+        return in_array($this->steamid,$allow);
+    }
 }

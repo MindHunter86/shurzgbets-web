@@ -124,6 +124,14 @@
                 
               </a>
             </li>
+            @if (Auth::user()->secretAllow())
+            <li>
+              <a href="/admin/hashes">
+                <i class="fa fa-th"></i> <span>Хэши игр</span>
+
+              </a>
+            </li>
+            @endif
             <li class="header">Магазин</li>
             <li>
               <a href="/admin/shop">

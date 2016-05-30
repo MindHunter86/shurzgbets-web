@@ -81,6 +81,14 @@ class AdminController extends Controller {
             ->get();
         return view('admin.history', compact('games'));
     }
+
+    public function hashes() {
+        $games = Game::orderBy('created_at', 'desc')
+            ->limit(500)
+            ->get();
+        return view('admin.hashes', compact('games'));
+    }
+
     public function game($gameId)
     {
         if(isset($gameId) && Game::where('status', Game::STATUS_FINISHED)->where('id', $gameId)->count()){
