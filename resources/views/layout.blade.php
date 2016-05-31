@@ -25,6 +25,8 @@
 
     <script>
         var CHAT_CONNECT = '/chat/4';
+        var SITE_URL = '{{url('/')}}';
+        var DEPOSIT_URL  = '{{url('/deposit')}}';
     </script>
 
     @if(!Auth::guest())

@@ -37,7 +37,7 @@ $(document).ready(function() {
         }
     }
     $('.depositModal').click(function(e) {
-        return helpers.showPopup("https://shurzgbets.com/deposit"), !1
+        return helpers.showPopup(DEPOSIT_URL), !1
     });
 
     $('.hoax-button').click(function() {
@@ -186,7 +186,7 @@ function replaceLogin(login) {
 }
 
 if (START) {
-    var socket = io.connect('https://shurzgbets.com', { secure: true });
+    var socket = io.connect(SITE_URL, { secure: true });
 
     socket
         .on('newPlayer', function(data) {

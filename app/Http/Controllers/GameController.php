@@ -23,7 +23,6 @@ use App\Http\Controllers\Controller;
 class GameController extends Controller
 {
     const SECRET_KEY    = 'oDWx4GYTr4Acbdms';
-    const BOT_TRADE_LINK    = 'https://steamcommunity.com/tradeoffer/new/?partner=325110766&token=ra33o1QW';
     public $bet_get; // = 2000;
     public $send_trade; // = ['accessToken' => 'zu0ygIgx', 'steamid64' => '76561198254647128'];
     public $bots; // = ['76561198295283496', '76561198295321684', '76561198296608900', '76561198296026861', '76561198296337658', '76561198295994451', '76561198295375889', '76561198295990291', '76561198295400258', '76561198296696423'];
@@ -109,7 +108,7 @@ class GameController extends Controller
     {
         if(empty($this->user->accessToken))
             return redirect('/settings');
-        return redirect(self::BOT_TRADE_LINK);
+        return redirect(config('game.botTradeLink'));
     }
 
     public function currentGame()
@@ -540,6 +539,10 @@ class GameController extends Controller
         if(is_null($newBet)) {
             return true;
         }
+        if(is_null($newBet->item)) {
+            $newBet->delete();
+            return true;
+        }
         $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
         if (!is_null($lastBet)) {
             return true;
@@ -561,7 +564,7 @@ class GameController extends Controller
         $this->game->items = $bets->sum('itemsCount');
         $this->game->price = $bets->sum('price');
 
-        if (count($this->game->users()) >= 2 || $this->game->items >= 100) {
+        if (count($this->game->users()) >= config('game.maxItemsToFinish') || $this->game->items >= config('game.maxItemsToFinish')) {
             $this->game->status = Game::STATUS_PLAYING;
             $this->game->started_at = Carbon::now();
         }
@@ -678,7 +681,7 @@ class GameController extends Controller
             $this->game->items = $bets->sum('itemsCount');
             $this->game->price = $bets->sum('price');
 
-            if (count($this->game->users()) >= 2 || $this->game->items >= 100) {
+            if (count($this->game->users()) >= config('game.minUsersToStart') || $this->game->items >= config('game.maxItemsToFinish')) {
                 if($this->game->status != 2 && $this->game->status != 3) {
                     $this->game->status = Game::STATUS_PLAYING;
                     $this->game->started_at = Carbon::now();
