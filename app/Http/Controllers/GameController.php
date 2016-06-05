@@ -262,7 +262,7 @@ class GameController extends Controller
                 if($bet->user == $user) {
                     if(isset($item['classid'])) {
                         if($item['classid'] != "1111111111")
-                            $returnItems[] = $item['classid'];
+                            $returnItems[] = $item['market_hash_name'];
                     }else{
                         $user->money = $user->money + $item['price'];
                     }
@@ -290,7 +290,7 @@ class GameController extends Controller
             } else{
                 if(isset($item['classid'])) {
                     if($item['classid'] != "1111111111")
-                        $returnItems[] = $item['classid'];
+                        $returnItems[] = $item['market_hash_name'];
                 }else{
                     $user->money = $user->money + $item['price'];
                 }
@@ -509,13 +509,13 @@ class GameController extends Controller
     public function bonusBet() {
         $botItemsJSON = $this->redis->get(self::BONUS_ITEMS);
         if (!$botItemsJSON)
-            return true;
+            return $this->_responseError('Cannot load items from bot inventory');
         $botItems = json_decode($botItemsJSON);
         do {
             $newBet = Bonus::first();
             $botHaveBonusItem = false;
             if (is_null($newBet))
-               return true;
+                return $this->_responseError('Bonuses are empty');
 
             foreach ($botItems as $item) {
                 if ($item->classid == $newBet->classid) {
@@ -537,15 +537,15 @@ class GameController extends Controller
             ]);
         }
         if(is_null($newBet)) {
-            return true;
+            return $this->_responseError('Bonuses are empty');
         }
         if(is_null($newBet->item)) {
             $newBet->delete();
-            return true;
+            return $this->_responseError('Cannot link bonus data with items');
         }
         $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
         if (!is_null($lastBet)) {
-            return true;
+            return $this->_responseError('Game already have bets');
         }
         $ticketFrom = 0;
         $ticketTo = 0;
@@ -1008,4 +1008,8 @@ class GameController extends Controller
         return response()->json(['success' => true]);
     }
 
+    private function _responseError($message='Unknown error')
+    {
+        return response()->json(['success' => false, 'message' => $message]);
+    }
 }
