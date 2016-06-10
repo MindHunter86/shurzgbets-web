@@ -118,6 +118,26 @@ $(document).ready(function() {
             }
         });
         return false;
+    })
+    $('.send-promo').click(function() {
+        var that = $(this);
+        $.ajax({
+            url: '/promo/send',
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (data.success) {
+                    that.notify(data.text, {autoHideDelay: 1000,position: 'top middle', className :"success"});
+                }
+                else {
+                    if(data.text) that.notify(data.text, {position: 'top middle', className :"error"});
+                }
+            },
+            error: function () {
+                that.notify("Произошла ошибка. Попробуйте еще раз", {position: 'top middle', className :"error"});
+            }
+        });
+        return false;
     });
     $('.save-link, .save-link2').click(function () {
         var that = $(this);
@@ -302,6 +322,12 @@ if (START) {
                 if (n !== -1) {
                     $.notify('Ваш депозит обрабатывается', {autoHideDelay: 3000, className :"success"});
                 }
+            }
+        })
+        .on('infoMsg', function (data) {
+            data = JSON.parse(data);
+            if (data.user == USER_ID) {
+                $.notify(data.msg, {autoHideDelay: 3000, className :"success"});
             }
         })
         .on('depositDecline', function (data) {

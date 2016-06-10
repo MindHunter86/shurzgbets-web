@@ -4,9 +4,21 @@
 <div class="rulet_bg">
     <div class="rulet_title"><b>РЕФЕРАЛЬНАЯ</b> СИСТЕМА</div>
     <div class="ref">
-        <div class="ref_text">Введите код для получения 25 рублей, которые вы сможете потратить <br />в магазине:</div>
+    @if(!strlen($u->promo))
+        <div class="ref_text">Введите код для получения бонусных скинов:</div>
         <input class="ref_code promo-accept-text" type="text" placeholder="Введите код" value="{{ $u->promo }}"/>
         <div class="ref_button"><a href="#" class="accept-promo">АКТИВИРОВАТЬ</a></div>
+    @else
+        @if ($u->promo_status==3)
+        <div class="ref_text">Вы использовали промо-код:</div>
+        <input class="ref_code promo-accept-text" type="text" value="{{ $u->promo }}" disabled />
+        <div class="ref_text">И получили бонусные скины!</div>
+        @else
+        <div class="ref_text">Вы использовали промо-код:</div>
+        <input class="ref_code promo-accept-text" type="text" value="{{ $u->promo }}" disabled />
+        <div class="ref_button"><a href="#" class="send-promo">ОТПРАВИТЬ НАГРАДУ</a></div>
+        @endif
+    @endif
         <div class="ref_text2">
             <b>РЕФЕРАЛЬНЫЙ КОД</b>
             <em>Вы можете создать свой реферальный код для друзей.</em>

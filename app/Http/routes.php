@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     //рефералка
     post('/promo/create', 'ReferalController@create');
     post('/promo/accept', 'ReferalController@accept');
+    post('/promo/send', 'ReferalController@send');
     get('/referals/stats', ['as' => 'promo', 'uses' => 'PagesController@promo']);
     get('/referals', ['as' => 'promo', 'uses' => 'PagesController@promoSettings']);
 
@@ -63,7 +64,9 @@ Route::group(['prefix' => 'api', 'middleware' => 'secretKey'], function () {
     post('/bonusBet', 'GameController@bonusBet');
     post('/clear', 'GameController@clearSuck');
     post('/shop/newItems', 'ShopController@addItemsToSale');
-    post('/shop/setItemStatus', 'ShopController@setItemStatus'); 
+    post('/shop/setItemStatus', 'ShopController@setItemStatus');
+
+    post('/referal/updateStatus', 'ReferalController@updateStatus');
 
     post('/newLottery', 'GameController@newLottery');
     post('/getWinnersLottery', 'GameController@getWinnersLottery');
