@@ -114,7 +114,7 @@
                 <li class="ico5"><a href="/giveaway">{{ trans('all.menu.giveaway') }}</a></li>
                 <li class="ico6"><a href="/shop">{{ trans('all.menu.shop') }}</a></li>
                 @if(!Auth::guest())
-                <li class="ico7"><a href="/referals">{{ trans('all.menu.referals') }}</a></li>
+                <!--<li class="ico7"><a href="/referals">{{ trans('all.menu.referals') }}</a></li>-->
                 <li class="ico8"><a href="/settings">{{ trans('all.menu.settings') }}</a></li>
                 <li class="ico9"><a href="/logout">{{ trans('all.menu.logout') }}</a></li>
                 @endif

@@ -12,9 +12,10 @@ get('/shop', ['as' => 'shop', 'uses' => 'ShopController@index']);
 get('/payment', 'DonateController@payment');  
 get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 Route::group(['middleware' => 'auth'], function () {
-    post('/merchant', 'DonateController@merchant'); 
-    post('/ajax/chat', 'AjaxController@chat'); 
-    get('/pay/success', 'DonateController@success');  
+    post('/merchant', 'DonateController@merchant');
+    post('/ajax/chat', 'AjaxController@chat');
+    post('/ajax/getrole', 'AjaxController@getrole');
+    get('/pay/success', 'DonateController@success');
     get('/pay/fail', 'DonateController@fail');  
     get('/deposit', ['as' => 'deposit', 'uses' => 'GameController@deposit']);
     post('/shop/buy', ['as' => 'shop.buy', 'uses' => 'ShopController@buyItem']);
@@ -32,7 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     post('/promo/accept', 'ReferalController@accept');
     post('/promo/send', 'ReferalController@send');
     get('/referals/stats', ['as' => 'promo', 'uses' => 'PagesController@promo']);
-    get('/referals', ['as' => 'promo', 'uses' => 'PagesController@promoSettings']);
+    //get('/referals', ['as' => 'promo', 'uses' => 'PagesController@promoSettings']);
 
     post('/giveaway/accept', 'GameController@acceptLottery');
     get('/giveaway/history', ['as' => 'giveaway', 'uses' => 'PagesController@giveaway']);
