@@ -33,11 +33,19 @@
         <script>
             const USER_ID = '{{ $u->steamid64 }}';
             var START = true;
+            var role = {
+                'admin' : {{ $u->is_admin ? 'true' : 'false' }},
+                'moderator' : {{ $u->is_moderator ? 'true' : 'false' }}
+            };
         </script>
     @else
         <script>
             const USER_ID = '0';
             var START = true;
+            var role = {
+                'admin' : false,
+                'moderator' : false
+            };
         </script>
     @endif
 </head>
@@ -192,7 +200,6 @@
     @endif
 
 </script>
-<script src="{{ asset('assets/js/firebase.js') }}" ></script>
 <script src="{{ asset('assets/js/newapp.js') }}" ></script>
 <script src="{{ asset('assets/js/chat.js') }}" ></script>
 </body>

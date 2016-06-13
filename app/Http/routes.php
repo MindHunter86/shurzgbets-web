@@ -14,7 +14,6 @@ get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang
 Route::group(['middleware' => 'auth'], function () {
     post('/merchant', 'DonateController@merchant');
     post('/ajax/chat', 'AjaxController@chat');
-    post('/ajax/getrole', 'AjaxController@getrole');
     get('/pay/success', 'DonateController@success');
     get('/pay/fail', 'DonateController@fail');  
     get('/deposit', ['as' => 'deposit', 'uses' => 'GameController@deposit']);

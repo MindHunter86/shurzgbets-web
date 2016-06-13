@@ -11,6 +11,9 @@ use Firebase\Firebase;
 use App\Services\BackPack;
 use App\Services\CsgoFast;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
+use Carbon\Carbon;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -18,15 +21,16 @@ use PhpParser\Node\Expr\Cast\Object_;
 
 class AjaxController extends Controller
 {
-    static $FIREBASE_URL = 'https://shurzgbets.firebaseio.com/';
-    static $FIREBASE_SECRET = '2xSm8fxIQHpBV20rTOupbwCQGfREJMcAATTtkaw6';
     public function chat(Request $request) {
         $type = $request->get('type');
         if(!$request->has('type')) {
             return response()->json(['success' => false, 'text' => 'Тип запроса не указан']);
         }
-        $fb = Firebase::initialize(self::$FIREBASE_URL, self::$FIREBASE_SECRET);
         if($type == 'push') {
+            if (!is_null($this->user->chat_banned) && $this->user->chat_banned->timestamp>time()) {
+                $banTime = $this->user->chat_banned->format('d.m.Y G:i T');
+                return response()->json(['success' => false, 'text' => 'Вы не можете отправлять сообщения, так как забанены до '.$banTime]);
+            }
             $censure = array('залупа', '.ru', '.com', '. ru', 'ru', '.in', '. com', 'заходи', 'классный сайт', 'го на');
             $message = $request->get('message');
             if(is_null($message)) {
@@ -38,11 +42,14 @@ class AjaxController extends Controller
             if(strlen($message) > 200) {
                 return response()->json(['success' => false, 'text' => 'Максимум 200 символов']);
             }
+            if (Session::has('last_chat_message') && Session::get('last_chat_message')+5>time()) {
+                return response()->json(['success' => false, 'text' => '1 сообщение в 5 секунд']);
+            }
             $gamesCount = Bet::where('user_id', $this->user->id)->count();
-            if($gamesCount < 5) {
+            if($gamesCount < 0) {
                 return response()->json(['success' => false, 'text' => 'Вы должны сделать хотябы 5 депозитов на сайте!']);
             }
-            $message = str_replace($censure, '*мат*', $message);
+            $message = str_replace($censure, '***', $message);
             $push = array(
                 'username' => $this->user->username,
                 'avatar' => $this->user->avatar,
@@ -52,10 +59,13 @@ class AjaxController extends Controller
                 'is_vip'    => $this->user->is_vip,
                 'message' => $message
             );
-            $pusher = $fb->push('/chat/4', $push);
-            if(is_null($pusher)) {
-                return response()->json(['success' => false, 'text' => 'Ошибка сервера (mp01)']);
-            }
+            $this->redis->publish('chat_new_message', json_encode([
+                'username' => $this->user->username,
+                'text' => $message,
+                'avatar' => $this->user->avatar,
+                'steamid' => $this->user->steamid64
+            ]));
+            Session::set('last_chat_message',time());
             return response()->json(['success' => true, 'text' => 'Сообщение добавлено']);
         }
         if($type == 'remove') {
@@ -63,8 +73,30 @@ class AjaxController extends Controller
                 return response()->json(['success' => false, 'text' => 'Вам недоступная данная функция!']);
             }
             $id = $request->get('id');
-            $pusher = $fb->delete('/chat/4/'.$id);
+            $this->redis->publish('chat_remove_message', json_encode([
+                'id' => $id
+            ]));
             return response()->json(['success' => true, 'text' => 'Сообщение удалено']);
+        }
+        if ($type == 'ban') {
+            if(!$this->user->is_moderator && !$this->user->is_admin) {
+                return response()->json(['success' => false, 'text' => 'Вам недоступная данная функция!']);
+            }
+            $steamid = $request->get('steamid');
+            $time = $request->get('time');
+            if ($time == -1)
+                $time = 60*24*365*10;
+            $banTime = Carbon::now()->addMinutes($time);
+            $user = User::where('steamid64',$steamid)->first();
+            if ($user) {
+                $user->chat_banned = $banTime;
+                $user->save();
+                $this->redis->publish('chat_ban', json_encode([
+                    'steamid' => $steamid,
+                    'bantime' => $banTime->format('d.m.Y G:i T')
+                ]));
+            return response()->json(['success' => true, 'text' => 'Пользователь забанен в чате на '.$time.' минут']);
+            }
         }
     }
     //

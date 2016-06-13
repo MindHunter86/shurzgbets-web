@@ -31,7 +31,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $hidden = ['trade_link', 'remember_token', 'is_admin', 'is_moderator', 'accessToken'];
+    protected $hidden = ['trade_link', 'remember_token', 'is_admin', 'is_moderator', 'accessToken', 'chat_banned'];
+
+    protected $dates = ['chat_banned'];
 
     public function games()
     {

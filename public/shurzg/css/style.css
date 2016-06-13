@@ -2516,3 +2516,59 @@ b {
 	border-bottom-color:#000000;
 	border-width:0 5px 5px;
 }
+
+.chat_moderator_controls {
+    display: block;
+    height:20px;
+    width:200px;
+}
+
+.chat_delete_msg {
+    float:left;
+    cursor: pointer;
+    width:12px;
+    height: 12px;
+    margin-top:8px;
+    margin-bottom: 2px;
+    margin-right: 6px;
+    background-image: url('/shurzg/images/remove-sign.png');
+    background-size: 12px 12px;
+}
+
+.chat_ban_user {
+    float:left;
+    cursor: pointer;
+    width:12px;
+    height: 12px;
+    margin-top:8px;
+    margin-bottom: 2px;
+    margin-right: 6px;
+    background-image: url('/shurzg/images/ban-sign.png');
+    background-size: 12px 12px;
+}
+
+.ban_time_group {
+    display: none;
+    font-size: 12px;
+}
+
+.ban_time_group a {
+    color: #969b1c;
+    font-weight: bold;
+}
+
+.ban_time_group label {
+    display: inline-block;
+    margin-top:8px;
+    margin-left: 6px;
+    font-size: 12px;
+}
+
+.chat_ban_time {
+    float:left;
+    height: 12px;
+    margin-top:8px;
+    width: 48px;
+    border-radius: 3px;
+    font-size: 12px;
+}

@@ -248,7 +248,6 @@ if (START) {
         })
         .on('timer', function (time) {
             if(timerStatus) {
-                console.log(time);
                 timerStatus = false;
 
                 $('.gameEndTimer').empty().countdown({seconds: time});
@@ -283,7 +282,6 @@ if (START) {
                 var randoms = randomInteger(0,7);
                 if(data.showSlider) {
                     setTimeout(function () {
-                        console.log(randoms);
                         $('.all-players-list').addClass('active'+randoms);
                     }, 500);
                 }
@@ -385,7 +383,6 @@ function mulAndShuffle(arr, k) {
 
 $(document).on('click', '.depositCardBtn, ._carts', function () {
     $.post('https://itemup.ru/getBalance', function (data) {
-        console.log(data);
         $('#balanced').text(data);
     });
 
