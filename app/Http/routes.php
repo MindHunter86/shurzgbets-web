@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     post('/promo/accept', 'ReferalController@accept');
     post('/promo/send', 'ReferalController@send');
     get('/referals/stats', ['as' => 'promo', 'uses' => 'PagesController@promo']);
-    //get('/referals', ['as' => 'promo', 'uses' => 'PagesController@promoSettings']);
+    get('/referals', ['as' => 'promo', 'uses' => 'PagesController@promoSettings']);
 
     post('/giveaway/accept', 'GameController@acceptLottery');
     get('/giveaway/history', ['as' => 'giveaway', 'uses' => 'PagesController@giveaway']);
