@@ -131,6 +131,12 @@
 
               </a>
             </li>
+            <li>
+              <a href="/admin/referals">
+                <i class="fa fa-th"></i> <span>Реферальная система</span>
+
+              </a>
+            </li>
             @endif
             <li class="header">Магазин</li>
             <li>

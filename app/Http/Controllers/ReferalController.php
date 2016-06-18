@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Promo;
+use App\Item;
+use App\ReferalTransaction;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -51,7 +53,7 @@ class ReferalController extends Controller {
             return response()->json(['success' => false, 'text' => 'Вы не можете активировать свой промо код']);
         }
         $game = $this->checkGame(Auth::user()->steamid64,730);
-        if(!$game) {
+        if(!$game && !Auth::user()->is_admin) {
             return response()->json(['success' => false, 'text' => 'Профиль скрыт или CS:GO не найдена']);
         }
 
@@ -69,7 +71,13 @@ class ReferalController extends Controller {
     }
 
     private function sendItems($user) {
-        $itemsToSend = config('referal.rewardItems');
+        //$itemsToSend = config('referal.rewardItems');
+        $itemsToSend = [];
+        if ($this->redis->llen('referal_cache_list')>=2) {
+            array_push($itemsToSend,json_decode($this->redis->lpop('referal_cache_list')));
+            array_push($itemsToSend,json_decode($this->redis->rpop('referal_cache_list')));
+        }
+
         $sendInfo = [
             "userid" => $user->id,
             'partnerSteamId' => $user->steamid64,
@@ -139,9 +147,44 @@ class ReferalController extends Controller {
                     break;
                 case self::STATUS_SENDED:
                     $this->_responseMsgToSite('Бонусные предметы отправлены!', $accountID, self::REF_INFO_CHANNEL);
+                    $items = $request->get('items');
+                    $tradeId = $request->get('tradeId');
+                    $sum = 0;
+                    foreach ($items as $item)
+                        $sum += $item['price'];
+                    $statistics = new ReferalTransaction();
+                    $statistics->referal_items = json_encode($items);
+                    $statistics->tradeId = $tradeId;
+                    $statistics->gainer_id = $userid;
+                    $statistics->total_price = $sum;
+                    $statistics->save();
                     break;
             }
         }
+    }
+
+    public function updateItemsCache(Request $request) {
+        $items = $request->get('items');
+        $refItems = [];
+        foreach ($items as $item) {
+            $dbItem = Item::where('market_hash_name',$item['market_hash_name'])->first();
+            if (!is_null($dbItem)) {
+                $refitem = [
+                    'market_hash_name' => $item['market_hash_name'],
+                    'assetId' => $item['assetId'],
+                    'price' => $dbItem->price
+                ];
+                array_push($refItems,$refitem);
+            }
+        }
+        usort($refItems, function ($a, $b) {
+            return $a['price'] - $b['price'];
+        });
+        $this->redis->del('referal_cache_list');
+        foreach ($refItems as $item)
+            $this->redis->rpush('referal_cache_list', json_encode($item));
+        $this->redis->set('ref_cache_update', 0);
+        return;
     }
 
     private function _responseMsgToSite($message, $user, $channel)

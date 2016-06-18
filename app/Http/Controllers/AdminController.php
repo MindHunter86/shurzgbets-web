@@ -6,6 +6,7 @@ use App\Bet;
 use App\Game;
 use App\Order;
 use App\Shop;
+use App\ReferalTransaction;
 use App\Item;
 use App\Services\SteamItem;
 use App\User;
@@ -101,6 +102,26 @@ class AdminController extends Controller {
         }
         return redirect()->route('index');
     }
+
+    public function referalStat()
+    {
+        $transactions = ReferalTransaction::orderBy('sended_at', 'desc')
+            ->limit(500)
+            ->get();
+        $itemCount = $this->redis->llen('referal_cache_list');
+        return view('admin.refstat', compact('transactions','itemCount'));
+    }
+
+    public function updateItemsCache() {
+        if ($this->redis->get('ref_cache_update') == 1) {
+            return response()->json(['text' => 'В данный момент обновление кэша реферальных вещей уже ведется!', 'type' => 'error']);
+        }
+        $this->redis->set('ref_cache_update', 1);
+        $this->redis->rpush('newReferalItems', true);
+        return response()->json(['text' => 'Начато обновление кэша.', 'type' => 'success']);
+
+    }
+
     public function send() {
     	return view('admin.send');
     }
