@@ -43,6 +43,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'access' ], function () {
     get('/', ['uses' => 'AdminController@index']);
     get('/history', ['uses' => 'AdminController@history']);
     get('/hashes', ['middleware' => 'secretAccess', 'uses' => 'AdminController@hashes']);
+    get('/referals', ['uses' => 'AdminController@referalStat']);
+    post('/referals/updateCache', 'AdminController@updateItemsCache');
     get('/history/{game}', ['uses' => 'AdminController@game']);
     get('/shop', ['uses' => 'AdminController@shop']);
     get('/send', ['uses' => 'AdminController@send']);
@@ -67,6 +69,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'secretKey'], function () {
     post('/shop/setItemStatus', 'ShopController@setItemStatus');
 
     post('/referal/updateStatus', 'ReferalController@updateStatus');
+    post('/referal/updateItemsCache', 'ReferalController@updateItemsCache');
 
     post('/newLottery', 'GameController@newLottery');
     post('/getWinnersLottery', 'GameController@getWinnersLottery');

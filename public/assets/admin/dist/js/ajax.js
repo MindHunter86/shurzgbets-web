@@ -26,6 +26,24 @@ $(document).ready(function() {
             }
         });
     });
+    $('.updateReferalCache').click(function() {
+        $.ajax({
+            url: '/admin/referals/updateCache',
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (data.type == 'success') {
+                    alert(data.text);
+                }
+                else {
+                    if(data.text) alert('Ошибка: '+data.text);
+                }
+            },
+            error: function () {
+                alert("Произошла ошибка. Попробуйте еще раз");
+            }
+        });
+    });
     $('.sendTradeShop').click(function() {
         $.ajax({
             url: '/admin/send/ajaxShop',

@@ -46,7 +46,7 @@ class AjaxController extends Controller
                 return response()->json(['success' => false, 'text' => '1 сообщение в 5 секунд']);
             }
             $gamesCount = Bet::where('user_id', $this->user->id)->count();
-            if($gamesCount < 5) {
+            if($gamesCount < 5 && !$this->user->is_admin) {
                 return response()->json(['success' => false, 'text' => 'Вы должны сделать хотябы 5 депозитов на сайте!']);
             }
             $message = str_replace($censure, '***', $message);
