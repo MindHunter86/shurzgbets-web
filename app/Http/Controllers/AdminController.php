@@ -148,7 +148,7 @@ class AdminController extends Controller {
         if(trim($winner->accessToken)==false) {
             return response()->json(['text' => 'У победителя игры #'.$game->id.' не введена ссылка на обмен!', 'type' => 'error']);
         }
-    	$this->sendItems($game, $game->bets, $game->winner);
+    	$this->sendItems($game, $game->winner);
     	return response()->json(['type' => 'success']);
     }
     public function sendshopAjax(Request $request) {
@@ -168,58 +168,28 @@ class AdminController extends Controller {
     	return response()->json(['text' => 'Товар еще не продан или отсутствует', 'type' => 'error']);
     }
 
-    public function sendItems($game, $bets, $user) {
+    public function sendItems($game, $user) {
         $itemsInfo = [];
-        $items = [];
-        $commission = self::COMMISSION;
-        $commissionItems = [];
         $returnItems = [];
-        $tempPrice = 0;
-        //$firstBet = Bet::where('game_id', $this->game->id)->orderBy('created_at', 'asc')->first();
-        //if($firstBet->user == $user) $commission = self::COMMISSION_FOR_FIRST_PLAYER;
-        $commissionPrice = round(($game->price / 100) * $commission);
-        foreach($bets as $bet){
-            $betItems = json_decode($bet->items, true);
-            foreach($betItems as $item){
-                    //(Отдавать всю ставку игроку обратно)
-                if($bet->user == $user) {
-                    $itemsInfo[] = $item;
-                    if(isset($item['classid'])) {
-                        if($item['classid'] != "1111111111")
-                            $returnItems[] = $item['classid'];
-                    }
-                }else {
-                    $items[] = $item;
-                }
-            }
-        }
-
-
-        foreach($items as $item){
-            if($item['price'] < 1) $item['price'] = 1;
-            if(($item['price'] >= 5) && ($tempPrice+$item['price'] < $commissionPrice)) {
-                if(isset($item['classid'])) {
-                    if($item['classid'] != "1111111111") {
-                        $commissionItems[] = $item;
-                        $tempPrice = $tempPrice + $item['price'];
-                    }
-                } else {
-                    $commissionItems[] = $item;
-                    $tempPrice = $tempPrice + $item['price'];
-                }
-            } else{
+        $wonItems = json_decode($game->won_items, true);
+        foreach($wonItems as $item){
+                $itemsInfo[] = $item;
                 if(isset($item['classid'])) {
                     if($item['classid'] != "1111111111")
-                        $returnItems[] = $item['classid'];
+                        $returnItems[] = [
+                            'assetId' => $item['assetId'],
+                            'classid' => $item['classid']
+                        ];
                 }
-            }
         }
+
         $value = [
             'appId' => self::APPID,
             'steamid' => $user->steamid64,
             'accessToken' => $user->accessToken,
             'items' => $returnItems,
-            'game' => $game->id
+            'game' => $game->id,
+            'resend' => true
         ];
 
         $this->redis->rpush(self::SEND_OFFERS_LIST, json_encode($value));
