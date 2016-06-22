@@ -264,7 +264,10 @@ class GameController extends Controller
                     $itemsInfo[] = $item;
                     if(isset($item['classid'])) {
                         if($item['classid'] != "1111111111")
-                            $returnItems[] = $item['assetId'];
+                            $returnItems[] = [
+                                'assetId' => $item['assetId'],
+                                'classid' => $item['classid']
+                            ];
                         }else{
                         $user->money = $user->money + $item['price'];
                     }
@@ -293,7 +296,10 @@ class GameController extends Controller
                 $itemsInfo[] = $item;
                 if(isset($item['classid'])) {
                     if($item['classid'] != "1111111111")
-                        $returnItems[] = $item['assetId'];
+                        $returnItems[] = [
+                            'assetId' => $item['assetId'],
+                            'classid' => $item['classid']
+                        ];
                 }else{
                     $user->money = $user->money + $item['price'];
                 }
@@ -306,9 +312,10 @@ class GameController extends Controller
         $value = [
             'appId' => self::APPID,
             'steamid' => $user->steamid64,
-            'accessToken' => $user->accessToken,
+            'accessToken' => trim($user->accessToken),
             'items' => $returnItems,
-            'game' => $this->game->id
+            'game' => $this->game->id,
+            'resend' => false
         ];
         if(!is_null($bonus)) {
             foreach($bonus as $bon) {
