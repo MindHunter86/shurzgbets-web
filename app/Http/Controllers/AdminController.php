@@ -12,6 +12,7 @@ use App\Services\SteamItem;
 use App\User;
 use Illuminate\Http\Request;
 use DB;
+use Debugbar;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -138,10 +139,13 @@ class AdminController extends Controller {
 
     public function sendAjax(Request $request) {
     	$game = Game::where('id', $request->get('game'))->first();
+        Debugbar::info($game);
     	if($game->status_prize == Game::STATUS_PRIZE_WAIT_TO_SENT) {
     		return response()->json(['text' => 'Приз уже отправляется.', 'type' => 'error']);
     	}
-        if(empty($game->winner->accessToken)) {
+        $winner = $game->winner;
+        Debugbar::info($winner);
+        if(empty($winner->accessToken)) {
             return response()->json(['text' => 'У победителя игры #'.$game->id.' не введена ссылка на обмен!', 'type' => 'error']);
         }
     	$this->sendItems($game, $game->bets, $game->winner);
