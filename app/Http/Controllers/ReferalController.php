@@ -150,8 +150,10 @@ class ReferalController extends Controller {
                     $items = $request->get('items');
                     $tradeId = $request->get('tradeId');
                     $sum = 0;
-                    foreach ($items as $item)
+                    foreach ($items as $item) {
+                        $item['market_hash_name'] = str_replace('{StatTrak}','StatTrak™',$item['market_hash_name']);
                         $sum += $item['price'];
+                    }
                     $statistics = new ReferalTransaction();
                     $statistics->referal_items = json_encode($items);
                     $statistics->tradeId = $tradeId;
@@ -167,6 +169,7 @@ class ReferalController extends Controller {
         $items = $request->get('items');
         $refItems = [];
         foreach ($items as $item) {
+            $item['market_hash_name'] = str_replace('{StatTrak}','StatTrak™',$item['market_hash_name']);
             $dbItem = Item::where('market_hash_name',$item['market_hash_name'])->first();
             if (!is_null($dbItem)) {
                 $refitem = [
