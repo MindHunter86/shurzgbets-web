@@ -145,7 +145,7 @@ class AdminController extends Controller {
     	}
         $winner = $game->winner;
         Debugbar::info($winner);
-        if(empty($winner->accessToken)) {
+        if(trim($winner->accessToken)==false) {
             return response()->json(['text' => 'У победителя игры #'.$game->id.' не введена ссылка на обмен!', 'type' => 'error']);
         }
     	$this->sendItems($game, $game->bets, $game->winner);
