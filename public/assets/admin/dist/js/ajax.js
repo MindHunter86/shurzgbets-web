@@ -15,14 +15,14 @@ $(document).ready(function() {
             data: {game: $('#sendid').val() },
             success: function (data) {
                 if (data.type == 'success') {            
-                   	alert('Запрошена повторная отправка выигрыша');
+                   	$.notify('Запрошена повторная отправка выигрыша',{className:'success'});
                 }
                 else {
-                    if(data.text) alert(data.text);
+                    if(data.text) $.notify(data.text);
                 }
             },
             error: function () {
-                alert("Произошла ошибка. Попробуйте еще раз");
+                $.notify("Произошла ошибка. Попробуйте еще раз");
             }
         });
     });
@@ -33,14 +33,14 @@ $(document).ready(function() {
             dataType: 'json',
             success: function (data) {
                 if (data.type == 'success') {
-                    alert(data.text);
+                    $.notify(data.text, {className:'success'});
                 }
                 else {
-                    if(data.text) alert('Ошибка: '+data.text);
+                    if(data.text) $.notify('Ошибка: '+data.text);
                 }
             },
             error: function () {
-                alert("Произошла ошибка. Попробуйте еще раз");
+                $.notify("Произошла ошибка. Попробуйте еще раз");
             }
         });
     });

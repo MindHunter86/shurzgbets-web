@@ -175,7 +175,9 @@ class GameController extends Controller
         $this->game->winner_id      = $winningBet->user_id;
         $this->game->status         = Game::STATUS_FINISHED;
         $this->game->finished_at    = Carbon::now();
-        $this->game->won_items      = json_encode($this->sendItems($this->game->bets, $this->game->winner));
+        $gameItems = $this->sendItems($this->game->bets, $this->game->winner);
+        $this->game->won_items      = json_encode($gameItems['won_items']);
+        $this->game->comission_items      = json_encode($gameItems['comission_items']);
         $this->game->comission      = $this->comission;
         $this->game->save();
         $this->game->chance         = $this->_getUserChanceOfGame($this->game->winner, $this->game);
@@ -258,12 +260,12 @@ class GameController extends Controller
             $betItems = json_decode($bet->items, true);
             foreach($betItems as $item){
                     //(Отдавать всю ставку игроку обратно)
-                $itemsInfo[] = $item;
                 if($bet->user == $user) {
+                    $itemsInfo[] = $item;
                     if(isset($item['classid'])) {
                         if($item['classid'] != "1111111111")
-                            $returnItems[] = $item['market_hash_name'];
-                    }else{
+                            $returnItems[] = $item['assetId'];
+                        }else{
                         $user->money = $user->money + $item['price'];
                     }
                 }else {
@@ -288,9 +290,10 @@ class GameController extends Controller
                     $tempPrice = $tempPrice + $item['price'];
                 }
             } else{
+                $itemsInfo[] = $item;
                 if(isset($item['classid'])) {
                     if($item['classid'] != "1111111111")
-                        $returnItems[] = $item['market_hash_name'];
+                        $returnItems[] = $item['assetId'];
                 }else{
                     $user->money = $user->money + $item['price'];
                 }
@@ -317,6 +320,7 @@ class GameController extends Controller
                     $bon['rarity'] = 'Undefined';
                 Bonus::create([
                     'classid' => $bon['classid'],
+                    'assetid' => $bon['assetId']
                 ]);
             }
         }
@@ -326,7 +330,10 @@ class GameController extends Controller
         if(count($commissionItems) > 0) {
             $this->redis->rpush(self::ADD_LOTTERY_ITEMS, json_encode($commissionItems));
         }
-        return $itemsInfo;
+        return [
+            'won_items' => $itemsInfo,
+            'comission_items' => $commissionItems
+        ];
     }
 
     public function newGame()
@@ -518,7 +525,7 @@ class GameController extends Controller
                 return $this->_responseError('Bonuses are empty');
 
             foreach ($botItems as $item) {
-                if ($item->classid == $newBet->classid) {
+                if ($item->assetid == $newBet->assetid) {
                     $botHaveBonusItem = true;
                     break;
                 }
@@ -549,7 +556,9 @@ class GameController extends Controller
         }
         $ticketFrom = 0;
         $ticketTo = 0;
-        $betInsert[] = $newBet->item;
+        $bonusItem = $newBet->item;
+        $bonusItem->assetId = $newBet->assetid;
+        $betInsert[] = $bonusItem;
         $bet = new Bet();
         $bet->user()->associate($bonususer);
         $bet->items = json_encode($betInsert);
@@ -564,11 +573,11 @@ class GameController extends Controller
         $this->game->items = $bets->sum('itemsCount');
         $this->game->price = $bets->sum('price');
 
-        if (count($this->game->users()) >= config('game.maxItemsToFinish') || $this->game->items >= config('game.maxItemsToFinish')) {
+        if (count($this->game->users()) >= config('game.minUsersToStart')) {
             $this->game->status = Game::STATUS_PLAYING;
             $this->game->started_at = Carbon::now();
         }
-        if ($this->game->items >= 100) {
+        if ($this->game->items >= config('game.maxItemsToFinish')) {
             $this->game->status = Game::STATUS_FINISHED;
             $this->redis->publish(self::SHOW_WINNERS, true);
         }
@@ -681,13 +690,13 @@ class GameController extends Controller
             $this->game->items = $bets->sum('itemsCount');
             $this->game->price = $bets->sum('price');
 
-            if (count($this->game->users()) >= config('game.minUsersToStart') || $this->game->items >= config('game.maxItemsToFinish')) {
+            if (count($this->game->users()) >= config('game.minUsersToStart')) {
                 if($this->game->status != 2 && $this->game->status != 3) {
                     $this->game->status = Game::STATUS_PLAYING;
                     $this->game->started_at = Carbon::now();
                 }
             }
-            if ($this->game->items >= 100) {
+            if ($this->game->items >= config('game.maxItemsToFinish')) {
                 $this->game->status = Game::STATUS_FINISHED;
                 $this->redis->publish(self::SHOW_WINNERS, true);
             }

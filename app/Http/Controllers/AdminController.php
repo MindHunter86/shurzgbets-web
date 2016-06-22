@@ -142,7 +142,7 @@ class AdminController extends Controller {
     		return response()->json(['text' => 'Приз уже отправляется.', 'type' => 'error']);
     	}
         if(empty($game->winner->accessToken)) {
-            return response()->json(['text' => 'У победителя не введена ссылка на обмен!', 'type' => 'error']);
+            return response()->json(['text' => 'У победителя игры #'.$game->id.' не введена ссылка на обмен!', 'type' => 'error']);
         }
     	$this->sendItems($game, $game->bets, $game->winner);
     	return response()->json(['type' => 'success']);

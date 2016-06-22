@@ -40,7 +40,14 @@
     <script src="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/admin/plugins/morris/morris.min.js') }}"></script>
     <script src="{{ asset('assets/admin/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('shurzg/js/notify.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/dist/js/main.js') }}"></script>
     <script src="{{ asset('assets/admin/dist/js/ajax.js') }}"></script>
+
+    <script>
+        var SITE_URL = '{{url('/')}}';
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
