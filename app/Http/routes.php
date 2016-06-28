@@ -45,6 +45,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'access' ], function () {
     get('/hashes', ['middleware' => 'secretAccess', 'uses' => 'AdminController@hashes']);
     get('/referals', ['uses' => 'AdminController@referalStat']);
     post('/referals/updateCache', 'AdminController@updateItemsCache');
+    get('/settings', ['uses' => 'AdminController@settings']);
+    post('/settings/ajaxNews', 'AdminController@ajaxNews');
+    post('/settings/ajaxStakes', 'AdminController@ajaxStakes');
     get('/history/{game}', ['uses' => 'AdminController@game']);
     get('/shop', ['uses' => 'AdminController@shop']);
     get('/send', ['uses' => 'AdminController@send']);

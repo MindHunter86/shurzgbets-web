@@ -11,6 +11,7 @@
         </div><!-- /.box-header -->
         <!-- form start -->
           <div class="box-body">
+            {!! $games->render() !!}
             <table  class="table table-bordered table-striped">
                 <thead>
                   <tr>
@@ -30,7 +31,7 @@
                     <td>{{ $game->price }}</td>
                     <td>{{ $game->updated_at->format('d-m-Y H:i') }}</td>
                     @if($game->status_prize == \App\Game::STATUS_PRIZE_WAIT_TO_SENT)
-                      <td><span class="badge bg-green">Отправлен</span></td>
+                      <td><span class="badge bg-green">Отправляется</span></td>
                     @endif
                     @if($game->status_prize == \App\Game::STATUS_PRIZE_SEND)
                       <td><span class="badge bg-green">Отправлен</span></td>
@@ -44,6 +45,7 @@
                   @endforelse
                 </tbody>
             </table>
+            {!! $games->render() !!}
           </div><!-- /.box-body -->
       </div><!-- /.box -->
       <!-- general form elements disabled -->

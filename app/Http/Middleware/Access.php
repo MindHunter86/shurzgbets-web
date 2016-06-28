@@ -16,7 +16,12 @@ class Access
      */
     public function handle($request, Closure $next, $role = 'admin')
     {
-        switch($role){
+        if (is_null($request->user())) {
+            if($request->ajax())
+                return response('Access Denied')->setStatusCode(403);
+            abort(404);
+        }
+        switch($role){ //Добавить проверку авторизации
             case 'admin':
                 if(!$request->user()->is_admin){
                     if($request->ajax())

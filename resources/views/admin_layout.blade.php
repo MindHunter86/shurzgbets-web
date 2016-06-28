@@ -145,6 +145,12 @@
 
               </a>
             </li>
+            <li>
+              <a href="/admin/settings">
+                <i class="fa fa-th"></i> <span>Управление сайтом</span>
+
+              </a>
+            </li>
             <li class="header">Магазин</li>
             <li>
               <a href="/admin/shop">
