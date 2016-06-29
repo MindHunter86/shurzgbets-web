@@ -83,6 +83,100 @@ $(document).ready(function() {
             }
         });   
     });
+    $('.addNews').click(function() {
+        $.ajax({
+            url: '/admin/settings/ajaxNews',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                type: 'add',
+                header: $('#news-header').val(),
+                message: $('#news-message').val()
+            },
+            success: function (data) {
+                if (data.type == 'success') {
+                    $.notify('Оповещеие создано',{className: 'success'});
+                }
+                else {
+                    if(data.text) $.notify(data.text);
+                }
+            },
+            error: function () {
+                $.notify("Произошла ошибка. Попробуйте еще раз");
+            }
+        });
+    });
+    $('.removeNews').click(function() {
+        $.ajax({
+            url: '/admin/settings/ajaxNews',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                type: 'remove'
+            },
+            success: function (data) {
+                if (data.type == 'success') {
+                    $.notify('Оповещеие удалено',{className: 'success'});
+                    $('#news-header').val('');
+                    $('#news-message').val('');
+                }
+                else {
+                    if(data.text) $.notify(data.text);
+                }
+            },
+            error: function () {
+                $.notify("Произошла ошибка. Попробуйте еще раз");
+            }
+        });
+    });
+    $('.stakesOn').click(function() {
+        $.ajax({
+            url: '/admin/settings/ajaxStakes',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                type: 'on'
+            },
+            success: function (data) {
+                if (data.type == 'success') {
+                    $.notify('Прием ставок возобновлен',{className: 'success'});
+                    $('.stakesOff').show();
+                    $('.stakesOn').hide();
+                    $('#stake-info').hide();
+                }
+                else {
+                    if(data.text) $.notify(data.text);
+                }
+            },
+            error: function () {
+                $.notify("Произошла ошибка. Попробуйте еще раз");
+            }
+        });
+    });
+    $('.stakesOff').click(function() {
+        $.ajax({
+            url: '/admin/settings/ajaxStakes',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                type: 'off'
+            },
+            success: function (data) {
+                if (data.type == 'success') {
+                    $.notify('Прием ставок отключен!',{className: 'success'});
+                    $('.stakesOff').hide();
+                    $('.stakesOn').show();
+                    $('#stake-info').show();
+                }
+                else {
+                    if(data.text) $.notify(data.text);
+                }
+            },
+            error: function () {
+                $.notify("Произошла ошибка. Попробуйте еще раз");
+            }
+        });
+    });
     $('#profile-btn').click(function() {
         $('#profile-modal').modal();
     });

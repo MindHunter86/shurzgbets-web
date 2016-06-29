@@ -22,6 +22,18 @@
                 </div>
             @endforeach
           </div><!-- /.box-body -->
+          <div class="box-footer">
+          <p class="col-md-2 text-info">Состояние выигрыша:</p>
+              @if($game->status_prize == \App\Game::STATUS_PRIZE_WAIT_TO_SENT)
+                <span class="badge bg-green">Отправляется</span>
+              @endif
+              @if($game->status_prize == \App\Game::STATUS_PRIZE_SEND)
+                <span class="badge bg-green">Отправлен</span>
+              @endif
+              @if($game->status_prize == \App\Game::STATUS_PRIZE_SEND_ERROR)
+                <span class="badge bg-red">Ошибка</span>
+              @endif
+          </div>
       </div><!-- /.box -->
       <!-- general form elements disabled -->
       <!-- /.box -->

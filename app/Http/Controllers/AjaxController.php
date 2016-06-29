@@ -207,6 +207,19 @@ class AjaxController extends Controller
                     ->get();
                 return response()->json($items->toArray());
                 break;
+            case 'getnews':
+                $lastUserNews = Session::has('readed_news') ? Session::get('readed_news') : 0;
+                $lastNews = json_decode($this->redis->get('site_news'));
+                if (!is_null($lastNews) && $lastNews->time>$lastUserNews) {
+                    $lastNews->success = true;
+                    return response()->json($lastNews);
+                }
+                return response()->json(['success'=>false]);
+                break;
+            case 'newsreaded':
+                Session::set('readed_news',time());
+                return response()->json(['type'=>'success']);
+                break;
         }
     }
 }

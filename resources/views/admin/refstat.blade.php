@@ -28,6 +28,7 @@
         </div><!-- /.box-header -->
         <!-- form start -->
           <div class="box-body">
+            {!! $transactions->render() !!}
             <table  class="table table-bordered table-striped">
                 <thead>
                   <tr>
@@ -57,6 +58,7 @@
                   @endforelse
                 </tbody>
             </table>
+            {!! $transactions->render() !!}
           </div><!-- /.box-body -->
       </div><!-- /.box -->
       <!-- general form elements disabled -->

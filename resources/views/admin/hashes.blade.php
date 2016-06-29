@@ -10,7 +10,9 @@
           <h3 class="box-title">Хэши игр</h3>
         </div><!-- /.box-header -->
         <!-- form start -->
+
           <div class="box-body">
+            {!! $games->render() !!}
             <table  class="table table-bordered table-striped">
                 <thead>
                   <tr>
@@ -46,6 +48,7 @@
                   @endforelse
                 </tbody>
             </table>
+            {!! $games->render() !!}
           </div><!-- /.box-body -->
       </div><!-- /.box -->
       <!-- general form elements disabled -->

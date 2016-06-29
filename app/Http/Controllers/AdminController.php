@@ -12,7 +12,7 @@ use App\Services\SteamItem;
 use App\User;
 use Illuminate\Http\Request;
 use DB;
-use Debugbar;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -79,15 +79,13 @@ class AdminController extends Controller {
         $games = Game::with(['bets', 'winner'])
             ->where('status', Game::STATUS_FINISHED)
             ->orderBy('created_at', 'desc')
-            ->limit(500)
-            ->get();
+            ->paginate(50);
         return view('admin.history', compact('games'));
     }
 
     public function hashes() {
         $games = Game::orderBy('created_at', 'desc')
-            ->limit(500)
-            ->get();
+            ->paginate(50);
         return view('admin.hashes', compact('games'));
     }
 
@@ -107,10 +105,59 @@ class AdminController extends Controller {
     public function referalStat()
     {
         $transactions = ReferalTransaction::orderBy('sended_at', 'desc')
-            ->limit(500)
-            ->get();
+            ->paginate(50);
         $itemCount = $this->redis->llen('referal_cache_list');
         return view('admin.refstat', compact('transactions','itemCount'));
+    }
+
+    public function settings()
+    {
+        $stakeDecline = $this->redis->get('auto_decline_stakes');
+        $news = $this->redis->get('site_news');
+        if (is_null($news)) {
+            $news = json_decode('{"header": "", "message": ""}');
+        } else {
+            $news = json_decode($news);
+        }
+        return view('admin.settings', compact('stakeDecline','news'));
+    }
+
+    public function ajaxNews(Request $request) {
+        $type = $request->get('type');
+        switch ($type) {
+            case 'add':
+                $news = [
+                    'header' => $request->get('header'),
+                    'message' => $request->get('message'),
+                    'time' => time()
+                ];
+                $newsJson = json_encode($news);
+                $this->redis->set('site_news',$newsJson);
+                $this->redis->publish('news_update',$newsJson);
+                return response()->json(['type' => 'success']);
+                break;
+            case 'remove':
+                $this->redis->del('site_news');
+                return response()->json(['type' => 'success']);
+                break;
+        }
+
+        return response()->json(['text' => 'Неизвестная команда', 'type' => 'error']);
+    }
+
+    public function ajaxStakes(Request $request) {
+        $type = $request->get('type');
+        switch ($type) {
+            case 'on':
+                $this->redis->set('auto_decline_stakes',0);
+                return response()->json(['type' => 'success']);
+                break;
+            case 'off':
+                $this->redis->set('auto_decline_stakes',1);
+                return response()->json(['type' => 'success']);
+                break;
+        }
+        return response()->json(['text' => 'Неизвестная команда', 'type' => 'error']);
     }
 
     public function updateItemsCache() {
@@ -139,12 +186,10 @@ class AdminController extends Controller {
 
     public function sendAjax(Request $request) {
     	$game = Game::where('id', $request->get('game'))->first();
-        Debugbar::info($game);
     	if($game->status_prize == Game::STATUS_PRIZE_WAIT_TO_SENT) {
     		return response()->json(['text' => 'Приз уже отправляется.', 'type' => 'error']);
     	}
         $winner = $game->winner;
-        Debugbar::info($winner);
         if(trim($winner->accessToken)==false) {
             return response()->json(['text' => 'У победителя игры #'.$game->id.' не введена ссылка на обмен!', 'type' => 'error']);
         }
@@ -186,7 +231,7 @@ class AdminController extends Controller {
         $value = [
             'appId' => self::APPID,
             'steamid' => $user->steamid64,
-            'accessToken' => $user->accessToken,
+            'accessToken' => trim($user->accessToken),
             'items' => $returnItems,
             'game' => $game->id,
             'resend' => true

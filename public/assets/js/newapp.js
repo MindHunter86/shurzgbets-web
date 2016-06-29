@@ -163,6 +163,39 @@ $(document).ready(function() {
         });
         return false;
     });
+
+    function showNews(data) {
+        $('#news-alert').hide();
+        $('#news-alert h2').text(data.header);
+        $('#news-alert p').text(data.message);
+        $('#news-alert').fadeIn();
+    }
+
+    $.ajax({
+        url: '/ajax/',
+        type: 'POST',
+        dataType: 'json',
+        data: {action: 'getnews'},
+        success: function (data) {
+            if (data.success) {
+                showNews(data);
+            }
+        }
+    });
+
+    $('.close-news').click(function () {
+        $.ajax({
+            url: '/ajax/',
+            type: 'POST',
+            dataType: 'json',
+            data: {action: 'newsreaded'},
+            success: function (data) {
+                if (data.type=='success') {
+                    $('#news-alert').fadeOut();
+                }
+            }
+        });
+    });
 });
 
 function getRarity(type) {
@@ -209,6 +242,10 @@ if (START) {
     var socket = io.connect(SITE_URL, { secure: true });
 
     socket
+        .on('news_update', function(data) {
+            data = JSON.parse(data);
+            showNews(data);
+        })
         .on('newPlayer', function(data) {
             data = JSON.parse(data);
             $('.currentPlayer').text(data.players);
@@ -326,6 +363,12 @@ if (START) {
             data = JSON.parse(data);
             if (data.user == USER_ID) {
                 $.notify(data.msg, {autoHideDelay: 3000, className :"success"});
+            }
+        })
+        .on('user_send_error', function (data) {
+            data = JSON.parse(data);
+            if (data.steamid == USER_ID) {
+                $.notify('Не удалось отправить трейд (попытка '+data.retry+' из '+data.retryMax+')', {autoHideDelay: 3000, className :"error"});
             }
         })
         .on('depositDecline', function (data) {
