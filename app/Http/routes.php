@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'access' ], function () {
     get('/history/{game}', ['uses' => 'AdminController@game']);
     get('/shop', ['uses' => 'AdminController@shop']);
     get('/send', ['uses' => 'AdminController@send']);
+    post('/sendall/ajax', 'AdminController@sendAllAjax');
     post('/send/ajax', 'AdminController@sendAjax');
     post('/send/ajaxShop', 'AdminController@sendshopAjax');
     get('/newLottery', 'GameController@newLottery');

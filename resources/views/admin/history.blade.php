@@ -11,6 +11,7 @@
         </div><!-- /.box-header -->
         <!-- form start -->
           <div class="box-body">
+            <button class="btn btn-info pull-right sendAllTrades">Переотправить все за сутки</button>
             {!! $games->render() !!}
             <table  class="table table-bordered table-striped">
                 <thead>
@@ -37,7 +38,10 @@
                       <td><span class="badge bg-green">Отправлен</span></td>
                     @endif
                     @if($game->status_prize == \App\Game::STATUS_PRIZE_SEND_ERROR)
-                      <td><span class="badge bg-red">Ошибка</span></td>
+                      <td>
+                        <span class="badge bg-red" data-toggle="tooltip" title="{{ trans('steamcode.'.$game->send_code) }}">Ошибка</span>
+                        <button data-gameid="{{ $game->id }}" class="btn btn-info btn-xs sendTradeFromHistory">Переотправить</button>
+                      </td>
                     @endif
                   </tr>
                   @empty
