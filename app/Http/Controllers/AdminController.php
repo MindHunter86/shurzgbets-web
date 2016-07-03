@@ -199,7 +199,7 @@ class AdminController extends Controller {
     }
 
     public function sendAllAjax(Request $request) {
-        $games = Game::whereDate('finished_at', '>', Carbon::now()->subDay())->get();
+        $games = Game::where('status_prize',Game::STATUS_PRIZE_SEND_ERROR)->whereDate('finished_at', '>', Carbon::now()->subDay())->get();
         foreach ($games as $game) {
             if ($game->status_prize == Game::STATUS_PRIZE_WAIT_TO_SENT)
                 continue;
