@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Item;
 
 class Shop extends Model
 {
@@ -23,6 +24,16 @@ class Shop extends Model
     public function buyer()
     {
         return $this->belongsTo('App\User', 'buyer_id', 'id');
+    }
+
+    public function getActualPriceAttribute() {
+        if ($this->price>0)
+            return $this->price;
+        $dbItem = Item::where('market_hash_name', $this->name)->first();
+        if(!is_null($dbItem)){
+            return round($dbItem->price * config('shop.pricePercentToSell'),2);
+        }
+        return 0;
     }
 
     public static function getClassRarity($type){

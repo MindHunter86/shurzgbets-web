@@ -74,14 +74,15 @@ class ShopController extends Controller
         foreach($jsonItems as $jsonItem){
             $items = json_decode($jsonItem, true);
             foreach($items as $item) {
-                $itemInfo = new CsgoFast($item);
-                $item['steam_price'] = $itemInfo->price;
-                $item['price'] = round($item['steam_price']/100 * self::PRICE_PERCENT_TO_SALE);
+                $dbItem = Item::where('market_hash_name', $item['market_hash_name'])->first();
+                $item['price'] = 0;
+                $item['steam_price'] = 0;
+                if(!is_null($dbItem)){
+                    $item['price'] = round($dbItem->price * config('shop.pricePercentToSell'),2);
+                    $item['steam_price'] = $dbItem->price;
+                }
                 if(empty($item['quality'])) {
                     $item['quality'] = 'Normal';
-                }
-                if($item['price']  < 15) {
-                    $item['price'] = 15;
                 }
                 Shop::create($item);
             }

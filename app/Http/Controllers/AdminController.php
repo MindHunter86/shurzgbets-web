@@ -12,6 +12,7 @@ use App\Services\SteamItem;
 use App\User;
 use Illuminate\Http\Request;
 use DB;
+use Carbon\Carbon;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -196,6 +197,21 @@ class AdminController extends Controller {
     	$this->sendItems($game, $game->winner);
     	return response()->json(['type' => 'success']);
     }
+
+    public function sendAllAjax(Request $request) {
+        $games = Game::whereDate('finished_at', '>', Carbon::now()->subDay())->get();
+        foreach ($games as $game) {
+            if ($game->status_prize == Game::STATUS_PRIZE_WAIT_TO_SENT)
+                continue;
+            $winner = $game->winner;
+            if (trim($winner->accessToken) == false) {
+                continue;
+            }
+            $this->sendItems($game, $game->winner);
+        }
+        return response()->json(['type' => 'success']);
+    }
+
     public function sendshopAjax(Request $request) {
     	$shop = Shop::find($request->get('buy'));
     	if(!is_null($shop) && isset($shop->buyer_id)) {
@@ -238,6 +254,8 @@ class AdminController extends Controller {
         ];
 
         $this->redis->rpush(self::SEND_OFFERS_LIST, json_encode($value));
+        $game->status_prize = 0;
+        $game->save();
         return $itemsInfo;
     }
 }

@@ -845,6 +845,7 @@ class GameController extends Controller
     {
         $game = Game::find($request->get('game'));
         $game->status_prize = $request->get('status');
+        $game->send_code = $request->get('error');
         $game->save();
         return $game;
     }

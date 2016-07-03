@@ -26,6 +26,46 @@ $(document).ready(function() {
             }
         });
     });
+    $('.sendAllTrades').click(function() {
+        $.ajax({
+            url: '/admin/sendall/ajax',
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (data.type == 'success') {
+                    $.notify('Запрошена повторная отправка выигрышей за сутки',{className:'success'});
+                }
+                else {
+                    if(data.text) $.notify(data.text);
+                }
+            },
+            error: function () {
+                $.notify("Произошла ошибка. Попробуйте еще раз");
+            }
+        });
+    });
+    $('.sendTradeFromHistory').click(function() {
+        var self = this;
+        $.ajax({
+            url: '/admin/send/ajax',
+            type: 'POST',
+            dataType: 'json',
+            data: {game: $(self).attr('data-gameid') },
+            success: function (data) {
+                if (data.type == 'success') {
+                    $.notify('Запрошена повторная отправка выигрыша',{className:'success'});
+                    $(self).siblings('.badge').removeClass('bg-red').addClass('bg-green').text('Отправляется');
+                    $(self).remove();
+                }
+                else {
+                    if(data.text) $.notify(data.text);
+                }
+            },
+            error: function () {
+                $.notify("Произошла ошибка. Попробуйте еще раз");
+            }
+        });
+    });
     $('.updateReferalCache').click(function() {
         $.ajax({
             url: '/admin/referals/updateCache',

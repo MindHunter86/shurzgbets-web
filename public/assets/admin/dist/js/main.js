@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
     var notifier = io.connect(SITE_URL, {secure: true});
     notifier.on('admin_cache_update', function (msg) {
         msg = JSON.parse(msg);

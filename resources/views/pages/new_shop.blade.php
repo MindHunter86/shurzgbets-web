@@ -85,7 +85,7 @@
                         success: function (data) {
                             if (data.success) {
                                 that.notify(data.msg, {position: 'bottom middle', className :"success"});
-                                setTimeout(function(){that.parent().parent().parent().hide()}, 5500);
+                                setTimeout(function(){that.parent().parent().hide()}, 5500);
                             }
                             else {
                                 if(data.msg) that.notify(data.msg, {position: 'bottom middle', className :"error"});
@@ -141,7 +141,7 @@
                     success: function (data) {
                         if (data.success) {
                             that.notify(data.msg, {position: 'bottom middle', className :"success"});
-                            setTimeout(function(){that.parent().parent().parent().hide()}, 5500);
+                            setTimeout(function(){that.parent().parent().hide()}, 5500);
                         }
                         else {
                             if(data.msg) that.notify(data.msg, {position: 'bottom middle', className :"error"});
