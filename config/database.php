@@ -47,7 +47,6 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'unix_socket'  => '/var/run/mysqld/mysqld.sock',
             'host'      => env('DB_HOST', 'localhost'),
             'database'  => env('DB_DATABASE', ''),
             'username'  => env('DB_USERNAME', ''),
