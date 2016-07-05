@@ -30,7 +30,7 @@
                     <td><a href="/admin/history/{{ $game->id }}">{{ $game->id }}</a></td>
                     <td>{{ $game->winner->username }}</td>
                     <td>{{ $game->price }}</td>
-                    <td>{{ $game->updated_at->format('d-m-Y H:i') }}</td>
+                    <td>{{ $game->finished_at->format('d-m-Y H:i') }}</td>
                     @if($game->status_prize == \App\Game::STATUS_PRIZE_WAIT_TO_SENT)
                       <td><span class="badge bg-green">Отправляется</span></td>
                     @endif
@@ -39,7 +39,7 @@
                     @endif
                     @if($game->status_prize == \App\Game::STATUS_PRIZE_SEND_ERROR)
                       <td>
-                        <span class="badge bg-red" data-toggle="tooltip" title="{{ trans('steamcode.'.$game->send_code) }}">Ошибка</span>
+                        <span class="badge bg-red" data-toggle="tooltip" title="{{ trans('steamcode.'.$game->send_code) }} (код #{{ $game->send_code }})">Ошибка</span>
                         <button data-gameid="{{ $game->id }}" class="btn btn-info btn-xs sendTradeFromHistory">Переотправить</button>
                       </td>
                     @endif

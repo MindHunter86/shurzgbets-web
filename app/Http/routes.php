@@ -50,6 +50,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'access' ], function () {
     post('/settings/ajaxStakes', 'AdminController@ajaxStakes');
     get('/history/{game}', ['uses' => 'AdminController@game']);
     get('/shop', ['uses' => 'AdminController@shop']);
+    post('/shop/update', 'AdminController@updateShop');
     get('/send', ['uses' => 'AdminController@send']);
     post('/sendall/ajax', 'AdminController@sendAllAjax');
     post('/send/ajax', 'AdminController@sendAjax');

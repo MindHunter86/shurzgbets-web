@@ -8,6 +8,7 @@
       <div class="box box-info">
         <div class="box-header with-border">
           <h3 class="box-title">Покупки в магазине</h3>
+          <button class="btn btn-info pull-right updateShop">Обновить магазин</button>
         </div><!-- /.box-header -->
         <!-- form start -->
           <div class="box-body">

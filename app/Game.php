@@ -18,6 +18,7 @@ class Game extends Model
     const STATUS_PRIZE_SEND_ERROR = 2;
 
     protected $fillable = ['rand_number'];
+    protected $dates = ['finished_at'];
 
     public function winner()
     {

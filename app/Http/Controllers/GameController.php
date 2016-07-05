@@ -467,7 +467,15 @@ class GameController extends Controller
                 continue;
             }
 
-            $total_price = $this->_parseItems($items, $missing, $price, $boxes);
+            $total_price = $this->_parseItems($items, $missing, $price, $boxes, $souvenir);
+
+            if ($souvenir) {
+                $this->_responseErrorToSite('Сувенирные предметы не принимаются', $accountID, self::BET_DECLINE_CHANNEL);
+                $this->redis->lrem('usersQueue.list', 1, $accountID);
+                $this->redis->lrem('check.list', 0, $offerJson);
+                $this->redis->rpush('decline.list', $offer->offerid);
+                continue;
+            }
 
             if ($missing) {
                 $this->_responseErrorToSite('Принимаются только предметы из CS:GO', $accountID, self::BET_DECLINE_CHANNEL);
@@ -949,7 +957,7 @@ class GameController extends Controller
         return $chance;
     }
 
-    private function _parseItems(&$items, &$missing = false, &$price = false, &$boxes = false)
+    private function _parseItems(&$items, &$missing = false, &$price = false, &$boxes = false, &$souvenir = false)
     {
         $itemInfo = [];
         $total_price = 0;
@@ -996,6 +1004,9 @@ class GameController extends Controller
             $total_price = $total_price + $itemInfo[$value]->price;
             if((strpos($item['name'], 'Case') !== false) && ($itemInfo[$value]->price < 5)) {
                 $boxes = true;
+            }
+            if(strpos($item['name'], 'Souvenir') !== false) {
+                $souvenir = true;
             }
             $items[$i]['price'] = $itemInfo[$value]->price;
             unset($items[$i]['appid']);

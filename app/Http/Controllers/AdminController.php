@@ -171,6 +171,11 @@ class AdminController extends Controller {
 
     }
 
+    public function updateShop() {
+        $this->redis->rpush('newShopItems', true);
+        return response()->json(['text' => 'Начато обновление магазина.', 'type' => 'success']);
+    }
+
     public function send() {
     	return view('admin.send');
     }

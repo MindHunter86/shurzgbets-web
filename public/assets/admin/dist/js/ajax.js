@@ -44,6 +44,24 @@ $(document).ready(function() {
             }
         });
     });
+    $('.updateShop').click(function() {
+        $.ajax({
+            url: '/admin/shop/update',
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (data.type == 'success') {
+                    $.notify('Начато обновление магазина.',{className:'success'});
+                }
+                else {
+                    if(data.text) $.notify(data.text);
+                }
+            },
+            error: function () {
+                $.notify("Произошла ошибка. Попробуйте еще раз");
+            }
+        });
+    });
     $('.sendTradeFromHistory').click(function() {
         var self = this;
         $.ajax({
