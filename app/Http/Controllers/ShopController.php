@@ -74,17 +74,28 @@ class ShopController extends Controller
         foreach($jsonItems as $jsonItem){
             $items = json_decode($jsonItem, true);
             foreach($items as $item) {
+                if ($item['inventoryId']==0)
+                    continue;
                 $dbItem = Item::where('market_hash_name', $item['market_hash_name'])->first();
                 $item['price'] = 0;
                 $item['steam_price'] = 0;
                 if(!is_null($dbItem)){
                     $item['price'] = round($dbItem->price * config('shop.pricePercentToSell'),2);
                     $item['steam_price'] = $dbItem->price;
+                } else {
+                    continue;
                 }
                 if(empty($item['quality'])) {
                     $item['quality'] = 'Normal';
                 }
-                Shop::create($item);
+                $shopItem = Shop::where('inventoryId',$item['inventoryId'])->first();
+                if (is_null($shopItem)) {
+                    Shop::create($item);
+                } else {
+                    $shopItem->price = $item['price'];
+                    $shopItem->steam_price = $item['steam_price'];
+                    $shopItem->save();
+                }
             }
             $this->redis->lrem(self::NEW_ITEMS_CHANNEL, 1, $jsonItem);
         }
