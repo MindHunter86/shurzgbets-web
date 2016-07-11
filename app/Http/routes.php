@@ -58,6 +58,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'access' ], function () {
     get('/newLottery', 'GameController@newLottery');
 });
 
+Route::group(['prefix' => 'webapi', 'middleware' => 'webapi'], function () {
+    get('/balance/get/{steamid}/{valute?}', 'BalanceController@getBalance');
+    post('/balance/update/{steamid}/{valute?}', 'BalanceController@updateBalance');
+});
+
 Route::group(['prefix' => 'api', 'middleware' => 'secretKey'], function () {
     post('/userqueue', 'GameController@userqueue');
     post('/checkOffer', 'GameController@checkOffer');
