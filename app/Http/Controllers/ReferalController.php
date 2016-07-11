@@ -7,6 +7,7 @@ use App\Promo;
 use App\Item;
 use App\ReferalTransaction;
 use Auth;
+use DB;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -70,14 +71,12 @@ class ReferalController extends Controller {
         return response()->json(['success' => true, 'text' => 'Вы успешно активировали промо код']);
     }
 
-    private function sendItems($user) {
+    private function sendItems($userAuth) {
         //$itemsToSend = config('referal.rewardItems');
         $itemsToSend = [];
-        if ($this->redis->llen('referal_cache_list')>=2) {
-            array_push($itemsToSend,json_decode($this->redis->lpop('referal_cache_list')));
-            array_push($itemsToSend,json_decode($this->redis->rpop('referal_cache_list')));
-        }
 
+        DB::beginTransaction();
+        $user = User::where('id',$userAuth->id)->lockForUpdate()->first();
         $sendInfo = [
             "userid" => $user->id,
             'partnerSteamId' => $user->steamid64,
@@ -89,8 +88,13 @@ class ReferalController extends Controller {
             return response()->json(['success' => false, 'text' => 'Награда уже была отправлена!']);
         }
         if ($user->promo_status != self::STATUS_WAIT) {
+            if ($this->redis->llen('referal_cache_list')>=2) {
+                array_push($itemsToSend,json_decode($this->redis->lpop('referal_cache_list')));
+                array_push($itemsToSend,json_decode($this->redis->rpop('referal_cache_list')));
+            }
             $user->promo_status = self::STATUS_WAIT;
             $user->save();
+            DB::commit();
             $this->redis->rpush(self::REF_CHANNEL, json_encode($sendInfo));
             return response()->json(['success' => true, 'text' => 'Запрос на отправку создан!']);
         } else {

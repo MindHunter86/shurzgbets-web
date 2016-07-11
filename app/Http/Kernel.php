@@ -20,6 +20,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\Language::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \App\Http\Middleware\VerifyCsrfToken::class,
+        \App\Http\Middleware\ShurzgbetsSession::class,
 
     ];
 
@@ -34,6 +35,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'secretKey' => \App\Http\Middleware\SecretKey::class,
         'secretAccess' => \App\Http\Middleware\SecretAccess::class,
+        'webapi' => \App\Http\Middleware\WebApiAccess::class,
         'access' => \App\Http\Middleware\Access::class
     ];
 }
