@@ -43,7 +43,7 @@ class ShurzgbetsSession
                         $cryptedData,
                         60 * 60 * 24,
                         null,
-                        null,
+                        config('shurzgbetssession.cookieDomain'),
                         config('shurzgbetssession.secure'),
                         true
                     )
