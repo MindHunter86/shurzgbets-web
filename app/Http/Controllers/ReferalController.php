@@ -77,12 +77,6 @@ class ReferalController extends Controller {
 
         DB::beginTransaction();
         $user = User::where('id',$userAuth->id)->lockForUpdate()->first();
-        $sendInfo = [
-            "userid" => $user->id,
-            'partnerSteamId' => $user->steamid64,
-            'accessToken' => $user->accessToken,
-            "items" => $itemsToSend
-        ];
         if ($user->promo_status == self::STATUS_SENDED) {
             //Вещи уже отправлены
             return response()->json(['success' => false, 'text' => 'Награда уже была отправлена!']);
@@ -95,6 +89,13 @@ class ReferalController extends Controller {
             $user->promo_status = self::STATUS_WAIT;
             $user->save();
             DB::commit();
+            $sendInfo = [
+                "userid" => $user->id,
+                'partnerSteamId' => $user->steamid64,
+                'accessToken' => $user->accessToken,
+                "items" => $itemsToSend
+            ];
+
             $this->redis->rpush(self::REF_CHANNEL, json_encode($sendInfo));
             return response()->json(['success' => true, 'text' => 'Запрос на отправку создан!']);
         } else {
