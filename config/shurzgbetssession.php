@@ -9,5 +9,6 @@
 return [
     'encryptionKey' => 'qcI8scCPHN2zvS3wPk8SbofETgl1Sptp',
     'cookieName' => 'shurzgbets_session',
+    'cookieDomain' => '.shurzgbets.com',
     'secure' => true
 ];
