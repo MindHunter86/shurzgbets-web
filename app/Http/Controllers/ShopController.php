@@ -85,6 +85,9 @@ class ShopController extends Controller
                 } else {
                     continue;
                 }
+                if ($item['price'] <= 15) {
+                    continue;
+                }
                 if(empty($item['quality'])) {
                     $item['quality'] = 'Normal';
                 }
