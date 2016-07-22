@@ -88,7 +88,7 @@ return [
 
         'cluster' => false,
         'default' => [
-            'host'     => '127.0.0.1',
+            'host'     => '167.114.238.252',
             'port'     => 6379,
             'database' => 0,
         ],

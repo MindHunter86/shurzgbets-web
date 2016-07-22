@@ -4,5 +4,4 @@ vendor/
 #  Ignoring Confidential Data
 ###
 .env
-config/database.php
 web/app/Http/Middleware/SecretKey.php

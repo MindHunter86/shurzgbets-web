@@ -10,7 +10,6 @@ return [
     'apikey' => 'H9o6q5FADYv5lMpDUHvatrJ7DDKOfKlV',
     'allowIP' => [
         '127.0.0.1',
-        '92.248.171.89'
     ],
     'pointsRate' => 100
 ];
