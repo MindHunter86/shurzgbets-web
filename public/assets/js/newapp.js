@@ -261,6 +261,9 @@ if (START) {
             }, 1000);
         })
         .on('newDeposit', function(data) {
+            if ( window.location.pathname != '/' ) {
+                return;
+            }
             data = JSON.parse(data);
             $('.game_items').prepend(data.html);
             $('.game_bank').text(Math.round(data.gamePrice));

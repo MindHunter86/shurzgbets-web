@@ -46,7 +46,7 @@ class PagesController extends Controller
         return view('pages.promo', compact('promo', 'money'));
     }
     public function lottery() {
-        $lottery = Lottery::where('status', 0)->orderBy('id', 'desc')->first();
+        $lottery = Lottery::where('status', 0)->orderBy('id', 'desc')->take(1)->first();
         if(!is_null($lottery)) {
             $lottery->items = json_decode($lottery->items);
             $players = $lottery->players()->with(['user','lottery'])->get()->sortByDesc('created_at');

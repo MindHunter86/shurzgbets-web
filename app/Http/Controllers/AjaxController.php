@@ -125,7 +125,7 @@ class AjaxController extends Controller
                 return response()->json($items);
                 break;
             case 'gameInfo': 
-                $game = Game::orderBy('id', 'desc')->first();
+                $game = Game::orderBy('id', 'desc')->take(1)->first();
                 return $game;
             case 'userInfo':
                 $user = User::where('steamid64', $request->get('id'))->first();

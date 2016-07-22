@@ -115,7 +115,7 @@ class GameController extends Controller
     {
         Referer::referer();
 
-        $game = Game::orderBy('id', 'desc')->first();
+        $game = Game::orderBy('id', 'desc')->take(1)->first();
         $bets = $game->bets()->with(['user','game'])->get()->sortByDesc('to');
         $percents = $this->_getChancesOfGame($game, true);
         $user_chance = $this->_getUserChanceOfGame($this->user, $game);
@@ -127,7 +127,7 @@ class GameController extends Controller
 
     public function getLastGame()
     {
-        $game = Game::orderBy('id', 'desc')->first();
+        $game = Game::orderBy('id', 'desc')->take(1)->first();
         if(is_null($game)) {
             $game = $this->newGame();
         }
@@ -135,7 +135,7 @@ class GameController extends Controller
     }
     public function getLastLottery()
     {
-        $lottery = Lottery::orderBy('id', 'desc')->first();
+        $lottery = Lottery::orderBy('id', 'desc')->take(1)->first();
         if(is_null($lottery)) {
             $lottery = $this->newLottery();
         }
@@ -167,10 +167,10 @@ class GameController extends Controller
         }*/
         $us = $this->game->usersNoBot();
 
-        $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->first();
+        $lastBet = Bet::where('game_id', $this->game->id)->orderBy('to', 'desc')->take(1)->first();
         $winTicket = round($this->game->rand_number * $lastBet->to);
 
-        $winningBet = Bet::where('game_id', $this->game->id)->where('from', '<=', $winTicket)->where('to', '>=', $winTicket)->first();
+        $winningBet = Bet::where('game_id', $this->game->id)->where('from', '<=', $winTicket)->where('to', '>=', $winTicket)->take(1)->first();
 
         $this->game->winner_id      = $winningBet->user_id;
         $this->game->status         = Game::STATUS_FINISHED;
@@ -199,10 +199,10 @@ class GameController extends Controller
     {
         $us = $this->lottery->users();
 
-        $lastBet = Players::where('lottery_id', $this->lottery->id)->orderBy('to', 'desc')->first();
+        $lastBet = Players::where('lottery_id', $this->lottery->id)->orderBy('to', 'desc')->take(1)->first();
         $winTicket = round($this->lottery->rand_number * $lastBet->to);
 
-        $winningBet = Players::where('lottery_id', $this->lottery->id)->where('from', '<=', $winTicket)->where('to', '>=', $winTicket)->first();
+        $winningBet = Players::where('lottery_id', $this->lottery->id)->where('from', '<=', $winTicket)->where('to', '>=', $winTicket)->take(1)->first();
 
         $this->lottery->winner_id      = $winningBet->user_id;
         $this->lottery->status         = Game::STATUS_FINISHED;
@@ -383,7 +383,7 @@ class GameController extends Controller
         if(!is_null($player)) {
             return response()->json(['success' => false, 'msg' => 'Вы уже участвуете в этой раздаче!']);
         }
-        $lastBet = Players::where('lottery_id', $this->lottery->id)->orderBy('to', 'desc')->first();
+        $lastBet = Players::where('lottery_id', $this->lottery->id)->orderBy('to', 'desc')->take(1)->first();
         $ticketFrom = 0;
         $ticketTo = 1;
         if(!is_null($lastBet)) {
@@ -888,7 +888,7 @@ class GameController extends Controller
         return response('Error. User not found.', 404);
     }
     public static function getPreviousWinner(){
-        $game = Game::with('winner')->where('status', Game::STATUS_FINISHED)->orderBy('created_at', 'desc')->first();
+        $game = Game::with('winner')->where('status', Game::STATUS_FINISHED)->orderBy('created_at', 'desc')->take(1)->first();
         $winner = null;
         if(!is_null($game)) {
             $winner = [
@@ -900,7 +900,7 @@ class GameController extends Controller
         return $winner;
     }
     public static function getPreviousWinnerLottery(){
-        $lottery = Lottery::with('winner')->where('status', Game::STATUS_FINISHED)->orderBy('created_at', 'desc')->first();
+        $lottery = Lottery::with('winner')->where('status', Game::STATUS_FINISHED)->orderBy('created_at', 'desc')->take(1)->first();
         $winner = null;
         if(!is_null($lottery)) {
             $winner = [
