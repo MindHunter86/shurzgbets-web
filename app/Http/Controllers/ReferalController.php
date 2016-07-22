@@ -82,10 +82,11 @@ class ReferalController extends Controller {
             return response()->json(['success' => false, 'text' => 'Награда уже была отправлена!']);
         }
         if ($user->promo_status != self::STATUS_WAIT) {
-            if ($this->redis->llen('referal_cache_list')>=2) {
-                array_push($itemsToSend,json_decode($this->redis->lpop('referal_cache_list')));
-                array_push($itemsToSend,json_decode($this->redis->rpop('referal_cache_list')));
+            if ($this->redis->llen('referal_cache_list')<2) {
+                return response()->json(['success' => false, 'text' => 'На боте отсутствуют вещи. Ожидайте пополнение!']);
             }
+            array_push($itemsToSend,json_decode($this->redis->lpop('referal_cache_list')));
+            array_push($itemsToSend,json_decode($this->redis->rpop('referal_cache_list')));
             $user->promo_status = self::STATUS_WAIT;
             $user->save();
             DB::commit();
