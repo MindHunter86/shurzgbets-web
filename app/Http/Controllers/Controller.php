@@ -39,12 +39,12 @@ abstract class Controller extends BaseController
         $this->redis = LRedis::connection();
         view()->share('steam_status', $this->getSteamStatus());
 
-        $game = Game::orderBy('id', 'desc')->first();
+        $game = Game::orderBy('id', 'desc')->take(1)->first();
         if(!is_null($game)) {
-            $lastWinner = Game::where('id', $game->id - 1)->first();
+            $lastWinner = Game::where('status', Game::STATUS_FINISHED)->orderBy('id', 'desc')->take(1)->first();
             view()->share('lastWinner', $lastWinner);
         }
-        $dayLucky = Game::where('created_at', '>=', Carbon::today())->where('status', 3)->orderBy('price', 'asc')->get()->sortBy('chance')->first();
+        $dayLucky = Game::where('created_at', '>=', Carbon::today())->where('status', 3)->orderBy('chance','asc')->orderBy('price', 'desc')->take(1)->first();
         view()->share('dayLucky', $dayLucky);
     }
 
