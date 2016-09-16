@@ -17,14 +17,12 @@ class DonateController extends Controller
     public function payment(Request $request)
     {
         $payment = new Payment(
-            Config::get('robokassa.login'), Config::get('robokassa.password1'), Config::get('robokassa.password2'), Config::get('robokassa.testmode')
+            Config::get('payment.merchantId'), Config::get('payment.secret1'), Config::get('payment.secret2')
         );
         $getarray = array(
-            'OutSum' => $request->get('OutSum'),
-            'InvId' => $request->get('InvId'),
-            'SignatureValue' => $request->get('SignatureValue'),
-            'PaymentMethod' => $request->get('PaymentMethod'),
-            'IncSum' => $request->get('IncSum')
+            'oa' => $request->get('AMOUNT'),
+            'o' => $request->get('MERCHANT_ORDER_ID'),
+            's' => $request->get('SIGN')
         );
         if ($payment->validateResult($getarray)) {
             $order = Order::find($payment->getInvoiceId());
@@ -43,7 +41,7 @@ class DonateController extends Controller
     }
     public function merchant(Request $request) {
         $payment = new Payment(
-            Config::get('robokassa.login'), Config::get('robokassa.password1'), Config::get('robokassa.password2'), Config::get('robokassa.testmode')
+            Config::get('payment.merchantId'), Config::get('payment.secret1'), Config::get('payment.secret2')
         );
         $user = $this->user;
         if($request->get('sum') < 1) {
@@ -56,14 +54,13 @@ class DonateController extends Controller
         ]);
         $payment
             ->setInvoiceId($order->id)
-            ->setSum($order->amount)
-            ->setDescription('Пополнение счета ItemUp.Ru. (ID: '.$order->user_id.')');
+            ->setSum($order->amount);
         return response()->json(['url' => $payment->getPaymentUrl(), 'status' => 'success']);
     } 
     public function success() {
-        return redirect(Config::get('robokassa.url'));
+        return redirect(Config::get('payment.url'));
     }
     public function fail() {
-        return redirect(Config::get('robokassa.url'));
+        return redirect(Config::get('payment.url'));
     }
 }

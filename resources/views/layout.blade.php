@@ -163,7 +163,7 @@
                 </ul>
             </div>
             @endif
-            <a href="https://vk.com/shurzgsupp" target="_blank" class="support">{{ trans('all.support') }}</a>
+            <a href="mailto:shurzgbets@gmail.com" target="_blank" class="support">{{ trans('all.support') }}</a>
             <a href="#" class="support">{{ trans('all.online') }} <span class="stats-onlineNow">0</span></a>
         </div>
         <div class="container_r">

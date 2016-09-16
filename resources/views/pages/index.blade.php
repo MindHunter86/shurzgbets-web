@@ -59,7 +59,7 @@
         </div>
     </div>
 </div>
-<!--
+
 <div class="cart">
     <div class="cart_text">
         <em>{{ trans('all.card.info') }}</em>
@@ -74,7 +74,7 @@
         <div class="cart_info" onclick="addTicket(6);"><em>3600</em></div>
     </div>
 </div>
--->
+
 <div class="chance" @if(count($percents) == 0) style="display:none;" @endif>
     <ul class="chances">
     @foreach($percents as $p)
