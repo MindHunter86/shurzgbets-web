@@ -11,86 +11,55 @@ namespace App;
 /**
  * Class Payment
  *
- * @author JhaoDa <jhaoda@gmail.com>
+ * @author Stringnick <string.nick@yandex.ru>
  *
- * @package Idma\Robokassa
+ * @package Freekassa
  */
 class Payment {
     const CULTURE_EN = 'en';
     const CULTURE_RU = 'ru';
-    private $baseUrl      = 'https://merchant.roboxchange.com/Index.aspx?';
-    //private $baseUrl      = 'http://www.free-kassa.ru/merchant/cash.php?';
-    private $isTestMode   = false;
+    private $baseUrl      = 'http://www.free-kassa.ru/merchant/cash.php?';
     private $valid        = false;
     private $data;
-    private $customParams = [];
-    private $login;
-    private $paymentPassword;
-    private $validationPassword;
+    private $merchantId;
+    private $secret1;
+    private $secret2;
+
     /**
-     * Class constructor.
-     *
-     * @param  string $login              login of Merchant
-     * @param  string $paymentPassword    password #1
-     * @param  string $validationPassword password #2
-     * @param  bool   $testMode           use test server
+     * Payment constructor.
+     * @param $merchantId int id магазина
+     * @param $secret1 string секретное слово1
+     * @param $secret2 string секретное слово2
      */
-    public function __construct($login, $paymentPassword, $validationPassword, $testMode = false)
+    public function __construct($merchantId, $secret1, $secret2)
     {
-        $this->login              = $login;
-        $this->paymentPassword    = $paymentPassword;
-        $this->validationPassword = $validationPassword;
-        $this->isTestMode         = $testMode;
-        if ($this->isTestMode) {
-            $this->baseUrl = 'http://test.robokassa.ru/Index.aspx?';
-        }
+        $this->merchantId = $merchantId;
+        $this->secret1 = $secret1;
+        $this->secret2 = $secret2;
         $this->data = [
-            'MerchantLogin'  => $this->login,
-            'InvId'          => null,
-            'OutSum'         => 0,
-            'InvDesc'           => null,
-            'SignatureValue' => '',
-            'Encoding'       => 'utf-8',
-            'Culture'        => self::CULTURE_RU,
-            'IncCurrLabel'   => '',
+            'm'  => $this->merchantId,
+            'o'          => null,
+            'oa'         => 0,
+            's' => '',
+            'lang'        => self::CULTURE_RU,
         ];
     }
+
     /**
-     * Create payment url.
-     *
-     * @throws InvalidSumException       if sum less or equals zero
-     * @throws EmptyDescriptionException if description is empty or not provided
-     * @throws InvalidInvoiceIdException if invoice ID less or equals zero or not provided
-     *
-     * @return string the payment url
+     * @return bool|string
      */
     public function getPaymentUrl()
     {
-        if ($this->data['OutSum'] <= 0) {
+        if ($this->data['oa'] <= 0) {
             return true;
         }
-        if (empty($this->data['InvDesc'])) {
+        if (empty($this->data['o'])) {
             return true;
         }
-        if ($this->data['InvId'] <= 0) {
-            return true;
-        }
-        $signature = vsprintf('%s:%01.2f:%u:%s', [
-            // '$login:$OutSum:$InvId:$passwordPayment'
-            $this->login,
-            $this->data['OutSum'],
-            $this->data['InvId'],
-            $this->paymentPassword
-        ]);
-        if ($this->customParams) {
-            // sort params alphabetically
-            ksort($this->customParams);
-            $signature .= ':' . http_build_query($this->customParams, null, ':');
-        }
-        $this->data['SignatureValue'] = md5($signature);
+
+        $this->data['s'] = md5($this->merchantId.':'.$this->data['oa'].':'.$this->secret1.':'.$this->data['o']);
         $data   = http_build_query($this->data, null, '&');
-        $custom = http_build_query($this->customParams, null, '&');
-        return $this->baseUrl . $data . ($custom ? '&' . $custom : '');
+        return $this->baseUrl . $data;
     }
     /**
      * Validates on ResultURL.
@@ -112,7 +81,7 @@ class Payment {
      */
     public function validateSuccess($data)
     {
-        return $this->validate($data, 'payment');
+        return $this->validate($data);
     }
     /**
      * Validates the Robokassa query.
@@ -122,18 +91,11 @@ class Payment {
      *
      * @return bool
      */
-    private function validate($data, $passwordType = 'validation')
+    private function validate($data)
     {
         $this->data = $data;
-        $password = $this->{$passwordType . 'Password'};
-        $signature = vsprintf('%s:%u:%s%s', [
-            // '$OutSum:$InvId:$password[:$params]'
-            $data['OutSum'],
-            $data['InvId'],
-            $password,
-            $this->getCustomParamsString($this->data)
-        ]);
-        $this->valid = (md5($signature) === strtolower($data['SignatureValue']));
+        $signature = $this->merchantId.':'.$data['oa'].':'.$this->secret2.':'.$data['o'];
+        $this->valid = (md5($signature) === strtolower($data['s']));
         return $this->valid;
     }
     /**
@@ -146,64 +108,17 @@ class Payment {
         return $this->valid;
     }
     /**
-     * Adds custom parameters in payment.
-     * The 'shp_' prefix will be added automatically.
-     *
-     * @param  array $params custom parameters array
-     *
-     * @throws InvalidParamException if params is not an array
-     *
-     * @return Payment
-     */
-    public function addCustomParameters($params)
-    {
-        if (!is_array($params)) {
-            throw new InvalidParamException();
-        }
-        foreach ($params as $key => $val) {
-            $this->customParams['shp_' . $key] = $val;
-        }
-        return $this;
-    }
-    /**
      * @return string
      */
     public function getSuccessAnswer() {
         return 'OK' . $this->getInvoiceId() . "\n";
-    }
-    private function getCustomParamsString(array $source)
-    {
-        $params = [];
-        foreach ($source as $key => $val) {
-            if (stripos($key, 'shp_') === 0) {
-                $params[$key] = $val;
-            }
-        }
-        ksort($params);
-        $params = http_build_query($params, null, ':');
-        return $params ? ':' . $params : '';
-    }
-    /**
-     * Get custom parameter from payment data.
-     *
-     * @param  string  $name  parameter name without "shp_"
-     *
-     * @return mixed
-     */
-    public function getCustomParam($name)
-    {
-        $key = 'shp_' . $name;
-        if (isset($this->data[$key])) {
-            return $this->data[$key];
-        }
-        return null;
     }
     /**
      * @return int
      */
     public function getInvoiceId()
     {
-        return $this->data['InvId'];
+        return $this->data['o'];
     }
     /**
      * @param $id
@@ -212,7 +127,7 @@ class Payment {
      */
     public function setInvoiceId($id)
     {
-        $this->data['InvId'] = (int) $id;
+        $this->data['o'] = (int) $id;
         return $this;
     }
     /**
@@ -220,7 +135,7 @@ class Payment {
      */
     public function getSum()
     {
-        return $this->data['OutSum'];
+        return $this->data['oa'];
     }
     /**
      * @param  mixed $summ
@@ -231,9 +146,8 @@ class Payment {
      */
     public function setSum($summ)
     {
-        $summ = number_format($summ, 2, '.', '');
         if ($summ > 0) {
-            $this->data['OutSum'] = $summ;
+            $this->data['oa'] = $summ;
             return $this;
         } else {
             throw new InvalidSumException();
@@ -242,26 +156,9 @@ class Payment {
     /**
      * @return string
      */
-    public function getDescription()
-    {
-        return $this->data['InvDesc'];
-    }
-    /**
-     * @param  string $description
-     *
-     * @return Payment
-     */
-    public function setDescription($description)
-    {
-        $this->data['InvDesc'] = (string) $description;
-        return $this;
-    }
-    /**
-     * @return string
-     */
     public function getCulture()
     {
-        return $this->data['Culture'];
+        return $this->data['lang'];
     }
     /**
      * @param  string $culture
@@ -270,7 +167,7 @@ class Payment {
      */
     public function setCulture($culture = self::CULTURE_RU)
     {
-        $this->data['Culture'] = (string) $culture;
+        $this->data['lang'] = (string) $culture;
         return $this;
     }
     /**
@@ -278,7 +175,7 @@ class Payment {
      */
     public function getCurrencyLabel()
     {
-        return $this->data['IncCurrLabel'];
+        return $this->data['i'];
     }
     /**
      * @param  string $currLabel
@@ -287,7 +184,7 @@ class Payment {
      */
     public function setCurrencyLabel($currLabel)
     {
-        $this->data['IncCurrLabel'] = (string) $currLabel;
+        $this->data['i'] = (string) $currLabel;
         return $this;
     }
 }
