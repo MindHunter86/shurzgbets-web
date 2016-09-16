@@ -76,8 +76,8 @@ $(document).ready(function() {
 	    	$.notify('Вы ничего не ввели!');
 	        return;
 	    }
-		if (lastMsgTime && new Date - lastMsgTime < 1000 * 5) {
-			$.notify('1 сообщение в 5 секунд');
+		if (lastMsgTime && new Date - lastMsgTime < 1000) {
+			$.notify('1 сообщение в секунду');
 	        return;
 	    }
 	    lastMsg = message;

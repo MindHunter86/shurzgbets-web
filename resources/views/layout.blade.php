@@ -165,6 +165,7 @@
             @endif
             <a href="https://vk.com/shurzgsupp" target="_blank" class="support">{{ trans('all.support') }}</a>
             <a href="#" class="support">{{ trans('all.online') }} <span class="stats-onlineNow">0</span></a>
+            <a href="//www.free-kassa.ru/" style="display: center;" ><img src="//www.free-kassa.ru/img/fk_btn/14.png"></a>
         </div>
         <div class="container_r">
             @yield('content')

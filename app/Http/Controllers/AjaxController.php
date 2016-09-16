@@ -42,8 +42,8 @@ class AjaxController extends Controller
             if(strlen($message) > 200) {
                 return response()->json(['success' => false, 'text' => 'Максимум 200 символов']);
             }
-            if (Session::has('last_chat_message') && Session::get('last_chat_message')+5>time()) {
-                return response()->json(['success' => false, 'text' => '1 сообщение в 5 секунд']);
+            if (Session::has('last_chat_message') && Session::get('last_chat_message')+1>time()) {
+                return response()->json(['success' => false, 'text' => '1 сообщение в секунду']);
             }
             $gamesCount = Bet::where('user_id', $this->user->id)->count();
             if($gamesCount < 5 && !$this->user->is_admin) {

@@ -80,6 +80,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'secretKey'], function () {
 
     post('/referal/updateStatus', 'ReferalController@updateStatus');
     post('/referal/updateItemsCache', 'ReferalController@updateItemsCache');
+    post('/referal/updateAdminItemsCache', 'ReferalController@updateAdminItemsCache');
 
     post('/newLottery', 'GameController@newLottery');
     post('/getWinnersLottery', 'GameController@getWinnersLottery');

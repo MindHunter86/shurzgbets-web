@@ -8,7 +8,6 @@
 
 return [
     'allowSteamID' => [
-        'STEAM_0:0:42964651',
         'STEAM_0:1:110345388'
     ]
 ];

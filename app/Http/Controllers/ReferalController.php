@@ -203,4 +203,13 @@ class ReferalController extends Controller {
             'msg' => $message
         ]));
     }
+
+    public function updateAdminItemsCache() {
+        if ($this->redis->get('ref_cache_update') == 1) {
+            return response()->json(['text' => 'В данный момент обновление кэша реферальных вещей уже ведется!', 'type' => 'error']);
+        }
+        $this->redis->set('ref_cache_update', 1);
+        $this->redis->rpush('newReferalItems', true);
+        return response()->json(['text' => 'Начато обновление кэша.', 'type' => 'success']);
+    }
 }

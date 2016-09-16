@@ -72,7 +72,7 @@ class GameController extends Controller
     ];
 
 
-    const MIN_PRICE     = 20;                    # Минимальная ставка
+    const MIN_PRICE     = 10;                    # Минимальная ставка
     const MAX_ITEMS     = 16;                   # Максимальное кол-во предметов в ставке
     const COMMISSION    = 10;                   # Комиссия
     const COMMISSION_FOR_FIRST_PLAYER    = 7;   # Комиссия для первого игрока сделавшего ставку.
