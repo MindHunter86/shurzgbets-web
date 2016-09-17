@@ -14,6 +14,16 @@ use Config;
 
 class DonateController extends Controller
 {
+    public function paymentSuccess(){
+       return '<h1 style="text-align: center;">Спасибо за покупку!</h1><script>setTimeout(function() {
+  window.location.href = \'https://shurzgbets.com\';
+},2000);</script>';
+    }
+    public function paymentError(){
+        return '<h1 style="text-align: center;">Ошибка при покупке, попробуйте позже!</h1><script>setTimeout(function() {
+  window.location.href = \'https://shurzgbets.com\';
+},2000);</script>';
+    }
     public function payment(Request $request)
     {
         $payment = new Payment(
