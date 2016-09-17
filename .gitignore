@@ -1,11 +1,12 @@
 vendor/
+storage/
 
 ###
 #  Ignoring Confidential Data
 ###
 .env
+*.phar
 *.lock
 *.json
-storage/
 config/database.php
 web/app/Http/Middleware/SecretKey.php
