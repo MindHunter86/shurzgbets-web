@@ -14,6 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         'webapi/*',
         'api/*',
-        'myinventory'
+        'myinventory',
+        'payment'
     ];
 }
