@@ -15,6 +15,7 @@ class VerifyCsrfToken extends BaseVerifier
         'webapi/*',
         'api/*',
         'myinventory',
-        'payment'
+        'payment',
+        'payment/*'
     ];
 }
