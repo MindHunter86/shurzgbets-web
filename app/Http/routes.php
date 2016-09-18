@@ -10,8 +10,8 @@ post('ajax', ['as' => 'ajax', 'uses' => 'AjaxController@parseAction']);
 get('/history', ['as' => 'history', 'uses' => 'PagesController@history']);
 get('/shop', ['as' => 'shop', 'uses' => 'ShopController@index']);
 post('/payment', 'DonateController@payment');
-get('/payment/success','DonateController@paymentSuccess');
-get('/payment/error','DonateController@paymentError');
+post('/payment/success','DonateController@paymentSuccess');
+post('/payment/error','DonateController@paymentError');
 get('/lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 Route::group(['middleware' => 'auth'], function () {
     post('/merchant', 'DonateController@merchant');

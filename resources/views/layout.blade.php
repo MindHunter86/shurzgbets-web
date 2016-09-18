@@ -81,6 +81,7 @@
                 <p>{{ trans('all.card_add_change') }}</p>
             </div>
         </div>
+        <a href="//www.free-kassa.ru/" style="display: center;" ><img src="//www.free-kassa.ru/img/fk_btn/14.png"></a>
     </div>
 </div>
 @endif
@@ -163,9 +164,24 @@
                 </ul>
             </div>
             @endif
+            <script>
+                $(document).on('ready',function(){
+                    $.get("https://api.twitch.tv/kraken/streams/shurzg?as3=t&client_id=rp5xf0lwwskmtt1nyuee68mgd0hthrw",function (data) {
+                        //data = JSON.parse(data);
+                        if(data.stream === null) {
+                            $('#stream_status').html('Offline');
+                            $('#stream_status').css('color','red');
+                        } else {
+                            $('#stream_status').html('Online');
+                            $('#stream_status').css('color', 'green');
+                        }
+                    });
+                });
+            </script>
             <a href="mailto:shurzgbets@gmail.com" target="_blank" class="support">{{ trans('all.support') }}</a>
+            <a class="support" href="https://www.twitch.tv/shurzg"><img style="width: 30px; text-align: center; vertical-align: middle;" src="{{ asset('assets/img/twitch.png') }}"><span id="stream_status"></span> </a>
+            <a class="support" href="https://www.youtube.com/channel/UCUHBt_ZZtFpImZ5tK1Y9WCQ"><img style="width: 30px; text-align: center; vertical-align: middle;" src="{{ asset('assets/img/youtube.png') }}"></a>
             <a href="#" class="support">{{ trans('all.online') }} <span class="stats-onlineNow">0</span></a>
-            <a href="//www.free-kassa.ru/" style="display: center;" ><img src="//www.free-kassa.ru/img/fk_btn/14.png"></a>
         </div>
         <div class="container_r">
             @yield('content')
