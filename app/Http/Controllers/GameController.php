@@ -484,7 +484,7 @@ class GameController extends Controller
                 $this->redis->rpush('decline.list', $offer->offerid);
                 continue;
             }
-
+/*
             if ($boxes && $total_price < 100) {
                 $this->_responseErrorToSite('Сундуки дешевле 5 рублей запрещены в депозите меньше 100 рублей!', $accountID, self::BET_DECLINE_CHANNEL);
                 $this->redis->lrem('usersQueue.list', 1, $accountID);
@@ -492,6 +492,7 @@ class GameController extends Controller
                 $this->redis->rpush('decline.list', $offer->offerid);
                 continue;
             }
+*/
             if ($price) {
                 $this->_responseErrorToSite('Невозможно определить цену одного из предметов', $accountID, self::BET_DECLINE_CHANNEL);
                 $this->redis->lrem('usersQueue.list', 1, $accountID);
