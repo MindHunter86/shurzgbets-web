@@ -2,15 +2,15 @@
 @section('content')
     <div class="information full">
         <div class="info-in">
-            <div class="info-images"><img src="{{ asset('new/images/info1.png') }}" alt="" /></div>
+            <div class="info-images"><img src="{{ $asset('new/images/info1.png') }}" alt="" /></div>
             <div class="info-text">Чем дороже предметы вы ставите <br /> тем выше шанс на победу</div>
         </div>
         <div class="info-in">
-            <div class="info-images"><img src="{{ asset('new/images/info2.png') }}" alt="" /></div>
+            <div class="info-images"><img src="{{ $asset('new/images/info2.png') }}" alt="" /></div>
             <div class="info-text">Максимальный депозит - {{ $max_items = \App\Http\Controllers\GameController::MAX_ITEMS }} предметов <br /> Минимальная сумма депозита - {{ $min_price = \App\Http\Controllers\GameController::MIN_PRICE }} руб</div>
         </div>
         <div class="info-in">
-            <div class="info-images"><img src="{{ asset('new/images/info3.png') }}" alt="" /></div>
+            <div class="info-images"><img src="{{ $asset('new/images/info3.png') }}" alt="" /></div>
             <div class="info-text">Сделай депозит первым и получи<br />бонус 10% от его суммы</div>
         </div>
         <div class="clear"></div>
