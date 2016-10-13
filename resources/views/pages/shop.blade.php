@@ -5,13 +5,13 @@
     <div class="notice advantages">
 
         <div class="item inline-block">
-            <div class="icon"><img src="{{ asset('assets/images/icon_percent.png') }}" alt=""></div>
+            <div class="icon"><img src="{{ $asset('assets/images/icon_percent.png') }}" alt=""></div>
             <h3>Дешевле чем в Steam на 30-50%</h3>
             <p><a href="{{ \App\Http\Controllers\ShopController::LINK_TO_BOT_INVENTORY }}">Посмотреть инвентарь бота</a></p>
         </div>
 
         <div class="item inline-block">
-            <div class="icon"><img src="{{ asset('assets/images/icon_rocket.png') }}" alt=""></div>
+            <div class="icon"><img src="{{ $asset('assets/images/icon_rocket.png') }}" alt=""></div>
             <h3>Моментальная отправка вещей</h3>
             <p><a href="{{ \App\Http\Controllers\ShopController::LINK_TO_REVIEWS }}">Читать отзывы</a></p>
         </div>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,6 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+            View::share('asset',function($path){
+                return self::cdn($path);
+            });
         //
     }
 
@@ -24,5 +27,14 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    public static function cdn($path=''){
+        $path = asset($path);
+        if(config('view.is_cdn')) {
+            $path = parse_url($path);
+            $path = config('view.cdn_url').$path['path'];
+        }
+        return $path;
     }
 }

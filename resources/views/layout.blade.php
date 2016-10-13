@@ -7,21 +7,21 @@
     <meta name="keywords" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. SHURZGBETS.COM - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="description" content="Рулетка cs go для бомжей с минимальной ставкой 1 рубль. Именно рулетки кс го с минимальной ставкой 1 рубль самые доступные для бомжей. SHURZGBETS.COM - это cs go рулетка не больше 100 рублей без минимальной ставки. " />
     <meta name="csrf-token" content="{!!  csrf_token()   !!}">
-    <link type="text/css" rel="stylesheet" href="{{ asset('shurzg/css/style.css') }}" />
-    <link type="text/css" rel="stylesheet" href="{{ asset('shurzg/css/animate.css') }}" />
-    <link type="text/css" rel="stylesheet" href="{{ asset('shurzg/css/jquery.mCustomScrollbar.css') }}" />
-    <link rel="shortcut icon" href="{{ asset('shurzg/images/favicon.ico') }}" />
-    <script type="text/javascript" src="{{ asset('new/js/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/jquery.cookie.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/jquery.smoothscroll.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/jquery.arcticmodal-0.3.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/jquery.ikSelect.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/script.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/notify.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/countdown.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('shurzg/js/bootstrap-tooltip.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}" ></script>
+    <link type="text/css" rel="stylesheet" href="{{ $asset('shurzg/css/style.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ $asset('shurzg/css/animate.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ $asset('shurzg/css/jquery.mCustomScrollbar.css') }}" />
+    <link rel="shortcut icon" href="{{ $asset('shurzg/images/favicon.ico') }}" />
+    <script type="text/javascript" src="{{ $asset('new/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ $asset('shurzg/js/jquery.cookie.js') }}"></script>
+    <script type="text/javascript" src="{{ $asset('shurzg/js/jquery.smoothscroll.js') }}"></script>
+    <script type="text/javascript" src="{{ $asset('shurzg/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script type="text/javascript" src="{{ $asset('shurzg/js/jquery.arcticmodal-0.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ $asset('shurzg/js/jquery.ikSelect.js') }}"></script>
+    <script type="text/javascript" src="{{ $asset('shurzg/js/script.js') }}"></script>
+    <script type="text/javascript" src="{{ $asset('shurzg/js/notify.min.js') }}"></script>
+    <script type="text/javascript" src="{{ $asset('shurzg/js/countdown.min.js') }}"></script>
+    <script type="text/javascript" src="{{ $asset('shurzg/js/bootstrap-tooltip.js') }}"></script>
+    <script src="{{ $asset('assets/js/main.js') }}" ></script>
 
     <script>
         var CHAT_CONNECT = '/chat/4';
@@ -179,8 +179,8 @@
                 });
             </script>
             <a href="mailto:shurzgbets@gmail.com" target="_blank" class="support">{{ trans('all.support') }}</a>
-            <a class="support" href="https://www.twitch.tv/shurzg"><img style="width: 30px; text-align: center; vertical-align: middle;" src="{{ asset('assets/img/twitch.png') }}"><span id="stream_status"></span> </a>
-            <a class="support" href="https://www.youtube.com/channel/UCUHBt_ZZtFpImZ5tK1Y9WCQ"><img style="width: 30px; text-align: center; vertical-align: middle;" src="{{ asset('assets/img/youtube.png') }}"></a>
+            <a class="support" href="https://www.twitch.tv/shurzg"><img style="width: 30px; text-align: center; vertical-align: middle;" src="{{ $asset('assets/img/twitch.png') }}"><span id="stream_status"></span> </a>
+            <a class="support" href="https://www.youtube.com/channel/UCUHBt_ZZtFpImZ5tK1Y9WCQ"><img style="width: 30px; text-align: center; vertical-align: middle;" src="{{ $asset('assets/img/youtube.png') }}"></a>
             <a href="#" class="support">{{ trans('all.online') }} <span class="stats-onlineNow">0</span></a>
         </div>
         <div class="container_r">
@@ -222,7 +222,7 @@
     @endif
 
 </script>
-<script src="{{ asset('assets/js/newapp.js') }}" ></script>
-<script src="{{ asset('assets/js/chat.js') }}" ></script>
+<script src="{{ $asset('assets/js/newapp.js') }}" ></script>
+<script src="{{ $asset('assets/js/chat.js') }}" ></script>
 </body>
 </html>
