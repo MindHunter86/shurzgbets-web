@@ -30,10 +30,10 @@ class AppServiceProvider extends ServiceProvider
     }
 
     public static function cdn($path=''){
-        $path = asset($path);
         if(config('view.is_cdn')) {
-            $path = parse_url($path);
-            $path = config('view.cdn_url').$path['path'];
+            $path = config('view.cdn_url').$path;
+        } else {
+            $path = asset($path);
         }
         return $path;
     }

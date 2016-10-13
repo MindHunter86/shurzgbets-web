@@ -2,8 +2,8 @@
 
 return [
 
-    'is_cdn' => false,
-    'cdn_url' => 'https://shurzgbets.com', // можешь вводить каталоги, https://cdn.service.ru/podkotolog ,
+    'is_cdn' => true,
+    'cdn_url' => 'https://shurzgbets.com/', // можешь вводить каталоги, https://cdn.service.ru/podkotolog/ ,
     // но подкотолог линковал на папку public, кроме index.php items.json robots.txt
     // или же тупо скопировать файлы
 
